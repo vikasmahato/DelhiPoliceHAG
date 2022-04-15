@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.UUID;
+
 @Controller
 @Slf4j
 public class DiaryEntryWebController {
@@ -46,8 +48,10 @@ public class DiaryEntryWebController {
     }
 
     @GetMapping("/viewclaim")
-    public String viewclaim(@RequestParam(value = "id") Long id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+    public String viewclaim(@RequestParam(value = "id") UUID id, Model model) {
+        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
+        diaryEntryVO.setViewMode(Boolean.TRUE);
+        model.addAttribute("diaryEntry", diaryEntryVO);
         return "claim_view";
     }
 
@@ -59,30 +63,30 @@ public class DiaryEntryWebController {
     }
 
     @GetMapping("/createCalculationSheet/{id}")
-    public String createCalculationSheet(@PathVariable Long id, Model model) {
-        model.addAttribute("diaryNo", id);
+    public String createCalculationSheet(@PathVariable UUID id, Model model) {
+        model.addAttribute("diaryId", id);
         return "create_calculation_sheet";
     }
     @GetMapping("/printCalculationSheet/{id}")
-    public String printCalculationSheet(@PathVariable Long id, Model model) {
+    public String printCalculationSheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
         return "print_calculation_sheet";
     }
 
     @GetMapping("/printNotesheet/{id}")
-    public String printNotesheet(@PathVariable Long id, Model model) {
+    public String printNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
         return "print_notesheet";
     }
 
     @GetMapping("/printForwardingLetter/{id}")
-    public String printForwardingLetter(@PathVariable Long id, Model model) {
+    public String printForwardingLetter(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
         return "print_forwarding_letter";
     }
 
     @GetMapping("/printOrder/{id}")
-    public String printOrder(@PathVariable Long id, Model model) {
+    public String printOrder(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
         return "print_forwarding_letter";
     }

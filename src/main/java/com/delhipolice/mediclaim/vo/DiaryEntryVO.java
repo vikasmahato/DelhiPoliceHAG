@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -25,7 +26,7 @@ import java.util.List;
 public class DiaryEntryVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private UUID id;
     private Integer tenantId;
     private String diaryNumber;
     private String displayDiaryNumber;
@@ -53,6 +54,7 @@ public class DiaryEntryVO implements Serializable {
     private String amountAsked1;
     private String amountGranted1;
     private String notesheetSalutation;
+    private Boolean viewMode = Boolean.FALSE;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
         id = diaryEntry.getId();

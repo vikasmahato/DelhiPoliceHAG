@@ -8,10 +8,11 @@ import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface DiaryEntryService {
 
-    DiaryEntryVO find(Long id);
+    DiaryEntryVO find(UUID id);
 
     DiaryEntry save(DiaryEntryVO diaryEntryVO);
 

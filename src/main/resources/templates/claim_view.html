@@ -14,8 +14,7 @@
             rel="stylesheet"
     />
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
-    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
-    <link th:href="@{/css/select2.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
 </head>
 <body>
 
@@ -28,96 +27,8 @@
             <h3>View Claim</h3>
             <form action="#" th:action="@{/diaryEntryUpdate}" th:object="${diaryEntry}" method="post">
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="diary_number">Diary No</label>
-                            <input type="text" class="form-control" id="diary_number" th:field="*{displayDiaryNumber}" readonly >
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="belt_number">Belt No</label>
-                            <input type="text" class="form-control" id="belt_number" th:field="*{applicant.beltNumber}" readonly >
-                        </div>
-                        <input type="hidden" class="form-control" id="applicant_id" th:field="*{applicant.id}">
-                        <div class="col-6">
-                            <label for="pis_number">PIS No</label>
-                            <input type="text" class="form-control" id="pis_number" th:field="*{applicant.pisNumber}" readonly >
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="rank">Rank</label>
-                            <select class="form-control" id="rank" th:field="*{applicant.rank}" readonly >
-                                <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
-                            </select>
-                        </div>
-
-                        <div class="col-6">
-                            <label for="applicant_name">Applicant Name</label>
-                            <input type="text" class="form-control" id="applicant_name" th:field="*{applicant.name}" readonly >
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="treatment_by">Treatment Taken By</label>
-                            <input type="text" class="form-control" id="treatment_by" th:field="*{treatmentTakenBy}" readonly>
-                        </div>
-
-                        <div class="col-6">
-                            <label for="hospital_name">Enter Hospital Name</label>
-                            <select id="hospital_name" class="form-control select2-single" th:field="*{hospital.hospitalName}"></select>
-                        </div>
-                        <input type="hidden" class="form-control" id="hospital_id" th:field="*{hospital.id}">
-                    </div>
-
-                    <div class="col-6">
-                        <label for="case_type">Case Type</label>
-                        <select class="form-control" id="case_type" th:field="*{caseType}" required >
-                            <option th:each="casetype : ${T(com.delhipolice.mediclaim.constants.CaseType).values()}" th:value="${casetype}" th:text="${casetype.getEnumValue()}"></option>
-                        </select>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="amt_claimed">Amount Claimed</label>
-                            <input type="number" class="form-control" id="amt_claimed" th:field="*{amountClaimed}">
-                        </div>
-
-
-                        <div class="col-6">
-                            <label for="admissible_amount">Admissible Amount</label>
-                            <input type="number" class="form-control" id="admissible_amount" th:field="*{admissibleAmount}">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="phq_number">PHQ Number</label>
-                            <input type="text" class="form-control" id="phq_number" th:field="*{phqNumber}">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="phq_date">PHQ Date</label>
-                            <input type="date" class="form-control" id="phq_date" th:field="*{phqDate}" placeholder="Date">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="sanction_no">Sanction No</label>
-                            <input type="text" class="form-control" id="sanction_no" th:field="*{sanctionNumber}">
-                        </div>
-
-                        <div class="col-6">
-                            <label for="sanction_date">Sanction Date</label>
-                            <input type="date" class="form-control" id="sanction_date" th:field="*{sanctionDate}">
-                        </div>
-                    </div>
+                    <div th:replace="create_diary_entry :: diaryDetails"></div>
 
                     <div th:if="*{diaryType.getEnumValue() == 'Individual'}">
                         <div th:if="*{treatmentTakenBy.getEnumValue() == 'Relative'}">
@@ -154,7 +65,7 @@
                             </div>
 
                             <div class="col-6">
-                                <label for="treatment_end_date">Treatment Start Date</label>
+                                <label for="treatment_end_date">Treatment End Date</label>
                                 <input type="date" class="form-control" id="treatment_end_date" th:field="*{claimDetails.endDate}">
                             </div>
                         </div>
@@ -178,7 +89,7 @@
                         </td>
 
                     </div>
-                    <div th:if="*{diaryType.getEnumValue() == 'Hospital'}">Individual</div>
+                    <div th:if="*{diaryType.getEnumValue() == 'Hospital'}">Hospital</div>
 
                 </div>
 
@@ -196,63 +107,8 @@
 
 </body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
-<script th:src="@{/js/select2.min.js}" type="text/javascript"></script>
-<script>
-    $("#hospital_name").select2({
-        placeholder: 'Select a Hospital',
-        ajax: {
-            url: '/searchHospital',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (response) {
-                const data = {
-                    results: $.map(response, function(item) {
-                        return {
-                            id: item.id,
-                            text: item.name
-                        }
-                    })
-                };
-                return data;
-            },
-            cache: true
-        }
-    });
-
-    $("#belt_number").select2({
-        placeholder: 'Search Applicant',
-        tags: true,
-        ajax: {
-            url: '/searchApplicant',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (response) {
-                const data = {
-                    results: $.map(response, function(item) {
-                        return {
-                            id: item.id,
-                            text: item.name
-                        }
-                    })
-                };
-                return data;
-            },
-            cache: true
-        }
-    });
-
-    $('#hospital_name').on('select2:select', function (e) {
-        var data = e.params.data;
-        console.log(data);
-        $("#hospital_id").val(data.id);
-    });
-
-    $('#belt_number').on('select2:select', function (e) {
-        var data = e.params.data;
-        console.log(data);
-        $("#applicant_id").val(data.id);
-    });
-
-</script>
+<script th:src="@{/js/pisNumberSearch.js}" type="text/javascript"></script>
+<script th:src="@{/js/hospitalSearch.js}" type="text/javascript"></script>
 </html>

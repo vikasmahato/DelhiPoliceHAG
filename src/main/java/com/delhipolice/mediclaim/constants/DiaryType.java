@@ -1,8 +1,9 @@
 package com.delhipolice.mediclaim.constants;
 
 public enum DiaryType {
-    HOSPITAL("Hospital"),
-    INDIVIDUAL("Individual");
+
+    INDIVIDUAL("Individual"),
+    HOSPITAL("Hospital");
 
     private String enumValue;
 

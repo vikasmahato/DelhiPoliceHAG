@@ -38,7 +38,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public DiaryEntryVO find(Long id) {
+    public DiaryEntryVO find(UUID id) {
         DiaryEntry diaryEntry = diaryEntryRepository.findById(id).get();
         return new DiaryEntryVO(diaryEntry);
     }
@@ -50,13 +50,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         DiaryEntry diaryEntry = new DiaryEntry(diaryEntryVO);
 
         Applicant applicant = applicantService.findByPisNumber(diaryEntryVO.getApplicant().getPisNumber());
-        if(applicant!=null)
-            diaryEntry.setApplicant(applicant);
-        else {
-            diaryEntry.setApplicant(applicantService.save(diaryEntryVO.getApplicant()));
-        }
+        diaryEntry.setApplicant(applicant == null ? new Applicant(diaryEntryVO.getApplicant()) : applicant);
 
         Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
+
         diaryEntry.setHospital(hospital);
         return diaryEntryRepository.save(diaryEntry);
     }
@@ -174,27 +171,5 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         }
 
         return EMPTY_COMPARATOR;
-    }
-
-   /* @Override
-    public PageArray getDiaryEntriesArray(PagingRequest pagingRequest) {
-        pagingRequest.setColumns(Stream.of("diaryNumber", "diaryType", "applicantName")
-                .map(Column::new)
-                .collect(Collectors.toList()));
-
-        Page<DiaryEntry> diaryEntryPage = getDiaryEntries(pagingRequest);
-
-        PageArray pageArray = new PageArray();
-        pageArray.setRecordsFiltered(diaryEntryPage.getRecordsFiltered());
-        pageArray.setRecordsTotal(diaryEntryPage.getRecordsTotal());
-        pageArray.setDraw(diaryEntryPage.getDraw());
-        pageArray.setData(diaryEntryPage.getData().stream().map(this::toStringList).collect(Collectors.toList()));
-
-
-        return pageArray;
-    }*/
-
-    private List<String> toStringList(DiaryEntry diaryEntry) {
-        return Arrays.asList(diaryEntry.getDiaryNumber() +"/" + sdf.format(diaryEntry.getDiaryDate()), diaryEntry.getDiaryType().getEnumValue(), diaryEntry.getApplicant().getName());
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class DiaryEntryRestController {
@@ -32,7 +33,7 @@ public class DiaryEntryRestController {
 
 
     @GetMapping("/getCalSheetentries/{id}")
-    public List<CalculationSheetEntry> getCalSheetentries(@PathVariable Long id) {
+    public List<CalculationSheetEntry> getCalSheetentries(@PathVariable UUID id) {
         DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
         return diaryEntryVO.getCalculationSheet();
     }

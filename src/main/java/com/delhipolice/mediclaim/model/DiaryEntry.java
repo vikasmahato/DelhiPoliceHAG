@@ -10,12 +10,14 @@ import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -46,9 +48,12 @@ public class DiaryEntry implements Serializable, Auditable {
         this.claimType = diaryEntryVO.getClaimType();
     }
 
-    @Id
+/*    @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Long id;*/
+    @Id
+    @GeneratedValue
+    private UUID id;
 
     @Column
     private Integer tenantId;
@@ -66,7 +71,7 @@ public class DiaryEntry implements Serializable, Auditable {
     @Temporal(TemporalType.DATE)
     private Date diaryDate;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Applicant applicant;
 
     @Column
