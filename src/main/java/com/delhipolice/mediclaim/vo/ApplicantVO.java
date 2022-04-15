@@ -6,6 +6,7 @@ import com.delhipolice.mediclaim.model.Applicant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +25,7 @@ public class ApplicantVO {
     private String cghsNumber;
 
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date cghsExpiry;
 
     private CghsCategory cghsCategory;

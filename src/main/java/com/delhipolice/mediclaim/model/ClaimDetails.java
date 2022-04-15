@@ -65,9 +65,6 @@ public class ClaimDetails implements Serializable, Auditable {
     private String period;
 
     @Column
-    private ClaimType claimType;
-
-    @Column
     private String policeStationNumber;
 
     @Column

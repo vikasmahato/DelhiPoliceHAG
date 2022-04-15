@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.constants.CaseType;
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
@@ -42,6 +43,7 @@ public class DiaryEntry implements Serializable, Auditable {
         this.isObjection = diaryEntryVO.getIsObjection();
         this.calculationSheet = diaryEntryVO.getCalculationSheet();
         this.claimDetails = diaryEntryVO.getClaimDetails();
+        this.claimType = diaryEntryVO.getClaimType();
     }
 
     @Id
@@ -81,6 +83,9 @@ public class DiaryEntry implements Serializable, Auditable {
 
     @Column
     private CaseType caseType;
+
+    @Column
+    private ClaimType claimType;
 
     @Column
     private BigDecimal amountClaimed;

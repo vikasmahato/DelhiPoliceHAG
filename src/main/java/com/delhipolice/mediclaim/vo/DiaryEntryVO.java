@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.vo;
 
 import com.delhipolice.mediclaim.constants.CaseType;
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.*;
@@ -48,6 +49,7 @@ public class DiaryEntryVO implements Serializable {
     private Boolean isObjection;
     private List<CalculationSheetEntry> calculationSheet;
     private ClaimDetails claimDetails;
+    private ClaimType claimType;
     private String amountAsked1;
     private String amountGranted1;
     private String notesheetSalutation;
@@ -61,6 +63,7 @@ public class DiaryEntryVO implements Serializable {
         treatmentTakenBy = diaryEntry.getTreatmentTakenBy();
         hospital = diaryEntry.getHospital();
         caseType = diaryEntry.getCaseType();
+        claimType = diaryEntry.getClaimType();
         amountClaimed = diaryEntry.getAmountClaimed();
         admissibleAmount = diaryEntry.getAdmissibleAmount();
         phqNumber = diaryEntry.getPhqNumber();

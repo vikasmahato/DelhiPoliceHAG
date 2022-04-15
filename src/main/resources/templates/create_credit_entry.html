@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Credit Entry</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Font Awesome -->
     <link
@@ -27,16 +27,11 @@
         <div class="col-lg-12">
             <h3>Create a Diary Entry</h3>
             <form action="#" th:action="@{/diaryEntryCreate}" th:object="${diaryEntry}" method="post">
+                <input type="hidden" class="form-control" id="claim_type" th:field="*{claimType}" value="${T(com.delhipolice.mediclaim.constants.ClaimType).CREDIT}">
                 <div class="box-body">
                     <div class="input-group">
                         <input type="text" aria-label="Diary Number name" th:field="*{diaryNumber}"  placeholder="Diary No"  class="form-control" required>
-
-                        <select class="form-control" aria-label="Diary Type" th:field="*{diaryType}" required >
-                            <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
-                        </select>
-
                         <span class="input-group-text">/Genl. Branch/SD dated</span>
-
                         <input type="date" aria-label="Diary Date" id="datepicker"  th:field="*{diaryDate}" class="form-control" required>
                     </div>
 
