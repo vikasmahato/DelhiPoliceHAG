@@ -1,0 +1,3089 @@
+[
+  {
+    "name": "Pristyn Care - Dwarka",
+    "address": "Plot 448, 1st Floor Sector 19,Dwarka",
+    "state": "New Delhi",
+    "city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Pristyn Care - Laxmi Nagar",
+    "address": "7, East End Enclave, Laxmi Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Pristyn Care - Greater Kailash 1",
+    "address": "B-24, Lower Ground Floor Hansraj Gupta Rd, Greater Kailash 1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Diyos Hospital (Tie up via Pristyn Care)",
+    "address": "A1/26, adjacent to Green Fields Public School, Safdarjung Enclave",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Akash Hospital (Tie up via Pristyn Care)",
+    "address": "90/43, Malviya Nagar Rd, Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Pristyn Care - Saket",
+    "address": "E 29, NEAR ICICI BANK, Saket,",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Pristyn Care - Hauz Khas",
+    "address": "No A 24, Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Pristyn Care - Paschim Vihar",
+    "address": "No 142, Avtar Enclave Choudhary Balbir Singh Marg, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Pristyn Care - Anand Vihar",
+    "address": "C-4 Pushpanjali Vikas Marg, Anand Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Ayushmaan (Tie up via Pristyn Care)",
+    "address": "Elephenta Line Sector 10 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110078
+  },
+  {
+    "name": "Avantika Multispeciality Hospital (Tie up via Pristyn Care)",
+    "address": "8, pocket, A3, 3, Sector 3, Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Bensups Hospital (Tie up via Pristyn Care)",
+    "address": "Dwarka Sub-City, Sector 12, BENSUPS Avenue Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Holy Angels Hospital (Tie up via Pristyn Care)",
+    "address": "Plot B, Community Center, Basant Lok, Vasant Vihar, Near Priya Cinema, Behind Vasant Continental Hotel Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Medstar (Tie up via Pristyn Care)",
+    "address": "Outer Ring Rd, Block A, Meera Bagh, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110087
+  },
+  {
+    "name": "New Vision Eye Centre (Tie up via Pristyn Care)",
+    "address": "A-5/233, A 5B Block, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Sama Hospital (Tie up via Pristyn Care)",
+    "address": "8, Siri Fort Rd",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "BLK Super Speciality Hospital",
+    "address": "Building No. 5, Pusa Road, Near Rajendra Palace, Metro Station, Rajinder Nagar Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Indraprastha Apollo Hospital",
+    "address": "Delhi Mathura Road, Sarita Vihar Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Artemis Hospital",
+    "address": "Sector 51, Gurgaon / Sector 20, Dwarka Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Moolchand Medcity",
+    "address": "Lajpat Nagar III, Near Moolchand Metro Station Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Indira IVF",
+    "address": "South Patel Nagar / Faridabad / Rohini / Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Medicover Fertility",
+    "address": "E-20 Panchsheel Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Indian Spinal Injuries Center",
+    "address": "Sector C, Vasant Kunj Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "AB Hospital",
+    "address": "Plot No. 7 SP, Golf Course Road, DLF Phase 5, Sector 43, Gurgaon DLF Phase",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Apollo White Dental",
+    "address": "Indraprastha Apollo /  Faridabad",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "IBS Hospital",
+    "address": "73, Ring Rd, Block L, Lajpat Nagar III, Sarojini Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Centre for Sight",
+    "address": "Safdarjung / Vikaspuri / Preet Vihar / Rohini / Rajouri Garden / Gurgaon / Faridabad / Dwarka / Ashok Vihar /",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Aashlok Hospital",
+    "address": "25 AB, Community Centre, Safdarjung Enclave Safdarjung",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Eye7 Eye Hospitals",
+    "address": "34 Lajpat Nagar 4 Main Ring Road South Delhi",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Reticure Eye Centre",
+    "address": "BA-33A, Ashok Vihar phase 1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "Saroj Super Speciality Hospital",
+    "address": "Near Madhuban Chowk, Sector 14, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Adiva Hospital",
+    "address": "C1/C, Green Park Ext, Green Park Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Batra Hospital &amp; Medical Research Centre",
+    "address": "1, Mehrauli Badarpur Road, Near Saket Metro Station, Tughlakabad Institutional Area Tughlakabad",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Rockland Hospital (Dwarka)",
+    "address": "Sector-12, HAF-B, Phase-1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "St. Stephen's Hospital (Civil Lines)",
+    "address": "St. Stephen Road, Tis Hazari Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110045
+  },
+  {
+    "name": "Sir Ganga Ram Hospital (Karol Bagh)",
+    "address": "Rajinder Nagar Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Sitaram Bhartia Institute of Science and Research",
+    "address": "B-16, Qutab Institutional Area Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Primus Super Speciality Hospital",
+    "address": "2, Chandragupt Marg, Chanakyapuri Chanakya Puri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110021
+  },
+  {
+    "name": "Primus Super Speciality Hospital",
+    "address": "Near New Ashok Nagar Metro Station, Vasundhara Enclave New Ashok Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Rockland Hospital-Qutab",
+    "address": "Rockland Qutab, B- 33 &amp; 34, Qutab Institutional Area, Katwaria Sarai Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "Sukhmani Hospital",
+    "address": "Building No. 1 LSC, Nelson Mandela Marg,  Sector- B, Pocket- 7, Opposite Police Station, Vasant Kunj Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Jaipur Golden Hospital",
+    "address": "2, Sector 3, Institutional Area Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Orchid Hospital",
+    "address": "C-3/91-92, Near Fly Over, Dabri More Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Sri Balaji Action Medical Institute",
+    "address": "A-4, Paschim Vihar, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Rajdhani Medical and Diagnostic Centre",
+    "address": "Rajdhani Medical Centre, c-242 new  ashok nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Alshifa Multi Speciality Hospital",
+    "address": "D-305, Jamia Nagar, Abul Fazal Enclave, Dawat Nagar Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Sawan Neelu Angels Nursing Home",
+    "address": "J- 293, Main Market, Near Union Bank, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Medanta Hospital",
+    "address": "E � 18 Defence Colony",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Sehgal Neo Hospital",
+    "address": "B- 364, Outer Ring Road, Meera Bagh Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110087
+  },
+  {
+    "name": "Vardaan Hospital",
+    "address": "B-100, Near Malviya Nagar Market Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Bhagwati Hospital",
+    "address": "Rohini Sector 13",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Bhatia Global Hospital and Endosurgery Institute",
+    "address": "307 and 308, Ambika Vihar, Opposite Central School Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Max Super Speciality Hospital (Saket)",
+    "address": "No. 2, Press Enclave Road, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": "#N/A"
+  },
+  {
+    "name": "Deepak Memorial Hospital",
+    "address": "5, Vikas Marg, Vikas Marg Extension Part-2, Institutional Area Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Eden Hospital",
+    "address": "B- 162, Opposite C Block, DDA Market, East Of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "National Heart Institute",
+    "address": "49-50, Community Centre, East Of Kailash, Behind Sapna Cinema Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Sant Parmanand Hospital",
+    "address": "18, Sham Nath Marg Civil lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110054
+  },
+  {
+    "name": "Jeewan Mala Hospital Pvt Ltd",
+    "address": "67/1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Chikitsa Hospital (Malviya Nagar)",
+    "address": "B/4, Opposite Gyan Bharti School, Near Malviya Nagar Metro Station, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Mata Chanan Devi Hospital",
+    "address": "C- 1, Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Shradha Multispeciality Hospital",
+    "address": "Safiabad Road, Narela Narela",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110040
+  },
+  {
+    "name": "Talwar Medical Centre",
+    "address": "M- 139, Part-II, Near Arya Samaj Mandir, Greater Kailash II Greater Kailash II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Jeevan Jyoti Clinic and Hospital",
+    "address": "118 - A / 1, GTB Chowk, Govt School and Rosemary Public School Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Holy Family Hospital",
+    "address": "Okhla Road, Opposite Escort Heart Hospital, Jamia Nagar Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Tirath Ram Shah Hospital",
+    "address": "2A, R.B.L Isher Das Sawhney Marg, Near Tis Hazari Metro Station, Rajpur Road  Civil LInes",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110054
+  },
+  {
+    "name": "Delhi Heart and Lung Institute",
+    "address": "3, MM- II, Panchkuian Road Pahar Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110055
+  },
+  {
+    "name": "C M Patel Hospital",
+    "address": "E- 7, 100 Feet Road, Jyoti Nagar, West Jyoti Nagar Extension Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110032
+  },
+  {
+    "name": "Pentamed Hospital",
+    "address": "7, Local Shopping Centre, Gujranwala Town, Phase -IV, Derawal Nagar Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110009
+  },
+  {
+    "name": "Kosmos Superspeciality Hospital",
+    "address": "C-60, Anand Vihar, Near karkardooma Metro station, Vikas Marg Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "G M Modi Hospital",
+    "address": "Press Enclave Road, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Muni Maya Ram Jain Hospital",
+    "address": "Muni Maya Ram Marg, KD- Block Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Saket City Hospital",
+    "address": "Mandir Marg And Press Enclave Road, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Shree Jeewan Hospital",
+    "address": "67/1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Vikas Hospital Pvt Ltd",
+    "address": "Building no-1629- H, Thana Road, Najafgarh  Najafgarh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110043
+  },
+  {
+    "name": "Bhagat Chandra Hospital",
+    "address": "RZF - 1/1, Palam Dabri Road, Block- F, Near Star Imagine Path Lab, Mahavir Enclave Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110045
+  },
+  {
+    "name": "Sunder Lal Jain Hospital",
+    "address": "Phase 3, Ashok Vihar Ashok Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "Aakash Hospital (Malviya Nagar)",
+    "address": "90 / 43, Malviya Nagar Road, Near Krishna Mandir, Malviya Nagar Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Sama Hospital",
+    "address": "8, Siri Fort Road, Near Gargi College, Siri Fort Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Institute of Liver and Biliary Sciences",
+    "address": "D-1, Vasant Kunj Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Kalra Hospital and SRCNC",
+    "address": "Tulsi Dass Kalra Marg Kirti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110015
+  },
+  {
+    "name": "Jeevan Anmol Hospital",
+    "address": "Mayur Vihar Phase I Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "Action Cancer Hospital",
+    "address": "A 4 Block, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": "#N/A"
+  },
+  {
+    "name": "Aggarwal Dharmarth Hospital",
+    "address": "24 / 9, Shakti Nagar Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "MGS Hospital",
+    "address": "Rohtak Road, Punjabi Bagh West Punjabi Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110026
+  },
+  {
+    "name": "Nijhara Hospital Pvt. Ltd.",
+    "address": "979/3, Ranjit Nagar (South Patel Nagar), (Near Shiv Chowk)  Patel Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110008
+  },
+  {
+    "name": "Karuna Hospital",
+    "address": "D-62, Dilshad Colony, Dilshad Garden Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Khushi Hospital",
+    "address": "Plot 1, Karuna Kunj, Sector-3, Dwarka Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "N K Surana Hospital",
+    "address": "Flat No 219-220, N K Surana Building, Gulabi Bagh, Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Max Super Speciality Hospital (Patparganj)",
+    "address": "108 A, Indraprastha Extension, Patparganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Park Hospital",
+    "address": "Meera Enclave, Chowkhandi, Near Kashopur Bus Depot,Outer Ring Road Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Jeewan Hospital",
+    "address": "Jeewan Nagar, Opp. Maharani Bagh, Maharani Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110014
+  },
+  {
+    "name": "RG Stone Urology and Laparoscopy Hospital",
+    "address": "F-12, Near Kailash Colony Metro Station, East Of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Amarleela Hospital",
+    "address": "No. BZ/6, Najafgarh Road, Janakpuri, Block AB, Block C 4A, Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Divya Prastha Hospital",
+    "address": "Rz-37, Main Road, Palam Colony, Opposite Bagh Wala School Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110045
+  },
+  {
+    "name": "Matrix Dental and Skin Lounge",
+    "address": "70, Poorvi Marg, Opposite Modern School Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Nulife Hospital",
+    "address": "1616, Banda Bahadur Marg, Outram Lines, Mukherjee Nagar  Jahangirpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110033
+  },
+  {
+    "name": "Rescue Hospital",
+    "address": "Sector 3, Dwarka, S-5, Near Vishvas Park Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Kukreja Hospital and Heart Centre",
+    "address": "No. C-1, Vishal Enclave, Rajouri Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Metro Hospital and Cancer Institute (Preet Vihar)",
+    "address": "21, Community Centre Preet Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Sabharwal Hospital",
+    "address": "2911, Sir Syed Ahmed Rd, Kucha Chalan, Khabas Pura, Dariya Ganj Pahar Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110006
+  },
+  {
+    "name": "Ayushman Hospital",
+    "address": "G- 16, Plot No - 2, Ashirwad Chowk, Dwarka Sector 12 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110078
+  },
+  {
+    "name": "Bararsidas Chandiwala Sewa Smark Trust",
+    "address": "Chandiwala Estate, Maa Anandmai Ashram Marg, Kalkaji Tughlakabad",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "R S Grover Memorial Hospital",
+    "address": "Shahdara, New Usmanpur Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110031
+  },
+  {
+    "name": "Apex City Hospital",
+    "address": "Hanuman Road, D- Block , West Vinod Nagar, Phase - II, Pocket B Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "Bimla Devi Hospital",
+    "address": "Plot No-5, Mayur Vihar Phase II, Pocket- B Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "Dr Sunderlal Memorial Hospital",
+    "address": "C-201, Jawahar Park, Devli Road, Khanpur",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Garg Hospital",
+    "address": "8 - 9, AGRC Enclave Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Khadija National Hospital",
+    "address": "3123, Tiraha Behram Khan, Sir Sved Ahmed Road Darya Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "Metro Hospital and Cancer Institute (Lajpat Nagar)",
+    "address": "14, Ring Road, Lajpat Nagar - IV",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Arjun Hospital",
+    "address": "17/91, Subhas Nagar, 9810271662, Subhash Nagar Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Dashmesh Hospital",
+    "address": "Shiv Nagar, Jail Road, Shiv Nagar Extention Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Khetarpal Hospital",
+    "address": "F 95, Main Najafgarh Road, Bali Nagar, Metro station, Near Ramesh Nagar Kirti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110015
+  },
+  {
+    "name": "National Hospital",
+    "address": "D-175, Main Road, Ratiya Marg, Sangam Vihar Tughlakabad",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Sunder Las Memorial Hospital",
+    "address": "C-201, Jawahar Park, Devli Road, Khanpur Sainik Farm",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Aman Hospital (Mayapuri)",
+    "address": "Bf 6, Main Najafgarh Road, Tagore Garden, Opposite Metro Pillar No 442 Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Asian Yamuna Vihar Multi Specialty Hospital",
+    "address": "C-3/53 A, Service Lane, Wazirabad Ghaziabad Road, Yamuna Vihar, Near Punjab National Bank Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110053
+  },
+  {
+    "name": "Brahm Shakti Hospital",
+    "address": "No.U-1/78, Budh Vihar Kirari Suleman Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110086
+  },
+  {
+    "name": "Jivodaya Hospital",
+    "address": "Ashok Vihar - I, Phase-1, Institutional Area, Ashok Vihar Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "SCI International Hospital",
+    "address": "M-4, Greater Kailash I, M Block, Greater Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Sculpt Aesthetic and Cosmetic Clinic",
+    "address": "A-305, Behind Defence Colony Market Defence Colony",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Shanti Mukand Hospital",
+    "address": "2, Vikas Marg, Near Govind Enclave, Institutional Area- 2 Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Tarak Hospitals India Pvt Ltd",
+    "address": "C 7, JAI Bharat Enclave, Uttam Nagar Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Tomar Medical Center",
+    "address": "Pandit Vishnu Dutt Marg, Janakpuri, Nangal Raya, Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Cygnus Orthocare Hospitals Orthocare Hospital",
+    "address": "No. C-5/29, Safdarjung Development Area, Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Cygnus Sonia Hospital",
+    "address": "Plot No.1, Gulshan Park, National Highway 10, Ratan Bagh, Mundka Mundka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110041
+  },
+  {
+    "name": "Dr Kathurias Multispeciality Dental Clinic",
+    "address": "E-143, Near Nirulas, Spring Meadows Hospital, East of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Global Hospital",
+    "address": "905/22 -2., Raj Nagar Part II, Palam Colony Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110077
+  },
+  {
+    "name": "Hitaishi Hospital",
+    "address": "E-15 / 154, Pradeep Bhatia Marg, Sector 8E, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Ramlal Kundanlal Orthopaedic Hospital",
+    "address": "Bunglow P - 8, Patpar Ganj Road, Opposite Mother Diary, Near Patparganj, Pandav Nagar Patparganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Saroj Medical Institute",
+    "address": "Plot No. 9, B4 Road, Pocket 8, Block B, Sector 19, Rohini  Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110089
+  },
+  {
+    "name": "Sushila Hospital",
+    "address": "Plot No-2 Gali No-2 Main Opposite Water Tank, Safiabad Road, Gautam Colony Narela",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110040
+  },
+  {
+    "name": "Arya Hospital (Janakpuri)",
+    "address": "C-1/101, Pankha Road, Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Bansal Hospital (Greater Kailash)",
+    "address": "A-1, New Friend�s Colony Greater Kailash, New Delhi - 110065",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Dr Sushma Jindal Hopital",
+    "address": "488-15, Dilshad Garden, Near Radha Krishan Mandir, Dilshad Garden Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Faraz Hospital",
+    "address": "Near Shaheen Public School, Block F 167/2 Shaheen Bagh Jamia Nagar Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Lotus Hospital",
+    "address": "WZ-409-A, Janak Park, Hari Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110064
+  },
+  {
+    "name": "Metro Hospital and Heart Institute",
+    "address": "14, Ring Road, Lajpat Nagar- IV Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Sanchet Hospital",
+    "address": "436, Bhera Enclave, Paschim Vihar Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110087
+  },
+  {
+    "name": "Urgent Care",
+    "address": "G-51 and 52, Shaheen Bagh, Opposite Sarita Vihar, Kalindi Kunj Road Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Aastha Hospital (Rohini)",
+    "address": "Badli Rd, Sector 19, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110042
+  },
+  {
+    "name": "Clove Dental",
+    "address": "Shop No 9, 1st Floor, Pocket E 1, Rohini Sector 7 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Daya Memorial Hospital",
+    "address": "210/A, Dr. Kapur Wali Gali, Munirka Village Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110067
+  },
+  {
+    "name": "Dr Shobha Jindal Clinic",
+    "address": "C-5, Green Park Ext, Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Tyagi Nursing Home Pvt Ltd",
+    "address": "66/3 and 66/4, Tilak Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Aesthetic Cosmetic Centre",
+    "address": "2nd Floor, Beside SBI Bank, 32, Ring Rd, Lajpat Nagar IV, Lajpat Nagar 4",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Ansari Hospital",
+    "address": "Z20F/B, Gali Number 6, Sagar Pur Sagar Pur",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110046
+  },
+  {
+    "name": "Hemraj Jain Hospital and Maternity Home",
+    "address": "Nursing Home 1, C-1 Block, Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "iClinix Advanced Eye Care",
+    "address": "27/171 Vikram Vihar, Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Kapoor Medical Centre",
+    "address": "Dilshad Colony, Dilshad Garden Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Krishna Hospital",
+    "address": "9, Pitampura Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Kukreja Nursing Home",
+    "address": "Acharya Niketan, Mayur Vihar, Phase I Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 100091
+  },
+  {
+    "name": "Maxfort Hospital",
+    "address": "Abul Fazal Enclave, Jamia Nagar, Okhla Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110020
+  },
+  {
+    "name": "MKW Hospital",
+    "address": "No. J-12, Community Centre, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "NKS Hospital",
+    "address": "219-220, Gulabi Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Panchsheel Hospitals Pvt.Ltd.",
+    "address": "C-3/63A, 64A, Yamuna Vihar Opposite Gokulpuri police station Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110053
+  },
+  {
+    "name": "Santom Hospital",
+    "address": "D-5/6, Prashant Vihar, Outer Ring Road, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Satyabhama Hospital Pvt. Ltd",
+    "address": "Rz-10, NARESH PARK, NEAR WATER TANK, NAJAFGARH ROAD, NANGLOI Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110041
+  },
+  {
+    "name": "Shanti Kumud Hospital",
+    "address": "A-8, Adarsh Nagar Main G.T.K. Road, Near Adarsh Nagar Metro Station Jahangirpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110033
+  },
+  {
+    "name": "Suraksha Nursing Home",
+    "address": "E-22, Dilshad Colony, Dilshad Colony Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Balaji Hospital (Najafgarh)",
+    "address": "Main Gurgoan Road, Najafgarh Najafgarh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110043
+  },
+  {
+    "name": "Citizen Hospital",
+    "address": "B-2/7, Ashok Vihar Phase 2 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "Dr Jain Ortho and Gyne Clinic",
+    "address": "BJ-68 West Shalimar Bagh -IInd Lane in BJ Block., Near Jaspal Kaur School",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Geetanjali Medical Centre",
+    "address": "6426/8, Block-8, Arya Samaj Road, DEV Nagar Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Ishaan Hospital",
+    "address": "Plot No. 1, Pocket 8B, Sector No. 19, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Mohinder Hospital",
+    "address": "C-5, Green Park Extn Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Siddhant Hospital",
+    "address": "D-, Pocket 7 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Sinha Hospital",
+    "address": "3a New Roshan Pura Tura Bmandi, Najafgarh Road Kirti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110015
+  },
+  {
+    "name": "Smile N Care Dental Clinics",
+    "address": "528, Hardhyan Singh Road, Krishna Nagar, Karol Bagh Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Sunrise Hospital",
+    "address": "F-1, Kalindi Colony  Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Apollo Spectra Hospital",
+    "address": "A-19/A, Near Kailash Colony Metro Station, Kailash Colony Road, Block A, Sector 19",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Bhagwan Mahavir Hospital",
+    "address": "Extension, Near Madhuban Chowk, Sector 14, Rohini, Gurgaon Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Dental Renaissance",
+    "address": "Main Road, New Rajender Nagar, Rajender Nagar Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dr Sumans Cosmetic Surgery and Skin Clinic",
+    "address": "C-45, G.K - 1, Pamposh Enclave Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr.Roshan Lal Hospital",
+    "address": "L1, Naveen Shahdara, Shahdara North East Navin Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110032
+  },
+  {
+    "name": "Ganesh Ortho Trauma and Medical Centre",
+    "address": "F-15/7, Near Bses Office, Krishna Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110051
+  },
+  {
+    "name": "Genesis Hospital",
+    "address": "C-1/130, Janak Puri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Global Ortho Clinic",
+    "address": "70, Vikas Marg, Hargobind Enclave, Anand Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "Gupta Hospital",
+    "address": "A-56, Kanjhawala Road, Budh Vihar Phase I, Budh Vihar Kirari Sultan Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110086
+  },
+  {
+    "name": "Jain Muni Roshanlal Hospital",
+    "address": "559, Jain Sthanak Marg, Tri Nagar Patel Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110035
+  },
+  {
+    "name": "Maheshwari Nursing Home",
+    "address": "F-1, U-41, Block QU, Uttari Pitampura, Pitampura Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Mahindru Hospital",
+    "address": "E-1, Kiran Garden, Main Najafgarh Road,  Opp. Metro Pillar No.712, Uttam Nagar Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Narang Eye Institute",
+    "address": "B8, Derawal Nagar, Model Town, Near Double Petrol Pump, Ring Road Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110009
+  },
+  {
+    "name": "New Rohini Hospital",
+    "address": "Pocket-00, Sector 1, Rohini, Avantika Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Parth Hospital",
+    "address": "84, Sewak Park, Dwarka Mor, Near Metro Station, Pillar No. 781 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Virmani Hospital",
+    "address": "Plot No. 8, Commercial Complex, Mayur Vihar Phase-II  Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "32 Strong - The Complete Dental Care",
+    "address": "D-138, East of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Aastha Hospital and IVF Centre",
+    "address": "L 2/50, Outer Ring Road, Tilak Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Apollo Spectra Hospitals (Karol Bagh)",
+    "address": "No. 2C/, 5C-2",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Avantika Multispeciality Hospital",
+    "address": "A-3/8, Rohini Sector 3 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Chandra Leela Hospital",
+    "address": "P-13, Uttam Nagar Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Chisel Clinic",
+    "address": "LIG DDA Flat, Ground Floor, Phase 1, 77A, Pocket 2, Sector 6 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Deepan Hospital",
+    "address": "Kh-139/140, Kapashera Mahipalpur",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110037
+  },
+  {
+    "name": "Dharma Vira Heart Centre (Sir Ganga Ram Hospital)",
+    "address": "Sir Ganga Ram Hospital, Hanuman Road Area, Rajinder Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": "#N/A"
+  },
+  {
+    "name": "Dr B D Attam Hospital",
+    "address": "10, Ashok Vihar 2 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "Dr Chens Dental Clinic",
+    "address": "Shop No. 1133, Main Bazaar, Near Masjid Pahar Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110055
+  },
+  {
+    "name": "Family Hospital Pvt. Ltd.",
+    "address": "WZ- 26 A, Tilak Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Flex Medical Centre",
+    "address": "B-1/4, Paschim Vihar Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Gouri Hospital Limited",
+    "address": "No. 30, Malka Ganj Road, Opposite Hansraj College, Near Subway, Jawahar Nagar Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Jeevan Jyoti Hospital",
+    "address": "Vikaspuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Maximus Dental",
+    "address": "A-1/294, Safdarjung Enclave, Opposite apex trauma centre",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Mohan Nursing Home and Hospital",
+    "address": "B-2/40A, Yamuna Vihar, Near Bhajanpura Petrol Pump Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110053
+  },
+  {
+    "name": "Navjeevan Hospital",
+    "address": "A-12, Outer Ring Road, Pitampura Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Prashant Hospital",
+    "address": "C-1/17-18, Pvr Prashant Vihar Road, Prashant Vihar, Rohini Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Shree Balaji Hospital",
+    "address": "Opposite Petrol Pump, Main Delhi Road, Bawana Narela",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110039
+  },
+  {
+    "name": "Westend Hospital",
+    "address": "11/72, Tilak Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Affinity Premium Dental Clinic",
+    "address": "B-3/46 A, Near Bhajanpura, IBP Petrol Pump, Yamuna Vihar Shahdara",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110053
+  },
+  {
+    "name": "Aggarwal Medical Centre",
+    "address": "Block E, East of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Bharti Nursing Home",
+    "address": "A-132, Sector-7, Palam Extension Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Delhi Dental Center",
+    "address": "76, Radhey Puri, Extension 1, Opposite Subway, Near Jagat Puri Red Light Preet Vihar Metro Station, Krishna Nagar Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110051
+  },
+  {
+    "name": "Dr Pauls Multispeciality Clinic",
+    "address": "E-64, First and Second Floor, Near Kailash Coloney Metro Station, Greater Kailash I Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "HealthyGo Clinics",
+    "address": "31-32 Nangloi Extension-1 Main Rohtak Road Near Lokesh Cinema",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110041
+  },
+  {
+    "name": "Image Medical Centre",
+    "address": "101, Ansal Towers, 38, Nehru Place",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "Joy Nursing Home",
+    "address": "J-5/49- F, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Kalyani Hospital",
+    "address": "NO.RZ-30A, Naya Bazaar, Rathiram Park, Najafgarh Najafgarh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110043
+  },
+  {
+    "name": "Kamlesh Medical Centre",
+    "address": "No. 423, Bherav Enclave, Paschim Vihar Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Nanda Dental Clinic",
+    "address": "B-53, Defence Colony Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Safdarjung Hospital",
+    "address": "Ring Road, Opposite AIIMS Hospital, Safdarjung West, Safdarjung Campus Ansari Nagar East",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Sanjeevan Hospital",
+    "address": "24, Ansari Road Darya Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "Sumitra Hospital",
+    "address": "42, Main Rothak Road, West Punjabi Bagh, Arihant Nagar, Punjabi Bagh Sarojini Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110023
+  },
+  {
+    "name": "Swastik Hospital",
+    "address": "No. 14, Gopal Nagar, Tilak Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Tooth Essentials Multispecialty Dental Clinic",
+    "address": "C3/11 Shop No. 6, ground floor, janakpuri  (opp. C4E market)",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Bharti Eye Hospital",
+    "address": "E 52, Eklavya Vithi, Greater Kailash I Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr Sidhus Dental and Orthodontic Clinic",
+    "address": "207-210, Anchal Plaza, Nelson Mandela Road, Sector B, Vasant Kunj Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Dr. Monisha Kapoor Aesthetics",
+    "address": "J-18, Near SBI bank, Mehrauli-Badarpur Road, Saket Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Lok Clinic and Hospital",
+    "address": "A-2/7, Pankha Road, Janak Puri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Malik Hospital",
+    "address": "6, Main Rohtak Road, Paschim Vihar Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Nirmal Medical Centre",
+    "address": "65, Saidulajab, IGNOU Road, Neb Sarai, South of Saket  Sainik Farm",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110068
+  },
+  {
+    "name": "North City Hospital",
+    "address": "Main Market, Sant Nagar, Burari Burari",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110084
+  },
+  {
+    "name": "Olmec Cosmetic Surgery and Hair Transplant Centre",
+    "address": "JD-3B, Opp Metro Pillar No 356, Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Orthoplus hospital",
+    "address": "Najafgarh Village, Najafgarh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110043
+  },
+  {
+    "name": "Paschimi Hospital",
+    "address": "B 17",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Primus Super Specialty Hospital",
+    "address": "Chandragupt Marg Chanakya Puri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110021
+  },
+  {
+    "name": "Ravi Eye Foundation",
+    "address": "B-8 Ganesh Nagar, Opposite Metro Pillar No.543, Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Rural Medicare Center",
+    "address": "Khasra No. 242, Village Said-ul-ajaib, Mehrauli",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110030
+  },
+  {
+    "name": "Shanti Mukund Hospital",
+    "address": "2, Institutional Area, Vikas Marg Ext., Karkardooma Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Shree Meenakshi Orthopedics and Sports Medicine Clinic",
+    "address": "Dr Raju Easwaran MS (Orthopedics) Shree Meenakshi Orthopedics &amp; Sports Medicine Clinic, B H 41, East Shalimar Bagh East Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Chayan Hospital",
+    "address": "Najafgarh Road, Dindarpur Extn, Dindarpur Extension, Najafgarh Najafgarh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110043
+  },
+  {
+    "name": "Cocoona Centre of Aesthetic Transformation",
+    "address": "Ground Floor, S 206. Near M Block Market M Block Rd,  Block S, Greater Kailash II Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr. Charu Sharma Surgery Clinic",
+    "address": "E-261, Greater Kailash II, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr. Rajat Gupta Hymenoplasty Clinic",
+    "address": "24, Central Market, Ashok Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110054
+  },
+  {
+    "name": "Dr. Sumans Cosmetic Surgery and Skin Clinic",
+    "address": "C-45, Pam posh Enclave, G.K.-1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Joint and Bone Solutions",
+    "address": "D-8 , Lower Ground Floor, Hauz Khas.",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Kukreja Hospital",
+    "address": "Acharya Niketan, Mayur Vihar, Phase I Mayur Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110091
+  },
+  {
+    "name": "Medha Hospital and Research Center",
+    "address": "KP � 12, Pitampura Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Mehta Hospital",
+    "address": "F1/108A, Dr. Ambedkar Nagar, Madangir Sainik Farm",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Monaris Skin and Hair Clinic",
+    "address": "E-13, 1st Floor Defence Colony, Ring Road",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Nisha Munjal",
+    "address": "M 20 first floor M block main road greater kailash  part 1 Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Ortho junction hospital",
+    "address": "Rohini, Delhi 428, Near State bank Of patiala Kanjhawla Road,Pooth Kalan",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": "#N/A"
+  },
+  {
+    "name": "Saras Hospital",
+    "address": "Molar band Extension, Badarpur Tughlakabad",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110044
+  },
+  {
+    "name": "Saraswati Memorial Hospital",
+    "address": "347, Lane-1, Than Singh Nagar, Anand Parbat Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Sarthak Hospital and Diagnostics",
+    "address": "F-26/45, Rohini Sector 7 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Surya Eye Care Center",
+    "address": "150, 10, Geeta Colony Road, Geeta Colony Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110031
+  },
+  {
+    "name": "Yogmaya Multispeciality Hospital",
+    "address": "203/A Chhattarpur Extension, Chhattarpur Extension Road Sainik Farm",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110074
+  },
+  {
+    "name": "Ahuja Clinic",
+    "address": "B-17, Saket, Near Malviya Nagar Metro Station,Near Golf View Appts, Anupam PVR Saket Road",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Amulya Cosmetic Surgery Clinic",
+    "address": "28/27, East Patel Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110008
+  },
+  {
+    "name": "Care Well Medical Centre (Vasant Kunj)",
+    "address": "Apartment 8178, Sector B, Pocket 11 Vasant Kunj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Cosmetic Surgery Clinic",
+    "address": "Apartment 8178, Sector B, Pocket 11, Vasant Kunj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Delhi State Cancer Institute",
+    "address": "8, GTB Hospital Complex Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Dental Cosmos",
+    "address": "7a/42 wea channa market karol bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Dermaworld Skin and Hair Clinics",
+    "address": "Q- 4, Rajouri Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Divine Cosmetic Surgery",
+    "address": "L 7, South Extension Part 2 Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Dr Khosla Dental Clinic",
+    "address": "B-4/76, Safdarjung Enclave Safdarjung",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Dr. Lalit Choudhary Clinic",
+    "address": "Rajinder Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dr. Poonam Nagpal Dental Clinic",
+    "address": "Basant Lok, Munirka, Near Vasant Kunj Mall Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Dr. Prabhashs Cosmetic Surgery Clinic",
+    "address": "B-20, Shopping Centre, Tagore Garden, Behind Post Office, South West Delhi",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Foresight Eye Clinic",
+    "address": "106, RPS Flats, Phase I, Pocket A, Sheikh Sarai Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Govinda Healthcare Superspeciality Clinic",
+    "address": "3C/12",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Iqbal Faizy Hospital",
+    "address": "B-43, Okhla Vihar, Okhla Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "J.K.Hospital",
+    "address": "B 1/4A, Najafgarh Road, Near Metro Pillar 545 Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Maharaja Agrasen Hospital",
+    "address": "West Punjabi Bagh, Near MGS Hospital",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110026
+  },
+  {
+    "name": "Medspa Clinic",
+    "address": "13 A Palam Marg Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "MP Heart Clinic",
+    "address": "w-33, greater kailash part 1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Orthostar Hospital",
+    "address": "F-86-89,Jawahar Park, Devli Road, Khanpur",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Parmarth Mission Hospital",
+    "address": "23/7, Shakti Nagar Shakti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Pristyn Care Clinic (Lajpat Nagar)",
+    "address": "5A, Ring Road, Lajpat Nagar IV, Landmark: Opposite Spring Meadows Hospital and Opposite Mool Chand Metro Station Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Pristyn Care Clinic (Paschim Vihar)",
+    "address": "142, Choudhary Balbir Singh Marg, Avtar Enclave, Landmark Multan Nagar Square Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Rajiv Gandhi Cancer Institute and Research Centre",
+    "address": "Sector - 5, Nr. West Rohini Metro Station Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Rajiv Gandhi Cancer Institute and Research Centre (Shalimar Bagh)",
+    "address": "FC 50, C &amp; D Block Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Sir Ganga Ram Kolmet Hospital",
+    "address": "7-B, Pusa Road Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Smile Delhi- The Dental Clinic",
+    "address": "D-1065, Lower Ground Floor, Opposite Mata Ka Mandir (Big Temple)",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Smilekraft Multispeciality Dental Clinic",
+    "address": "A-22/3, 1st Floor, South Extension-1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "South Delhi Cosmetic Clinic",
+    "address": "S-468 , Greater Kailash-2",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Berkowits Hair and Skin Clinic (Greater Kailash)",
+    "address": "J-1 Kailash Colony, Greater Kailash 1, Opp Summer Fields School, Block J Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dental Care Clinic (New Delhi)",
+    "address": "Shop No. A-60, Sarpanch Market Ashok Nagar Extension New Ashok Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110096
+  },
+  {
+    "name": "Dentistry Redefined",
+    "address": "S-359 A, Panchsheel Park, Beside Yes Bank ATM &amp; North Point Hospital",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Dermaworld Skin and Hair Clinics (Central)",
+    "address": "D-152",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dr Kakar S Ent Clinic",
+    "address": "Uu Block-182, Pitampura, C D Block Mandir, Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110096
+  },
+  {
+    "name": "Dr Naresh Kumat Bansal (Gastro And Liver Clinic)",
+    "address": "Gastro And Liver Clinic,C 4h/170 Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Dr Saket Goel Clinic",
+    "address": "M-179, Greater Kailash II, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr Suruchi Puri Clinic",
+    "address": "B-2/31, Janakpuri, Near B-1 Community Centre Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Dr Vivek Mehta Dermatologist",
+    "address": "E-294, East of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Dr. Monika Jain",
+    "address": "A2/7, Prateek Apartment, Chaudhary Balbir Singh Marg, A 2 Block, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Dr. S.K. Sama",
+    "address": "No-8, Sama Nursing Home, Siri Fort Road",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Dr. Sanjay Jain",
+    "address": "1,Tughlakabad Institutional Area, M B Road",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Goyal Eye Institute",
+    "address": "1/10, East Patel Nagar, Opposite Metro No. 176 Patel Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110008
+  },
+  {
+    "name": "Kakkar Health Care Group",
+    "address": "C2A/236A, Block C2A Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Kashyap Skin clinic",
+    "address": "Plot No. 7, Shop No. 145, 1st Floor, Vardhman Dee Cee Plaza, Sector 11 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Maxivision Eye Hospital",
+    "address": "A-3/24, 3rd Floor Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "MedLinks Clinic",
+    "address": "A-1/304, Ground Floor, Safdarjung Enclave Safdarjung",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "Pristyn Care Clinic (Dwarka)",
+    "address": "Plot 448, First Floor, Sector 19 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Shagufta Khalid Maternity and General Hospital",
+    "address": "H-47 A/14, Sir Syed Road, Near Shahab Masjid, Batla House, Jamia Nagar Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Sharp Sight Centre",
+    "address": "81, Opposite Preet Vihar, Defence Enclave, Vikas Marg Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Shri Dhanwantri Hospital",
+    "address": "Rz-10a, Main Gopal Nagar, Mangolpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110083
+  },
+  {
+    "name": "Smayate Dental Clinic",
+    "address": "R-75, Hans Raj Gupta Marg, Greater Kailash I",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Smile Delhi The Dental Clinic",
+    "address": "D-1065, Lgf, Opposite Mata Ka Mandir Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Uday E.N.T. Hospital",
+    "address": "B-7, Derawal Nagar, Gujranwala Town",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110009
+  },
+  {
+    "name": "Articular Superspeciality Orthopaedics Clinic",
+    "address": "A 2/32, Prateek Apartment, Balbir Singh Marg, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "City Hospital",
+    "address": "b, 1, Pusa Rd, Block 8, WEA Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Delhi ENT Hospital",
+    "address": "FC-33, Plot -13 Jasola Institutional Area, Jasola",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Dermaworld Clinic",
+    "address": "Dr Rohit Batra- Q-4, Rajouri Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Dr Ashish Bhanot Clinic",
+    "address": "Kailash Colony, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr Charu Sharma Clinic",
+    "address": "Block E, Greater Kailash II Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Dr Manish Agarwal Clinic",
+    "address": "D-223, Sarvodaya Enclave, Near I.I.T. Delhi, Opp. Mother's International School",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Dr Manmohan Clinic",
+    "address": "108, I.P.Extension, Patparganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Dr Mayank Clinic",
+    "address": "Radiance Cosmedic Centre- S-329, Greater Kailash-ii, Clinic-ii, BE-106, Near Meera Modle School Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Dr Mrs K Kathuria",
+    "address": "F-131, Main Market, Block F, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Dr Rajiv Bansal Clinic",
+    "address": "B-3/18 Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Dr Ramesh Garg",
+    "address": "Liver Gastro Clinic,Ad 5, Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Dr RK Himthani",
+    "address": "E-281, East of Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Dr Sanjay Khanna",
+    "address": "Synergy Clinic, Near Mehrasons Jewellers, Metro Pillar 492",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Dr Umesh Varma",
+    "address": "Aarogya Hospital 32 Delhi, Vikash Marg Road, Chitra Vihar, Preet Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Dr VK Gupta",
+    "address": "UU-11, Vishakha Enclave Opposite Ap Market Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Dr Y P Jindal Clinic",
+    "address": "488/15 Near Radkha Krishan Mandir Delhi, GTB Rd, Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Dr. Anup Dhir Clinic",
+    "address": "Suite No.101, 1st Floor, Ansal Tower, Building No.38 Nehru Place",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "Dr. Kathurias Multispeciality Dental Clinic",
+    "address": "No.E-143, East of Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Dr. Rajneesh Gulati",
+    "address": "KG- I / 415, Vikas Puri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Dr. Rohit Batra Clinic",
+    "address": "No.Q-4, Near Janta Market, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Dr. Sanjay Mahendru Clinic",
+    "address": "Medanta Mediclinic, E - 18, Near Main Ring Road Defence Colony",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Eleganza Skin and Cosmetic Surgery Clinic",
+    "address": "J-2/6-A, BK Dutt Market, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "ENT Clinic",
+    "address": "Shakti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Goyal Piles Care Centre",
+    "address": "D12/182, Sector 8, Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Gulati Dental Clinic",
+    "address": "Pocket 7/132 Dr NS Hardikar Road, Rohini Sector 2 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Healing Touch Hospital",
+    "address": "Panchsheel Enclave, No. 7/5, Sarva Priya Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Image Clinic",
+    "address": "13, Palam Marg, Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Jain Charitable Hospital",
+    "address": "2946-2949, Lane No. 5, Raghuvarpura No. 2, Gandhi Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110031
+  },
+  {
+    "name": "Max Multi Speciality Centre (Pitampura)",
+    "address": "#VALUE!",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Metro Clinic (New Delhi)",
+    "address": "1184/13, Govindpuri, Kalkaji",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "Orthonova Hospital",
+    "address": "Plot No.5, FC-29, Geetanjali Encalve, Near Malviya Nagar Metro Station Gate No.1 Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Puri Skin And laser Clinic",
+    "address": "B-2/31, Near B-1 Community Centre Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Radiance Cosmedic Centre",
+    "address": "S-329, GK-2, on M Block Market Road,Delhi, Clinic-2, BE-106, Near Mira Model School Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "S. R. Liver and Gastro Clinic",
+    "address": "KG- I / 415, Vikas Puri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Samadhan Dental and Gastro Clinic",
+    "address": "Flat No-25, Dwarka Sector 13",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Tandon Clinic",
+    "address": "C-599, 8, Bhagawan Mahavir Marg, Pocket 1, Sector 8C Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "The Heart Center",
+    "address": "2, Ring Road, Lajpat Nagar IV Lajpat Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Vasan Eye Care",
+    "address": "#VALUE!",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "We Care For Skin Clinic",
+    "address": "H 30, South Extension I Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110003
+  },
+  {
+    "name": "Zental Dental Clinic",
+    "address": "26/1, Yusuf Sarai Village, Next to gate 3 Green Park Metro Station. Next to ADIVA Hospital",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Avante Skin Hair Cosmetic Surgery",
+    "address": "E-342, Greater Kailash 2",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Bhagat Hospital",
+    "address": "D-2/48-49 Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Care Well Medical Centre (Okhla)",
+    "address": "1, NRI Complex, Mandakini, Chittaranjan Park Okhla",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110019
+  },
+  {
+    "name": "Chawla Ent. and Eye Clinic",
+    "address": "H-34/68, 1st Floor, Sector - 3 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Cosmetic Clinic",
+    "address": "309, Aggarwal City Mall, Rani Bagh Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Cosmotree Clinic",
+    "address": "B-83 Lajpat Nagar 2, Walking From Metro station of Lajpatnagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Delhi Hand Clinic",
+    "address": "9, Double Story Market, R-Block",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dermalife",
+    "address": "G 29, Main Market, Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Dr Abhishek Maru Clinic",
+    "address": "Rockland Hospital, Dwarka Sector 12",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110078
+  },
+  {
+    "name": "Dr Anubhav Gupta Clinic",
+    "address": "Sir Ganga Ram hospital, SSRB Building, Old Rajinder Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dr Neeraj Dhamija Clinic",
+    "address": "C2 B/62A, Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Dr Pradeep Jain clinic",
+    "address": "I A/46 A, Phase 1, Ashok Vihar, Ashok Vihar 1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "DR Sanjeev Gulati",
+    "address": "138, Gr Floor, Pocket-B, Dda Flats, Sukhdev Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Dr Santosh Kumar Kacker",
+    "address": "6, Malviya Nagar, Near Aurobindo College",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Dr Setias Clinic",
+    "address": "Block E, Double Storey II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110060
+  },
+  {
+    "name": "Dr Sumit Mrig ENT Clinic",
+    "address": "49A, Behind Central Market, Pocket 2, Sector 6 Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Dr Sunder LAL Memorial Hospital",
+    "address": "C-201, Jawahar Park, Main Devli Road, Jawahar Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110062
+  },
+  {
+    "name": "Dr. Agarwals Eye Hospital (New Delhi)",
+    "address": "F-17 (OT) &amp; E-32 (OPD), Shri Satguru Sevagram Sahibji Marg, Block F, Moti Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110015
+  },
+  {
+    "name": "Dr. Ajaya Kashyap",
+    "address": "KAS Medical Centre, 13 A, Palam Marg, Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Dr. Anitas Clinic Elegance",
+    "address": "13, 2nd floor, Opposite Metro Pillar-349",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Dr. Prabhash Cosmetic Surgery Clinic",
+    "address": "B-20, Shopping Centre, Behind Post Office and, Behind Mother Dairy Booth, Tagore garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Dr. Rakesh Soods Hair Treatment",
+    "address": "Pocket 9, Sector B, Vasant Kunj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110070
+  },
+  {
+    "name": "Dr. Ram Manohar Lohia Hospital (GOVT.)",
+    "address": "Baba Kharak Singh Marg, Connaught Place",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110001
+  },
+  {
+    "name": "Dr. Vinod Guptas Eye Surgeon Clinic",
+    "address": "ED- 12- B, Madhuban Chowk Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Eleganza - Skin and Cosmetic Surgery Clinic",
+    "address": "Nirankari Satsang Bhawan, Avtar Enclave, Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110063
+  },
+  {
+    "name": "Eye Q Superspeciality Eye Hospital (Shalimar Bagh)",
+    "address": "Plot No. NS 3 East, Bhagwan Mahavir Marg, AD Block, Poorbi Shalimar Bag, Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110052
+  },
+  {
+    "name": "Eye7 Chaudhary Eye Centre (Lajpat Nagar)",
+    "address": "EYE7 CHAUDHARY EYE CENTRE 4802/24, BHARAT RAM ROAD Darya Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "GM Modi Hospital",
+    "address": "Saket Institutional Area, Saket",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Green Park Family Medicine Clinic",
+    "address": "S 34a, Main Market, Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Health Point Hospital",
+    "address": "1091/1, Ambawatta Complex, Mehrauli Sainik Farm",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110030
+  },
+  {
+    "name": "Kiran Dermatekniks Pvt Ltd",
+    "address": "S 438, Basement, Greater Kailash II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Kiran Eye Care Centre",
+    "address": "B-50, Derawal Nagar Civil Lines",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110009
+  },
+  {
+    "name": "Lakhotia Eye Center And Laser Institute",
+    "address": "E544, Greater Kailash II Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "M D Eye Care and Laser Centre",
+    "address": "Greater Kailash II, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Macademy Aesthetic Clinic",
+    "address": "B- 547, Sarita Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110076
+  },
+  {
+    "name": "Mata Roop Rani Maggo Hospital",
+    "address": "C 9, Om Vihar, Uttam Nagar Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Med First Ent and Healthcare Pvt. Ltd",
+    "address": "D- 3/14, Vasant Vihar. Landmark: Opposite Vasant Vihar Club, Delhi",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Med First ENT Care",
+    "address": "D 3/14, Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Medfort Hospitals",
+    "address": "A3/24 3rd Floor, Lal Sain Mandir Marg, Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Medispa",
+    "address": "E-44, Uday Shankar Road, Greater Kailash II, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Metamorphosis Clinic",
+    "address": "B 4/51, Basement, Main Road, Safdarjung Enclave",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110029
+  },
+  {
+    "name": "MM Eyetech Institute",
+    "address": "No.29-30, Lala Lajpat Rai Marg, Near Lajpat Nagar Metro Station, Lajpat Nagar 3",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Navjyoti Eye Centre",
+    "address": "90, Opposite Hindi Park, Darya Ganj Pahar Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "Neera Eye Centre and Laser Vision",
+    "address": "99, Bharat Ram Road, Opposite Commercial School Darya Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "Pure Touchskin Pvt Ltd",
+    "address": "I 2, Central Market, Lajpat Nagar 2",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Rediscover Skin Laser Slimming and Ayurveda Clinic",
+    "address": "D-978",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110025
+  },
+  {
+    "name": "Rvs Eye Care Centre",
+    "address": "Bh 30, Dda Market Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Shroff Eye Centre",
+    "address": "A-9, Near Metro Station, Kailash Colony Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Shyamlal Eye Hospital",
+    "address": "Swami Jaiprakash Marg, Malka Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110007
+  },
+  {
+    "name": "Silhouette Skin and Laser Clinic",
+    "address": "C-32 UGF, Gurdwara Road Madhu Vihar, Near Kamal�s Restaurant, IP Extension",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110092
+  },
+  {
+    "name": "Skin and Bones Clinic",
+    "address": "D Block, DDA Market, Vikaspuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "Skin Plus",
+    "address": "A 24, Basement, Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Sodhi Nurrsing Home and ENT Hospital",
+    "address": "455 Bhera Enclave Paschim Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110087
+  },
+  {
+    "name": "Southend Fertility &amp; IVF Centre",
+    "address": "1st Floor, Holy Angels Hospital, Basant Lok, Vasant Vihar, Vasant Vihar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110057
+  },
+  {
+    "name": "Spectra",
+    "address": "E-82-A, Greater Kailash-1",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "Sushma Plastic and Cosmetic Surgery Clinic",
+    "address": "Bd-10, Vishakha Enclave Pitam Pura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Test Tube Baby Center",
+    "address": "B-517",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "The Healing Touch Eye Centre",
+    "address": "D-8, D-Block, Near Arya Samaj Mandir, Vikaspuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110018
+  },
+  {
+    "name": "The Skin Centre",
+    "address": "C 47, South Extension II Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Vardaan Skin Clinic",
+    "address": "Plot No. 29, Pocket 16, Sector 24 Rohini",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110085
+  },
+  {
+    "name": "Vasudeva Dental Clinic",
+    "address": "C-70, Street No 6, Majlis Park, Opposite New Subzi Mandi, Azadpur Majlis Park, Adarsh Nagar Shalimar Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110033
+  },
+  {
+    "name": "Venu Eye Institute and Research Centre",
+    "address": "1/ 31, Sheikh Sarai Institutional Area- II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Visitech",
+    "address": "R-13, Greater Kailash, Part 1, Hans Raj Gupta Marg, Block R, Greater Kailash I,",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "AA Skin and Cosmetic Surgery",
+    "address": "F-44, East of Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110065
+  },
+  {
+    "name": "Adhana ENT Clinic",
+    "address": "1st Floor, Satyam Plaza, Mcd Colony, Dilshad Garden",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110095
+  },
+  {
+    "name": "Akanksha IVF Centre",
+    "address": "IVF Specialist Dr. K.D. Nayar A - Block 7 Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Axiss Dental",
+    "address": "M Block, Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": ""
+  },
+  {
+    "name": "Baby Joy IVF Centre Delhi",
+    "address": "GN-6, 1st floor, Shivaji Enclave, Rajouri Garden, Adj. Shivaji College, Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Bionix Body Designer",
+    "address": "B 10, Lower Ground Floor, Shivalik Main Road, Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Cosmo Tree Clinic",
+    "address": "Block L-3, South Extension -II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Delhi Laser Clinic",
+    "address": "Shop No. 5 &amp; 6, 2nd Floor, Plot No. 2, Manish Twin Plaza, Sector 4, Adjacent to KFC Dwarka",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110075
+  },
+  {
+    "name": "Derma Clinix",
+    "address": "B2-A/2, Opp. Pillar No. 540 Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "Dr Anup Sabherwal",
+    "address": "54, Navjeevan Vihar Malviya Nagar",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110017
+  },
+  {
+    "name": "Fertile Solutions IVF and Research Center",
+    "address": "B-20, Panchwathi, Azadpur Jahangirpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110033
+  },
+  {
+    "name": "Gaudium IVF Center",
+    "address": "Ground Floor, A - 41 Chander Nagar, Janakpuri West Metro Station Janakpuri Janakpuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110058
+  },
+  {
+    "name": "International Fertility Centre",
+    "address": "H-6,, Green Park Main Green Park",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110016
+  },
+  {
+    "name": "Janki Das Kapoor Memorial Hospital",
+    "address": "Pandav Nagar,Naraina Road,Patel Nagar Near Shadipur Depot",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110008
+  },
+  {
+    "name": "Kailash Nursing Home",
+    "address": "49, Near Patel Nagar Metro Station, Patel Road, Block 8, South Patel Nagar Market",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110008
+  },
+  {
+    "name": "Kaya Skin Clinic",
+    "address": "No.39, Ground Floor, Opposite Metro Pillar No. 121, Pusa Road Karol Bagh",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110005
+  },
+  {
+    "name": "Les CosMedics Laser Skin Clinic",
+    "address": "J-13/56, Major Sudesh Kumar Marg, Rajouri Garden Mayapuri",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110027
+  },
+  {
+    "name": "Life Care IVF Private Limited",
+    "address": "Gagan Vihar, Krishna Nagar Karkardooma",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110051
+  },
+  {
+    "name": "M R Hospital and Orthopedic Centre",
+    "address": "c 1 - 3 rama park opp. metro pillar no. 772 near dwarka morh metro station",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110059
+  },
+  {
+    "name": "Mother Dental Implant Clinic",
+    "address": "7, Ansari Road, Darya Ganj Darya Ganj",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110002
+  },
+  {
+    "name": "Mothers Lap IVF Centre",
+    "address": "Maharshi Parshuram Marg Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "New Life Fertility Clinic",
+    "address": "Advance Fertility and Gynaecology Centre, 6, RingRoad, Near Moolchand Crossing, Lajpat Nagar IV, Lajpat Nagar 4, Hauz Khas",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110049
+  },
+  {
+    "name": "Origyn Fertility and IVF",
+    "address": "4 th floor, MAX Hospital, HB Twin Tower, Near TV Tower,Netaji Subhash Palace, Pritampura, Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Radiance Skin Clinic",
+    "address": "207, 2nd Floor, MP Mall, MP Block Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110088
+  },
+  {
+    "name": "Relief and Care Orthopaedic Centre",
+    "address": "L-85, lajpat nagar-II",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Saraswati Hospital and Cancer Care Centre",
+    "address": "A-2, Adhyapak Nagar, Main Najafgarh Road, Near Hanuman Mandir, Kamaruddin Nagar Nangloi",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110041
+  },
+  {
+    "name": "Sareen Hair Clinic",
+    "address": "CU-72 Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "Satya Hair Loss and Skin Treatment Clinic",
+    "address": "ED 59A Madhuban Chowk, Near pitampura metro station gate no. 4 Pitampura",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110034
+  },
+  {
+    "name": "SCI Healthcare",
+    "address": "Lala Lajpat Rai Rd, Kailash Colony, Greater Kailash Greater Kailash",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110048
+  },
+  {
+    "name": "The Gynaecology And Laparoscopy Centre",
+    "address": "M 52, Lajpat Nagar 2",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110024
+  },
+  {
+    "name": "Vats E. N. T. Center",
+    "address": "Maujpur Road",
+    "state": "New Delhi",
+"city": "New Delhi",
+    "pincode": 110053
+  }
+]

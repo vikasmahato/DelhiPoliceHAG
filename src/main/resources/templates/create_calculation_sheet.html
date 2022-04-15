@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/select2.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Create a Calculation Sheet</h3>
+
+            <div class="form-group">
+                <label for="claimCheck">Hospital Tpye</label>
+                <div id="claimCheck">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="h_type" id="nabh_nabl" value="NABH">
+                            NABH
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="h_type" id="non_nabh_nabl" value="NON_NABH">
+                            NON NABH
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <form id="calcSheetForm" method="post">
+                <div class="box-body">
+
+                    <input type="hidden" th:value="${diaryNo}" name="diaryNo" id="diaryNo">
+
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th width="2%"><input id="check_all" class="formcontrol" type="checkbox"/></th>
+                                <th width="8%">S No</th>
+                                <th width="15%">Bill No, Hosp Name</th>
+                                <th width="10%">Date</th>
+                                <th width="45%">Name of tests</th>
+                                <th width="10%">Amount Claimed</th>
+                                <th width="10%">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class='col-xs-12 col-sm-3 col-md-3 col-lg-3'>
+                        <button class="btn btn-danger delete" type="button">- Delete</button>
+                        <button class="btn btn-success addmore" type="button">+ Add More</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amount asked: &nbsp;</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">₹</div>
+                            <input type="number" step="any" class="form-control" name="askedTotal" id = "askedTotal" placeholder="Amount asked" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Total: &nbsp;</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">₹</div>
+                            <input type="number" step="any" class="form-control" name="subTotal" id = "subTotal" placeholder="Total" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm();return;">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/select2.min.js}" type="text/javascript"></script>
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type:"get",
+            url:"/getCalSheetentries/"+$("#diaryNo").val(),
+            async: false,
+            dataType: "json",
+            success: function(data){
+                for (let index = 0; index < data.length; index++) {
+                    addRow();
+                    $("#itemNo_" + i).val(data[index].serialNumber);
+                    $("#itemHosp_" + i).val(data[index].billNumber);
+                    $("#itemDate_" + i).val(data[index].billDate);
+                    $("#itemName_" + i).val(data[index].treatment);
+                    $("#total_asked_" + i).val(data[index].amountAsked);
+                    $("#total_" + i).val(data[index].total);
+                }
+                calculateTotal();
+                calculateTotalAsked();
+            }
+        });
+
+    })
+
+    function submitForm() {
+        var data = $("#calcSheetForm").serialize();
+
+        console.log(data);
+
+        $.ajax({
+            type:"post",
+            data:data,
+            url:"/saveCalcSheet",
+            async: false,
+            dataType: "json",
+            success: function(){
+                alert("success");
+            }
+        });
+
+    }
+
+    var i=$('table tr').length;
+
+    function addRow() {
+        i++;
+        html = '<tr>';
+        html += '<td><input class="case" type="checkbox"/></td>';
+        html += '<td><input type="text" data-type="productCode" name="itemNo[]" id="itemNo_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+        html += '<td><input type="text" data-type="hospName" name="itemHosp[]" id="itemHosp_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+        html += '<td><input type="text" data-type="text" name="itemDate[]" id="itemDate_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+        html += '<td><input type="text" data-type="productName" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
+
+        html += '<td><input type="number" step="any" name="total_asked[]" id="total_asked_'+i+'" class="form-control totalAskedPrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+
+        html += '<td><input type="number" step="any" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+        html += '</tr>';
+
+        if ($("#CalculationSheet input:checkbox:checked").length > 0)
+        {
+            //.append(html);
+            var row =  $('.case:checkbox:checked').parents("tr"); // get the parent row of the clicked button
+            $(html).insertAfter(row);
+
+        }
+        else
+        {
+            $('table').append(html);
+        }
+    }
+
+    $(".addmore").on('click',function(){
+        addRow();
+    });
+
+    $(document).on('change','#check_all',function(){
+        $('input[class=case]:checkbox').prop("checked", $(this).is(':checked'));
+    });
+
+    $(".delete").on('click', function() {
+        $('.case:checkbox:checked').parents("tr").remove();
+        $('#check_all').prop("checked", false);
+        calculateTotal();
+    });
+
+    //recalcuclte total price on line price change
+    $(document).on('change keyup blur','.totalLinePrice',function(){
+        calculateTotal();
+    });
+
+
+    $(document).on('change keyup blur','.totalAskedPrice',function(){
+        calculateTotalAsked();
+    });
+
+    //total price calculation
+    function calculateTotal(){
+        var subTotal = 0;
+        $('.totalLinePrice').each(function(){
+            if($(this).val() !== '' ) subTotal += parseFloat( $(this).val() );
+        });
+        $('#subTotal').val( subTotal.toFixed(2) );
+    }
+
+    //total price calculation
+    function calculateTotalAsked(){
+        var subTotal = 0;
+        $('.totalAskedPrice').each(function(){
+            if($(this).val() !== '' )subTotal += parseFloat( $(this).val() );
+        });
+        $('#askedTotal').val( subTotal.toFixed(2) );
+    }
+
+    //It restrict the non-numbers
+    const specialKeys = [];
+    specialKeys.push(8,46); //Backspace
+    function IsNumeric(e) {
+        const keyCode = e.which ? e.which : e.keyCode;
+        console.log( keyCode );
+        const ret = ((keyCode >= 45 && keyCode <= 57) || specialKeys.indexOf(keyCode) !== -1);
+        return ret;
+    }
+
+    //autocomplete script
+    $(document).on('focus','.autocomplete_txt',function(){
+        const type = $(this).data('type');
+        var autoTypeNo;
+        if(type ==='productCode' ) autoTypeNo = 0;
+        if(type ==='productName' ) autoTypeNo=1;
+        let h_type;
+        if(document.getElementById('nabh_nabl').checked) {
+            h_type = "nabh_nabl"
+        }else if(document.getElementById('non_nabh_nabl').checked) {
+            h_type = "non_nabh_nabl"
+        }
+        else{
+            alert("Please select Hospital Type");
+        }
+
+        $(this).autocomplete({
+            source: function( request, response ) {
+                $.ajax({
+                    url : '/searchMedicalRate',
+                    contentType : 'application/json; charset=utf-8',
+                    dataType : 'json',
+                    method: 'get',
+                    data: {
+                        searchTerm: request.term,
+                        type: type,
+                        hospitalType: h_type
+                    },
+                    success: function( data ) {
+                        response( $.map( data, function( item ) {
+                            return {
+                                label: item.productName,
+                                value: item.productName,
+                                data : item
+                            }
+                        }));
+                    }
+                });
+            },
+            autoFocus: true,
+            minLength: 0,
+            select: function( event, ui ) {
+                var id_arr = $(this).attr('id');
+                var id = id_arr.split("_");
+                $('#itemNo_'+id[1]).val(ui.item.data.productCode);
+                $('#itemName_'+id[1]).val(ui.item.data.productName);
+                $('#total_'+id[1]).val( ui.item.data.rate);
+                calculateTotal();
+            }
+        });
+    });
+
+</script>
+</html>

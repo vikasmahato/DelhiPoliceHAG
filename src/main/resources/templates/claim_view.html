@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/select2.min.css}" rel="stylesheet"></link>
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>View Claim</h3>
+            <form action="#" th:action="@{/diaryEntryUpdate}" th:object="${diaryEntry}" method="post">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="diary_number">Diary No</label>
+                            <input type="text" class="form-control" id="diary_number" th:field="*{displayDiaryNumber}" readonly >
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="belt_number">Belt No</label>
+                            <input type="text" class="form-control" id="belt_number" th:field="*{applicant.beltNumber}" readonly >
+                        </div>
+                        <input type="hidden" class="form-control" id="applicant_id" th:field="*{applicant.id}">
+                        <div class="col-6">
+                            <label for="pis_number">PIS No</label>
+                            <input type="text" class="form-control" id="pis_number" th:field="*{applicant.pisNumber}" readonly >
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="rank">Rank</label>
+                            <select class="form-control" id="rank" th:field="*{applicant.rank}" readonly >
+                                <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="applicant_name">Applicant Name</label>
+                            <input type="text" class="form-control" id="applicant_name" th:field="*{applicant.name}" readonly >
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="treatment_by">Treatment Taken By</label>
+                            <input type="text" class="form-control" id="treatment_by" th:field="*{treatmentTakenBy}" readonly>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="hospital_name">Enter Hospital Name</label>
+                            <select id="hospital_name" class="form-control select2-single" th:field="*{hospital.hospitalName}"></select>
+                        </div>
+                        <input type="hidden" class="form-control" id="hospital_id" th:field="*{hospital.id}">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="case_type">Case Type</label>
+                        <select class="form-control" id="case_type" th:field="*{caseType}" required >
+                            <option th:each="casetype : ${T(com.delhipolice.mediclaim.constants.CaseType).values()}" th:value="${casetype}" th:text="${casetype.getEnumValue()}"></option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="amt_claimed">Amount Claimed</label>
+                            <input type="number" class="form-control" id="amt_claimed" th:field="*{amountClaimed}">
+                        </div>
+
+
+                        <div class="col-6">
+                            <label for="admissible_amount">Admissible Amount</label>
+                            <input type="number" class="form-control" id="admissible_amount" th:field="*{admissibleAmount}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="phq_number">PHQ Number</label>
+                            <input type="text" class="form-control" id="phq_number" th:field="*{phqNumber}">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="phq_date">PHQ Date</label>
+                            <input type="date" class="form-control" id="phq_date" th:field="*{phqDate}" placeholder="Date">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="sanction_no">Sanction No</label>
+                            <input type="text" class="form-control" id="sanction_no" th:field="*{sanctionNumber}">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="sanction_date">Sanction Date</label>
+                            <input type="date" class="form-control" id="sanction_date" th:field="*{sanctionDate}">
+                        </div>
+                    </div>
+
+                    <div th:if="*{diaryType.getEnumValue() == 'Individual'}">
+                        <div th:if="*{treatmentTakenBy.getEnumValue() == 'Relative'}">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="relation">Relation</label>
+                                    <input type="text" class="form-control" id="relation" th:field="*{claimDetails.relation}" required >
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="relative_name">Relative Name</label>
+                                    <input type="date" class="form-control" id="relative_name" th:field="*{claimDetails.relativeName}" placeholder="Date">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="relative_cghs_number">Relative CGHS Number</label>
+                                    <input type="text" class="form-control" id="relative_cghs_number" th:field="*{claimDetails.relativeCghsNumber}" required >
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="relative_cghs_expiry">Relative CGHS Expiry</label>
+                                    <input type="date" class="form-control" id="relative_cghs_expiry" th:field="*{claimDetails.relativeCghsexpiry}" placeholder="Date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="treatment_start_date">Treatment Start Date</label>
+                                <input type="date" class="form-control" id="treatment_start_date" th:field="*{claimDetails.startDate}" >
+                            </div>
+
+                            <div class="col-6">
+                                <label for="treatment_end_date">Treatment Start Date</label>
+                                <input type="date" class="form-control" id="treatment_end_date" th:field="*{claimDetails.endDate}">
+                            </div>
+                        </div>
+
+                        <div th:if="*{caseType.getEnumValue() == 'Referral'}">
+                            <a class="btn btn-primary" th:href="@{/printForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>
+                        </div>
+
+                        <div th:if="*{caseType.getEnumValue() == 'Emergency'}">
+                            <a class="btn btn-primary" th:href="@{/printNotesheet/{id}(id=*{id})}">Print Note Sheet</a>
+                            <a class="btn btn-primary" th:href="@{/printOrder/{id}(id=*{id})}">Print Order</a>
+                        </div>
+
+                        <td th:switch="*{#lists.size(calculationSheet)}">
+
+                            <span th:case="'0'"> <a class="btn btn-primary" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Create Calculation Sheet</a>  </span>
+                            <div th:case="*">
+                                <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
+                                <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a>
+                            </div>
+                        </td>
+
+                    </div>
+                    <div th:if="*{diaryType.getEnumValue() == 'Hospital'}">Individual</div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/select2.min.js}" type="text/javascript"></script>
+<script>
+    $("#hospital_name").select2({
+        placeholder: 'Select a Hospital',
+        ajax: {
+            url: '/searchHospital',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response) {
+                const data = {
+                    results: $.map(response, function(item) {
+                        return {
+                            id: item.id,
+                            text: item.name
+                        }
+                    })
+                };
+                return data;
+            },
+            cache: true
+        }
+    });
+
+    $("#belt_number").select2({
+        placeholder: 'Search Applicant',
+        tags: true,
+        ajax: {
+            url: '/searchApplicant',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response) {
+                const data = {
+                    results: $.map(response, function(item) {
+                        return {
+                            id: item.id,
+                            text: item.name
+                        }
+                    })
+                };
+                return data;
+            },
+            cache: true
+        }
+    });
+
+    $('#hospital_name').on('select2:select', function (e) {
+        var data = e.params.data;
+        console.log(data);
+        $("#hospital_id").val(data.id);
+    });
+
+    $('#belt_number').on('select2:select', function (e) {
+        var data = e.params.data;
+        console.log(data);
+        $("#applicant_id").val(data.id);
+    });
+
+</script>
+</html>

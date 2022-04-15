@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .container{
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+        h3{
+            text-align: center;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+            margin-bottom:15px;
+        }
+        td {
+            font-size: 80%;
+        }
+        th {
+            font-size: 95%;
+        }
+    </style>
+</head>
+<body style='margin-left:1cm;right:1cm;'>
+<div class='container' >
+    <h3>CALCULATION SHEET</h3>
+    <p th:inline="text" style='text-align:justify;'>
+        Details of expenditures incurred on the treatment of<b> [[${diaryEntry.displayNameSalutation}]] at [[${diaryEntry.hospital.hospitalName}]] (Name of the Hospital)</b> where he/she remained admitted/under treatment from<b> [[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</b>.
+    </p>
+
+    <table class='table' style='margin-right:3px;'>
+        <tbody>
+        <tr>
+            <th width='2%'>Sr. No.</td>
+            <th width='20%'>Bill No.</td>
+            <th width='15%'>Date of Bill</td>
+            <th width='35%'>Name of the Tests/Medicines etc.</td>
+            <th width='14%'>Amount <br> claimed</td>
+            <th width='14%'>Admissible <br> Amount</td>
+        </tr>
+
+
+        <tr th:each="entry: ${diaryEntry.calculationSheet}">
+            <td th:text="${entry.serialNumber}"></td>
+            <td th:text="${entry.billNumber}"></td>
+            <td th:text="${entry.billDate}"></td>
+            <td th:text="${entry.treatment}"></td>
+            <td th:text="${entry.amountAsked}"></td>
+            <td th:text="${entry.total}"></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td ></td>
+            <td></td>
+            <td><b>Total</b></td>
+            <td th:text="${diaryEntry.amountAsked1}"></td>
+            <td th:text="${diaryEntry.amountGranted1}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p style='text-indent:12%;text-align:justify;'>It is certified that the bills have been checked in totality and rates claimed by the treating hospitals are Matched/restricted to CGHS approved rates. The claim for the tests/pathology is cross referenced for checking the rates with the tests actually conducted.</p>
+    <div style='margin-top:20px;'>Signature of Dealing Assistant     ____________________</div>
+    <div style='margin-top:10px;'>Signature of Head Assistant         ____________________</div>
+    <div style='margin-top:10px;'>Signature of Inspector Administration___________________</div>
+    <div style='text-align:center;margin-bottom:10px;margin-top:10px;'>VERIFIED</div>
+    <div style='text-align:center;font-weight:bold;margin-top:30px;'>ASSTT. COMMISIONER OF POLICE (HQ),</div>
+    <div style='text-align:center;font-weight:bold'>SOUTH-EAST DISTRICT, NEW DELHI.</div>
+</div>
+</body>
+</html>

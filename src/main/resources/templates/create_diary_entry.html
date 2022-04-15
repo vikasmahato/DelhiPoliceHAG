@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/select2.min.css}" rel="stylesheet"></link>
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Create a Diary Entry</h3>
+            <form action="#" th:action="@{/diaryEntryCreate}" th:object="${diaryEntry}" method="post">
+                <div class="box-body">
+                    <div class="input-group">
+                        <input type="text" aria-label="Diary Number name" th:field="*{diaryNumber}"  placeholder="Diary No"  class="form-control" required>
+
+                        <select class="form-control" aria-label="Diary Type" th:field="*{diaryType}" required >
+                            <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
+                        </select>
+
+                        <span class="input-group-text">/Genl. Branch/SD dated</span>
+
+                        <input type="date" aria-label="Diary Date" id="datepicker"  th:field="*{diaryDate}" class="form-control" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="belt_number">Belt No</label>
+                            <input type="text" class="form-control" id="belt_number" th:field="*{applicant.beltNumber}" required >
+                        </div>
+                        <input type="hidden" class="form-control" id="applicant_id" th:field="*{applicant.id}">
+                        <div class="col-6">
+                            <label for="pis_number">PIS No</label>
+                            <select id="pis_number" class="form-control select2-single" th:field="*{applicant.pisNumber}" required></select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="rank">Rank</label>
+                            <select class="form-control" id="rank" th:field="*{applicant.rank}" required >
+                                <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="applicant_name">Applicant Name</label>
+                            <input type="text" class="form-control" id="applicant_name" th:field="*{applicant.name}" required >
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="cghs_number">CGHS Number</label>
+                            <input type="text" class="form-control" id="cghs_number" th:field="*{applicant.cghsNumber}" required >
+                        </div>
+
+                        <div class="col-6">
+                            <label for="cghs_expiry">CGHS Expiry</label>
+                            <input type="date" class="form-control" id="cghs_expiry" th:field="*{applicant.cghsExpiry}" placeholder="Date">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="treatment_by">Treatment Taken By</label>
+                            <select class="form-control" id="treatment_by" th:field="*{treatmentTakenBy}" required >
+                                <option th:each="treatmentBy : ${T(com.delhipolice.mediclaim.constants.TreatmentBy).values()}" th:value="${treatmentBy}" th:text="${treatmentBy.getEnumValue()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="hospital_name">Enter Hospital Name</label>
+                            <select id="hospital_name" class="form-control select2-single" th:field="*{hospital.hospitalName}"></select>
+                        </div>
+                        <input type="hidden" class="form-control" id="hospital_id" th:field="*{hospital.id}">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="cghs_category">CGHS Category</label>
+                            <select class="form-control" id="cghs_category" th:field="*{applicant.cghsCategory}" required >
+                                <option th:each="cghsCategory : ${T(com.delhipolice.mediclaim.constants.CghsCategory).values()}" th:value="${cghsCategory}" th:text="${cghsCategory.getEnumValue()}"></option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="case_type">Case Type</label>
+                            <select class="form-control" id="case_type" th:field="*{caseType}" required >
+                                <option th:each="casetype : ${T(com.delhipolice.mediclaim.constants.CaseType).values()}" th:value="${casetype}" th:text="${casetype.getEnumValue()}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="amt_claimed">Amount Claimed</label>
+                            <input type="number" class="form-control" id="amt_claimed" th:field="*{amountClaimed}">
+                        </div>
+
+
+                        <div class="col-6">
+                            <label for="admissible_amount">Admissible Amount</label>
+                            <input type="number" class="form-control" id="admissible_amount" th:field="*{admissibleAmount}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="phq_number">PHQ Number</label>
+                            <input type="text" class="form-control" id="phq_number" th:field="*{phqNumber}">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="phq_date">PHQ Date</label>
+                            <input type="date" class="form-control" id="phq_date" th:field="*{phqDate}" placeholder="Date">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="sanction_no">Sanction No</label>
+                            <input type="text" class="form-control" id="sanction_no" th:field="*{sanctionNumber}">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="sanction_date">Sanction Date</label>
+                            <input type="date" class="form-control" id="sanction_date" th:field="*{sanctionDate}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="reset" class="btn btn-danger">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/select2.min.js}" type="text/javascript"></script>
+<script>
+    $("#hospital_name").select2({
+        placeholder: 'Select a Hospital',
+        ajax: {
+            url: '/searchHospital',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response) {
+                const data = {
+                    results: $.map(response, function(item) {
+                        return {
+                            id: item.id,
+                            text: item.name
+                        }
+                    })
+                };
+                //console.log(data);
+                return data;
+            },
+            cache: true
+        }
+    });
+
+    $("#pis_number").select2({
+        placeholder: 'Search Applicant',
+        tags: true,
+        ajax: {
+            url: '/searchApplicant',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response) {
+                const data = {
+                    results: $.map(response, function(item) {
+                        return {
+                            id: item.id,
+                            text: item.name,
+                            cghsNumber: item.cghsNumber,
+                            cghsExpiry: item.cghsExpiry,
+                            cghsCategory: item.cghsCategory
+                        }
+                    })
+                };
+                return data;
+            },
+            cache: true
+        }
+    });
+
+    $('#hospital_name').on('select2:select', function (e) {
+        var data = e.params.data;
+        console.log(data);
+        $("#hospital_id").val(data.id);
+    });
+
+    $('#pis_number').on('select2:select', function (e) {
+        var data = e.params.data;
+        console.log(data);
+        $("#applicant_id").val(data.id);
+        $("#applicant_name").val(data.text)
+        $("#cghs_number").val(data.cghsNumber)
+        $("#cghs_expiry").val(data.cghsExpiry)
+        $("#cghs_category").val(data.cghsCategory).change();
+
+    });
+
+</script>
+</html>
