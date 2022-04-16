@@ -10,7 +10,6 @@ import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -48,9 +47,6 @@ public class DiaryEntry implements Serializable, Auditable {
         this.claimType = diaryEntryVO.getClaimType();
     }
 
-/*    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;*/
     @Id
     @GeneratedValue
     private UUID id;
@@ -90,7 +86,7 @@ public class DiaryEntry implements Serializable, Auditable {
     private CaseType caseType;
 
     @Column
-    private ClaimType claimType;
+    private ClaimType claimType = ClaimType.OP_REFERRAL;
 
     @Column
     private BigDecimal amountClaimed;

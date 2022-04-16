@@ -32,7 +32,7 @@ public class ClaimDetails implements Serializable, Auditable {
     private AuditSection auditSection = new AuditSection();
 
     @Column
-    private String relation;
+    private Relation relation = Relation.SELF;
 
     @Column
     private String relativeName;

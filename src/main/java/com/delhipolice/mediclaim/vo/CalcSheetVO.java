@@ -16,7 +16,7 @@ public class CalcSheetVO {
     LinkedList<String> itemHosp;
     LinkedList<String> itemDate;
     LinkedList<String> itemName;
-    LinkedList<Float> total_asked;
-    LinkedList<Float> total;
+    LinkedList<Double> total_asked;
+    LinkedList<Double> total;
 
 }

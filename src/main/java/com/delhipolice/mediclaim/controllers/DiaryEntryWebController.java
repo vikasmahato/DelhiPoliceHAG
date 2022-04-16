@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.controllers;
 
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
@@ -37,13 +38,17 @@ public class DiaryEntryWebController {
 
     @GetMapping("/permissionEntryCreateForm")
     public String permissionEntryCreate(Model model) {
-        model.addAttribute("diaryEntry", new DiaryEntryVO());
+        DiaryEntryVO diaryEntryVO = new DiaryEntryVO();
+        diaryEntryVO.setClaimType(ClaimType.PERMISSION);
+        model.addAttribute("diaryEntry", diaryEntryVO);
         return "create_permission_entry";
     }
 
     @GetMapping("/creditEntryCreateForm")
     public String creditEntryCreateForm(Model model) {
-        model.addAttribute("diaryEntry", new DiaryEntryVO());
+        DiaryEntryVO diaryEntryVO = new DiaryEntryVO();
+        diaryEntryVO.setClaimType(ClaimType.CREDIT);
+        model.addAttribute("diaryEntry", diaryEntryVO);
         return "create_credit_entry";
     }
 
@@ -88,7 +93,7 @@ public class DiaryEntryWebController {
     @GetMapping("/printOrder/{id}")
     public String printOrder(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_forwarding_letter";
+        return "print_order";
     }
 
 }

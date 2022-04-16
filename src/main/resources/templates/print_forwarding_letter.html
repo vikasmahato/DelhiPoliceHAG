@@ -32,10 +32,10 @@
     <div style='margin-bottom:10px;margin-left:92px;'>General Administration/PHQ, Delhi</div>
     <div class='row'>
         <div class='col-md-2' style='margin-bottom:0px;padding-bottom:0px;'>Subject:-</div>
-        <div class='col-md-10'style='margin-left:100px;padding-top=0px;margin-top=0px;'>Regarding medical re-imbursement claim in respect of <b>$value[rank] $value[applicant_name] No. $value[police_station_no].</b></div></div>
+        <div class='col-md-10'style='margin-left:100px;padding-top=0px;margin-top=0px;' th:inline="text">Regarding medical re-imbursement claim in respect of <b>[[${diaryEntry.displayName}]].</b></div></div>
     <div style='margin-top:10px;'>Memo</div>
-    <p style='text-indent:12%;text-align:justify;'>
-        Enclosed please find herewith a medical re-imbursement claim along with all the original papers in respect of <b>$value[rank] $value[applicant_name] No. $value[police_station_no]</b> vide which she/he has intimated that the condition of his/her<b> $value[relation] </b>has suddenly become deteriorated and she/he was admitted in private hospital in emergency.  As per the M.A. Rules, calculation sheet has been prepared which is enclosed herewith.</p>
+    <p th:inline="text" style='text-indent:12%;text-align:justify;'>
+        Enclosed please find herewith a medical re-imbursement claim along with all the original papers in respect of <b>[[${diaryEntry.displayName}]]</b> vide which she/he has intimated that the condition of his/her<b> [[${diaryEntry.claimDetails.relation}]] </b>has suddenly become deteriorated and she/he was admitted in private hospital in emergency.  As per the M.A. Rules, calculation sheet has been prepared which is enclosed herewith.</p>
     <table class='table'>
         <tbody>
         <tr>
@@ -46,18 +46,18 @@
             <td>Amount claimed</td>
             <td>Amount admissible</td>
         </tr>
-        <tr>
-            <td>$value[rank]<br>$value[applicant_name]<br>No. $value[police_station_no]<br>$rel_string</td>
-            <td>$value[hospital_name]</td>
-            <td>$value[disease]</td>
-            <td>$value[startdate] to $value[enddate]</td>
-            <td>$value[amt_asked]</td>
-            <td>$value[amt_granted]</td>
+        <tr th:inline="text">
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]]<br>[[${diaryEntry.applicant.name}]]<br>No. [[${diaryEntry.applicant.pisNumber}]]<br>$rel_string</td>
+            <td>[[${diaryEntry.hospital.hospitalName}]]</td>
+            <td>[[${diaryEntry.claimDetails.disease}]]</td>
+            <td>[[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</td>
+            <td>[[${diaryEntry.amountAsked1}]]</td>
+            <td>[[${diaryEntry.amountGranted1}]]</td>
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:12%;text-align:justify;'>
-        It is therefore, requested that his/her medical re-imbursement claim may be considered sympathetically and necessary ex-post facto permission/ sanction of the competent authority may kindly be obtained and conveyed to this office at an early date. Funds are available under head '01.01.06 Medical Treament' during the current financial year 2017-2018. </p>
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        It is therefore, requested that his/her medical re-imbursement claim may be considered sympathetically and necessary ex-post facto permission/ sanction of the competent authority may kindly be obtained and conveyed to this office at an early date. Funds are available under head '01.01.06 Medical Treament' during the current financial year [[${diaryEntry.financialYear}]]. </p>
     <div style='text-align:right;font-weight:bold;margin-top:50px;'>ACP/HQ</div>
     <div class='row'>
         <div class='col-md-4'>Encls.:- <strong><u>As above</u></strong></div>

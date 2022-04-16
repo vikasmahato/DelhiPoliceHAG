@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
 import com.delhipolice.mediclaim.repositories.DiaryEntryRepository;
@@ -64,13 +65,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public List<DiaryEntry> findAll() {
-        return diaryEntryRepository.findAll();
-    }
-
-    @Override
-    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest) {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll();
+    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes) {
+        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes);
         return getPage(diaryEntries, pagingRequest);
     }
 
@@ -82,8 +78,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         LinkedList<String> itemHosp = calcSheetVO.getItemHosp();
         LinkedList<String> itemDate = calcSheetVO.getItemDate();
         LinkedList<String> itemName = calcSheetVO.getItemName();
-        LinkedList<Float> total_asked = calcSheetVO.getTotal_asked();
-        LinkedList<Float> total = calcSheetVO.getTotal();
+        LinkedList<Double> total_asked = calcSheetVO.getTotal_asked();
+        LinkedList<Double> total = calcSheetVO.getTotal();
 
         int count = itemNo.size();
 

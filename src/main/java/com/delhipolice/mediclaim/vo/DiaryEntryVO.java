@@ -7,6 +7,8 @@ import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
+import com.delhipolice.mediclaim.utils.EnglishNumberToWords;
+import com.delhipolice.mediclaim.utils.FinancialYearGenerator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,6 +43,7 @@ public class DiaryEntryVO implements Serializable {
     private CaseType caseType;
     private BigDecimal amountClaimed;
     private  BigDecimal admissibleAmount;
+    private String amountGrantedInWords;
     private String phqNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date phqDate;
@@ -55,6 +58,7 @@ public class DiaryEntryVO implements Serializable {
     private String amountGranted1;
     private String notesheetSalutation;
     private Boolean viewMode = Boolean.FALSE;
+    private String financialYear;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
         id = diaryEntry.getId();
@@ -81,19 +85,21 @@ public class DiaryEntryVO implements Serializable {
         amountAsked1 = getAmountAsked().toString();
         amountGranted1 = getAmountGranted().toString();
         notesheetSalutation = buildNotesheetSalutation();
+        amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
+        financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
     }
 
-    private Float getAmountAsked() {
-        return calculationSheet.stream().map(CalculationSheetEntry::getAmountAsked).reduce(0f, Float::sum);
+    private Double getAmountAsked() {
+        return calculationSheet.stream().map(CalculationSheetEntry::getAmountAsked).reduce(0d, Double::sum);
     }
 
-    private Float getAmountGranted() {
-        return calculationSheet.stream().map(CalculationSheetEntry::getTotal).reduce(0f, Float::sum);
+    private Double getAmountGranted() {
+        return calculationSheet.stream().map(CalculationSheetEntry::getTotal).reduce(0d, Double::sum);
     }
 
     private String buildDispplayNameSalutation() {
         if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {
-            return claimDetails.getRelativeName() +  " (Name of the patient) W/O, S/O, D/O, F/O, M/O "+ buildDisplayName() +" (Name of the police officer/men) ";
+            return claimDetails.getRelativeName() +  " (Name of the patient) " + claimDetails.getRelation().getRelation() + " " + buildDisplayName() +" (Name of the police officer/men) ";
         } else {
             return buildDisplayName();
         }
@@ -108,7 +114,7 @@ public class DiaryEntryVO implements Serializable {
     }
 
     private String buildDiaryNumber() {
-        return diaryNumber + "/" + diaryType.getEnumValue() + "/Gen Br./SED/Dated/" + diaryDate;
+        return diaryNumber + "/Gen Br./SD/Dated/" + diaryDate;
     }
 
     private String buildDisplayName() {

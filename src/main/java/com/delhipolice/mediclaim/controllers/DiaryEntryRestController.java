@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.controllers;
 
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,8 +30,15 @@ public class DiaryEntryRestController {
     }
 
     @PostMapping("/diaryentries")
-    public Page<DiaryEntryVO> list(@RequestBody PagingRequest pagingRequest) {
-        return diaryEntryService.getDiaryEntries(pagingRequest);
+    public Page<DiaryEntryVO> listDiaryEntries(@RequestBody PagingRequest pagingRequest) {
+        List<ClaimType> claimTypes = new ArrayList<>(Arrays.asList(ClaimType.CREDIT, ClaimType.PERMISSION));
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
+    }
+
+    @PostMapping("/permissions")
+    public Page<DiaryEntryVO> listPermissions(@RequestBody PagingRequest pagingRequest) {
+        List<ClaimType> claimTypes = new ArrayList<>(Arrays.asList(ClaimType.CREDIT, ClaimType.PERMISSION));
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
     }
 
 

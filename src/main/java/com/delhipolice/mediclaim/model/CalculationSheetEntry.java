@@ -34,7 +34,7 @@ public class CalculationSheetEntry implements Serializable, Auditable {
     private String treatment;
 
     @Column
-    private Float total;
+    private Double total;
 
     @Column
     private Integer index;
@@ -46,7 +46,7 @@ public class CalculationSheetEntry implements Serializable, Auditable {
     private String billDate;
 
     @Column
-    private Float amountAsked;
+    private Double amountAsked;
 
     @Embedded
     private AuditSection auditSection = new AuditSection();

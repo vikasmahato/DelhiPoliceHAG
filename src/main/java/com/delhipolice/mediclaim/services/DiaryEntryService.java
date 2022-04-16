@@ -1,8 +1,8 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.utils.Page;
-import com.delhipolice.mediclaim.utils.PageArray;
 import com.delhipolice.mediclaim.utils.PagingRequest;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
@@ -18,12 +18,8 @@ public interface DiaryEntryService {
 
     DiaryEntry update(DiaryEntry diaryEntry);
 
-    List<DiaryEntry> findAll();
-
-    Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest);
+    Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes);
 
     void saveCalSheet(CalcSheetVO calcSheetVO);
 
-
-    // PageArray getDiaryEntriesArray(PagingRequest pagingRequest);
 }
