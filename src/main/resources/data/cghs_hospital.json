@@ -1,0 +1,3344 @@
+[
+  {
+    "id": 1,
+    "name": "Action Cancer Hospital",
+    "address": "A-4. Paschim Vihar, New Delhi -63",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Adiva SuperSpeciality Care",
+    "address": "C-1C, Green Park Extension, New Delhi",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Batra Hospital and Medical Research Centre",
+    "address": "1, Tughlakabad Institutional Area, Mehrauli Badarpur Road, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "Bhagwati Hospital",
+    "address": "Sector-13, Rohini, Delhi110085.",
+    "type": "NABH"
+  },
+  {
+    "id": 5,
+    "name": "Bansal Hospital",
+    "address": "A-1, New Friends Colony, New Delhi – 110025",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Brahm Shakti Hospital",
+    "address": "U-178, Budh Vihar, Delhi - 110086.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "Bhagat Chandra Hospital",
+    "address": "F11, Mahavir Enclave, Near Palam, Dwarka Flyover, Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "B.M. Gupta Hospital Pvt. Ltd.",
+    "address": "H-11 to 15, Uttam Nagar, New Delhi 110059.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Bensups Hospital",
+    "address": "Bensups Avenue, Sector-12, Dwarka, New Delhi110075.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Cygnus Orthocare Hospital",
+    "address": "C-529, Opp. IIT Main Gate, Safdarjung Development Area, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 11,
+    "name": "Divya Prastha Hospital",
+    "address": "RZ-37, Palam Colony, Main Road, Opp. Bagh Wala School, Near Dwarka Flyover, Raj Nagar-1, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 12,
+    "name": "Dr. B.L. Kapur Memorial Hospital",
+    "address": "5 Pusa Road, New Delhi - 110005.",
+    "type": "NABH"
+  },
+  {
+    "id": 13,
+    "name": "Delhi Heart and Lung Institute",
+    "address": "3 MM II, Panchkuian Road, New Delhi 110055.",
+    "type": "NABH"
+  },
+  {
+    "id": 14,
+    "name": "Deepak Memorial Hospital",
+    "address": "5 & 6, Institutional Area, Vikas Marg, Exten-II,",
+    "type": "NABH"
+  },
+  {
+    "id": 15,
+    "name": "Dharamshila Hospital & Research Centre",
+    "address": "Dharamshila Marg Vasundhara Enclave, Delhi 43066666, 43066587.",
+    "type": "NABH"
+  },
+  {
+    "id": 16,
+    "name": "Garg Hospital",
+    "address": "8-9, A.G.C.R. Enclave, (Opp. Karkardooma Court), Delhi-110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 17,
+    "name": "Goyal Hospital & Urology Centre",
+    "address": "E-48, Near Lajpat Rai Chowk, Krishna Nagar, Delhi - 110051.",
+    "type": "NABH"
+  },
+  {
+    "id": 18,
+    "name": "Gupta Multispeciality Hospital",
+    "address": "B-20 (opp. Ram Mandir), Vivek Vihar, Delhi-110095",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 19,
+    "name": "Indian Spinal Injuries Centre",
+    "address": "Sector-C, Vasant Kunj, New Delhi – 110070.",
+    "type": "NABH"
+  },
+  {
+    "id": 20,
+    "name": "Jeewan Nursing Home & Hospital",
+    "address": "2-B, Pusa Road, Karol Bagh, New Delhi – 110005.",
+    "type": "NABH"
+  },
+  {
+    "id": 21,
+    "name": "Jeewan Mala Hospital",
+    "address": "671, New Rohtak Road, New Delhi – 110005.",
+    "type": "NABH"
+  },
+  {
+    "id": 22,
+    "name": "Jain Hospital",
+    "address": "177-178, Jagriti Enclave, Vikas Marg Extn. Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 23,
+    "name": "Jeevan Anmol Hospital",
+    "address": "Mayur Vihar Phase-I, opp. Pratap Nagar, Delhi - 110091. 22750380, 22795237",
+    "type": "NABH"
+  },
+  {
+    "id": 24,
+    "name": "Kukreja Hospital & Heart Centre Pvt. Ltd.",
+    "address": "C, 1, 3,4,14, Vishal Enclave, Rajouri Garden, New Delhi110027.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 25,
+    "name": "Kalra Hospital SRCNC Pvt. Ltd.",
+    "address": "A-4, 5&6 Tulsi Dass Kalra Marg, Kirti Nagar, New Delhi - 110015.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 26,
+    "name": "Khandelwal Hospital & Urology Centre",
+    "address": "B-16, East Krishna Nagar, Main Swaran Cinema Road, Delhi – 110051.",
+    "type": "NABH"
+  },
+  {
+    "id": 27,
+    "name": "Max Super Speciality Hospital",
+    "address": "108-A, Indraprastha Extension, Patparganj, Delhi – 110092. 011- 43033333.",
+    "type": "NABH"
+  },
+  {
+    "id": 28,
+    "name": "Max Super Specialty Hospital",
+    "address": "FC-50, C& D, Block, Shalimar Bagh, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 29,
+    "name": "Max Super Speciality Hospital",
+    "address": "2, Press Enclave Road, Saket, New Delhi. No. 011-26515050.",
+    "type": "NABH"
+  },
+  {
+    "id": 30,
+    "name": "Max Hospital,",
+    "address": "Near T.V. Tower, Pitampura, Wazirpur District Centre,New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 31,
+    "name": "Moolchand Hospital",
+    "address": "Lajpat Nagar, III, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 32,
+    "name": "Metro Hospitals & Heart Institute",
+    "address": "14, Ring Road, Lajpat Nagar, New Delhi – 110024.",
+    "type": "NABH"
+  },
+  {
+    "id": 33,
+    "name": "Metro Hospital & Cancer Institute",
+    "address": "21, Community Centre, Preet Vihar, Delhi – 110092. 22460000.49286600.",
+    "type": "NABH"
+  },
+  {
+    "id": 34,
+    "name": "Malik Radix Health Care Pvt. Ltd.",
+    "address": "C-218, Nirman Vihar, Vikas Marg, Delhi – 110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 35,
+    "name": "Mata Chanan Devi Hospital,",
+    "address": "C-1, Janakpuri, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 36,
+    "name": "MGS Super Specialty Hospital",
+    "address": "3537, Rohtak Road, West Punjabi Bagh, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 37,
+    "name": "Maharaja Agrasen Hospital",
+    "address": "Road No. 35, West Punjabi Bagh, Near Police Station, New Rohtak Road, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 38,
+    "name": "National Heart Institute",
+    "address": "49-50, Community Centre, East of Kailash, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 39,
+    "name": "Navjeevan Hospital,",
+    "address": "A-12, Pushpanjali Enclave, Pitampura, New Delhi - 110088.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 40,
+    "name": "Orthoplus Hospital",
+    "address": "RZ-B-28, Gopal Nagar, Nagafgarh, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 41,
+    "name": "Panchsheel Hospitals Pvt. Ltd.",
+    "address": "C-363-A,64-A,Yamuna Vihar(opposite Gokul Puri Police Station, Delhi-110053",
+    "type": "NABH"
+  },
+  {
+    "id": 42,
+    "name": "Primus Super Specialty Hospital",
+    "address": "Chanakyapuri, New Delhi – 110021.",
+    "type": "NABH"
+  },
+  {
+    "id": 43,
+    "name": "Park Hospital",
+    "address": "Meera Enclave, (Chokhandi) Near Keshopur Bus Depot Outer Ring Road, New Delhi – 110018.",
+    "type": "NABH"
+  },
+  {
+    "id": 44,
+    "name": "RLKC Hospital & Metro Heart Institute",
+    "address": "Pandav Nagar, Naraina Road, New Delhi-110024.",
+    "type": "NABH"
+  },
+  {
+    "id": 45,
+    "name": "Rockland HospitalName changed to Medeor  Hospital Ltd.",
+    "address": "B-33, 34, Qutab Institutional Area, New Delhi - 110016",
+    "type": "NABH"
+  },
+  {
+    "id": 46,
+    "name": "R G Urology & Laparoscopy Hospital",
+    "address": "F-12, East of Kailash, New Delhi – 110065.",
+    "type": "NABH"
+  },
+  {
+    "id": 47,
+    "name": "Rockland Hospital Ltd. Name changed to Medeor Hospital Ltd.",
+    "address": "HAF-B, Sector-12, Phase -1, Dwarka, New Delhi - 110075.",
+    "type": "NABH"
+  },
+  {
+    "id": 48,
+    "name": "Saket City Hospital changed to Max Smart Super specialty Hospital",
+    "address": "Press Enclave Road, Saket, New Delhi – 110017.",
+    "type": "NABH"
+  },
+  {
+    "id": 49,
+    "name": "Saroj Super Speciality Hospital",
+    "address": "Sector -14 Extn. Madhuban Chowk, Rohini, New Delhi 1100085.",
+    "type": "NABH"
+  },
+  {
+    "id": 50,
+    "name": "Sri Balaji Action Medical Inst.",
+    "address": "A-4, Paschim Vihar, New Delhi-110063.",
+    "type": "NABH"
+  },
+  {
+    "id": 51,
+    "name": "Shakuntla Nursing Home & Hospital",
+    "address": "RZ-181A, Sagarpur (West), Opp. Delhi Vidyut Board Colony, New Delhi – 110046",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 52,
+    "name": "Sunder Lal Jain Charitable Hospital",
+    "address": "Ashok Vihar, Ph-III, Delhi-110052.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 53,
+    "name": "Shri Ram Singh Hospital & Heart Institute",
+    "address": "B-25-26, 26-A, Swaran Cinema Road, East Krishna Nagar, Delhi - 110051.",
+    "type": "NABH"
+  },
+  {
+    "id": 55,
+    "name": "Santom Hospital",
+    "address": "D-5, 6, Prashant Vihar, Rohini, Sector - 14, Delhi - 110085.",
+    "type": "NABH"
+  },
+  {
+    "id": 56,
+    "name": "Tirath Ram Shah Charitable Hospital",
+    "address": "2A- Ishwar Das Sawhney Lane, Rajpur Road, civil lines Delhi – 110054.",
+    "type": "NABH"
+  },
+  {
+    "id": 57,
+    "name": "Apex Citi Hospital",
+    "address": "Hanuman Road, D-Block West Vinod Nagar, Near P.N.B, Delhi-91.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 58,
+    "name": "Ashok Nursing Home",
+    "address": "F-313-16, Vijay Chowk, Krishna Nagar, Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 59,
+    "name": "Irene Hospital",
+    "address": "DD-23, Kalkaji Extension, Near Post Office, New Delhi - 110019.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 60,
+    "name": "Mangalam Medical and Surgical Centre",
+    "address": "15481, Main Bawana Road, Pooth Khurd, Near Sector-35, Delhi-110039.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 54,
+    "name": "Sunil Hospital",
+    "address": "15199-200, Geetanjali Road, Malviya Nagar, New Delhi – 110017.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 61,
+    "name": "Jeewan Hospital & Nursing Home Pvt. Ltd.",
+    "address": "Gate No.1, 150, Jeewan Nagar, Opp. Maharani Bagh, New Delhi. No. 011-26340303.",
+    "type": "NABH"
+  },
+  {
+    "id": 62,
+    "name": "Sanjeevan Medical Research",
+    "address": "24, Ansari Road, Darya Ganj, New Delhi- 110002.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 63,
+    "name": "NKS Hospital",
+    "address": "219-220, Gulabi Bagh, Delhi - 110007. 011-23666666.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 64,
+    "name": "Escorts Heart Institute & Research Centre",
+    "address": "Okhla Road, New Delhi – 110025.",
+    "type": "NABH"
+  },
+  {
+    "id": 65,
+    "name": "Fortis Healthcare Ltd.",
+    "address": "A-Block, Shalimar Bagh, New Delhi – 110088.",
+    "type": "NABH"
+  },
+  {
+    "id": 66,
+    "name": "Rescue Hospital",
+    "address": "S-5, Vishwas Park, Behind Sector-3, Petrol Pump, Dwarka, Delhi-110059",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 67,
+    "name": "Bhatia Global Hospital & Endosurgery Institute",
+    "address": "305, 307-308, Ambica Vihar Opp. Central School, Paschim Vihar, New Delhi-110087. 25270701, 25270702.",
+    "type": "NABH"
+  },
+  {
+    "id": 68,
+    "name": "Satyabhama Hospital Pvt. Ltd.",
+    "address": "RZ-10, Naresh Park, Nagafgarh Road, Nangloi, Delhi, 110041",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 69,
+    "name": "Shanti Mukund Hospital",
+    "address": "2, Institutional Area, Vikas Marg Extn.,New Delhi – 110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 70,
+    "name": "Pushpanjali Medical Centre",
+    "address": "A-14 & 15 Pushpanjali, Vikas Marg Extn. Delhi - 110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 71,
+    "name": "Delhi Heart Hospital",
+    "address": "176, Jagriti Enclave, Bhartendu Harish Chandra Marg, Near Karkardooma Metro Station, Delhi-110092.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 72,
+    "name": "East Delhi Medical Centre",
+    "address": "1550, G.T. Road, Mansarovar Park, Shahdara, Delhi-110032.",
+    "type": "NABH"
+  },
+  {
+    "id": 73,
+    "name": "Rosewood Hospital",
+    "address": "5, JL Block, Roshan Garden, Najafgarh, New Delhi-110043.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 74,
+    "name": "Universal  Centre of Health Science",
+    "address": "Bypass Road, Molarband Extension, Badarpur, New Delhi-110044.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 75,
+    "name": "Sonia Hospital",
+    "address": "1, Gulshan Park, Main Rohtak Road, Nangloi,  Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 76,
+    "name": "Savitri Hospital",
+    "address": "14291, Extended Lal Dora, (Near Petrol  Pump), Karala-Kanjhwala Road, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 77,
+    "name": "Ayushman  Hospital & Health Services",
+    "address": "Sector-10, Dwarka, New Delhi-110075.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 78,
+    "name": "World Brain Center Hospital",
+    "address": "Plot No.24, KH. No.154142, Syndicate Enclave, Raghu Nagar, Dabri More, New Delhi110045.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 79,
+    "name": "Cygnus MLS Super Speciality Hospital",
+    "address": "Plot No. 4, Main Kanjhawala Road, Near Balaji Mandir, Rama Vihar, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 80,
+    "name": "Indus Valley Hospital",
+    "address": "232, KH. No.191 (1-12), 135, Laxmi Garden, Tehsil Road, Nagafgarh, New Delhi-110043.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 81,
+    "name": "Kosmos Super Speciality Hospital",
+    "address": "C-60, Anand Vihar (Vikas Marg), Delhi. No. 011-2216000001",
+    "type": "NABH"
+  },
+  {
+    "id": 82,
+    "name": "Venkateshwar Hospital",
+    "address": "Sector-18A, Dwarka, New Delhi-110075. No. 011-4855555566.",
+    "type": "NABH"
+  },
+  {
+    "id": 83,
+    "name": "Gandhi Hospital",
+    "address": "C-50 &51, OM Vihar, Uttam Nagar, New Delhi-110059.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 84,
+    "name": "Kalra Hospital, Dwarka",
+    "address": "3A, 26-27, Sewak Park Extension, Opp. Metro Pillar No. 761, Dwarka Mor, Uttam Nagar, Delhi-110059. 011-25355545,",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 85,
+    "name": "Jaipur Golden Hospital",
+    "address": "02, Institutional Area, Sector-3, Rohini, Delhi110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 86,
+    "name": "Kukreja Hospital",
+    "address": "D-36, Acharya Niketan, Mayur Vihar, Phase-I, New Delhi-110091. No. 011-22753123.",
+    "type": "NABH"
+  },
+  {
+    "id": 87,
+    "name": "Febris Multispeciality Hospital",
+    "address": "Plot No. 20, Sector-A7, Narela, Delhi-110040.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 88,
+    "name": "Ansari Hospital",
+    "address": "RZ-20FB, Street No.6, Behind Laxmi Nagar Mandir, Main Sagarpur, New Delhi110046.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 89,
+    "name": "Gupta Multispeciality Hospital",
+    "address": "Dhandhu Ram Market, Bawana, Delhi-110039.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 90,
+    "name": "Tarak Hospital India Pvt. Ltd.",
+    "address": "C-7, Jai Bharat Enclave, Dwarka Mor, Opp. Metro Pillar No. 789, New Delhi-110059",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 91,
+    "name": "Pushpawati Singhania Hospital & Research Institute",
+    "address": "Press Enclave Marg, Sheikh Sarai Phase-II, New Delhi. 011-30611700, 1900",
+    "type": "NABH"
+  },
+  {
+    "id": 92,
+    "name": "Ishan Hospital",
+    "address": "Plot No. No.1, Pocket8B, Sector-19, Rohini, Delhi-110089.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 93,
+    "name": "Aakash Healthcare Super Speciality Hospital",
+    "address": "Road No. 201, Sector-03, Dwarka, New Delhi110075.",
+    "type": "NABH"
+  },
+  {
+    "id": 94,
+    "name": "Bhagwan Mahavir Hospital",
+    "address": "Sector-14, Extension Near Madhuban Chowk, Rohini, Delhi110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 95,
+    "name": "Saroj Medical Institute",
+    "address": "Plot No. 8 & 9, Pocket8B, Jail Road, Sector-19, Rohini, Delhi110089.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 96,
+    "name": "Maharaja Agrasen Hospital",
+    "address": "Plot No.1, Sector-1, Dwarka, New Delhi110075.",
+    "type": "NABH"
+  },
+  {
+    "id": 97,
+    "name": "K.K. Surgical & Maternity Centre",
+    "address": "B-37, East Jyoti Nagar, Loni Road, New Delhi110093.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 98,
+    "name": "Konarc Hospital",
+    "address": "9A1, Naresh Park, Near Water Tank, Main Nagafgarh Road, Nangloi, Delhi-110041.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 99,
+    "name": "Surya Hospital",
+    "address": "38311-C, East Azad Nagar, Krishna Nagar, Delhi-110051. 011-22002795.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 100,
+    "name": "Mata Roop Rani Maggo & Mahindru Hospital",
+    "address": "C-89, OM Vihar, Phase-I, Metro Pillar, No.709, Uttam Nagar, New Delhi-110059.",
+    "type": "NABH"
+  },
+  {
+    "id": 101,
+    "name": "Medstar Hospital",
+    "address": "A-345, Meera Bagh, Outer Ring Road, Paschim Vihar, New Delhi-110063.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 102,
+    "name": "Human Care Medical Charitable Trust",
+    "address": "Adjoining MTNL Building, Sec-6, Dwarka, Delhi-110075.",
+    "type": "NABH"
+  },
+  {
+    "id": 103,
+    "name": "Navjeevan Hospital",
+    "address": "A-12 & 13, Pushpanjali Enclave, Outer Ring Road, Opp. Jaipur Golden Red Light, Pitampura, Delhi110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 104,
+    "name": "Asian Samra Multi-Speciality Hospital,",
+    "address": "C-3, 52-53A, Yamuna Vihar, New Delhi110053.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 105,
+    "name": "Kalyani Hospital,",
+    "address": "RZ-30-A, Rati Ram Park, Naya Bazar, Nagafgarh, New Delhi - 110043.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Amar Eye Centre",
+    "address": "B-38, Mohan Park, Naveen Shahdara (Near Shiv Mandir Pipal Chowk), Delhi. No. 011-22322071.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Ahuja Laser Eye Centre",
+    "address": "212 Permanand Colony, (Near Mukherjee Nagar), Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Ahuja Eye Centre",
+    "address": "AG-11, Shalimar Bagh, Main Ring Road, Delhi – 110088.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Aggrawal Eye Institute",
+    "address": "A-235, Shivalik, Malviya Nagar, (Near Bus Terminal), New Delhi-110017.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Bajaj Eye Care Centre",
+    "address": "101, Vikas Surya Plaza, Pt.  No. 7, DDA Community Centre, Rd No. 44, Pitampura, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Bharti Eye Foundation",
+    "address": "13 East Patel Nagar, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Bharti Eye Hospital",
+    "address": "E-52, Greater Kailash-I, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Care Eye Centre & Diagnostic",
+    "address": "D1A141A, Janakpuri, New  Delhi.28521001, 28522000.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Chaudhary Eye Centre & Laser Vision",
+    "address": "4802 Bharat Ram Road, 24, Daryaganj, New Delhi. No. 011-23243717.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "CSM Medicentre Eye and Dental Care",
+    "address": "D-31, Flat No. 2, Rajouri Garden, New Delhi-110027.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 11,
+    "name": "Centre For Sight",
+    "address": "J-1230, Rajouri Garden, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 12,
+    "name": "Centre For Sight CA Unit of New Delhi Centre For Sight Ltd.  Changed",
+    "address": "304-309, 3rd Floor, Ring Road Mall, Sector-3, Rohini.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 13,
+    "name": "Centre For Sight",
+    "address": "12 A20, Opp. Bal Bharti Public School, Dwarka. Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 14,
+    "name": "Centre For Sight",
+    "address": "F-19, Preet Vihar, Main Vikas Marg, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 15,
+    "name": "Centre for Sight",
+    "address": "B-524, Safdarjung Enclave,  New Delhi.  9313837311, 011-45738888, 41644000",
+    "type": "NABH"
+  },
+  {
+    "id": 16,
+    "name": "Chopra Eye Hospital",
+    "address": "House No.3, Block-C, Pocket-8, Sector-7, Rohini, New Delhi - 110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 17,
+    "name": "Drishti Eye Care Centre",
+    "address": "Shop Plot No 4, First Floor, Anand Complex, Pandav Nagar Patparganj, Delhi-1100929810662272,",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 18,
+    "name": "Delhi Eye Centre",
+    "address": "C-120, Rajinder Nagar, New  Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 19,
+    "name": "Dr. Pattnaik’s Laser Eye Institute",
+    "address": "C-2, Ground Floor, Lajpat Nagar-3, New Delhi-24.",
+    "type": "NABH"
+  },
+  {
+    "id": 20,
+    "name": "Dr. Nanda Eye Care Centre",
+    "address": "A-200, Sector-8, Dwarka, New Delhi - 110075.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 21,
+    "name": "Dr. Kapur’s The Healing Touch Eye Center",
+    "address": "D-8, Vikas Puri, New Delhi18.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 22,
+    "name": "Dr. Shroff's Charity Eye Hospital",
+    "address": "5027, Kedar Nath Road, Daryaganj, New Delhi - 110002.",
+    "type": "NABH"
+  },
+  {
+    "id": 23,
+    "name": "Dr. Aggarwal’s Eye Clinic",
+    "address": "F-17, Moti Nagar, New  Delhi. 25462686, 9811069069",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 24,
+    "name": "Dr. Dhawan's Netra Eye Hospital",
+    "address": "WZ-99, Dayal Sar Road, Uttam Nagar -110059. No. 011-32314646.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 25,
+    "name": "Dr. Suresh Garg Eye & Laser Center Empanelment Suspended",
+    "address": "A-435, Main Road, Pashchim Vihar, New Delhi-63.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 26,
+    "name": "Eye7 Chaudhary Eye Centre",
+    "address": "34, Ground floor, Lajpat Nagar-IV, Main Road,  Delhi. 41010202, 41010303404.",
+    "type": "NABH"
+  },
+  {
+    "id": 27,
+    "name": "Eye Care Centre",
+    "address": "F-182, Dilshad Colony, Delhi - 110095.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 28,
+    "name": "Eye Sight Laser Centre",
+    "address": "52A, Pocket 2 DDA Flats, Behind Sec-6, Main Market, Dwarka, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 29,
+    "name": "Goyal Eye Institute",
+    "address": "110, East Patel Nagar, New  Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 30,
+    "name": "Goyal Eye Centre,",
+    "address": "351, Ramgali, Vishwas Nagar, Shahdara, Delhi - 110032.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 31,
+    "name": "Hi-Tech Eye Centre",
+    "address": "A-12, 1st Floor, Vikas Puri, New Delhi - 110018. 41602121,098 10 644362.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 32,
+    "name": "I Care Centre",
+    "address": "C-69, Safdarjung, Development Area, New  Delhi. 26963999, 9873783824",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 33,
+    "name": "Khanna Eye Centre",
+    "address": "E-368, Nirman Vihar, Vikas Marg, Delhi-92. 22424344, 22424345.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 34,
+    "name": "Khanna Eye Centre",
+    "address": "A-22, Model Town-1, Delhi – 110009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 35,
+    "name": "Kiran Eye Care Centre",
+    "address": "B-50, Derawal Nagar, Delhi - 110009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 36,
+    "name": "Kailash Eye Care",
+    "address": "50-51, South Patel Nagar (Near Metro Pillar No.190), New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 37,
+    "name": "Max Multi-Specialty Centre",
+    "address": "N-110, Panchsheel Park, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 38,
+    "name": "Mohan Eye Institute",
+    "address": "11-B Ganga Ram Hospital Marg, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 39,
+    "name": "Medfort Hospitals Pvt., Ltd.",
+    "address": "A324, 3rd Floor Janakpuri, New Delhi-110058.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 40,
+    "name": "M.D. Eye Care and Laser Centre",
+    "address": "M-165, Ground Floor, Greater Kailash, Part-II, New Delhi – 110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 41,
+    "name": "Mahajan Eye Centre,",
+    "address": "AD-21A, Pitampura, Delhi - 110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 42,
+    "name": "Narang Eye Institute",
+    "address": "B-8, Derawal Nagar, Opp. Model Town, Delhi-09.27142598, 9968387768.",
+    "type": "NABH"
+  },
+  {
+    "id": 43,
+    "name": "Nayantara Eye Centre",
+    "address": "B-106, Subhadra Colony, Near Shastri Nagar, Metro Station, Delhi - 110035.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 44,
+    "name": "Neera Eye Centre & Laser Vision",
+    "address": "B-99, Shyam Lal Road, Opp.Hindi Park, Darya Ganj New Delhi-110002.",
+    "type": "NABH"
+  },
+  {
+    "id": 45,
+    "name": "Nayan The Modern Eye Care Centre",
+    "address": "A-99-B, DDA Flats, Ashok Vihar, Ph-II, Delhi - 110052",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 46,
+    "name": "Narang Eye Institute",
+    "address": "A-10, Lok Vihar, Pitampura, New Delhi.  No. 011-27141134, 27142598,",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 47,
+    "name": "Pragati Eye Centre",
+    "address": "H-15, Krishna Nagar, Delhi- 110051.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 48,
+    "name": "Ravi Eye Foundation",
+    "address": "B-8, First Floor, Ganesh Nagar, New Delhi - 110018.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 49,
+    "name": "Shree Jeewan Hospital",
+    "address": "671, New Rohtak Road, New Delhi-110005. 011- 23682780.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 50,
+    "name": "Sharp Sight Centre",
+    "address": "81, Defence Enclave, Vikas Marg, Delhi-110092. No. 011-224611343536",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 51,
+    "name": "Shyam Lal Eye Hospital",
+    "address": "Malka Ganj, Delhi -  110007,  23856483, 23857066.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 52,
+    "name": "Spectra Eye",
+    "address": "E-82-A, Greater Kailash, Part-1, New Delhi - 110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 53,
+    "name": "Shreya Eye Centre",
+    "address": "D-163, Surajmal Vihar, Near Yamuna Sports Complex, Delhi-110092.   22161975, 42770101.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 54,
+    "name": "Save Sight Centre",
+    "address": "A-14, G.T. Karnal Road, Adarsh Nagar, Opp. Metro Station, Delhi - 110033. No. 09210914791.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 55,
+    "name": "Sardana Eye Institute",
+    "address": "A219, Rajouri Garden, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 56,
+    "name": "Shroff Eye Centre",
+    "address": "A-9, Kailash Colony, New  Delhi. 41633999, 29231296.",
+    "type": "NABH"
+  },
+  {
+    "id": 57,
+    "name": "Foresight Eye Clinic,",
+    "address": "House No. 106, RPS DDA Flats, Sheikh Sarai, New Delhi -110017.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 58,
+    "name": "Shri Amichand Eye Care Centre",
+    "address": "86, Old Roshanpura, Near Mother Dairy, Main Gate Chhawla Stand, Nagafgarh, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 59,
+    "name": "Sadhu Vaswani Medical Centre",
+    "address": "427, Shanti Niketan, New  Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 60,
+    "name": "Suraksha Eye Surgery Centre",
+    "address": "B-15, Ground Floor, Rana Pratap Bagh, Delhi-110007.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 61,
+    "name": "The Caring Touch",
+    "address": "R-721, New Rajinder Nagar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 62,
+    "name": "Vision Eye Hospital",
+    "address": "F-24136, Sector-7, Rohini,  New Delhi - 110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 63,
+    "name": "Visitech Eye Centre",
+    "address": "A-10, South Extension Part2, New Delhi-110049.",
+    "type": "NABH"
+  },
+  {
+    "id": 64,
+    "name": "Venu Eye Institute & Research Centre",
+    "address": "131, Sheikh Sarai Institutional Area, Phase-2, New Delhi-110017. Phones: +91-11- 2925 1155 1156.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 65,
+    "name": "Vasan Eye Care Hospital",
+    "address": "36-B, Pusa Road, Karol Bagh, Delhi - 110005.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 66,
+    "name": "Vasan Eye Care Hospital",
+    "address": "Plot No. 500, PWD Road, 41, Pitampura, New Delhi - 110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 67,
+    "name": "Vasan Eye Care Hospital",
+    "address": "Opp. Metro Pillar No. 634, Janakpuri, New Delhi - 110059",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 68,
+    "name": "Vasan Eye Care Hospital",
+    "address": "F-14, Metro Pillar No.94, Preet Vihar, New Delhi-110092",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 69,
+    "name": "Vasan Eye Care Hospital",
+    "address": "E-16, Greater Kailash, New Delhi -110048. 011-39890700.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 70,
+    "name": "Yogesh Eye Centre,",
+    "address": "B-5 15, Sector-4, Rohini, Delhi - 110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 71,
+    "name": "Vision Eye Centre Empanelment Suspended",
+    "address": "19, Siri Fort Road, New Delhi - 110049.",
+    "type": "NABH"
+  },
+  {
+    "id": 72,
+    "name": "Vision Eye Centre",
+    "address": "1227, West Patel Nagar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 73,
+    "name": "Eye Q Vision Pvt. Ltd.",
+    "address": "Shalimar Bagh, A-D-Block, NS-3, East of Shalimar Bagh, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 74,
+    "name": "Arihant Eye Centre",
+    "address": "Nandani Bhawan, Sant Nagar, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 75,
+    "name": "Anant Jyoti Eye Hospital",
+    "address": "43-A, Jagriti Enclave, Near Karkardooma Metro Station, Delhi-92.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 76,
+    "name": "Rotary Eye Care Centre",
+    "address": "56-57, Tughlakabad Institutional Area, M.B. Road, New Delhi-110062.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 77,
+    "name": "Indian Institute of Ophthalmology",
+    "address": "C-2, Greater Kailash Enclave-II, New Delhi - 48.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 78,
+    "name": "Complete Eye Care Centre",
+    "address": "F7, F6, First Floor, Manish Chamber, Local Shopping Complex, Mayur Vihar, Phase-2, Delhi-110091. No. 9873077056.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 79,
+    "name": "R.V.S. Eye Centre",
+    "address": "BFH-09, Opp. Mount Abu Public School, Som Bazar Road, West Shalimar Bagh, Delhi-110088.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 80,
+    "name": "DRS Northex Eye Institute Pvt. Ltd. .",
+    "address": "C-934, First Floor, Sector7, Rohini, Delhi - 110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 81,
+    "name": "Jain Eye Hospital and Laser Centre .",
+    "address": "AG-152, Shalimar Bagh, New Delhi-110088. 011-27479272.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 82,
+    "name": "Vision Care Centre  .",
+    "address": "E-16, 389 & 392, Sector-8, Rohini, New Delhi - 85. No. 011-27944744.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 83,
+    "name": "Rana Eye Centre  .",
+    "address": "C-828, Sector-7, First Floor, Sai Baba Chowk, Rohini, Opp. Metro Pilar, 394, Delhi - 110085. No. 011-45100652.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 84,
+    "name": "Sharp Sight Centre",
+    "address": "A-15, Swasthya Vihar, (Opp. Preet Vihar), Vikas Marg, Metro Pillar No.82, New Delhi – 110092. No. 011-4131772830.",
+    "type": "NABH"
+  },
+  {
+    "id": 85,
+    "name": "Visitech Eye Centre",
+    "address": "Plot No. 2, Pocket-I, Jasola Vihar, New Delhi-110025.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 86,
+    "name": "Shyama Super Speciality Eye Hospital,  .",
+    "address": "B-139 A, West Vinod Nagar, Narwana Road, I.P. Extension, opp. Press  Apartment, Delhi-110092.011-45631535",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 87,
+    "name": "Delhi Eye Care",
+    "address": "417, Second Floor, Balraj Khanna Marg, East Patel Nagar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 88,
+    "name": "I Clinix Advanced Eye Care",
+    "address": "27171, Vikram Vihar, Near Moolchand Metro Station, Lajpat Nagar-IV, New Delhi-110024.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 89,
+    "name": "Eye 4 U a Complete Ophthalmic Center,",
+    "address": "241, DDA SFS Flats, Sector-9, Pocket-1, Dwarka, New Delhi-110045.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 90,
+    "name": "The Healing Touch, Eye Hospital",
+    "address": "C-2390, Janakpuri, Delhi110058.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 91,
+    "name": "Khanna Medicare Centre",
+    "address": "W-6, Main Patel Road, West Patel Nagar, Near Shadipur Metro Station, Pillar No. 234, New Delhi110008.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 92,
+    "name": "Santushti Eye Centre",
+    "address": "D-136, Krishna Park, Devli Road, Khanpur, New Delhi110062.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 93,
+    "name": "Eye7 Hospitals Pvt. Ltd.",
+    "address": "A-1173, Ground Floor (opp. Metro Pillar No. 614), Najafgarh Road, Janakpuri, Delhi-110058.",
+    "type": "NABH"
+  },
+  {
+    "id": 94,
+    "name": "Centre For Sight",
+    "address": "Shop No.1, Huda Market No.1, Beside Hanuman Mandir, Sec-16A, Near Old Faridabad Metro Station, Faridabad-121002.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 95,
+    "name": "Param Nethralaya",
+    "address": "132, Main Auchandi Road, Bawana, Delhi-110039.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 96,
+    "name": "Dr. Goel's Eye Centre",
+    "address": "C-4, Anand Vihar, Delhi - 110092.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 97,
+    "name": "Nav Drishti Eye Center",
+    "address": "B-5351, Yamuna Vihar, Delhi-110053. 011-22910378.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 98,
+    "name": "Centre For Sight",
+    "address": "B-26, Ashok Vihar, Phase-II, 1st & 2nd Floor, Delhi-110052.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 99,
+    "name": "Centre For Sight",
+    "address": "A-3, Najafgarh Road, Opp. Metro Pilar No.62B,  Vikaspuri, New Delhi-110018",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 100,
+    "name": "New Vision Eye Centre",
+    "address": "A-5233, Paschim Vihar, New Delhi-110063.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 101,
+    "name": "Netram Eye Centre",
+    "address": "I-1791, C.R. Park, Near IDBI Bank, New Delhi110019.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 102,
+    "name": "Purang Eye Centre",
+    "address": "A-114, Vishal Enclave, Rajouri Garden, New Delhi-110027.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 103,
+    "name": "Karuna Sindhu Charitable Hospital",
+    "address": "Bakkarwala Marg, Nangloi, Nagafgarh Road, New Delhi-110041. No. 9582860008.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 104,
+    "name": "I Create Hospital",
+    "address": "A-324, 3rd Floor,  Janakpuri, New Delhi-110058",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 105,
+    "name": "Retina Point",
+    "address": "Q-53, Ground Floor, Rajouri Garden, New Delhi-110027.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 106,
+    "name": "Centre For Sight",
+    "address": "Plot No. 9, Sector-9, Dwarka, New Delhi-110077",
+    "type": "NABH"
+  },
+  {
+    "id": 107,
+    "name": "Centre For Sight",
+    "address": "F-14, Preet Vihar, Main Vikas Marg, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 108,
+    "name": "Dayal Eye Centre",
+    "address": "SCO-II, Friends Colony, Main Jharsa Road, Near Sec-15, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 109,
+    "name": "Drishti The Vision an Advanced Eye Care Centre",
+    "address": "47, Ground Floor, Pana Udyan, (Near MCD Building Opp. Narela Police Station, Narela, Delhi-110040.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "B.R. Diagnostics",
+    "address": "W-15, Greater Kailash-I, New Delhi-48.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "C 15 MRI Diagnostic and Research Centre",
+    "address": "C-15, Green Park Extension, New Delhi – 110016. Phone: 011-26850006, 05.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Capital X-ray & Scan Clinic",
+    "address": "C-3, New Krishna Park, Main Nagafgarh Road, Vikaspuri, New Delhi-18. 9911004545, 9911116464.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Care Diagnostics",
+    "address": "D1A141A, Janakpuri, New Delhi-58. Cont. No. 01128521001, 9800,9711005393.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Clinical Diagnostic Centre",
+    "address": "69, Hargovind Enclave, Opp. Railway Reservation Centre, Karkardooma, Delhi. 011-43076300.",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Delhi Institute of Functional Imaging",
+    "address": "K-16, South Extension, Part-1, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "Dr. Gulati Imaging Institute",
+    "address": "J-16, Hauz Khas Enclave, Main Aurobindo Marg, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Dr. Savita Jain’s Arun Imaging CentreChanged to Arun Imaging LLP",
+    "address": "D-29, Vivek Vihar, Delhi-110095",
+    "type": "NABH"
+  },
+  {
+    "id": 9,
+    "name": "Delhi Institute of Functional Imaging",
+    "address": "14 Kaushalya Park, Hauz Khas,  New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 10,
+    "name": "Dr. Seth’s Path Lab",
+    "address": "130, Shankar Road Market, New Rajinder Nagar, New Delhi. No. 011-28743325, 47650004.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 11,
+    "name": "Dr. Anand’s Imaging Centre & Neurological Research Centre",
+    "address": "G-14, Preet Vihar, Vikas Marg, Karkarimor, Delhi – 110092. 22525599, 22437066.",
+    "type": "NABH"
+  },
+  {
+    "id": 12,
+    "name": "Dr. M.L. Aggarwal  Imaging Centre Pvt. Ltd.",
+    "address": "A-1150, Safdarjung Enclave, Delhi – 110029.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 13,
+    "name": "Dr. A. Lalchandani Pathology Laboratories",
+    "address": "J -36, Lajpat Nagar-II, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 14,
+    "name": "Dr. Lal Path Labs Pvt. Ltd.",
+    "address": "54, Eskay House, Hanuman Road, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 15,
+    "name": "Dr. Khanna’s Pathcare Pvt. Ltd.",
+    "address": "A-43, Hauz Khas, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 16,
+    "name": "Dr. P. Bhasin Path Lab Pvt. Ltd.",
+    "address": "S-13, Greater Kailash, Part-I, New Delhi,",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 17,
+    "name": "Dr. D.K. Gulati’s Path Lab",
+    "address": "20, Community, Ashok Vihar, opp. Satyavati College Ph-II Delhi-52.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 18,
+    "name": "Dr. Lal Path Labs",
+    "address": "Block-E, Sector-18, Rohini, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 19,
+    "name": "Dr. S.S. Doda’s Ultrasound Centre.",
+    "address": "23-B, Pusa Road, New Delhi – 110005.",
+    "type": "NABH"
+  },
+  {
+    "id": 20,
+    "name": "Focus Imaging & Research Centre Pvt. Ltd.",
+    "address": "C-10, Green Park Exten. New Delhi-110016.",
+    "type": "NABH"
+  },
+  {
+    "id": 21,
+    "name": "Focus Imaging & Research Centre Pvt. Ltd.",
+    "address": "H-10, Green Park Extn. New Delhi-110016.",
+    "type": "NABH"
+  },
+  {
+    "id": 22,
+    "name": "Focus Imaging & Research Centre Pvt. Ltd.",
+    "address": "71-4Yusuf Sarai Aurobindo  Marg New Delhi-110016",
+    "type": "NABH"
+  },
+  {
+    "id": 23,
+    "name": "Ganesh Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "109, Pocket, A-1, Sec-8, Near Deepali Chowk, Opp. Bagga Link, Rohini, Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 24,
+    "name": "Goyal MRI & Diagnostic Centre",
+    "address": "B-112, Safdarjung Enclave, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 25,
+    "name": "Ganesh MRI Centre Pvt. Ltd.",
+    "address": "Shop No. 2, LSC Mkt., K-Block, Opp. Sanjay Gandhi Hospital, Mangolpuri, New Delhi. 011-65234629.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 26,
+    "name": "Ganesh Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "B-3, Derawal Nagar, Opp. Model Town, Delhi-9.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 27,
+    "name": "Ganesh Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "M-14, Lower Ground Floor, Opp. State Bank of Mysore, Kalkaji, New Delhi. 011-27945572, 65090365.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 28,
+    "name": "Ganesh Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "C-1, Hari Nagar, Near DDU Hospital, New Delhi. 011-25126431, 9811067479",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 29,
+    "name": "Ganesh Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "C-18, Yamuna Vihar, Near 'C' Block, Red Light, New Delhi - 110053.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 30,
+    "name": "Gagan Pathology Centre Name changed to Gagan Pathology & Imaging Pvt. Ltd.",
+    "address": "H.No.22-21, Pocket F26, Sector- 7, Near Ayodhya Chowk, Rohini, Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 31,
+    "name": "A K Health  Quotient India Pvt. Ltd.",
+    "address": "E-117, Kalkaji, Opp. Laxmi Narayan Temple, New Delhi-19.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 32,
+    "name": "Vatika Medicare Pvt. Ltd.",
+    "address": "H-1A, Ground Floor, Main Market, Hauz Khas, New Delhi 110016.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 33,
+    "name": "Health Plus Diagnostic & Imaging Centre",
+    "address": "S-63, Greater Kailash, New Delhi - 110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 34,
+    "name": "JDAR Pathology Lab",
+    "address": "26, Shanti Niketan, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 35,
+    "name": "Krystal MRI &  Scan & Diagnostic Centre",
+    "address": "1, Paschimi Enclave, Main Rohtak Road, Opp. Maruti Showroom, Near Peera Garhi Chowk, New Delhi. 011-45181111.",
+    "type": "NABH"
+  },
+  {
+    "id": 36,
+    "name": "Mahajan Imaging Pvt. Ltd.",
+    "address": "K-18, Hauz KhasEnclave, New Delhi-16.",
+    "type": "NABH"
+  },
+  {
+    "id": 37,
+    "name": "Mahajan Imaging Centre",
+    "address": "Sir Ganga Ram Hospital, Rajender Nagar, New Delhi - 110060.",
+    "type": "NABH"
+  },
+  {
+    "id": 38,
+    "name": "Mahajan Imaging Centre",
+    "address": "BL Kapur Super Specialty, Pusa Road, New Delhi - 110060.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 39,
+    "name": "Mahajan Imaging Centre",
+    "address": "B1, Vasant Kunj, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 40,
+    "name": "Must & More Health Care Pvt. Ltd.",
+    "address": "Kings Mall, Rohini West Metro Station, Sector-10, Rohini, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 41,
+    "name": "Mahavir International Removed from  CGHS Panel",
+    "address": "264-b-1, Hauz Rani Market, Near Saket, New Delhi – 110017",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 42,
+    "name": "Metropolis Health Care Ltd.",
+    "address": "F-2, B-1, Mohan Cooperative Inds. Estate, Mathura Road, New Delhi. 9650889932.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 43,
+    "name": "National MRI CT Scan & Diagnostic Centre",
+    "address": "1935, Main Rohtak Road, Punjabi Bagh, Near Maharaja Agrasen Hospital, New Delhi - 110026.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 44,
+    "name": "Janta X Ray Clinic Pvt. Ltd",
+    "address": "A-23, Green Park, New Delhi16.",
+    "type": "NABH"
+  },
+  {
+    "id": 45,
+    "name": "Oncquest Laboratories Ltd.",
+    "address": "3-Factory Road, ADJ-Safdarjung Hospital, New Delhi - 110029.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 46,
+    "name": "Platinum Imaging Centre Empanelment suspendedSuspension revoked",
+    "address": "9, Dayanand Vihar, New Delhi - 110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 47,
+    "name": "Saral Advanced Diagnostics Pvt. Ltd",
+    "address": "E-1073, Saraswati Vihar, Pitam Vihar, Delhi-34.",
+    "type": "NABH"
+  },
+  {
+    "id": 48,
+    "name": "Sanghi Medical Centre Pvt. Ltd",
+    "address": "S-51, Greater Kailash, New Delhi - 110048.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 49,
+    "name": "Srivastava MRI  & Imaging Centre Removed from  CGHS Panel",
+    "address": "Shop. No. 1,2,3,&6, Purvanchal Plaza, Pkt-B, LSC Market, Mayur Vihar, Phase-2, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 50,
+    "name": "Sadhu Vaswani Medical Centre  Removal from  CGHS Panel",
+    "address": "427, Shanti Niketan, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 51,
+    "name": "Unipath Diagnostics",
+    "address": "G-49, Lajpat Nagar, New Delhi24.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 52,
+    "name": "Chandan Health Centre",
+    "address": "Shop No.1, Plot No. 4886, Main Chowk, Dilshad Garden, Delhi95.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 53,
+    "name": "Makashir Diagnostics",
+    "address": "Lajpat Nagar, 4, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 54,
+    "name": "Dr. P. Bhasin Path Lab",
+    "address": "11B-3, Sector-17, Dwarka, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 55,
+    "name": "Sawan Neelu  Angles Nursing Home",
+    "address": "J-Block, 293, Saket, New Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 56,
+    "name": "Shivam Diagnostics & Cancer Research Inst. Imaging Facilities Suspended Suspension revoked",
+    "address": "C-41, Lane-4, Mahendru Enclave, Near Hans Cinema, Delhi.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 57,
+    "name": "Clinical Laboratory,",
+    "address": "E 139, Vasant Vihar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 58,
+    "name": "Noble Diagnostic Centre",
+    "address": "WZ-409C, Janak Park, Hari Nagar, Opp. Deen Dayal Upadhyay Hospital, Main Gate, New Delhi – 110066. 011-28122166, 28126230.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 59,
+    "name": "Hamdard Imaging Centre",
+    "address": "HAH Centenary Hospital, Jamia Hamdard, New Delhi -110062.",
+    "type": "NABH"
+  },
+  {
+    "id": 60,
+    "name": "Gen X Diagnostics",
+    "address": "26, First Floor, Sarvapriya Vihar, New Delhi – 110016.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 61,
+    "name": "Suraksha  Diagnostic Pvt. Ltd.",
+    "address": "C12, Opposite Mata Chanan Devi Hospital, Lal Sai Mandir Marg, Janakpuri, Delhi, 110058.",
+    "type": "NABH"
+  },
+  {
+    "id": 62,
+    "name": "Suraksha  Diagnostic Pvt. Ltd.",
+    "address": "185, Saini Enclave, Vikas Marg, Near Karkardooma Metro Station, Delhi -110092.",
+    "type": "NABH"
+  },
+  {
+    "id": 63,
+    "name": "Dr. Lalchandani Labs",
+    "address": "M-20, Lower GF, Greater Kailash Part-I, New Delhi - 110048.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 64,
+    "name": "Rog Nidan Kendra,",
+    "address": "E-191, Indira Park, Shastri Nagar, Delhi -110052",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 65,
+    "name": "Janta X-ray Clinic",
+    "address": "4A16, Tilak Nagar, New Delhi110018.",
+    "type": "NABH"
+  },
+  {
+    "id": 66,
+    "name": "Total Diagnostics Care",
+    "address": "I-1 Kailash Park, Opp. Metro Pillar No. 330, Kirti Nagar, New Delhi-110015.",
+    "type": "NABH"
+  },
+  {
+    "id": 67,
+    "name": "Kansal Path Lab and Diagnostics",
+    "address": "C-916, Yamuna Vihar, New Delhi-110053.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 68,
+    "name": "Shri Bhagwan Diagnostic & Imaging Centre Pvt. Ltd.",
+    "address": "2116, Bawana Road, Narela, Delhi-110040.",
+    "type": "NABH"
+  },
+  {
+    "id": 69,
+    "name": "Prognosis Laboratories",
+    "address": "515-516, Sector-19, DDA Plotted Development, Dwarka, New Delhi-110075. 011-65189657.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 70,
+    "name": "Life Line Diagnostics",
+    "address": "C-4, Anand Vihar, Delhi-110092",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 71,
+    "name": "ARC Diagnostic Clinic,",
+    "address": "1100, Ground Floor, Old Rajinder Nagar, Shankar Road, Delhi-110060.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 72,
+    "name": "Mahajan Imaging Sports Injury Centre",
+    "address": "Sports Injury Centre, Safdarjung Hospital, New Delhi-110029.",
+    "type": "NABH"
+  },
+  {
+    "id": 73,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "C-49, Main Vikas Marg, Preet Vihar, Delhi-110070. 011-30245844.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 74,
+    "name": "City Imaging and Clinical Labs LLP",
+    "address": "4B18, Tilak Nagar, DistrictWest, New Delhi - 110018.",
+    "type": "NABH"
+  },
+  {
+    "id": 75,
+    "name": "Sanya Diagnostics",
+    "address": "A-25, Near HDFC Bank, Hauz Khas, New Delhi-110016.No. 011-42377777.",
+    "type": "NABH"
+  },
+  {
+    "id": 76,
+    "name": "Advance Diagnostic Centre",
+    "address": "67, Hargobind Enclave, Delhi-110092",
+    "type": "NABH"
+  },
+  {
+    "id": 77,
+    "name": "Dynex  Diagnostic & Path Lab",
+    "address": "C-40, Kirti Nagar, Near Axis Bank, New Delhi-110015. No. 011-49031818.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 78,
+    "name": "Health View Diagnostic Centre",
+    "address": "Gyan Deep Complex, Ground Floor, Laxmi Market, opp. Canara Bank, Munirka, New Delhi-110067.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 79,
+    "name": "Indiana Diagnostics",
+    "address": "118B1, GTB Chowk, Dilshad Garden, Delhi -110095.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 80,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "Building No.1, LSC, Sector-B, Pocket-7, Nelson Mandela Marg, Vasant Kunj, New Delhi-110070",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 81,
+    "name": "Sure Path Labs Pvt. Ltd.,",
+    "address": "17-A, Shivpuri, Opp. Shivpuri Bus Stand, Near Geeta Colony, 14-Block, Delhi-110051. No. 011-22459600.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 82,
+    "name": "Helvetia  Diagnostic & Healthcare",
+    "address": "B-2, Greater Kailash-I, New Delhi-110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 83,
+    "name": "Must & More Super Speciality Diagnostic Centre,",
+    "address": "171, Near Bank of Baroda, Main Rohtak Road, Delhi110041.",
+    "type": "NABH"
+  },
+  {
+    "id": 84,
+    "name": "National MRI,  CT Scan & Diagnostic Centre",
+    "address": "7, Arihant Nagar, Opp. Metro Pilar No.149-50, West Punjabi Bagh, Main Rohtak Road, New Delhi-110026.",
+    "type": "NABH"
+  },
+  {
+    "id": 85,
+    "name": "Real Imaging and Research Centre LLP",
+    "address": "77A, GF, No. 011-22111000",
+    "type": "NABH"
+  },
+  {
+    "id": 86,
+    "name": "Vibles Path Labs",
+    "address": "P-47, West Patel Nagar, New Delhi-110008.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 87,
+    "name": "Sigma  Diagnostic & Imaging Centre",
+    "address": "17, Tarun enclave, Pitampura, New Delhi-110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 88,
+    "name": "Delhi MR & CT Scan Centre",
+    "address": "Fortis Aashlok Hospital, 25AAB, Community Centre, Safdarjung Enclave, New Delhi-110029.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 89,
+    "name": "As Health Square",
+    "address": "H-1A, Main Market Road, Hauz Khas, New Delhi. 011-45317777",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 90,
+    "name": "P.D. Gupta Mediscan Centre Pvt. Ltd.",
+    "address": "70, Darya Ganj, New Delhi-110002. 011-23256064.",
+    "type": "NABH"
+  },
+  {
+    "id": 91,
+    "name": "Dr. Das Path Lab",
+    "address": "A-28, Lower Ground Floor, Ghanshyam Dass Jain Marg, South Extn-2, New Delhi110049.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 92,
+    "name": "Express Clinics Pvt. Ltd.",
+    "address": "C-11, Basement, Lajpat Nagar3, New Delhi-110024.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 93,
+    "name": "North Delhi Advanced  Diagnostic & MRI Centre,",
+    "address": "7-SBI Colony, Near Gurudwara  Nanak Pyau (Towards Azadpur), Opp. Indian Oil Petrol Pump, Main GT Karnal Road, Delhi-110009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 94,
+    "name": "SBR Diagnostics Pvt. Ltd",
+    "address": "C-61, Preet Vihar, Vikas Marg, Delhi-110092.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 95,
+    "name": "Dr. Samir's Ganga Diagnostic & Imaging Centre Pvt. Ltd.,",
+    "address": "C-31A, Ground Floor, Rajan Babu Road, Adarsh Nagar, Delhi-110033.",
+    "type": "NABH"
+  },
+  {
+    "id": 1,
+    "name": "Balaji Multi Speciality Dental Centre",
+    "address": "Shop No. 47, B-2 Market, Paschim Vihar, New Delhi. No. 011-25273744, 9311211404.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Bahl Dental Clinic & Implant Centre",
+    "address": "2139-B, 1st Floor, Tilak Nagar, New Delhi - 110018.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Balaji Dental Care",
+    "address": "2065A, Old Anaj Mandi, Narela, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "CSM Medicentre Eye and Dental Care",
+    "address": "D-31, Flat No. 2, Rajouri Garden, New Delhi-110027. No. 011-41443931, 9871235757.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Dabas Dental Clinic & Orthodontic Centre Removal from CGHS Panel",
+    "address": "Flat No. 186, GF Pocket A, Sec13, Dwarka, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 6,
+    "name": "Delhi Dental & Medical Centre",
+    "address": "1932, Old Rajinder Nagar, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Dental World",
+    "address": "WZ-172, Street No.1, Sadh Nagar, Palam Colony, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 8,
+    "name": "Delhi Dental Hub",
+    "address": "9, State Bank Nagar, Paschim Vihar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Dr. Aroras Dental & Laser Centre",
+    "address": "C-44, Pamposh Enclave, Greater Kailash-I, New Delhi – 110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Dr. Shweta’s Dental Clinic",
+    "address": "D-42, Kalkaji, New Delhi.",
+    "type": "NABH"
+  },
+  {
+    "id": 11,
+    "name": "Dental Care Clinic Suspension  Revoked",
+    "address": "PD-1, 1 B, Pitam Pura, New Delhi-110088.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 12,
+    "name": "Rx Multispeciality Dental Clinic",
+    "address": "2649, Basement, Hudson Line, GTB Nagar, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 13,
+    "name": "Dr. Malhotra’s Super –Speciality Dental Centre Exit from panel",
+    "address": "42, Pusa Road, Opp. Metro Pillar, No.125, New Delhi. No. 9811906024, 9999108484.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 14,
+    "name": "Dr. Handa's Complete Family Dental Care",
+    "address": "66 1st Floor, Harsh Vihar, Opp. Bikaner Sweets, Pitampura, New Delhi-110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 15,
+    "name": "Goel's Multispeciality Dental Clinic & Implant Centre",
+    "address": "7A460, Durgapuri Exten., Durgapuri Chowk, Loni Road, Delhi - 110093.",
+    "type": "NABH"
+  },
+  {
+    "id": 16,
+    "name": "Leela Dental Clinic",
+    "address": "B-39, Main Road, Majlis Park,  Delhi. 2767818283. 9811503415.",
+    "type": "NABH"
+  },
+  {
+    "id": 17,
+    "name": "Muskan Dental Care",
+    "address": "1126, West Patel Nagar, New Delhi - 110008.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 18,
+    "name": "Navneesh Dental Clinic",
+    "address": "Unit No. 2, Begum Zaidi, Market, Moti Bagh, Part-1, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 19,
+    "name": "Navneesh Dental Clinic",
+    "address": "B-31B, Safdarjung Enclave, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 20,
+    "name": "Professional Dentistry Multispecialty Dental Care Centre Removed from CGHS Panel",
+    "address": "3427, D.B. Gupta Road, Paharganj, New Delhi - 110055.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 21,
+    "name": "Precision Dental Care",
+    "address": "C-159, Sarita Vihar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 22,
+    "name": "Rajdhani Dental and Orthodontic Centre",
+    "address": "B-48, Rajan Babu Road, Adarsh Nagar, Delhi - 110033. 011-27673109, 9811635679.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 23,
+    "name": "Singh’s Dental Hospital",
+    "address": "30-34 Sewak Park, Opp. Metro Pillar No. 771, Dwarka, Main Nagafgarh Road, New Delhi-59.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 24,
+    "name": "Smile 4 Sure Dental Clinic",
+    "address": "Shop No.1, DDA Market, Bank Enclave, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 25,
+    "name": "Sehgal Dental Clinic",
+    "address": "CA-1151, Opp. Shopping Centre, Tagore Garden, New Delhi - 110027.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 26,
+    "name": "Shivam Dental Clinic",
+    "address": "C-41, Mahendru Enclave, Model Town, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 27,
+    "name": "Siwach Dental Hospital",
+    "address": "132, Auchandi Road, Bawana, Delhi-110039.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 28,
+    "name": "Star Dental Centre Pvt. Ltd. Removal from CGHS Panel",
+    "address": "C-47, Safdarjung Development Area, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 29,
+    "name": "Sai Mobident Dental Centre",
+    "address": "D-14231, Metro Pillar No.411, Sec-7, Rohini, New Delhi. No.9313603596",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 30,
+    "name": "S.K. Dental",
+    "address": "88, Moti Nagar, New Delhi – 110015.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 31,
+    "name": "Sadhu Vaswani Medical Centre Removed from CGHS Panel",
+    "address": "427, Shanti Niketan, New Delhi",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 32,
+    "name": "The Caring Touch",
+    "address": "R-721, New Rajinder Nagar, New Delhi. 28745151, 28745252",
+    "type": "NABH"
+  },
+  {
+    "id": 33,
+    "name": "32 Smile Stone Dental Clinic",
+    "address": "3 Ring Road, Kilokari, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 34,
+    "name": "32 Pearls MultiSpecialty Dental Clinic Removed from CGHS Panel",
+    "address": "G-15, Single Story, Vijay Nagar, Delhi-110009. 9999955440, 8510055440.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 35,
+    "name": "Mittal Dental Clinic Empanelment Suspended",
+    "address": "3543, Sita Ram Bazar, Opp. Kucha Pati Ram, Near Chawri Bazar Metro Station, Delhi-6.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 36,
+    "name": "Kumar Dental Clinic",
+    "address": "209, Hakikat Nagar, Gali No.7, Near GTB Metro Station, Delhi - 110009",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 37,
+    "name": "J.A. Aneja Multispeciality Dental Centre Suspension  Revoked",
+    "address": "28323B, 28, Vishnu Garden Extn, New Delhi - 110018. No. 011-6999009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 38,
+    "name": "T32 Dental Clinic",
+    "address": "1-C, Vivekanand Market, Sector1, R.K. Puram, Hyatt-Munirka Road, New Delhi - 110022.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 39,
+    "name": "White Field Dental Clinic",
+    "address": "1E4, Jhandewalan Extension, Near Jhandewalan Metro Station, New Delhi-110055.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 40,
+    "name": "Dento Hub",
+    "address": "GG-123B, Vikas Puri, New Delhi-110018.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 41,
+    "name": "Dr. Ashok Dentistree",
+    "address": "23-Panchkuian Road, Below R.K. Ashram Metro Station, Opp. Pilar No.12, Paharganj, New Delhi-110055.",
+    "type": "NABH"
+  },
+  {
+    "id": 42,
+    "name": "The Healing Touch,...Dental Care",
+    "address": "First Floor, Behind Mother Dairy, Chetak Complex, Pocket B & E, Market, Dilshad Garden, Delhi-110095",
+    "type": "NABH"
+  },
+  {
+    "id": 43,
+    "name": "Jain Dental Centre",
+    "address": "F-19, Mandir Marg, Near Happy English School, Krishna Nagar,  Delhi-110051.",
+    "type": "NABH"
+  },
+  {
+    "id": 44,
+    "name": "Faces N Braces Dental Clinic",
+    "address": "D-85, Lower Ground Floor, Near Saket Metro Station Gate No.3, New Delhi-110017. 011-40324151, 9278374151.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 45,
+    "name": "Crystal Dental Centre",
+    "address": "31, Community Centre, Basant Lok, Vasant Vihar, New Dellhi110057.",
+    "type": "NABH"
+  },
+  {
+    "id": 46,
+    "name": "R.P.S. Memorial Multispeciality Dental Clinic,",
+    "address": "D-660 B, Main 100 Feet Road, Chander Lok Colony, Shahdara, Delhi-110093.",
+    "type": "NABH"
+  },
+  {
+    "id": 47,
+    "name": "Teerthanker  Aadinath Bright Dental Care",
+    "address": "11, 121513, Wazir Nagar, Bhishampitah Marg, Kotla Mubarkpur, New Delhi-110003.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 48,
+    "name": "Sai Dental and Implant Clinic",
+    "address": "130, Mohammadpur, R.K. Puram, Behind Bhikaji Cama Place, New Delhi-110066.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 49,
+    "name": "Gupta Multispeciality Dental clinic",
+    "address": "QU-132 B, Pitampura, New Delhi-110034.",
+    "type": "NABH"
+  },
+  {
+    "id": 50,
+    "name": "Oral Care Dental  Health & Orthodontic Centre",
+    "address": "632, Old Rajinder Nagar, Near Karol Bagh Metro Station, Gate No.7, New Delhi-110060. No. 9711172259.",
+    "type": "NABH"
+  },
+  {
+    "id": 51,
+    "name": "Leela Dental Clinic",
+    "address": "9, Hakikat Nagar, Gate No.1, GTB Nagar, Kingsway Camp, Delhi-110009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 52,
+    "name": "Kapil Dental Clinic & Implant Center",
+    "address": "A-1681, Sector-6, Rohini, Delhi110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 53,
+    "name": "Facio Dental Super Speciality Clinic",
+    "address": "158B-III9, Near Canara Bank, Adjacent Ambience Tower, Vasant Kunj, New Delhi-110070.",
+    "type": "NABH"
+  },
+  {
+    "id": 54,
+    "name": "Sanjeevani Dental Care",
+    "address": "E-2064, Near Remal Public School, Sector-3, Rohini, Delhi-110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 55,
+    "name": "Delhi 32 Dental Centre",
+    "address": "12320, Mandoli Road, Ram  Nagar, Shahdara, Delhi-110032",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 56,
+    "name": "Stars Dental Clinic",
+    "address": "A-14, D.K. Road, Mohan Garden, Uttam Nagar, New Delhi-110059.",
+    "type": "NABH"
+  },
+  {
+    "id": 57,
+    "name": "S.R. Dental Implants & Braces Centre",
+    "address": "PU-103, Opp. St. Stephens School, Pitampura, Delhi110034.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 58,
+    "name": "Dent Apple Dental Clinic & Implant Centre Empanelment withdrawn",
+    "address": "B-6, Basement, Ashoka Niketan, New Delhi - 110092.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 59,
+    "name": "Gupta's Dental  Clinic and Implant Centre",
+    "address": "B-27, East Jyoti Nagar, Durgapuri Chowk, Near HDFC  Bank, Shahdara, Delhi-110093",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 60,
+    "name": "S.L. Dental",
+    "address": "C2C-234A, Pocket-2, Janakpuri, New Delhi-110058.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 61,
+    "name": "Dental Healers Pvt. Ltd., Empanelment withdrawn",
+    "address": "B-6, Greater Kailash Enclave-I, New Delhi - 110048.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 62,
+    "name": "Dental Quest",
+    "address": "Flat No. 1A, DDA Flats, Sector6, Pocket-2, Dwarka, New Delhi-110075.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 63,
+    "name": "Dental Maestro",
+    "address": "Shivam Medical Centre, Main Nagafgarh Road, Nangloi, Delhi-110041.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 64,
+    "name": "Centre For Smile",
+    "address": "61-D, Opp. Old JNU, Behind DDA Market, Ber Sarai, New Delhi-110016.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 65,
+    "name": "Life Line Dental Care",
+    "address": "C-4, Anand Vihar, Delhi-110092",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 66,
+    "name": "Advanced Dental Care",
+    "address": "Shop no. 31, Rati Ram Park, Naya Bazar, Near HDFC Bank, Tura Mandi, New Delhi-110043",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 67,
+    "name": "Krishna Dental Clinic",
+    "address": "RZP-1, Rajnagar-II, Near Malaria Research Institute, Main Dada Dev Road, Sec-8, Dwarka, New Delhi-110077.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 68,
+    "name": "Glowing Life Initiative Empanelment withdrawn",
+    "address": "A 1288, 1st Floor, Safdarjung Enclave, New Delhi -110029.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 69,
+    "name": "Smile Dental Hub",
+    "address": "1433, Ground Floor, Wazir Nagar, South Extn., Opp. Yes Bank Defence Colony, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 70,
+    "name": "The Dental Hub and Implant Centre",
+    "address": "Shop No. C-141&2, Main Road, Masoodpur Market,  Vasant Kunj, New Delhi-110070",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 71,
+    "name": "Dental Square Empanelment withdrawn",
+    "address": "A-3314, FF, Paschim Vihar, New Delhi-110063.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 72,
+    "name": "Dr. Paria Dental Clinic",
+    "address": "K-367, Gali No.08, Rishi Nagar, Rani Bagh, Delhi -110034",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 73,
+    "name": "S.R. Advance Dental Clinic",
+    "address": "H.No.30, Pocket D-8, Sector06, Rohini, New Delhi-110085.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 74,
+    "name": "Allione",
+    "address": "H-25, Karampura, New Delhi 110015.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 75,
+    "name": "Mittal Dental and Polyclinic",
+    "address": "L-51A, Som Bazar Road, Raja Puri, (Opp. Sec-5, Dwarka), Uttam Nagar, New Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 76,
+    "name": "Smile Experts,",
+    "address": "J-11407-A, Mansarovar Park, Opp. Primary MCD School, Shahdara, Delhi-110032.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 77,
+    "name": "Vinayak Dental Clinic,",
+    "address": "B-10, Main Tajpur Road, Badarpur Border, New Delhi110044.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 78,
+    "name": "Wisdom Dental Maxillofacial and Implant Clinic",
+    "address": "F-46-47, Manish Global Mall, opp. Mount Carmel School, Sec-22, Dwarka, Delhi-110077",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 79,
+    "name": "Modern Dental and Oro Maxillofacial Clinic",
+    "address": "B-217, Ground Floor, Hari Nagar, Behind DDU Hospital, New Delhi-110064.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 80,
+    "name": "Smirk Dental & Implant Centre",
+    "address": "F-13, Vijay Chowk, Laxmi Nagar, Delhi-110092. 011-22044475.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 81,
+    "name": "Dr. Priyadarshini's Smile Care",
+    "address": "117, Satya Niketan, Moti Bagh, New Delhi-110021.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 82,
+    "name": "Smile Dental Clinic",
+    "address": "82A, Deepshikha Building, Near Moti Bagh, Gurudwara, New Delhi-110021.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 83,
+    "name": "Dr. Lal MultiSpeciality Dental & Implant Clinic",
+    "address": "12299, Mandoli Road, Near Ravidas Gate, Ram Nagar, Shahdara, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 84,
+    "name": "Shakuntla Dental Care",
+    "address": "RZ-I-72, Sagarpur (West), New Delhi.-110046.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 85,
+    "name": "Dr. Gopal Goel's Dental Clinic & Implant Centre",
+    "address": "28, 1st Floor, Krishna Market, Jhilmil Colony, Opp. A-Block, Vivek Vihar-II, Delhi-110095.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 86,
+    "name": "Dentem",
+    "address": "F-311, Vasant Vihar, South West, Delhi-110057. 011-41755052.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 87,
+    "name": "Dr. Aggarwal's Multi-Speciality Delhi Dental Clinic and Implant Centre",
+    "address": "Shop. No.32, Gandhi Market, Minto Road, New Delhi-110002",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 88,
+    "name": "Sharma Dental,",
+    "address": "RZ-156A, Dada Chhatriwala Marg, Gali No.9, Raj Nagar-I, Palam Colony, New Delhi-110045",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 89,
+    "name": "Dr. Arvind's Dental Clinic,",
+    "address": "27054 H, Block-E III, Near 1st 60 Futa, Molarband Extn., Badarpur, New Delhi-110044.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 90,
+    "name": "Pearl White Dental Clinic,",
+    "address": "Shop No. 128, Bhagat Singh Market, Gole Market, Connaught Place, New Delhi110001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 91,
+    "name": "OM Dental Clinic,",
+    "address": "D-124, Surajmal Vihar, Gate No.1, Delhi.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 92,
+    "name": "Kailash Dental,",
+    "address": "Ground Floor, 53-54, South Patel Nagar, New Delhi-110008",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Asian Institute of Medical Sciences,",
+    "address": "Sec-21A, Badkal Flyover Road, Faridabad,",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Metro Heart Institute",
+    "address": "Sec.16A, Faridabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 3,
+    "name": "Park Hospital",
+    "address": "J-Block, Sec-10, Opp. Court, Faridabad – 121004. Cont. No. 7531818181, 7531919191, 01244200000.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "QRG Central Hospital & Research Centre",
+    "address": "69, Sec-20A, Near Neelam Flyover, Ajronda Chowk, Mathura Road, Faridabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 5,
+    "name": "R G Stone Urology Laparoscopy Hospital",
+    "address": "A-6, Nehru Ground Neelam Bata Road, NIT, Faridabad,",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Sarvodaya Hospital",
+    "address": "YMCA Road, Sector8, Faridabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Fortis Hospitals Ltd.",
+    "address": "Neelam Bata Road, Faridabad – 121001.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Santosh Multi-Speciality Hospital",
+    "address": "3F139, Near Police Post-3, NIT Faridabad-121001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Medicheck Ortho Super Speciality Hospital",
+    "address": "Site No.2, Sector-46, Faridabad-121010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Pawan Hospital",
+    "address": "Samaypur Road, Near Sector-56, Faridabad -121004.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 11,
+    "name": "QRG Medicare Ltd.,",
+    "address": "Plot No. 1, Sector-16, Faridabad-121002.",
+    "type": "NABH"
+  },
+  {
+    "id": 1,
+    "name": "Drishti Eye Centre",
+    "address": "20-21, Fruit Garden, Near Green Auto Mobile, NIT Faridabad -242001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Mehta Eye Care",
+    "address": "5E05, B.P. Near Neelam Chowk, Railway Road, NIT, Faridabad- 121001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Foundation Dental & Facial Trauma Centre",
+    "address": "C-585, 40 Feet Road, Near Mastana Chowk, Chawla Colony, Faridabad-121004.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Advanced Dental and Implant Clinic",
+    "address": "Booth No.21, Huda Main Market, Sector-17, Faridabad-121002.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Focus Diagnostics",
+    "address": "G-6, Rama Palace, Ajronda, ( Next to Neelam Flyover ) Faridabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Lal Pathlabs Pvt. Faridabad-121002. Tel. No. 0129-3266060",
+    "address": "SCO-30, Sector-16,",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 1,
+    "name": "Artemis Hospital",
+    "address": "Sector -51 Gurgaon Haryana-122001",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Aryan Hospital",
+    "address": "Old Railway Road, Gurgaon (Haryana),",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Alchemist Hospital",
+    "address": "Sector-53, Saraswati Kunj, DLF Golf Course Road, Gurgaon 122002.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "Kalyani Hospital Pvt. Ltd.",
+    "address": "Mehrauli Road, Gurgaon ?122001",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Metro Hospitals & Heart Institute",
+    "address": "H-Block, Palam Vihar, Gurgaon. 0124- 2578182, 3247241",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Max Hospital",
+    "address": "B-Block, Sushant Lok, Phase-I, Gurgaon, Haryana. 0124-6623000.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Medanta Medicity,",
+    "address": "Sector – 38, Gurgaon – 122001.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Paras Hospital",
+    "address": "C-1, Sushant Lok, Phase-I, Sector-43, Gurgaon (Haryana)",
+    "type": "NABH"
+  },
+  {
+    "id": 9,
+    "name": "Park Hospital",
+    "address": "Q-Block, South City -II, Sector47, Main Sohna Road, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 10,
+    "name": "Aarvy Hospital",
+    "address": "53018, Civil Lines, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 11,
+    "name": "Mayom Hospital",
+    "address": "D-Block, South City-I, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 12,
+    "name": "Neelkanth Hospital",
+    "address": "DLF Phase-III, Nathupur Road, Gurgaon-122002.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 13,
+    "name": "Umkal Hospital,",
+    "address": "A-520, Sushant Lok-I, Gurgaon-122022. 0124-4666555.",
+    "type": "NABH"
+  },
+  {
+    "id": 14,
+    "name": "Wpratiksha Hospital",
+    "address": "Golf Course Extn. Road, Sushant Lok-II, Sector-56, Gurgaon-122011. 0124-4131091.",
+    "type": "NABH"
+  },
+  {
+    "id": 15,
+    "name": "Kriti Hospital",
+    "address": "Plot No. 13, Opp. Kendriya Vihar, Sector-56, Gurugram.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Ahooja Eye & Dental Institute",
+    "address": "5601, Dayanand Colony, New Railway Road, Gurgaon. 0124-2321234.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Centre For Sight",
+    "address": "SCO Complex-317, Sector - 29, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 3,
+    "name": "Lall Eye Care Center",
+    "address": "New Railway Road, Gurgaon, Haryana.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Shroff Eye Centre",
+    "address": "110- Commercial Plaza, Radisson Suites, Behind Ansal? Time Square Building, B- Block Sushant Lok Phase – I, Sector-27, Gurgaon, Haryana- 122022.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Vasan Eye Care",
+    "address": "SCO 379 & 380, Sector-29, Near IFFCO, Chowk Metro Station, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 6,
+    "name": "Eye Q Vision Pvt. Ltd.",
+    "address": "New Railway Road, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Eye Q Vision Pvt. Ltd.",
+    "address": "Plot No. 522, Sector 27, Near Super Mart 1 Gurugram",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 8,
+    "name": "Arunodaya Desert Eye Hospital",
+    "address": "Sector-55, Plot #, NH-4, Gurgaon122003.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Viaan Eye & Retina Centre",
+    "address": "UG-4, Bestech Central Square Mall, Sushant Lok-II, Sector-57, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Modern Diagnostic & Research Centre",
+    "address": "4627-4637, Jawahar Nehru Nagar, New Railway Road, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Modern Diagnostic & Research Centre",
+    "address": "Plot No. 8, Sector-44, Institutional Area, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Apex Diagnostics Exit From Panel",
+    "address": "12, Jacaranda Marg, DLF City, Phase-II, Gurgaon, Haryana - 122002.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "C-1B, Clear View, Old DLF Colony, Sector-14, Gurgaon122001.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 5,
+    "name": "Molecular Quest Healthcare Pvt. Ltd.",
+    "address": "Plot 28-29, Sector-18 (P), Electronic City, Udyog Vihar, Phase-IV, Gurgaon122015.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 6,
+    "name": "Mantracare X-ray and Diagnostics",
+    "address": "1041-P, Sector-22, Gurgaon-122015.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "SRL Limited",
+    "address": "Fortis Memorial Research Institute (FMRI), Sector-44, Gurgaon-122002.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 8,
+    "name": "Vijaya Diagnostic Centre Pvt. Ltd.",
+    "address": "D-Block, Palam Vihar, Opp. Mother Dairy, Near Vyapar Kendra, Gurgaon122017.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 7,
+    "name": "Mahajan Imaging Sports Injury Centre",
+    "address": "Time Square Building, Sushant Lok Marg, Gurugram-122002.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Hindustan Wellness Pvt. Ltd.,",
+    "address": "Plot No.107, 1st Floor, Sec44, Institutional Area, Gurgaon.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 1,
+    "name": "Ahooja Eye & Dental Institute",
+    "address": "5601, Dayanand Colony, New Railway Road, Gurgaon. 0124-2321234.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Chhabras Dental Clinic",
+    "address": "1097, Sector-4, Gurgaon, Haryana.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Bhim Sain’s Family Dental Clinic & Dental Laboratory",
+    "address": "220-221, Qutab Plaza, DLF City, Gurgaon-122002.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "Dental Trendzz",
+    "address": "Shop No. 6, Kataria Market, Gurgaon - 122001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Muskan Dentals",
+    "address": "C-1039, Near Vyapar Kendra, Sushant Lok-1, Gurgaon.",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Smile ‘N’ Shine Dental Care Centre",
+    "address": "44 Madhya Marg, DLF PH -2, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "Dr. Futela's Dental Centre",
+    "address": "C-11, Nirvana Courtyard, Nirvana Country, South City-2, Sohna Road, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 8,
+    "name": "Lal Super Speciality Dental & Implant Clinic",
+    "address": "Shop. No.C-1, Shiv Palace, Gurudwara Road, Near Canara Bank, Opp. Purani Sabzi Mandi, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Unique Dental Clinic",
+    "address": "South city -1, Opp. Mother Dairy and Mayom Hospital, Near Huda City Centre, Gurgaon-122001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Sudarshan Poly Dental Centre",
+    "address": "Shop No. 21 (Basement) Old Delhi Road, Near Union Bank, Sector-14, Gurgaon-122001.",
+    "type": "NABH"
+  },
+  {
+    "id": 11,
+    "name": "Grace Dental Clinic",
+    "address": "H.No.1298, Sector-31, Opp. Ajanta Public School, Gurgaon.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 12,
+    "name": "Muskaan Dentals",
+    "address": "H.No.167P, Near Kendriya Vihar, Sector-56, Gurugram, Haryana122002.",
+    "type": "NABH"
+  },
+  {
+    "id": 13,
+    "name": "Sapphire Dental Care",
+    "address": "Shop No. 18, Shree Shyam Palace, Prakash Puri, Chowk, Railway Road, Gurgaon-122001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 15,
+    "name": "Perfect Dental Studio",
+    "address": "SCO No.98, First Floor, Sec-55, Huda Market, Gurgaon-",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 16,
+    "name": "Smilessence The Specialist Dental Centre",
+    "address": "SFF-102, Ansal's Palam Triangle (Next to Macdonald’s) Palam Vihar, Gurgaon -122017.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 1,
+    "name": "Aarogya Hospital,",
+    "address": "Plot No. NH-1, Sector-VI, Vaishali, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 2,
+    "name": "Brij Medical Centre",
+    "address": "KK-54, Kavi Nagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Chandra Laxmi Hospital",
+    "address": "Sec-4, Plot No. 337, Vaishali,  Ghaziabad – 201010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Family Health Care Hospital--Name Changed to Clearmedi Hospital and Cancer Centre",
+    "address": "15 HC-1, Vasundhara Enclave, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 5,
+    "name": "Ganesh Hospital",
+    "address": "II-C3, Nehru Bazar, Ghaziabad -201001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 6,
+    "name": "Kamal Hospital",
+    "address": "KA-Block, Kaushambi, Near",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "Narinder Mohan Hospital & Heart Center",
+    "address": "Mohan Nagar, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Pushpanjali Crosslay Hospital changed to Max Super specialty Hospital",
+    "address": "W-3, Sector-1, Vaishali, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 9,
+    "name": "Shreya Hospital",
+    "address": "837, Shalimar Garden, Extn.-I, Sahibabad, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Shanti Gopal Hospital",
+    "address": "NH-1, Ahinsa Khand, Indirapuram, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 11,
+    "name": "Yashoda Hospital and Research Centre",
+    "address": "III-M, Nehru Nagar, Ghaziabad.",
+    "type": "NABH"
+  },
+  {
+    "id": 12,
+    "name": "Yashoda Super",
+    "address": "Kaushambi,",
+    "type": "NABH"
+  },
+  {
+    "id": 13,
+    "name": "Paras Hospital",
+    "address": "H-130, Sector-4, Vaishali, Ghaziabad-201012.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 14,
+    "name": "Atlanta Mediworld Multispeciality Hospital",
+    "address": "Plot No. NH-01, Sec-14, Atal Chowk, Vasundhara, Ghaziabad-201012.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 15,
+    "name": "Navin Hospital",
+    "address": "NH-1, Sector-3, Near Jain Mandir, Vaishali, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 16,
+    "name": "Pannalal Shyamlal Hospital",
+    "address": "II-F172, Nehru Nagar, Ambedkar Road, Ghaziabad-201001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 17,
+    "name": "Vasundhara Hospital",
+    "address": "Sector-15NH-I, Near Atal Chowk, Vasundhara, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 18,
+    "name": "Anand Hospital & Chhidda Singh Yadav Trauma Centre",
+    "address": "Lal Kuan, G.T. Road, Near Reliance Petrol Pump, Ghaziabad-201001.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 19,
+    "name": "Apex Health Care & Research Centre",
+    "address": "158, Rajnagar Exten. SSC opp. Saphire KDP Nagar, Gole Chakkar, Ghaziabad.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 1,
+    "name": "Param Jyoti Eye Center",
+    "address": "Plot No. 481, Friends Society, Sec12, Vasundhra, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Tewari Eye Centre",
+    "address": "5699, Vaishali Ghaziabad-201010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Manav Hospital & Laser Eye Centre",
+    "address": "Nursing Home Gate No.1, B-Block, Kavi Nagar, Ghaziabad - 201002.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Sunetra Eye Centre Ltd.",
+    "address": "KC-120, C-Block, Kavi Nagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "ASG Hospital Pvt. Ltd.",
+    "address": "C-52 A, RDC, Ray Nagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 6,
+    "name": "Punarjyoti Eye & Mother Care Center",
+    "address": "Duplex No.1, Sector-15, Vasundhara, Ghaziabad-201012.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "OM Eye & Gynae Centre,",
+    "address": "5622, Sector-5, Vaishali, Ghaziabad201010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 8,
+    "name": "Dev Eye Centre",
+    "address": "R-10, Vakil Colony, Sector-12, Pratap Vihar, Ghaziabad-201009.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Sai Eye Care and Medical Centre",
+    "address": "H-981, Sector-12, Pratap Vihar, Near BSNL",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 10,
+    "name": "Eye Trust Clinic & Day Care Centre",
+    "address": "R-2211, Rajnagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 11,
+    "name": "Lions Eye Hospital",
+    "address": "E-Block, Kavi Nagar, Ghaziabad-",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 12,
+    "name": "Drishti Eye & ENT Care",
+    "address": "Plot No. 8, GF, Sector-5, Vaishali, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Dr. Saigals Dental Clinic & Implant Centre",
+    "address": "KD-20, Kavi Nagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Dental DestinationPvt. Ltd.",
+    "address": "B-144, DLF Colony, Bhopura, Sahibabad (Ghaziabad).",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Royal Dental Care",
+    "address": "II C128, Nehru Nagar, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 4,
+    "name": "Rama Brite Smile Dental Care",
+    "address": "House No.2150, Sector 16-A, Vasundhara, Ghaziabad-201012.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Jyoti Dental Care Center",
+    "address": "Shop No.13 &14, 344, Aman Banquet Hall, Sector-5, Rajinder Nagar, Sahibabad, Ghaziabad-",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Hope Dental Care Tel. No. 0120-4215167.",
+    "address": "D-40, Shyam Park Extn., Sahibabad, Ghaziabad-201005.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 7,
+    "name": "Procare Dental Clinic & Implant Centre",
+    "address": "Shop No.2, Skytech Magadh Apartment, Sector-3, Vaishali, Ghaziabad-201010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 8,
+    "name": "Vaishnavi MultiSpeciality Dental and Implant Clinic",
+    "address": "609, First Floor, Sector-5, Vaishali, Ghaziabad-201010.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 9,
+    "name": "Prime Dental Clinic,",
+    "address": "Plot No.889, UG-4, Sector-5, Vaishali, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Hope Imaging & Diagnostics",
+    "address": "D-40, Shyam Park Extension, Jindal Market, Sahibabad, Ghaziabad201005.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Piyush MRI & Diagnostic Centre",
+    "address": "1085 G.F., Nitikhand-I, Kala Pathar Marg, Indrapuram, Ghaziabad.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "Ground Floor, Plot No.20, Sector15C, Near SBI, Vasundhara, Ghaziabad.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "C-30, RDC, Near Krishna Sagar, Rajnagar, Ghaziabad-201002.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 5,
+    "name": "Rainbow Diagnostic Pvt. Ltd.",
+    "address": "B-16, Below Bali Vable, Near Shiv Chowk, Shalimar Garden, Extn-II, Sahibabad-201005.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 6,
+    "name": "Vitrana Healthcare LLP",
+    "address": "Molecular Imaging and Therapy, Plot No. -14, Sanjay Nagar District Centre, Sector-23, Sanjay Nagar, Ghaziabad-201002.",
+    "type": "NABH"
+  },
+  {
+    "id": 1,
+    "name": "Amrapali Hospital",
+    "address": "Plot No. NH-34, P-2, Omega-1, Greater Noida.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Bhardwaj Hospital",
+    "address": "NH-1, Sector-29, Noida – 201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 3,
+    "name": "Green City Hospital",
+    "address": "Plot No.NH-17, Delta-I, Greater Noida-201308.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "Kailash Hospital & Heart Institute",
+    "address": "H-33, Sector-27, Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 5,
+    "name": "Kailash Hospital Ltd.",
+    "address": "23, KP-I, Greater Noida – 201305.",
+    "type": "NABH"
+  },
+  {
+    "id": 6,
+    "name": "Metro Hospitals & Heart Institute",
+    "address": "X-1, Sector-11-12, L-94, Noida – 201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 7,
+    "name": "Max Hospital",
+    "address": "A-364, Sector-19, Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 8,
+    "name": "Prakash Hospital",
+    "address": "D-12, 12-A, 12-B, Sector – 33, Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 9,
+    "name": "Satya Medical Centre Hospital",
+    "address": "A-98A, Sector-34, Noida – 201307.",
+    "type": "NABH"
+  },
+  {
+    "id": 10,
+    "name": "Vinayak Hospital",
+    "address": "NH-1, Sector-27, Atta, Noida – 201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 11,
+    "name": "Sumitra Hospital",
+    "address": "A-119A, Sector-35, Noida – 2013001.",
+    "type": "NABH"
+  },
+  {
+    "id": 12,
+    "name": "Surbhi Hospital",
+    "address": "Golf Course Road, Morna, Sector-35, Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 13,
+    "name": "Sharda Hospital",
+    "address": "Plot No. 32&34, Knowledge Park-3, Greater Noida-201306.",
+    "type": "NABH"
+  },
+  {
+    "id": 14,
+    "name": "Yatharth Wellness Hospital & Trauma Centre",
+    "address": "32, Omega-I, Greater Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 15,
+    "name": "Yatharth Wellness Super Speciality Hospital & Heart Centre",
+    "address": "NH-I, Sector-110, Noida.",
+    "type": "NABH"
+  },
+  {
+    "id": 16,
+    "name": "Max Multi Speciality Hospital",
+    "address": "Plot No. 4a, Sector Institutional Green, Opp. NTPC, Near Crown Plaza, Greater Noida - 201306.",
+    "type": "NABH"
+  },
+  {
+    "id": 17,
+    "name": "Navin Hospital",
+    "address": "NH-3, Sector-Alpha-II, Pocket-F, Greater Noida.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 18,
+    "name": "Shivalik Medical Centre Pvt. Ltd.",
+    "address": "Sector-51, Main Road, Hoshyarpur, Sector-51, Noida. (U.P.)",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 19,
+    "name": "Prayag Hospital & Research Centre Pvt.",
+    "address": "J-206A-I, Sector-41, Noida-201302.",
+    "type": "NABH"
+  },
+  {
+    "id": 20,
+    "name": "Fortis Hospitals Ltd.",
+    "address": "B-22, Sector-62, Noida – 201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 21,
+    "name": "Jaypee Hospital",
+    "address": "Sector-128, Noida - 201304.",
+    "type": "NABH"
+  },
+  {
+    "id": 22,
+    "name": "Apollo Hospital",
+    "address": "E-2, Sector-26, Noida-201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 23,
+    "name": "Felix Hospital",
+    "address": "NH-1, Sector-137, Expressway, Noida - 201305.",
+    "type": "NABH"
+  },
+  {
+    "id": 24,
+    "name": "New Balaji Hospital",
+    "address": "Plot -734, Haldauni More, Main Dadri Road, Greater  Noida",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 25,
+    "name": "Kumar Hospital",
+    "address": "NH-10, G-Block, Sector Beta-II, Greater Noida. No. 0120-4553056.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 26,
+    "name": "Manas Hospital",
+    "address": "A-93, Sector-34, Gautam Budh Nagar, Noida201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 27,
+    "name": "J.S. Tomar Memorial Hospital Pvt. Ltd.",
+    "address": "Opp. Step by Step School, Sector-132, Noida -201301",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 28,
+    "name": "Neo Hospital",
+    "address": "D-170A, (Gautam Budh Nagar), Sector-50, Noida201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 29,
+    "name": "Dipakshi Nursing & Maternity Home Pvt. Ltd.",
+    "address": "C-53A, Sector-33, Near NTPC Township, G.B. Nagar, Noida - 201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 30,
+    "name": "Sharma Medicare Pvt. Ltd.",
+    "address": "NH-19A, L-Block, Delta-2, Greater Noida-201308.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 31,
+    "name": "Shri Ram Singh Multi Speciality Hospital",
+    "address": "Opp. OIDB Bhawan, Sector-70, Noida-201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 32,
+    "name": "Noida Medicare Centre Ltd.",
+    "address": "16-C, Block-E, Sector-30, Noida -201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Eye Health Clinic",
+    "address": "E-1, Sector-61, Noida.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "I CARE Eye Hospital & Post Graduate Institute, ICARE Research Centre",
+    "address": "E-3A, Sec-26, Noida-201301.",
+    "type": "NABH"
+  },
+  {
+    "id": 3,
+    "name": "Tirupati Eye Centre",
+    "address": "C53C, Sec-33, Noida-201303.",
+    "type": "NABH"
+  },
+  {
+    "id": 4,
+    "name": "Itek Vision Centre",
+    "address": "B-1A22, Sector-51, Ground Floor, Noida-201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Vision Plus Eye Centre",
+    "address": "Kisan Tower, Golf Marg, Sec51, Noida-201301.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Perfect Teeth Dental Clinic",
+    "address": "Shop No. 17, City Plaza, B-Block Market, Sec-62, Noida. No. 9999882382",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "S.N Dental Hospital & Implant Centre",
+    "address": "Shop 5, B-13, Sector-34, Mother Dairy Market, Noida.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 1,
+    "name": "Noida MRI & Diagnostic Centre",
+    "address": "B-139, B-Block Market, Sector51, Noida.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Lal Pathlabs Pvt.",
+    "address": "N-27, Sector-18, Noida-201301.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 3,
+    "name": "Suraksha Diagnostic Pvt. Ltd.",
+    "address": "F-123, Sector-8, Noida-201301.",
+    "type": "UNKNOWN"
+  },
+  {
+    "id": 4,
+    "name": "KB Healthcare Diagnostic Centre",
+    "address": "Plot # NH 29, Sector-P4, Greater Noida-201310. 0120-2447050.",
+    "type": "NON_NABH"
+  },
+  {
+    "id": 5,
+    "name": "Saral Diagnostic Classic Pvt. Ltd.",
+    "address": "E1B, Sector-39, Near Rayan International School, Noida.",
+    "type": "NABH"
+  }
+]

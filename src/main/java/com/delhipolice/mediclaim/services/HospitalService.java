@@ -14,12 +14,12 @@ public interface HospitalService {
 
     Hospital find(Long id);
 
-    List<Hospital> findAll();
+    List<HospitalVO> findAll();
 
     List<HospitalVO> findByNameContaining(String name);
 
     Hospital save(HospitalVO hospital);
 
-    Hospital update(Hospital hospital);
+    HospitalVO update(HospitalVO hospitalVO);
 
 }

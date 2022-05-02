@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.model.Address;
 import com.delhipolice.mediclaim.model.Hospital;
 import com.delhipolice.mediclaim.repositories.HospitalRepository;
 import com.delhipolice.mediclaim.vo.HospitalVO;
@@ -27,8 +28,8 @@ public class HospitalServiceImpl implements HospitalService{
     }
 
     @Override
-    public List<Hospital> findAll() {
-        return hospitalRepository.findAll();
+    public List<HospitalVO> findAll() {
+        return hospitalRepository.findAll().stream().map(HospitalVO::new).collect(Collectors.toList());
     }
 
 
@@ -48,7 +49,14 @@ public class HospitalServiceImpl implements HospitalService{
     }
 
     @Override
-    public Hospital update(Hospital hospital) {
-        return null;
+    public HospitalVO update(HospitalVO hospitalVO) {
+        Hospital hospital = hospitalRepository.getById(hospitalVO.getId());
+
+        hospital.setHospitalName(hospitalVO.getName());
+        hospital.setHospitalAddress(new Address(hospitalVO.getAddress()));
+        hospital.setHospitalType(hospitalVO.getType());
+        Hospital updatedHospital =  hospitalRepository.save(hospital);
+
+        return new HospitalVO(updatedHospital);
     }
 }

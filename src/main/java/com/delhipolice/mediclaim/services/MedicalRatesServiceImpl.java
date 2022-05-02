@@ -1,8 +1,9 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.constants.HospitalType;
 import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.repositories.MedicalRatesRepository;
-import com.delhipolice.mediclaim.vo.MedicalRateSearchCriteriaVO;
+import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.MedicalRateVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -12,6 +13,10 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static com.delhipolice.mediclaim.constants.HospitalType.NABH;
 
 @Service
 @Slf4j
@@ -20,26 +25,36 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
     @Autowired
     private MedicalRatesRepository medicalRatesRepository;
 
+    @Autowired
+    private DiaryEntryService diaryEntryService;
+
     @Override
     public MedicalRates find(Long id) {
         return medicalRatesRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<MedicalRateVO> findByNameContaining(MedicalRateSearchCriteriaVO medicalRateSearchCriteriaVO) {
+    public List<MedicalRateVO> findByNameContaining(String searchTerm, UUID diaryId) {
 
-        if(StringUtils.isEmpty(medicalRateSearchCriteriaVO.getSearchTerm()))
+        if(StringUtils.isEmpty(searchTerm))
             return new ArrayList<>();
 
-        List<MedicalRates> medicalRates = medicalRatesRepository.findByNameContaining(medicalRateSearchCriteriaVO.getSearchTerm().toLowerCase(Locale.ROOT));
+        DiaryEntryVO diaryEntry = diaryEntryService.find(diaryId);
+
+        List<MedicalRates> medicalRates = medicalRatesRepository.findByNameContaining(searchTerm.toLowerCase(Locale.ROOT));
 
         List<MedicalRateVO> medicalRateVOS = new ArrayList<>();
 
         for(MedicalRates mr : medicalRates) {
-            medicalRateVOS.add(new MedicalRateVO(mr.getId().toString(), mr.getProductName(), medicalRateSearchCriteriaVO.getHospitalType().equals("NABH") ? mr.getNabhNablRate() : mr.getNonNabhNablRate() ));
+            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate() ));
         }
 
         return medicalRateVOS;
+    }
+
+    @Override
+    public List<MedicalRateVO> findAll() {
+        return medicalRatesRepository.findAll().stream().map(MedicalRateVO::new).collect(Collectors.toList());
     }
 
     @Override
@@ -48,8 +63,14 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
     }
 
     @Override
-    public MedicalRates update(MedicalRates medicalRates) {
-        return medicalRatesRepository.save(medicalRates);
+    public MedicalRateVO update(MedicalRateVO medicalRateVO) {
+        MedicalRates medicalRates = medicalRatesRepository.getById(medicalRateVO.getId());
+        medicalRates.setProductName(medicalRateVO.getProductName());
+        medicalRates.setNabhNablRate(medicalRateVO.getNabhNablRate());
+        medicalRates.setNonNabhNablRate(medicalRateVO.getNonNabhNablRate());
+
+        MedicalRates updatedMedicalRates = medicalRatesRepository.save(medicalRates);
+        return new MedicalRateVO(updatedMedicalRates);
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class HospitalRestController {
@@ -30,9 +31,17 @@ public class HospitalRestController {
     }
 
     @GetMapping("/searchMedicalRate")
-    public List<MedicalRateVO> searchMedicalRate(@RequestParam(value = "searchTerm") String searchTerm,@RequestParam(value = "type") String type, @RequestParam(value = "hospitalType") String hospitalType) {
-        MedicalRateSearchCriteriaVO medicalRateSearchCriteriaVO = new MedicalRateSearchCriteriaVO(searchTerm, type, hospitalType);
-        return medicalRatesService.findByNameContaining(medicalRateSearchCriteriaVO);
+    public List<MedicalRateVO> searchMedicalRate(@RequestParam(value = "searchTerm") String searchTerm,@RequestParam(value = "diaryId") UUID diaryId) {
+        return medicalRatesService.findByNameContaining(searchTerm, diaryId);
+    }
 
+    @PostMapping("/updatehospital")
+    public @ResponseBody HospitalVO updateHospital(HospitalVO hospitalVO) {
+        return hospitalService.update(hospitalVO);
+    }
+
+    @PostMapping("/updatemedicalrates")
+    public @ResponseBody MedicalRateVO updateMedicalRates(MedicalRateVO medicalRateVO) {
+        return medicalRatesService.update(medicalRateVO);
     }
 }

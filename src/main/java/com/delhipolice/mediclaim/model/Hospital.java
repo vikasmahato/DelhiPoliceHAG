@@ -22,6 +22,7 @@ public class Hospital implements Serializable, Auditable {
 
     public Hospital(HospitalVO hospitalVO) {
         this.hospitalName = hospitalVO.getName();
+        this.hospitalType = hospitalVO.getType();
         Address address = new Address(hospitalVO.getAddress(), hospitalVO.getCity(), hospitalVO.getState(), hospitalVO.getPincode());
         this.hospitalAddress = address;
     }

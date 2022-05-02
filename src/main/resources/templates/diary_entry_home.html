@@ -20,7 +20,7 @@
 
 <div th:replace="fragments/topnav :: navbar"></div>
 
-<div class="container">
+<div class="container-fluid">
 
     <div class="row mt-3">
         <div class="col-lg-4">
@@ -30,14 +30,15 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3>Datatable using list of Objects in data parameter</h3>
-            <table id="example" class="table table-bordered table-responsive" style="width: 100%">
+            <h3>Diary Entries</h3>
+            <table id="example" class="table table-bordered table-responsive">
                 <thead>
                 <tr>
                     <th>Diary Number</th>
                     <th>Rank/Name/No</th>
                     <th>Treatment Taken By</th>
-                    <th>Type</th>
+                    <th>Diary Type</th>
+                    <th>Claim Type</th>
                     <th>Details</th>
                 </tr>
                 </thead>
@@ -46,7 +47,8 @@
                     <th>Diary Number</th>
                     <th>Rank/Name/No</th>
                     <th>Treatment Taken By</th>
-                    <th>Type</th>
+                    <th>Diary Type</th>
+                    <th>Claim Type</th>
                     <th>Details</th>
                 </tr>
                 </tfoot>
@@ -76,14 +78,19 @@
         },
         "columns": [
             {"data": "displayDiaryNumber", "width": "20%"},
-            {"data": "displayName", "width": "60%"},
+            {"data": "displayName", "width": "40%"},
             {"data": "treatmentTakenBy","width": "10%"},
-            {"data": "caseType","width": "10%"},
+            {"data": "diaryType","width": "10%"},
+            {"data": "claimType","width": "10%"},
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
                     var buttonID = "action_"+full.id;
-                    return '<a id='+buttonID+' class="btn btn-primary" href="/viewclaim?id='+ full.id +'">View Claim</a>';
+                    var isClaimMade = full.isNewClaim;
+                    if(isClaimMade)
+                        return '<a id='+buttonID+' class="btn btn-primary" href="/viewclaim?id='+ full.id +'">View Claim</a>';
+                    else
+                        return '<a id='+buttonID+' class="btn btn-warning" href="/viewclaim?id='+ full.id +'">Make Claim</a>';
                 }
             },
         ],

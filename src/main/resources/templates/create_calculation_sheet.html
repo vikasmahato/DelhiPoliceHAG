@@ -28,28 +28,10 @@
         <div class="col-lg-12">
             <h3>Create a Calculation Sheet</h3>
 
-            <div class="form-group">
-                <label for="claimCheck">Hospital Tpye</label>
-                <div id="claimCheck">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="h_type" id="nabh_nabl" value="NABH">
-                            NABH
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="h_type" id="non_nabh_nabl" value="NON_NABH">
-                            NON NABH
-                        </label>
-                    </div>
-                </div>
-            </div>
-
             <form id="calcSheetForm" method="post">
                 <div class="box-body">
 
-                    <input type="hidden" th:value="${diaryId}" name="diaryId" id="diaryId">
+                    <input type="hidden" th:value="${diaryId}" name="diaryNo" id="diaryNo">
 
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                         <table class="table table-bordered table-hover">
@@ -75,14 +57,14 @@
                         <button class="btn btn-success addmore" type="button">+ Add More</button>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <label>Amount asked: &nbsp;</label>
                         <div class="input-group">
                             <div class="input-group-addon">₹</div>
                             <input type="number" step="any" class="form-control" name="askedTotal" id = "askedTotal" placeholder="Amount asked" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-xs-12 col-sm-3 col-md-3 col-lg-3">
                         <label>Total: &nbsp;</label>
                         <div class="input-group">
                             <div class="input-group-addon">₹</div>
@@ -114,7 +96,7 @@
     $(document).ready(function () {
         $.ajax({
             type:"get",
-            url:"/getCalSheetentries/"+$("#diaryId").val(),
+            url:"/getCalSheetentries/"+$("#diaryNo").val(),
             async: false,
             dataType: "json",
             success: function(data){
@@ -235,20 +217,6 @@
 
     //autocomplete script
     $(document).on('focus','.autocomplete_txt',function(){
-        const type = $(this).data('type');
-        var autoTypeNo;
-        if(type ==='productCode' ) autoTypeNo = 0;
-        if(type ==='productName' ) autoTypeNo=1;
-        let h_type;
-        if(document.getElementById('nabh_nabl').checked) {
-            h_type = "nabh_nabl"
-        }else if(document.getElementById('non_nabh_nabl').checked) {
-            h_type = "non_nabh_nabl"
-        }
-        else{
-            alert("Please select Hospital Type");
-        }
-
         $(this).autocomplete({
             source: function( request, response ) {
                 $.ajax({
@@ -258,8 +226,7 @@
                     method: 'get',
                     data: {
                         searchTerm: request.term,
-                        type: type,
-                        hospitalType: h_type
+                        diaryId: $("#diaryNo").val()
                     },
                     success: function( data ) {
                         response( $.map( data, function( item ) {

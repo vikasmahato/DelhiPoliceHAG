@@ -15,4 +15,7 @@ public interface DiaryEntryRepository extends JpaRepository<DiaryEntry, UUID> {
 
     @Query("SELECT d FROM DiaryEntry d WHERE d.claimType in :claimTypes")
     List<DiaryEntry> findAll(@Param("claimTypes")  List<ClaimType> claimTypes);
+
+    @Query("SELECT d FROM DiaryEntry d")
+    List<DiaryEntry> findAll();
 }

@@ -6,6 +6,10 @@ public enum Relation {
     HUSBAND("Husband", "H/O"),
     MOTHER("Mother", "M/O"),
     FATHER("Father", "F/O"),
+    MOTHER_IN_LAW("Mother In Law", "Mother-in-law of"),
+    FATHER_IN_LAW("Father In Law", "Father-in-law of"),
+    BROTHER("Brother", "Brother of"),
+    SISTER("Sister", "Sister of"),
     SON("Son", "S/O"),
     DAUGHTER("Daughter", "D/O");
 

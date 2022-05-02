@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary Entry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container-fluid">
+
+    <div id="message-div"></div>
+
+    <div class="modal fade" id="medicalRatesModal" tabindex="-1" aria-labelledby="medicalRatesModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medicalRatesModalLabel">New message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="medicalRatesEditForm">
+                        <input type="hidden" class="form-control" id="medical-rate-id" name="id">
+                        <div class="mb-3">
+                            <label for="medical-rate-name" class="col-form-label">Test Name:</label>
+                            <input type="text" class="form-control" id="medical-rate-name" name="productName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="medical-rate-nonNabhNablRate" class="col-form-label">NON NABH Rate:</label>
+                            <input type="number" class="form-control" id="medical-rate-nonNabhNablRate" name="nonNabhNablRate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="medical-rate-nabhNablRate" class="col-form-label">NABH Rate:</label>
+                            <input type="number" class="form-control" id="medical-rate-nabhNablRate" name="nabhNablRate">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="submitForm();">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Medical Rates</h3>
+            <table id="medicalrates" class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Description</th>
+                    <th>NABH Rate</th>
+                    <th>Non NABH Rate</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="medicalRate : ${medicalRates}">
+                    <td th:text="${medicalRate.productCode}"></td>
+                    <td th:text="${medicalRate.productName}"></td>
+                    <td th:text="${medicalRate.nabhNablRate}"></td>
+                    <td th:text="${medicalRate.nonNabhNablRate}"></td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medicalRatesModal" th:data-bs-id="${medicalRate.id}" th:data-bs-name="${medicalRate.productName}" th:data-bs-nabh="${medicalRate.nabhNablRate}" th:data-bs-nonnabh="${medicalRate.nonNabhNablRate}">Edit</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Description</th>
+                    <th>NABH Rate</th>
+                    <th>Non NABH Rate</th>
+                    <th>Action</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/datatables.js}"></script>
+
+<script>
+    $('#medicalrates').DataTable();
+</script>
+
+<script>
+    const medicalRatesModal = document.getElementById('medicalRatesModal');
+    medicalRatesModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const id = button.getAttribute('data-bs-id');
+        const name = button.getAttribute('data-bs-name');
+        const nabh = button.getAttribute('data-bs-nabh');
+        const nonnabh = button.getAttribute('data-bs-nonnabh');
+
+        const modalTitle = medicalRatesModal.querySelector('.modal-title');
+        modalTitle.textContent = name;
+        debugger;
+        $("#medical-rate-id").val(id);
+        $("#medical-rate-name").val(name);
+        $("#medical-rate-nonNabhNablRate").val(nabh);
+        $("#medical-rate-nabhNablRate").val(nonnabh);
+    })
+</script>
+
+<script>
+    function submitForm() {
+        var data = $("#medicalRatesEditForm").serialize();
+
+        console.log(data);
+
+        $.ajax({
+            type:"post",
+            data:data,
+            url:"/updatemedicalrates",
+            async: false,
+            dataType: "json",
+            success: function(response){
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                    response.productName + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#medicalRatesModal').modal('toggle');
+            },
+            error: function (jqXHR, exception) {
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                    exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#medicalRatesModal').modal('toggle');
+            }
+        });
+
+    }
+</script>
+</html>

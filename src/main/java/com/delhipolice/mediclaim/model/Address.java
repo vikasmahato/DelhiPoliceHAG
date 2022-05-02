@@ -35,4 +35,9 @@ public class Address implements Serializable {
         this.pincode = pincode;
         this.city = city;
     }
+
+    @Override
+    public String toString() {
+        return addressLine + ", " + city + ", " + state + "- " + pincode;
+    }
 }

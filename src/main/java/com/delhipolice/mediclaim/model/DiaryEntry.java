@@ -34,7 +34,6 @@ public class DiaryEntry implements Serializable, Auditable {
         this.diaryDate = diaryEntryVO.getDiaryDate();
         this.treatmentTakenBy = diaryEntryVO.getTreatmentTakenBy();
         this.hospital = diaryEntryVO.getHospital();
-        this.caseType = diaryEntryVO.getCaseType();
         this.amountClaimed = diaryEntryVO.getAmountClaimed();
         this.admissibleAmount = diaryEntryVO.getAdmissibleAmount();
         this.phqNumber = diaryEntryVO.getPhqNumber();
@@ -43,7 +42,7 @@ public class DiaryEntry implements Serializable, Auditable {
         this.sanctionDate = diaryEntryVO.getSanctionDate();
         this.isObjection = diaryEntryVO.getIsObjection();
         this.calculationSheet = diaryEntryVO.getCalculationSheet();
-        this.claimDetails = diaryEntryVO.getClaimDetails();
+        this.claimDetails = new ClaimDetails(diaryEntryVO.getClaimDetails());
         this.claimType = diaryEntryVO.getClaimType();
     }
 
@@ -79,11 +78,8 @@ public class DiaryEntry implements Serializable, Auditable {
     @OneToMany(cascade=CascadeType.ALL)
     private List<CalculationSheetEntry> calculationSheet;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private ClaimDetails claimDetails = new ClaimDetails();
-
-    @Column
-    private CaseType caseType;
+    @Embedded
+    private ClaimDetails claimDetails;
 
     @Column
     private ClaimType claimType = ClaimType.OP_REFERRAL;

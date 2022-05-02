@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.constants.ClaimStatus;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
@@ -12,6 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Predicate;
@@ -56,17 +58,26 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
 
         diaryEntry.setHospital(hospital);
+        diaryEntry.getClaimDetails().setClaimStatus(ClaimStatus.D_HAND);
         return diaryEntryRepository.save(diaryEntry);
     }
 
     @Override
-    public DiaryEntry update(DiaryEntry diaryEntry) {
-        return null;
+    public DiaryEntry update(DiaryEntryVO diaryEntryVO) {
+        DiaryEntry diaryEntry = diaryEntryRepository.findById(diaryEntryVO.getId()).get();
+        diaryEntry.setAmountClaimed(diaryEntryVO.getAmountClaimed());
+        diaryEntry.setPhqNumber(diaryEntryVO.getPhqNumber());
+        diaryEntry.setPhqDate(diaryEntryVO.getPhqDate());
+        diaryEntry.setSanctionDate(diaryEntryVO.getSanctionDate());
+        diaryEntry.setSanctionNumber(diaryEntryVO.getSanctionNumber());
+        diaryEntry.getClaimDetails().setStartDate(diaryEntryVO.getClaimDetails().getStartDate());
+        diaryEntry.getClaimDetails().setEndDate(diaryEntryVO.getClaimDetails().getEndDate());
+        return diaryEntryRepository.save(diaryEntry);
     }
 
     @Override
-    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes) {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes);
+    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest) {
+        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll();
         return getPage(diaryEntries, pagingRequest);
     }
 
@@ -78,8 +89,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         LinkedList<String> itemHosp = calcSheetVO.getItemHosp();
         LinkedList<String> itemDate = calcSheetVO.getItemDate();
         LinkedList<String> itemName = calcSheetVO.getItemName();
-        LinkedList<Double> total_asked = calcSheetVO.getTotal_asked();
-        LinkedList<Double> total = calcSheetVO.getTotal();
+        LinkedList<Double> totalAsked = calcSheetVO.getTotal_asked();
+        LinkedList<Double> totalGranted = calcSheetVO.getTotal();
+
+        diaryEntry.setAmountClaimed(BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum)));
+        diaryEntry.setAdmissibleAmount(BigDecimal.valueOf(totalGranted.stream().reduce(0d, Double::sum)));
+
 
         int count = itemNo.size();
 
@@ -91,8 +106,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             calculationSheetEntry.setBillNumber(itemHosp.get(i));
             calculationSheetEntry.setBillDate(itemDate.get(i));
             calculationSheetEntry.setTreatment(itemName.get(i));
-            calculationSheetEntry.setAmountAsked(total_asked.get(i));
-            calculationSheetEntry.setTotal(total.get(i));
+            calculationSheetEntry.setAmountAsked(totalAsked.get(i));
+            calculationSheetEntry.setTotal(totalGranted.get(i));
             calculationSheetEntries.add(calculationSheetEntry);
         }
 

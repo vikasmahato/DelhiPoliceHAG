@@ -30,7 +30,7 @@
 
                     <div th:replace="create_diary_entry :: diaryDetails"></div>
 
-
+                    <input type="hidden" th:value="*{id}" name="id" id="id">
 
                     <div class="row">
                         <div class="col-6">
@@ -52,37 +52,48 @@
                             <span th:case="*">
                                 <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
                                 <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
-                                <span th:if="*{caseType.getEnumValue() == 'Referral'}">
-                                    <a class="btn btn-primary" th:href="@{/printNotesheet/{id}(id=*{id})}">Print Note Sheet</a> <!-- File 2 -->
-                                    <a class="btn btn-primary" th:href="@{/printOrder/{id}(id=*{id})}">Print Order</a> <!-- File 15 -->
+                                <span th:if="*{claimType.getEnumValue() == 'Referral'}">
+                                    <a class="btn btn-primary" th:href="@{/printReferralNotesheet/{id}(id=*{id})}">Print Note Sheet</a> <!-- File 2 -->
+                                    <a class="btn btn-primary" th:href="@{/printReferralOrder/{id}(id=*{id})}">Print Order</a> <!-- File 15 -->
                                 </span>
 
-                                <span th:if="*{caseType.getEnumValue() == 'Emergency'}">
-                                    <a class="btn btn-primary" th:href="@{/printForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a> <!-- File 7 -->
+                                <span th:if="*{claimType.getEnumValue() == 'OP-Emergency'}">
+                                    <a class="btn btn-primary" th:href="@{/printOpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a> <!-- File 7 -->
                                 </span>
                             </span>
                         </div>
 
                     </div>
                     <div th:if="*{diaryType.getEnumValue() == 'Hospital'}">
-                        <div th:switch="*{#lists.size(calculationSheet)}">
-                            <span th:case="'0'">
-                                <a class="btn btn-primary" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Create Calculation Sheet</a>
-                            </span>
-                            <span th:case="*">
-                                <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
-                                <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
-                                <span th:if="*{caseType.getEnumValue() == 'Referral'}">
-                                    <a class="btn btn-primary" th:href="@{/printNotesheet/{id}(id=*{id})}">Print Note Sheet</a> <!-- -->
-                                    <a class="btn btn-primary" th:href="@{/printOrder/{id}(id=*{id})}">Print Order</a>  <!-- -->
+
+                        <span th:if="*{claimType.getEnumValue() == 'Credit'}">
+                                    <a class="btn btn-primary" th:href="@{/printCreditNotesheet/{id}(id=*{id})}">Print Notesheet</a>   <!-- File 10-->
+                                    <a class="btn btn-primary" th:href="@{/printCreditPermission/{id}(id=*{id})}">Print Permission</a>   <!-- File 22-->
+                                </span>
+                        <span th:if="*{claimType.getEnumValue() == 'Permission'}">
+                                    <a class="btn btn-primary" th:href="@{/printTreatmentNotesheet/{id}(id=*{id})}">Print Notesheet</a>   <!-- File 12-->
+                                    <a class="btn btn-primary" th:href="@{/printTreatmentPermission/{id}(id=*{id})}">Print Permission</a>   <!-- File 13-->
                                 </span>
 
-                                <span th:if="*{caseType.getEnumValue() == 'Emergency'}">
-                                    <a class="btn btn-primary" th:href="@{/printForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 3-->
+                        <div th:if="*{claimType.getEnumValue() == 'OP-Emergency' || claimType.getEnumValue() == 'IP-Emergency'}">
+                            <div th:switch="*{#lists.size(calculationSheet)}">
+                                <span th:case="'0'">
+                                    <a class="btn btn-primary" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Create Calculation Sheet</a>
                                 </span>
-                            </span>
+                                <span th:case="*">
+                                    <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
+                                    <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
+
+                                    <span th:if="*{claimType.getEnumValue() == 'OP-Emergency'}">
+                                        <a class="btn btn-primary" th:href="@{/printOpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 7-->
+                                    </span>
+                                    <span th:if="*{claimType.getEnumValue() == 'IP-Emergency'}">
+                                        <a class="btn btn-primary" th:href="@{/printIpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 3-->
+                                    </span>
+
+                                </span>
+                            </div>
                         </div>
-
                     </div>
 
                 </div>

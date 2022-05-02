@@ -1,35 +1,23 @@
 package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.constants.*;
-import com.delhipolice.mediclaim.model.audit.AuditSection;
-import com.delhipolice.mediclaim.model.audit.Auditable;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
+import com.delhipolice.mediclaim.vo.ClaimDetailsVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "CLAIM_DETAILS")
-public class ClaimDetails implements Serializable, Auditable {
+@Embeddable
+public class ClaimDetails implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
-
-    @Column
-    private Integer tenantId;
-
-    @Embedded
-    private AuditSection auditSection = new AuditSection();
 
     @Column
     private Relation relation = Relation.SELF;
@@ -65,13 +53,7 @@ public class ClaimDetails implements Serializable, Auditable {
     private String period;
 
     @Column
-    private String policeStationNumber;
-
-    @Column
-    private String siNumber;
-
-    @Column
-    private ClaimStatus claimStatus;
+    private ClaimStatus claimStatus  = ClaimStatus.NEW;
 
     @Column
     private HospitalType hospitalType;
@@ -81,18 +63,27 @@ public class ClaimDetails implements Serializable, Auditable {
 
     @Column
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date relativeCghsexpiry;
 
     @Column
     private BigDecimal amountDue;
 
-    @Override
-    public AuditSection getAuditSection() {
-        return auditSection;
-    }
-
-    @Override
-    public void setAuditSection(AuditSection auditSection) {
-        this.auditSection = auditSection;
+    public ClaimDetails(ClaimDetailsVO claimDetailsVO) {
+        relation = claimDetailsVO.getRelation();
+        relativeName = claimDetailsVO.getRelativeName();
+        pincode = claimDetailsVO.getPincode();
+        startDate = claimDetailsVO.getStartDate();
+        endDate = claimDetailsVO.getEndDate();
+        refHospitalName = claimDetailsVO.getRefHospitalName();
+        disease = claimDetailsVO.getDisease();
+        applicationDate = claimDetailsVO.getApplicationDate();
+        amountAvailable = claimDetailsVO.getAmountAvailable();
+        period = claimDetailsVO.getPeriod();
+        claimStatus = claimDetailsVO.getClaimStatus();
+        hospitalType = claimDetailsVO.getHospitalType();
+        relativeCghsNumber = claimDetailsVO.getRelativeCghsNumber();
+        relativeCghsexpiry = claimDetailsVO.getRelativeCghsexpiry();
+        amountDue = claimDetailsVO.getAmountDue();
     }
 }

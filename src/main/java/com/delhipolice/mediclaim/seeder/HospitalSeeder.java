@@ -9,6 +9,7 @@ import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.services.HospitalService;
 import com.delhipolice.mediclaim.services.MedicalRatesService;
 import com.delhipolice.mediclaim.vo.ApplicantVO;
+import com.delhipolice.mediclaim.vo.ClaimDetailsVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HospitalVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,21 +40,21 @@ public class HospitalSeeder {
 
     @EventListener
     public void seed(ContextRefreshedEvent event) throws IOException {
-        seedHospitals();
-        seedMedicalRates();
-        seedDummyData();
+        //seedHospitals();
+        //seedMedicalRates();
+      //  seedDummyData();
     }
 
     private void seedHospitals() throws IOException {
 
 
-        File file = new ClassPathResource("data/hospital.json").getFile();
+        File file = new ClassPathResource("data/cghs_hospital.json").getFile();
         ObjectMapper objectMapper = new ObjectMapper();
         HospitalVO[] list = objectMapper.readValue(file, HospitalVO[].class);
 
         for(HospitalVO hospitalVO : list) {
             hospitalService.save(hospitalVO);
-            log.info("Saved: " + hospitalVO.getName());
+            //log.info("Saved: " + hospitalVO.getName());
 
         }
 
@@ -69,7 +70,7 @@ public class HospitalSeeder {
 
         for(MedicalRates medicalRates : list) {
             medicalRatesService.save(medicalRates);
-            log.info("Saved: " + medicalRates.getProductName());
+            //log.info("Saved: " + medicalRates.getProductName());
 
         }
 
@@ -80,18 +81,18 @@ public class HospitalSeeder {
 
 
 
-        diaryEntryService.save(buildVO("Applicant 1", "00000", "999999", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, CaseType.REFERRAL));
-        diaryEntryService.save(buildVO("Applicant 2", "00001", "888888", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, CaseType.EMERGENCY));
+        diaryEntryService.save(buildVO("Applicant 1", "00000", "999999", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, ClaimType.CREDIT));
+        diaryEntryService.save(buildVO("Applicant 2", "00001", "888888", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, ClaimType.PERMISSION));
 
-        diaryEntryService.save(buildVO("Applicant 3", "00002", "777777", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, CaseType.REFERRAL));
-        diaryEntryService.save(buildVO("Applicant 4", "00003", "6666666", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, CaseType.EMERGENCY));
+        diaryEntryService.save(buildVO("Applicant 3", "00002", "777777", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, ClaimType.CREDIT));
+        diaryEntryService.save(buildVO("Applicant 4", "00003", "6666666", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, ClaimType.PERMISSION));
 
-        diaryEntryService.save(buildVO("Applicant 5", "00004", "5555555", TreatmentBy.SELF, "00001", DiaryType.HOSPITAL, CaseType.EMERGENCY));
-        diaryEntryService.save(buildVO("Applicant 6", "00005", "444444", TreatmentBy.RELATIVE, "00001", DiaryType.HOSPITAL, CaseType.EMERGENCY));
+        diaryEntryService.save(buildVO("Applicant 5", "00004", "5555555", TreatmentBy.SELF, "00001", DiaryType.HOSPITAL, ClaimType.CREDIT));
+        diaryEntryService.save(buildVO("Applicant 6", "00005", "444444", TreatmentBy.RELATIVE, "00001", DiaryType.HOSPITAL, ClaimType.PERMISSION));
 
     }
 
-    private DiaryEntryVO buildVO(String name, String beltNumber, String pisNumber, TreatmentBy treatmentBy, String diaryNumber, DiaryType diaryType, CaseType caseType) {
+    private DiaryEntryVO buildVO(String name, String beltNumber, String pisNumber, TreatmentBy treatmentBy, String diaryNumber, DiaryType diaryType, ClaimType claimType) {
         DiaryEntryVO diaryEntryVO = new DiaryEntryVO();
 
         ApplicantVO applicant = new ApplicantVO();
@@ -111,7 +112,7 @@ public class HospitalSeeder {
         diaryEntryVO.setDiaryNumber(diaryNumber);
         diaryEntryVO.setDiaryDate(new Date());
         diaryEntryVO.setDiaryType(diaryType);
-        diaryEntryVO.setCaseType(caseType);
+        diaryEntryVO.setClaimType(claimType);
 
 
         ClaimDetails claimDetails = new ClaimDetails();
@@ -123,7 +124,7 @@ public class HospitalSeeder {
         claimDetails.setRelativeCghsNumber( TreatmentBy.SELF.equals(treatmentBy) ? null : "123123");
         claimDetails.setRelativeCghsexpiry(TreatmentBy.SELF.equals(treatmentBy) ? null : new Date());
 
-        diaryEntryVO.setClaimDetails(claimDetails);
+        diaryEntryVO.setClaimDetails(new ClaimDetailsVO(claimDetails));
 
         CalculationSheetEntry calculationSheetEntry = new CalculationSheetEntry();
         calculationSheetEntry.setTotal(22d);

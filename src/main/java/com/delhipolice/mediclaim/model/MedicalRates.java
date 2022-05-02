@@ -2,6 +2,7 @@ package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
+import com.delhipolice.mediclaim.vo.MedicalRateVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,7 @@ public class MedicalRates implements Serializable, Auditable {
     private Long id;
 
     @Column
-    private String productCode;
+    private Integer productCode;
 
     @Column
     private String productName;
@@ -35,6 +36,9 @@ public class MedicalRates implements Serializable, Auditable {
 
     @Column
     private Float nabhNablRate;
+
+    @Column
+    private String state;
 
     @Column
     @Embedded
@@ -49,5 +53,12 @@ public class MedicalRates implements Serializable, Auditable {
     @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
+    }
+
+    public MedicalRates(MedicalRateVO medicalRateVO) {
+        productCode = medicalRateVO.getProductCode();
+        productName = medicalRateVO.getProductName();
+        nonNabhNablRate = medicalRateVO.getNonNabhNablRate();
+        nabhNablRate = medicalRateVO.getNabhNablRate();
     }
 }

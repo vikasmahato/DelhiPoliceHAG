@@ -19,7 +19,7 @@ public class AuditSection implements Serializable {
 
   @Temporal(TemporalType.TIMESTAMP)
   @Column(name = "DATE_CREATED")
-  private Date dateCreated;
+  private Date dateCreated = new Date();
 
   @Temporal(TemporalType.TIMESTAMP)
   @Column(name = "DATE_MODIFIED")

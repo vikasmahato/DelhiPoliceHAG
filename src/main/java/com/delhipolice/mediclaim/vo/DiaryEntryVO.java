@@ -1,12 +1,9 @@
 package com.delhipolice.mediclaim.vo;
 
-import com.delhipolice.mediclaim.constants.CaseType;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.*;
-import com.delhipolice.mediclaim.model.audit.AuditSection;
-import com.delhipolice.mediclaim.model.audit.Auditable;
 import com.delhipolice.mediclaim.utils.EnglishNumberToWords;
 import com.delhipolice.mediclaim.utils.FinancialYearGenerator;
 import lombok.Getter;
@@ -14,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -40,7 +36,6 @@ public class DiaryEntryVO implements Serializable {
     private ApplicantVO applicant;
     private TreatmentBy treatmentTakenBy;
     private Hospital hospital;
-    private CaseType caseType;
     private BigDecimal amountClaimed;
     private  BigDecimal admissibleAmount;
     private String amountGrantedInWords;
@@ -52,13 +47,14 @@ public class DiaryEntryVO implements Serializable {
     private Date sanctionDate;
     private Boolean isObjection;
     private List<CalculationSheetEntry> calculationSheet;
-    private ClaimDetails claimDetails;
+    private ClaimDetailsVO claimDetails;
     private ClaimType claimType;
     private String amountAsked1;
     private String amountGranted1;
     private String notesheetSalutation;
     private Boolean viewMode = Boolean.FALSE;
     private String financialYear;
+    private Boolean isNewClaim = Boolean.FALSE;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
         id = diaryEntry.getId();
@@ -68,7 +64,6 @@ public class DiaryEntryVO implements Serializable {
         applicant = new ApplicantVO(diaryEntry.getApplicant());
         treatmentTakenBy = diaryEntry.getTreatmentTakenBy();
         hospital = diaryEntry.getHospital();
-        caseType = diaryEntry.getCaseType();
         claimType = diaryEntry.getClaimType();
         amountClaimed = diaryEntry.getAmountClaimed();
         admissibleAmount = diaryEntry.getAdmissibleAmount();
@@ -79,7 +74,7 @@ public class DiaryEntryVO implements Serializable {
         displayDiaryNumber = buildDiaryNumber();
         displayName = buildDisplayName();
         isObjection = diaryEntry.getIsObjection();
-        claimDetails = diaryEntry.getClaimDetails() == null? new ClaimDetails() : diaryEntry.getClaimDetails();
+        claimDetails = new ClaimDetailsVO(diaryEntry.getClaimDetails());
         calculationSheet = diaryEntry.getCalculationSheet() == null ? new ArrayList<>() : diaryEntry.getCalculationSheet();
         displayNameSalutation = buildDispplayNameSalutation();
         amountAsked1 = getAmountAsked().toString();
@@ -87,6 +82,7 @@ public class DiaryEntryVO implements Serializable {
         notesheetSalutation = buildNotesheetSalutation();
         amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
         financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
+        isNewClaim = claimDetails.getIsNewClaim();
     }
 
     private Double getAmountAsked() {
