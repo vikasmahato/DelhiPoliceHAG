@@ -57,7 +57,7 @@
                                     <a class="btn btn-primary" th:href="@{/printReferralOrder/{id}(id=*{id})}">Print Order</a> <!-- File 15 -->
                                 </span>
 
-                                <span th:if="*{claimType.getEnumValue() == 'OP-Emergency'}">
+                                <span th:if="*{claimType.getEnumValue() == 'Emergency'}">
                                     <a class="btn btn-primary" th:href="@{/printOpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a> <!-- File 7 -->
                                 </span>
                             </span>
@@ -66,16 +66,14 @@
                     </div>
                     <div th:if="*{diaryType.getEnumValue() == 'Hospital'}">
 
-                        <span th:if="*{claimType.getEnumValue() == 'Credit'}">
-                                    <a class="btn btn-primary" th:href="@{/printCreditNotesheet/{id}(id=*{id})}">Print Notesheet</a>   <!-- File 10-->
-                                    <a class="btn btn-primary" th:href="@{/printCreditPermission/{id}(id=*{id})}">Print Permission</a>   <!-- File 22-->
-                                </span>
+
                         <span th:if="*{claimType.getEnumValue() == 'Permission'}">
                                     <a class="btn btn-primary" th:href="@{/printTreatmentNotesheet/{id}(id=*{id})}">Print Notesheet</a>   <!-- File 12-->
-                                    <a class="btn btn-primary" th:href="@{/printTreatmentPermission/{id}(id=*{id})}">Print Permission</a>   <!-- File 13-->
-                                </span>
+                                    <!--a class="btn btn-primary" th:href="@{/printTreatmentPermission/{id}(id=*{id})}">Print Permission</a-->   <!-- File 13-->
+                                    <a class="btn btn-primary" th:href="@{/printCreditPermission/{id}(id=*{id})}">Print Permission</a>   <!-- File 22-->
+                        </span>
 
-                        <div th:if="*{claimType.getEnumValue() == 'OP-Emergency' || claimType.getEnumValue() == 'IP-Emergency'}">
+                        <div th:if="*{claimType.getEnumValue() == 'Emergency' || claimType.getEnumValue() == 'Credit'}">
                             <div th:switch="*{#lists.size(calculationSheet)}">
                                 <span th:case="'0'">
                                     <a class="btn btn-primary" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Create Calculation Sheet</a>
@@ -84,12 +82,18 @@
                                     <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
                                     <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
 
-                                    <span th:if="*{claimType.getEnumValue() == 'OP-Emergency'}">
+                                    <span th:if="*{claimType.getEnumValue() == 'Emergency'}">
                                         <a class="btn btn-primary" th:href="@{/printOpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 7-->
                                     </span>
-                                    <span th:if="*{claimType.getEnumValue() == 'IP-Emergency'}">
+                                    <span th:if="*{claimType.getEnumValue() == 'Emergency'}">
                                         <a class="btn btn-primary" th:href="@{/printIpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 3-->
                                     </span>
+
+                                    <span th:if="*{claimType.getEnumValue() == 'Credit'}">
+                                    <a class="btn btn-primary" th:href="@{/printCreditNotesheet/{id}(id=*{id})}">Print Notesheet</a>   <!-- File 10-->
+
+                                    <a class="btn btn-primary" th:href="@{/printCreditForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>
+                                </span>
 
                                 </span>
                             </div>

@@ -52,4 +52,15 @@ public class DiaryEntryRestController {
         return true;
 
     }
+
+    @GetMapping("/getCandidateDiaryEntries")
+    public @ResponseBody  Page<DiaryEntryVO> getCandidateDiaryEntries() {
+       return new Page<>(diaryEntryService.findCandidateDiaryEntries());
+    }
+
+    @GetMapping("/notesheetDiaryEntries")
+    public @ResponseBody  Page<DiaryEntryVO> getNotesheetDiaryEntries() {
+        return new Page<>(diaryEntryService.findCandidateDiaryEntries());
+    }
+
 }

@@ -3,19 +3,19 @@ package com.delhipolice.mediclaim.constants;
 public enum Designation {
     COOK("Cook"),
     MTS("MTS"),
-    CONSTABLE("Constable"),
-    W_CONSTABLE("W/Constable"),
-    HEAD_CONSTABLE("Head Constable"),
-    W_HEAD_CONSTABLE("W/Head Constable"),
-    ASST_SI("Assistant Sub-Inspector"),
-    W_ASST_SI("W/Assistant Sub-Inspector"),
+    CONSTABLE("Const."),
+    W_CONSTABLE("W/Const."),
+    HEAD_CONSTABLE("Head Const."),
+    W_HEAD_CONSTABLE("W/Head Const."),
+    ASST_SI("Asst. Sub-Ins."),
+    W_ASST_SI("W/Asst. Sub-Ins."),
     SI("Sub-Inspector"),
-    W_SI("W/Sub-Inspector"),
-    INSPECTOR("Inspector"),
-    W_INSPECTOR("W/Inspector"),
-    ACP("Assistant Commissioner of Police"),
-    ADCP("Additional Deputy Commissioner of Police"),
-    DCP("Deputy Commissioner of Police");
+    W_SI("W/Sub-Ins."),
+    INSPECTOR("Ins."),
+    W_INSPECTOR("W/Ins."),
+    ACP("ACP"),
+    ADCP("ADCP"),
+    DCP("DCP");
 
 
     private String enumValue;

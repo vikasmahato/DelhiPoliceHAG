@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Medical Claim</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        margin-bottom:20px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    h3{
+        font-size:0.8em;
+        text-align:center;
+    }
+</style>
+<body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<div class='container' style='margin-top:15px; font-size:1.3em;'>
+    <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: SOUTH DISTRICT,</u></b></h3>
+    <h3><u><b>HAUZ KHAS, NEW DELHI-110016.</b></u></h3>
+    <p style='text-align:justify' th:inline="text" >No.[[${diaryEntry.diaryNumber}]]/ Genl. Br.(II)/SD Dated New Delhi, the [[${diaryEntry.diaryDate}]]. </p>
+    <p style='margin:0;'>To</p>
+    <div style='text-indent:12%;margin:0;'>
+        <p style='margin:0;'>The Deputy Commissioner of Police</p>
+        <p style='margin:0;'>General Administration, New Delhi</p>
+    </div>
+
+    <div class='row'>
+        <p style='margin:0;'>Subject:-</p>
+        <p style='text-indent:12%;text-align:justify;margin:0;' th:inline="text"><b>Regarding re-imbursement of medical claim.</b></p>
+    </div>
+    <p style='margin:0;'>Memo,</p>
+    <p th:inline="text" style='text-indent:12%;text-align:justify;margin:0;'>
+        Enclosed please find herewith the medical claim case mentioned below received from <b>[[${diaryEntry.displayName}]]</b> for providing treatment to the [[${diaryEntry.claimDetails.relation}]] of [[${diaryEntry.displayName}]]  per details mentioned on Emergency basis, for making payment to the above said Hospital:-</p>
+    <table class='table w-auto small'>
+        <tbody>
+        <tr>
+            <td>Rank, Name & No. & treatment taken by</th>
+            <td>Name of Hospital</td>
+            <td>Name of disease</td>
+            <td>Period of treatment</td>
+            <td>Amount claimed (Rs.)</td>
+            <td>Amount admissible (Rs.)</td>
+        </tr>
+        <tr th:inline="text">
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]]<br>[[${diaryEntry.applicant.name}]]<br>No. [[${diaryEntry.applicant.pisNumber}]]<br>TODO</td>
+            <td>[[${diaryEntry.hospital.hospitalName}]]</td>
+            <td>[[${diaryEntry.claimDetails.disease}]]</td>
+            <td>[[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</td>
+            <td>[[${diaryEntry.amountAsked1}]]</td>
+            <td>[[${diaryEntry.amountGranted1}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        On scrutiny of medical claim papers/bills which is in accordance with CGHS/CS(MA) Rules a calculation statement has also been prepared which is enclosed herewith. Funds under the head <b>"2055-Police-05, South Distt., 01-01-06, Medical Treatment"</b> during the current financial year [[${diaryEntry.financialYear}]].
+    </p>
+
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        It is, therefore, requested that necessary sanction of the competent authority may kindly be obtained and conveyed to this office at the earliest. The written request along-with all medical papers, cash memo's duly verified by concerned doctor of the hospital are also enclosed herewith for ready reference.
+    </p>
+    <div style='text-align:right;margin-top:50px;'>Yours faithfully,</div>
+    <div style='text-align:right;font-weight:bold;margin-top:50px;'>ACP/HQ</div>
+    <div class='row'>
+        <div class='col-md-4'>Encls.:- <strong><u>As above</u></strong></div>
+        <div class='col-md-8' style='text-align:right'>For DY. COMMISIONER OF POLICE</div>
+    </div>
+    <div style='text-align:right'>SOUTH DISTRICT, NEW DELHI</div>
+</div>
+</body>
+
+</html>

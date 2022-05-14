@@ -12,16 +12,16 @@
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
 <div class='container' style='margin-bottom:70px; margin-top:40px; font-size:1.3em;'>
     <div style='text-align:center; margin-bottom:25px;'><b><u>ORDER</u></b></div>
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">The Additonal Dy. Commissioner of Police/Head of Office, South-East District, New Delhi is pleased to accord ex-post-facto sanction of an amounting to<b> Rs. [[${diaryEntry.amountGranted1}]]/-(Rupees [[${diaryEntry.amountGrantedInWords}]] )</b> for making payment to<b> [[${diaryEntry.displayName}]]</b> at approved rate of CGHS for the medical treatment of his/her<b> [[${diaryEntry.claimDetails.relation}]].</b></p>
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">Funds to the extent of<b> Rs. [[${diaryEntry.amountGranted1}]]/-</b>are available under head '01.01.06 Medical Treatment' during the current financial year [[${diaryEntry.financialYear}]].</p>
-    <div style='margin-top:60px; text-align:right;'><b>ACP/HQ</b></div>
-    <div style='text-align:right;'>FOR ADDL. DY. COMMISSIONER OF POLICE,</div>
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">Ex-post facto sanction is hereby conveyed for the re-imbursement of medical expenses amounting to<b> Rs. [[${diaryEntry.amountGranted1}]]/-(Rupees [[${diaryEntry.amountGrantedInWords}]] only)</b> to <b>[[${diaryEntry.amountGrantedInWords}]]</b>for making payment to<b> [[${diaryEntry.displayName}]]</b> who has incurred the expenditure for his/her <b> [[${diaryEntry.claimDetails.relation}]].</b> treatment from his/her own poclet in accordance with the instructions contained in Ministry of Health and Family Welfare, Govt. Of India, New Ddelhi office
+        memorandum Np. Rec. 24/2001/JD (M) CGHS/DELHI (P), dated 7.9.2001. <b>[[${diaryEntry.displayName}]]</b> is a bonafide beneficiary of CGHS facility.</p>
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">The expenditure involved should be met under head "2055-Police-05, South Distt., Medical Treatment" during the current financial year [[${diaryEntry.financialYear}]].</p>
+    <p style='text-indent:12%;text-align:justify;'>This is the approval of Addl. DCP/SD.</p>
+    <div style='margin-top:60px; text-align:right;'><b>ASST. COMMISSIONER OF POLICE: HQ</b></div>
     <div style='margin-bottom:15px; text-align:right;'>SOUTH DISTRICT, NEW DELHI.</div>
-    <div>No. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Genl. Br. (G-7)/SED dated, New Delhi, the </div>
-    <div style='margin-left:60px;margin-bottom:20px;'>Copy forwarded to the :-</div>
-    <div>1. &nbsp; &nbsp; &nbsp; PAO-11 (Delhi Police), MHA, Man Singh Road, New Delhi through<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Accountant/SED.</div>
-    <div>2. &nbsp; &nbsp; &nbsp; Accountant/SED with one spare copy along with all relevant medical<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; papers/documents (in duplicate) for arranging the payment to the concerned
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; immediately.</div>
+    <div th:inline="text" >No.[[${diaryEntry.diaryNumber}]]/ Genl. Br.(II)/SD Dated New Delhi, the [[${diaryEntry.diaryDate}]]. </div>
+    <div style='margin-left:60px;margin-bottom:20px;'>Copy forwarded for information and necessary action to:-</div>
+    <div>1. PAO-II, 16, Man Singh Road, New Delhi.</div>
+    <div>2. Acctt./SD with one spare copy along with all relevant documents for arranging the payment to above police office/person.</div>
 </div>
 </body>
 </html>

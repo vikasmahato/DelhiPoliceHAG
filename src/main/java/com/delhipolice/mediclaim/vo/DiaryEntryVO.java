@@ -37,7 +37,7 @@ public class DiaryEntryVO implements Serializable {
     private TreatmentBy treatmentTakenBy;
     private Hospital hospital;
     private BigDecimal amountClaimed;
-    private  BigDecimal admissibleAmount;
+    private BigDecimal admissibleAmount;
     private String amountGrantedInWords;
     private String phqNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -45,6 +45,7 @@ public class DiaryEntryVO implements Serializable {
     private String sanctionNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sanctionDate;
+    private BigDecimal sanctionAmount;
     private Boolean isObjection;
     private List<CalculationSheetEntry> calculationSheet;
     private ClaimDetailsVO claimDetails;
@@ -55,6 +56,9 @@ public class DiaryEntryVO implements Serializable {
     private Boolean viewMode = Boolean.FALSE;
     private String financialYear;
     private Boolean isNewClaim = Boolean.FALSE;
+    private String patient;
+    private String patientCghs;
+    private Boolean isLetterGenerated = Boolean.FALSE;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
         id = diaryEntry.getId();
@@ -80,9 +84,13 @@ public class DiaryEntryVO implements Serializable {
         amountAsked1 = getAmountAsked().toString();
         amountGranted1 = getAmountGranted().toString();
         notesheetSalutation = buildNotesheetSalutation();
+        sanctionAmount = diaryEntry.getSanctionAmount();
         amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
         financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
         isNewClaim = claimDetails.getIsNewClaim();
+        patient = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName();
+        patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
+        isLetterGenerated = diaryEntry.getIsLetterGenerated();
     }
 
     private Double getAmountAsked() {
@@ -95,7 +103,7 @@ public class DiaryEntryVO implements Serializable {
 
     private String buildDispplayNameSalutation() {
         if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {
-            return claimDetails.getRelativeName() +  " (Name of the patient) " + claimDetails.getRelation().getRelation() + " " + buildDisplayName() +" (Name of the police officer/men) ";
+            return claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + buildDisplayName();
         } else {
             return buildDisplayName();
         }
@@ -103,9 +111,9 @@ public class DiaryEntryVO implements Serializable {
 
     private String buildNotesheetSalutation() {
         if(TreatmentBy.SELF.equals(treatmentTakenBy)) {
-            return "the claimant is a CGHS beneficiary having token card No. <b>"+applicant.getCghsNumber()+ "</b>";
+            return "The claimant is a CGHS beneficiary having a valid CGHS card ID No. <b>"+applicant.getCghsNumber()+ "</b>";
         } else {
-            return "the claimant and patient are CGHS beneficiary having token cards No.<b> "+applicant.getCghsNumber()+ "</b> &<b>"+claimDetails.getRelativeCghsNumber()+"</b> respectively";
+            return "The claimant and patient are CGHS beneficiary having valid CGHS cards with ID Nos.<b> "+applicant.getCghsNumber()+ "</b> &<b>"+claimDetails.getRelativeCghsNumber()+"</b> respectively";
         }
     }
 

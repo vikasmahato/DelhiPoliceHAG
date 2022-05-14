@@ -214,14 +214,12 @@
             .find('option')
             .remove()
         if($(this).val() === "HOSPITAL") {
-            $caseType.append(new Option("IP-Emergency", "IP_EMERGENCY"));
-            $caseType.append(new Option("OP-Emergency", "OP_EMERGENCY"));
             $caseType.append(new Option("Permission", "PERMISSION"));
             $caseType.append(new Option("Credit", "CREDIT"));
         }
         if($(this).val() === "INDIVIDUAL") {
-            $caseType.append(new Option("Referral", "OP_REFERRAL"));
-            $caseType.append(new Option("OP-Emergency", "OP_EMERGENCY"));
+            $caseType.append(new Option("Referral", "REFERRAL"));
+            $caseType.append(new Option("Emergency", "EMERGENCY"));
         }
 
     })

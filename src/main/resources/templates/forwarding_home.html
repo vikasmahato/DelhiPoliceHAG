@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary Entry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+</head>
+<body>
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<div class="container-fluid">
+
+    <div id="message-div"></div>
+
+
+    <div class="row mt-3">
+        <div class="col-lg-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesheetCreateModal">Create Notesheet</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="notesheetCreateModal" tabindex="-1" aria-labelledby="notesheetCreateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesheetCreateModalLabel">Create Notesheet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="selectEntries" data-search="true" class="table">
+                        <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Select</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="create_notesheet" onclick="submitForm()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="notesheetModal" tabindex="-1" aria-labelledby="notesheetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notesheetModalLabel">Notesheet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="entries" class="table table-bordered table-responsive">
+                        <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Notesheets</h3>
+            <table id="notesheets" class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Date</th>
+                    <th>Sanction Amount</th>
+                    <th>View</th>
+                    <th>Print</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th>S. No.</th>
+                    <th>Date</th>
+                    <th>Sanction Amount</th>
+                    <th>View</th>
+                    <th>Print</th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/datatables.js}"></script>
+
+<script>
+    $('#notesheets').DataTable({
+        "autoWidth": false,
+        ajax: '/getAllNotesheets',
+        columns: [
+            {
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            { data: 'letterDate' },
+            { data: 'totalAmount' },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#notesheetModal">View</button>';
+                }
+            },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<a class="btn btn-primary" hef="/printNotesheet/'+full.id+'">Print</a>';
+                }
+            }
+        ]
+    });
+
+    $('#selectEntries').DataTable({
+        "autoWidth": false,
+        ajax: '/getCandidateDiaryEntries',
+        columns: [
+            { data: 'displayDiaryNumber' },
+            { data: 'displayName' },
+            { data: 'sanctionAmount' },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<input class="formcontrol selectDiaryEntry"  name="checked[]" type="checkbox"/>';
+                }
+            }
+        ],
+        fnInitComplete: function (oSettings, json) {
+            $(".selectDiaryEntry").on('change', function() {
+                var row = $(this).closest('tr');
+                var data = $('#selectEntries').dataTable().fnGetData(row);
+                if(this.checked) {
+                    selectedEntries.add(data.id);
+                } else {
+                    selectedEntries.delete(data.id);
+                }
+            });
+        }
+    });
+
+    var selectedEntries = new Set();
+
+    $("#notesheetCreateModal").on('hide.bs.modal', function(){
+        $('.selectDiaryEntry').prop("checked", false);
+    });
+
+
+</script>
+<script>
+    const notesheetModal = document.getElementById('notesheetModal');
+    notesheetModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const row = button.closest('tr');
+        let entries = $('#notesheets').dataTable().fnGetData(row).diaryEntryVOS;
+        $('#entries').DataTable({
+            "autoWidth": false,
+            "destroy" : true,
+            data: entries,
+            columns: [
+                { data: 'displayDiaryNumber' },
+                { data: 'displayName' },
+                { data: 'sanctionAmount' }
+            ]
+        });
+    })
+</script>
+
+
+<script>
+    function submitForm() {
+        const data = JSON.stringify({data: Array.from(selectedEntries)});
+
+        $.ajax({
+            type:"post",
+            data: data,
+            url:"/createNotesheet",
+            async: false,
+            dataType: "json",
+            success: function(response){
+                $('#notesheets').DataTable().ajax.reload();
+                const  messageDiv = $("#message-div");
+                selectedEntries.clear();
+                messageDiv.html(
+                    '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                    'Notesheet created successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+            },
+            error: function (jqXHR, exception) {
+               const  messageDiv = $("#message-div");
+                selectedEntries.clear();
+               messageDiv.html(
+                   '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                   exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                   '</div>');
+               $('#notesheetCreateModal').modal('toggle');
+            }
+        });
+    }
+</script>
+</html>

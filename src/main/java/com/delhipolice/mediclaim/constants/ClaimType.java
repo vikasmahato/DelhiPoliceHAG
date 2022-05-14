@@ -1,9 +1,8 @@
 package com.delhipolice.mediclaim.constants;
 
 public enum ClaimType {
-    OP_EMERGENCY("OP-Emergency"),
-    IP_EMERGENCY("IP-Emergency"),
-    OP_REFERRAL("Referral"),
+    EMERGENCY("Emergency"),
+    REFERRAL("Referral"),
     CREDIT("Credit"),
     PERMISSION("Permission"),
     GOVT("Govt.");

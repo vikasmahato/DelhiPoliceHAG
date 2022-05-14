@@ -63,6 +63,17 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
+    public List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS) {
+        List<UUID> uuids = diaryEntryVOS.stream().map(DiaryEntryVO::getId).collect(Collectors.toList());
+        return diaryEntryRepository.findAllById(uuids);
+    }
+
+    @Override
+    public List<DiaryEntry> findAllByUUIDs(List<UUID> uuids) {
+        return diaryEntryRepository.findAllById(uuids);
+    }
+
+    @Override
     public DiaryEntry update(DiaryEntryVO diaryEntryVO) {
         DiaryEntry diaryEntry = diaryEntryRepository.findById(diaryEntryVO.getId()).get();
         diaryEntry.setAmountClaimed(diaryEntryVO.getAmountClaimed());
@@ -72,6 +83,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         diaryEntry.setSanctionNumber(diaryEntryVO.getSanctionNumber());
         diaryEntry.getClaimDetails().setStartDate(diaryEntryVO.getClaimDetails().getStartDate());
         diaryEntry.getClaimDetails().setEndDate(diaryEntryVO.getClaimDetails().getEndDate());
+        diaryEntry.setIsLetterGenerated(diaryEntryVO.getIsLetterGenerated());
+        return diaryEntryRepository.save(diaryEntry);
+    }
+
+    @Override
+    public DiaryEntry update(DiaryEntry diaryEntry) {
         return diaryEntryRepository.save(diaryEntry);
     }
 
@@ -114,6 +131,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         diaryEntry.setCalculationSheet(calculationSheetEntries);
 
         diaryEntryRepository.save(diaryEntry);
+    }
+
+    @Override
+    public List<DiaryEntryVO> findCandidateDiaryEntries() {
+        List<DiaryEntry> diaryEntries = diaryEntryRepository.findByIsLetterGenerated(false);
+        return diaryEntries.stream().map(DiaryEntryVO::new).collect(Collectors.toList());
     }
 
     private Page<DiaryEntryVO> getPage(List<DiaryEntry> diaryEntries, PagingRequest pagingRequest) {

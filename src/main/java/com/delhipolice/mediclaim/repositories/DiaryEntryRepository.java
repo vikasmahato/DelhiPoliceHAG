@@ -18,4 +18,7 @@ public interface DiaryEntryRepository extends JpaRepository<DiaryEntry, UUID> {
 
     @Query("SELECT d FROM DiaryEntry d")
     List<DiaryEntry> findAll();
+
+    @Query("SELECT d FROM DiaryEntry d WHERE d.isLetterGenerated = :isLetterGenerated")
+    List<DiaryEntry> findByIsLetterGenerated(boolean isLetterGenerated);
 }

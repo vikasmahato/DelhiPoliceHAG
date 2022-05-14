@@ -111,6 +111,12 @@ public class DiaryEntryWebController {
         return "print_ip_emg_forwarding_letter";
     }
 
+    @GetMapping("/printCreditForwardingLetter/{id}")
+    public String printCreditForwardingLetter(@PathVariable UUID id, Model model) {
+        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        return "print_credit_fl";
+    }
+
     @GetMapping("/printCreditNotesheet/{id}")
     public String printCreditNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
@@ -134,6 +140,8 @@ public class DiaryEntryWebController {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
         return "print_treatment_permission";
     }
+
+
 
 
 }

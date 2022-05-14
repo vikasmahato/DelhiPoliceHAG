@@ -16,10 +16,17 @@ public interface DiaryEntryService {
 
     DiaryEntry save(DiaryEntryVO diaryEntryVO);
 
+    List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS);
+
+    List<DiaryEntry> findAllByUUIDs(List<UUID> uuids);
+
     DiaryEntry update(DiaryEntryVO diaryEntryVO);
+
+    DiaryEntry update(DiaryEntry diaryEntry);
 
     Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest);
 
     void saveCalSheet(CalcSheetVO calcSheetVO);
 
+    List<DiaryEntryVO> findCandidateDiaryEntries();
 }

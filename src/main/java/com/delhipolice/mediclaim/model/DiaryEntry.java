@@ -1,6 +1,5 @@
 package com.delhipolice.mediclaim.model;
 
-import com.delhipolice.mediclaim.constants.CaseType;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
@@ -40,10 +39,12 @@ public class DiaryEntry implements Serializable, Auditable {
         this.phqDate = diaryEntryVO.getPhqDate();
         this.sanctionNumber = diaryEntryVO.getSanctionNumber();
         this.sanctionDate = diaryEntryVO.getSanctionDate();
+        this.sanctionAmount = diaryEntryVO.getSanctionAmount();
         this.isObjection = diaryEntryVO.getIsObjection();
         this.calculationSheet = diaryEntryVO.getCalculationSheet();
         this.claimDetails = new ClaimDetails(diaryEntryVO.getClaimDetails());
         this.claimType = diaryEntryVO.getClaimType();
+        this.isLetterGenerated = diaryEntryVO.getIsLetterGenerated();
     }
 
     @Id
@@ -82,7 +83,7 @@ public class DiaryEntry implements Serializable, Auditable {
     private ClaimDetails claimDetails;
 
     @Column
-    private ClaimType claimType = ClaimType.OP_REFERRAL;
+    private ClaimType claimType = ClaimType.REFERRAL;
 
     @Column
     private BigDecimal amountClaimed;
@@ -105,7 +106,13 @@ public class DiaryEntry implements Serializable, Auditable {
     private Date sanctionDate;
 
     @Column
+    private BigDecimal sanctionAmount = BigDecimal.ZERO;
+
+    @Column
     private Boolean isObjection;
+
+    @Column
+    private Boolean isLetterGenerated = Boolean.FALSE;
 
     @Override
     public AuditSection getAuditSection() {

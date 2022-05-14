@@ -23,6 +23,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/medicalrates' ? 'active':''}" href="/medicalrates">Medical Rates</a>
+                    </li> <li class="nav-item">
+                        <a class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" href="/notesheets">Notesheets</a>
                     </li>
                 </ul>
             </div>

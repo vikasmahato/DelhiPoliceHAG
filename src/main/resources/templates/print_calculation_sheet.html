@@ -33,7 +33,7 @@
 <div class='container' >
     <h3>CALCULATION SHEET</h3>
     <p th:inline="text" style='text-align:justify;'>
-        Details of expenditures incurred on the treatment of<b> [[${diaryEntry.displayNameSalutation}]] at [[${diaryEntry.hospital.hospitalName}]] (Name of the Hospital)</b> where he/she remained admitted/under treatment from<b> [[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</b>.
+        Details of medical expenditures incurred by <b> [[${diaryEntry.applicant.name}]] PIS No. [[${diaryEntry.applicant.pisNumber}]] Belt No. [[${diaryEntry.applicant.beltNumber}]] for treatment in respect of his/her [[${diaryEntry.claimDetails.relation}]] </b> D.O.B. of patient _______________ w.e.f. <b> [[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</b> at [[${diaryEntry.hospital.hospitalName}]].
     </p>
 
     <table class='table' style='margin-right:3px;'>
@@ -68,7 +68,7 @@
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:12%;text-align:justify;'>It is certified that the bills have been checked in totality and rates claimed by the treating hospitals are Matched/restricted to CGHS approved rates. The claim for the tests/pathology is cross referenced for checking the rates with the tests actually conducted.</p>
+    <p style='text-indent:12%;text-align:justify;'>Certified that the claim has been restricted as per Approved rates of CGHS/CS (MA) Rules.</p>
     <div style='margin-top:20px;'>Signature of Dealing Assistant     ____________________</div>
     <div style='margin-top:10px;'>Signature of Head Assistant         ____________________</div>
     <div style='margin-top:10px;'>Signature of Inspector Administration___________________</div>
