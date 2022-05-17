@@ -37,7 +37,7 @@ public class CalculationSheetEntry implements Serializable, Auditable {
     private Double total;
 
     @Column
-    private Integer index;
+    private Integer displaySerialNumber;
 
     @Column
     private String billNumber;

@@ -81,9 +81,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         diaryEntry.setPhqDate(diaryEntryVO.getPhqDate());
         diaryEntry.setSanctionDate(diaryEntryVO.getSanctionDate());
         diaryEntry.setSanctionNumber(diaryEntryVO.getSanctionNumber());
+        diaryEntry.setSanctionAmount(diaryEntryVO.getSanctionAmount());
         diaryEntry.getClaimDetails().setStartDate(diaryEntryVO.getClaimDetails().getStartDate());
         diaryEntry.getClaimDetails().setEndDate(diaryEntryVO.getClaimDetails().getEndDate());
         diaryEntry.setIsLetterGenerated(diaryEntryVO.getIsLetterGenerated());
+        diaryEntry.setPatientDOB(diaryEntryVO.getPatientDOB());
+        diaryEntry.getClaimDetails().setDisease(diaryEntryVO.getClaimDetails().getDisease());
         return diaryEntryRepository.save(diaryEntry);
     }
 

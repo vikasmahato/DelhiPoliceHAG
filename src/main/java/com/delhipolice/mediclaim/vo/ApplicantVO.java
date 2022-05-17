@@ -35,7 +35,7 @@ public class ApplicantVO {
         name = applicant.getName();
         beltNumber = applicant.getBeltNumber();
         pisNumber = applicant.getPisNumber();
-        rank = applicant.getRank();
+        rank = applicant.getDesignation();
         cghsNumber = applicant.getCghsNumber();
         cghsCategory = applicant.getCghsCategory();
         cghsExpiry = applicant.getCghsExpiry();

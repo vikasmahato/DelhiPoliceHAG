@@ -45,6 +45,7 @@ public class DiaryEntry implements Serializable, Auditable {
         this.claimDetails = new ClaimDetails(diaryEntryVO.getClaimDetails());
         this.claimType = diaryEntryVO.getClaimType();
         this.isLetterGenerated = diaryEntryVO.getIsLetterGenerated();
+        this.patientDOB = diaryEntryVO.getPatientDOB();
     }
 
     @Id
@@ -107,6 +108,10 @@ public class DiaryEntry implements Serializable, Auditable {
 
     @Column
     private BigDecimal sanctionAmount = BigDecimal.ZERO;
+
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date patientDOB;
 
     @Column
     private Boolean isObjection;

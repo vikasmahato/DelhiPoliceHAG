@@ -140,11 +140,35 @@
                                     <option th:each="cghsCategory : ${T(com.delhipolice.mediclaim.constants.CghsCategory).values()}" th:value="${cghsCategory}" th:text="${cghsCategory.getEnumValue()}"></option>
                                 </select>
                             </div>
-                            <div class="col-6">
+
+                            <div class="col-6" th:if="*{!viewMode}">
                                 <label for="case_type">Case Type</label>
                                 <select class="form-control" id="case_type" th:field="*{claimType}" required th:disabled="*{viewMode}">
 
                                 </select>
+                            </div>
+                            <div class="col-6" th:if="*{viewMode}">
+                                <label for="case_type_view">Case Type</label>
+                                <input class="form-control" id="case_type_view" th:field="*{claimType}" required th:disabled="*{viewMode}"/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="treatment_start_date">Treatment Start Date</label>
+                                <input type="date" class="form-control" id="treatment_start_date" th:field="*{claimDetails.startDate}" >
+                            </div>
+
+                            <div class="col-6">
+                                <label for="treatment_end_date">Treatment End Date</label>
+                                <input type="date" class="form-control" id="treatment_end_date" th:field="*{claimDetails.endDate}">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="disease">Disease</label>
+                                <input type="text" class="form-control" id="disease" th:field="*{claimDetails.disease}">
                             </div>
                         </div>
 
@@ -184,6 +208,18 @@
                                 <input type="date" class="form-control" id="sanction_date" th:field="*{sanctionDate}">
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="sanction_amount">Sanction Amount</label>
+                                <input type="number" class="form-control" id="sanction_amount" th:field="*{sanctionAmount}">
+                            </div>
+
+                            <div class="col-6">
+                                <label for="patient_date_of_birth">Patient DOB</label>
+                                <input type="date" class="form-control" id="patient_date_of_birth" th:field="*{patientDOB}">
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -221,7 +257,6 @@
             $caseType.append(new Option("Referral", "REFERRAL"));
             $caseType.append(new Option("Emergency", "EMERGENCY"));
         }
-
     })
 
 </script>

@@ -33,7 +33,7 @@
 <div class='container' >
     <h3>CALCULATION SHEET</h3>
     <p th:inline="text" style='text-align:justify;'>
-        Details of medical expenditures incurred by <b> [[${diaryEntry.applicant.name}]] PIS No. [[${diaryEntry.applicant.pisNumber}]] Belt No. [[${diaryEntry.applicant.beltNumber}]] for treatment in respect of his/her [[${diaryEntry.claimDetails.relation}]] </b> D.O.B. of patient _______________ w.e.f. <b> [[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</b> at [[${diaryEntry.hospital.hospitalName}]].
+        Details of medical expenditures incurred by <b> [[${diaryEntry.applicant.name}]] PIS No. [[${diaryEntry.applicant.pisNumber}]] Belt No. [[${diaryEntry.applicant.beltNumber}]]</b> for treatment in respect of his/her <b>[[${diaryEntry.claimDetails.relation.getEnumValue()}]]</b> D.O.B. of patient <b>[[${#dates.format(diaryEntry.patientDOB, 'dd-MM-yyyy')}]]</b> w.e.f. <b> [[${#dates.format(diaryEntry.claimDetails.startDate, 'dd-MM-yyyy')}]] to [[${#dates.format(diaryEntry.claimDetails.endDate, 'dd-MM-yyyy')}]]</b> at [[${diaryEntry.hospital.hospitalName}]].
     </p>
 
     <table class='table' style='margin-right:3px;'>

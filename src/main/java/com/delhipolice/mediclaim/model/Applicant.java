@@ -36,7 +36,7 @@ public class Applicant implements Serializable, Auditable {
     private String pisNumber;
 
     @Column
-    private Designation rank;
+    private Designation designation;
 
     @Column
     private Integer tenantId;
@@ -69,7 +69,7 @@ public class Applicant implements Serializable, Auditable {
         this.name = applicantVO.getName();
         this.beltNumber = applicantVO.getBeltNumber();
         this.pisNumber = applicantVO.getPisNumber();
-        this.rank = applicantVO.getRank();
+        this.designation = applicantVO.getRank();
         this.cghsNumber = applicantVO.getCghsNumber();
         this.cghsCategory = applicantVO.getCghsCategory();
         this.cghsExpiry = applicantVO.getCghsExpiry();

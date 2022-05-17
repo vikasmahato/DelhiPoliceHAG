@@ -40,8 +40,8 @@ public class HospitalSeeder {
 
     @EventListener
     public void seed(ContextRefreshedEvent event) throws IOException {
-       // seedHospitals();
-       // seedMedicalRates();
+        //seedHospitals();
+        //seedMedicalRates();
       //  seedDummyData();
     }
 

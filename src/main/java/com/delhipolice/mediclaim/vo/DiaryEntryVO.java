@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +31,7 @@ public class DiaryEntryVO implements Serializable {
     private String displayDiaryNumber;
     private String displayName;
     private String displayNameSalutation;
+    private String displayNameSalutationTreatmentBy;
     private DiaryType diaryType;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date diaryDate;
@@ -45,6 +47,8 @@ public class DiaryEntryVO implements Serializable {
     private String sanctionNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sanctionDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date patientDOB;
     private BigDecimal sanctionAmount;
     private Boolean isObjection;
     private List<CalculationSheetEntry> calculationSheet;
@@ -91,6 +95,8 @@ public class DiaryEntryVO implements Serializable {
         patient = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName();
         patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
         isLetterGenerated = diaryEntry.getIsLetterGenerated();
+        displayNameSalutationTreatmentBy = buildDisplayName() + " (" + claimDetails.getRelation() + ")";
+        patientDOB = diaryEntry.getPatientDOB();
     }
 
     private Double getAmountAsked() {
@@ -118,7 +124,8 @@ public class DiaryEntryVO implements Serializable {
     }
 
     private String buildDiaryNumber() {
-        return diaryNumber + "/Gen Br./SD/Dated/" + diaryDate;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        return diaryNumber + "/Gen Br./SD/Dated/" + formatter.format(diaryDate);
     }
 
     private String buildDisplayName() {

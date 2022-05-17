@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -38,6 +39,13 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return addressLine + ", " + city + ", " + state + "- " + pincode;
+        StringBuilder sb = new StringBuilder(addressLine);
+        if(StringUtils.isNotBlank(city))
+            sb.append(", ").append(city);
+        if(StringUtils.isNotBlank(state))
+            sb.append(", ").append(state);
+        if(StringUtils.isNotBlank(pincode))
+            sb.append(" - ").append(pincode);
+        return sb.toString();
     }
 }

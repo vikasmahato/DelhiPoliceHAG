@@ -23,7 +23,7 @@
 <body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
-<div class='container' style='margin-top:15px; font-size:1.3em;'>
+<div class='container' style='margin-top:15px; font-size:1em;'>
     <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: SOUTH DISTRICT,</u></b></h3>
     <h3><u><b>HAUZ KHAS, NEW DELHI-110016.</b></u></h3>
     <p style='text-align:justify' th:inline="text" >No.[[${diaryEntry.diaryNumber}]]/ Genl. Br.(II)/SD Dated New Delhi, the [[${diaryEntry.diaryDate}]]. </p>
@@ -51,12 +51,12 @@
             <td>Amount admissible (Rs.)</td>
         </tr>
         <tr th:inline="text">
-            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]]<br>[[${diaryEntry.applicant.name}]]<br>No. [[${diaryEntry.applicant.pisNumber}]]<br>TODO</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]]<br>[[${diaryEntry.applicant.name}]]<br>No. [[${diaryEntry.applicant.pisNumber}]]<br>[[${diaryEntry.claimDetails.relation.getEnumValue()}]]</td>
             <td>[[${diaryEntry.hospital.hospitalName}]]</td>
             <td>[[${diaryEntry.claimDetails.disease}]]</td>
-            <td>[[${diaryEntry.claimDetails.startDate}]] to [[${diaryEntry.claimDetails.endDate}]]</td>
+            <td>[[${#dates.format(diaryEntry.claimDetails.startDate, 'dd-MM-yyyy')}]] to [[${#dates.format(diaryEntry.claimDetails.endDate, 'dd-MM-yyyy')}]]</td>
             <td>[[${diaryEntry.amountAsked1}]]</td>
-            <td>[[${diaryEntry.amountGranted1}]]</td>
+            <td>[[${diaryEntry.sanctionAmount}]]</td>
         </tr>
         </tbody>
     </table>
