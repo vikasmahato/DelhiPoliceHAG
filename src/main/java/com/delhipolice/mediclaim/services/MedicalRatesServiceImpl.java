@@ -73,4 +73,9 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
         return new MedicalRateVO(updatedMedicalRates);
     }
 
+    @Override
+    public int count() {
+        return (int) medicalRatesRepository.count();
+    }
+
 }

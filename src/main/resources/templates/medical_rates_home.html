@@ -13,95 +13,113 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/body.css}" rel="stylesheet"></link>
+
 </head>
 <body>
 
-<div th:replace="fragments/topnav :: navbar"></div>
+<header>
+    <div th:replace="fragments/sidenav :: sidebarMenu"></div>
+    <div th:replace="fragments/topnav :: navbar"></div>
+</header>
 
-<div class="container-fluid">
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div id="message-div"></div>
 
-    <div id="message-div"></div>
-
-    <div class="modal fade" id="medicalRatesModal" tabindex="-1" aria-labelledby="medicalRatesModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="medicalRatesModalLabel">New message</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="medicalRatesEditForm">
-                        <input type="hidden" class="form-control" id="medical-rate-id" name="id">
-                        <div class="mb-3">
-                            <label for="medical-rate-name" class="col-form-label">Test Name:</label>
-                            <input type="text" class="form-control" id="medical-rate-name" name="productName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="medical-rate-nonNabhNablRate" class="col-form-label">NON NABH Rate:</label>
-                            <input type="number" class="form-control" id="medical-rate-nonNabhNablRate" name="nonNabhNablRate">
-                        </div>
-                        <div class="mb-3">
-                            <label for="medical-rate-nabhNablRate" class="col-form-label">NABH Rate:</label>
-                            <input type="number" class="form-control" id="medical-rate-nabhNablRate" name="nabhNablRate">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="submitForm();">Update</button>
+        <div class="modal fade" id="medicalRatesModal" tabindex="-1" aria-labelledby="medicalRatesModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="medicalRatesModalLabel">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="medicalRatesEditForm">
+                            <input type="hidden" class="form-control" id="medical-rate-id" name="id">
+                            <div class="mb-3">
+                                <label for="medical-rate-name" class="col-form-label">Test Name:</label>
+                                <input type="text" class="form-control" id="medical-rate-name" name="productName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="medical-rate-nonNabhNablRate" class="col-form-label">NON NABH Rate:</label>
+                                <input type="number" class="form-control" id="medical-rate-nonNabhNablRate" name="nonNabhNablRate">
+                            </div>
+                            <div class="mb-3">
+                                <label for="medical-rate-nabhNablRate" class="col-form-label">NABH Rate:</label>
+                                <input type="number" class="form-control" id="medical-rate-nabhNablRate" name="nabhNablRate">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForm();">Update</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>Medical Rates</h3>
-            <table id="medicalrates" class="table table-bordered table-responsive">
-                <thead>
-                <tr>
-                    <th>S. No.</th>
-                    <th>Description</th>
-                    <th>NABH Rate</th>
-                    <th>Non NABH Rate</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="medicalRate : ${medicalRates}">
-                    <td th:text="${medicalRate.productCode}"></td>
-                    <td th:text="${medicalRate.productName}"></td>
-                    <td th:text="${medicalRate.nabhNablRate}"></td>
-                    <td th:text="${medicalRate.nonNabhNablRate}"></td>
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#medicalRatesModal" th:data-bs-id="${medicalRate.id}" th:data-bs-name="${medicalRate.productName}" th:data-bs-nabh="${medicalRate.nabhNablRate}" th:data-bs-nonnabh="${medicalRate.nonNabhNablRate}">Edit</button></td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>S. No.</th>
-                    <th>Description</th>
-                    <th>NABH Rate</th>
-                    <th>Non NABH Rate</th>
-                    <th>Action</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
+        <!--Section: Sales Performance KPIs-->
+        <section class="mb-4">
+            <div class="card">
+                <div class="card-header text-center py-3">
+                    <h5 class="mb-0 text-center">
+                        <strong>Hospitals</strong>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
 
-</div>
+                        <table id="medicalrates" class="table table-hover table-sm text-nowrap table-group-divider">
+                            <thead>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">NABH Rate</th>
+                                <th scope="col">Non NABH Rate</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="medicalRate : ${medicalRates}">
+                                <td th:text="${medicalRate.productCode}"></td>
+                                <td th:text="${medicalRate.productName}"></td>
+                                <td th:text="${medicalRate.nabhNablRate}"></td>
+                                <td th:text="${medicalRate.nonNabhNablRate}"></td>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#medicalRatesModal" th:data-bs-id="${medicalRate.id}" th:data-bs-name="${medicalRate.productName}" th:data-bs-nabh="${medicalRate.nabhNablRate}" th:data-bs-nonnabh="${medicalRate.nonNabhNablRate}">Edit</button></td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">NABH Rate</th>
+                                <th scope="col">Non NABH Rate</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
 
 </body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
-<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/datatables.js}"></script>
 
 <script>
     $('#medicalrates').DataTable();
 </script>
-
 <script>
     const medicalRatesModal = document.getElementById('medicalRatesModal');
     medicalRatesModal.addEventListener('show.bs.modal', function (event) {

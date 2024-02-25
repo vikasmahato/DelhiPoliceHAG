@@ -142,6 +142,11 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return diaryEntries.stream().map(DiaryEntryVO::new).collect(Collectors.toList());
     }
 
+    @Override
+    public int count() {
+        return (int) diaryEntryRepository.count();
+    }
+
     private Page<DiaryEntryVO> getPage(List<DiaryEntry> diaryEntries, PagingRequest pagingRequest) {
         List<DiaryEntryVO> filtered = diaryEntries.stream()
                 .sorted(sortEntries(pagingRequest))

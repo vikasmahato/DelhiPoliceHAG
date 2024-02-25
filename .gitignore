@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+mediclaim.mv.db
+mediclaim.iml

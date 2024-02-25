@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <style>
+
         .container{
             font-size: 1.2em;
-            margin-bottom: 10px;
-            margin-top: 10px;
+            margin: 10px 1cm;
         }
 
         h3{
@@ -27,9 +27,21 @@
         th {
             font-size: 95%;
         }
+
+        body {
+            width: 8.27in;
+           /* height: 11.69in;*/
+            margin: 0 auto;
+            padding: 0;
+            page-break-inside: avoid;
+        }
+
+        .avoid-page-break {
+            page-break-after: avoid;
+        }
     </style>
 </head>
-<body style='margin-left:1cm;right:1cm;'>
+<body>
 <div class='container' >
     <h3>CALCULATION SHEET</h3>
     <p th:inline="text" style='text-align:justify;'>
@@ -39,12 +51,12 @@
     <table class='table' style='margin-right:3px;'>
         <tbody>
         <tr>
-            <th width='2%'>Sr. No.</td>
-            <th width='20%'>Bill No.</td>
-            <th width='15%'>Date of Bill</td>
-            <th width='35%'>Name of the Tests/Medicines etc.</td>
-            <th width='14%'>Amount <br> claimed</td>
-            <th width='14%'>Admissible <br> Amount</td>
+            <th width='2%'>Sr. No.</th>
+            <th width='20%'>Bill No.</th>
+            <th width='15%'>Date of Bill</th>
+            <th width='35%'>Name of the Tests/Medicines etc.</th>
+            <th width='14%'>Amount <br> claimed</th>
+            <th width='14%'>Admissible <br> Amount</th>
         </tr>
 
 
@@ -68,7 +80,7 @@
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:12%;text-align:justify;'>Certified that the claim has been restricted as per Approved rates of CGHS/CS (MA) Rules.</p>
+    <p class='avoid-page-break' style='text-indent:12%;text-align:justify;'>Certified that the claim has been restricted as per Approved rates of CGHS/CS (MA) Rules.</p>
     <div style='margin-top:20px;'>Signature of Dealing Assistant     ____________________</div>
     <div style='margin-top:10px;'>Signature of Head Assistant         ____________________</div>
     <div style='margin-top:10px;'>Signature of Inspector Administration___________________</div>

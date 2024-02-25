@@ -42,6 +42,7 @@
                             <span th:case="*">
                                 <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
                                 <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
+                                <!--<button th:data-href="@{/printCalculationSheet/{id}(id=*{id})}" onclick="download(this.getAttribute('data-href'))" class="btn btn-primary" type="button"><i class="fas fa-download"></i></button>-->
                                 <span th:if="*{claimType.getEnumValue() == 'Referral'}">
                                     <!--<a class="btn btn-primary" th:href="@{/printReferralNotesheet/{id}(id=*{id})}">Print Note Sheet</a>-->
                                     <a class="btn btn-primary" th:href="@{/printReferralOrder/{id}(id=*{id})}">Print Order</a> <!-- File 15 -->
@@ -71,6 +72,7 @@
                                 <span th:case="*">
                                     <a class="btn btn-warning" th:href="@{/createCalculationSheet/{id}(id=*{id})}">Edit Calculation Sheet</a>
                                     <a class="btn btn-primary" th:href="@{/printCalculationSheet/{id}(id=*{id})}">Print Calculation Sheet</a> <!-- File 4 -->
+                                    <!--<button onclick="download()" class="btn btn-primary"><i class="fas fa-download"></i></button>-->
 
                                     <span th:if="*{claimType.getEnumValue() == 'Emergency'}">
                                         <a class="btn btn-primary" th:href="@{/printOpEmergencyForwardingLetter/{id}(id=*{id})}">Print Forwarding Letter</a>   <!-- File 7-->
@@ -111,4 +113,49 @@
 <script th:src="@{/js/relative.js}" type="text/javascript"></script>
 <script th:src="@{/js/pisNumberSearch.js}" type="text/javascript"></script>
 <script th:src="@{/js/hospitalSearch.js}" type="text/javascript"></script>
+<script th:src="@{/js/jspdf.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/html2canvas.min.js}" type="text/javascript"></script>
+
+<script>
+  /*  function downloadPDF(url) {
+        html2canvas(document.body).then(function(canvas) {
+            debugger;
+            var imgData = canvas.toDataURL('image/png');
+            var pdf = new jsPDF('p', 'mm', 'a4');
+            pdf.addImage(imgData, 'PNG', 0, 0, 211, 298);
+            pdf.save('download.pdf');
+        }).catch(function (error) {
+            debugger;
+            console.error('oops, something went wrong!', error);
+        })
+    }*/
+
+  async function download(url) {
+      try {
+          debugger;
+          const response = await fetch(url);
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          const html = await response.text();
+          var iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          document.body.appendChild(iframe);
+          iframe.contentDocument.write(html);
+          iframe.contentDocument.close();
+          const body = iframe.contentDocument.body;
+          const canvas = await html2canvas(body);
+          var imgData = canvas.toDataURL('image/png');
+          if (!imgData) {
+              throw new Error('Failed to convert canvas to PNG');
+          }
+          var base64Data = imgData.split(',')[1];
+          var pdf = new jsPDF('p', 'mm', 'a4');
+          pdf.addImage(base64Data, 'PNG', 0, 0, 211, 298);
+          pdf.save('download.pdf');
+      } catch (error) {
+          console.error('oops, something went wrong!', error);
+      }
+  }
+</script>
 </html>

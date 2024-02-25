@@ -29,4 +29,6 @@ public interface DiaryEntryService {
     void saveCalSheet(CalcSheetVO calcSheetVO);
 
     List<DiaryEntryVO> findCandidateDiaryEntries();
+
+    int count();
 }

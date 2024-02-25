@@ -59,4 +59,9 @@ public class HospitalServiceImpl implements HospitalService{
 
         return new HospitalVO(updatedHospital);
     }
+
+    @Override
+    public int count() {
+        return (int) hospitalRepository.count();
+    }
 }

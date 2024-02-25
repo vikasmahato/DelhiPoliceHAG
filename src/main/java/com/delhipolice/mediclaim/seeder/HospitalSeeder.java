@@ -24,6 +24,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Component
 @Slf4j
@@ -40,13 +41,17 @@ public class HospitalSeeder {
 
     @EventListener
     public void seed(ContextRefreshedEvent event) throws IOException {
-        //seedHospitals();
-        //seedMedicalRates();
-      //  seedDummyData();
+        seedHospitals();
+        seedMedicalRates();
+        seedDummyData();
     }
 
     private void seedHospitals() throws IOException {
 
+        if(hospitalService.count() > 0) {
+            log.info(hospitalService.count() + " hospitals already exist");
+            return;
+        }
 
         File file = new ClassPathResource("data/cghs_hospital.json").getFile();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -54,7 +59,7 @@ public class HospitalSeeder {
 
         for(HospitalVO hospitalVO : list) {
             hospitalService.save(hospitalVO);
-            //log.info("Saved: " + hospitalVO.getName());
+            log.info("Saved: " + hospitalVO.getName());
 
         }
 
@@ -63,6 +68,10 @@ public class HospitalSeeder {
 
     private void seedMedicalRates() throws IOException {
 
+        if(medicalRatesService.count() > 0) {
+            log.info(medicalRatesService.count() + " medical rates already exist");
+            return;
+        }
 
         File file = new ClassPathResource("data/medicalRates.json").getFile();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -77,19 +86,28 @@ public class HospitalSeeder {
 
     }
 
+
+
     public void seedDummyData(){
+        if(diaryEntryService.count() > 0) {
+            log.info(diaryEntryService.count() + " diary entries already exist");
+            return;
+        }
 
+        Random random = new Random();
+        String[] names = {"John Doe", "Jane Smith", "Robert Johnson", "Michael Brown", "Linda Garcia"};
 
+        for (int i = 0; i < 15; i++) {
+            String name = names[random.nextInt(names.length)];
+            String beltNumber = String.format("%05d", random.nextInt(100000));
+            String pisNumber = String.format("%06d", random.nextInt(1000000));
+            TreatmentBy treatmentBy = TreatmentBy.values()[random.nextInt(TreatmentBy.values().length)];
+            String diaryNumber = String.format("%05d", random.nextInt(100000));
+            DiaryType diaryType = DiaryType.values()[random.nextInt(DiaryType.values().length)];
+            ClaimType claimType = ClaimType.values()[random.nextInt(ClaimType.values().length)];
 
-        diaryEntryService.save(buildVO("Applicant 1", "00000", "999999", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, ClaimType.CREDIT));
-        diaryEntryService.save(buildVO("Applicant 2", "00001", "888888", TreatmentBy.SELF, "00001", DiaryType.INDIVIDUAL, ClaimType.PERMISSION));
-
-        diaryEntryService.save(buildVO("Applicant 3", "00002", "777777", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, ClaimType.CREDIT));
-        diaryEntryService.save(buildVO("Applicant 4", "00003", "6666666", TreatmentBy.RELATIVE, "00001", DiaryType.INDIVIDUAL, ClaimType.PERMISSION));
-
-        diaryEntryService.save(buildVO("Applicant 5", "00004", "5555555", TreatmentBy.SELF, "00001", DiaryType.HOSPITAL, ClaimType.CREDIT));
-        diaryEntryService.save(buildVO("Applicant 6", "00005", "444444", TreatmentBy.RELATIVE, "00001", DiaryType.HOSPITAL, ClaimType.PERMISSION));
-
+            diaryEntryService.save(buildVO(name, beltNumber, pisNumber, treatmentBy, diaryNumber, diaryType, claimType));
+        }
     }
 
     private DiaryEntryVO buildVO(String name, String beltNumber, String pisNumber, TreatmentBy treatmentBy, String diaryNumber, DiaryType diaryType, ClaimType claimType) {

@@ -33,6 +33,6 @@ public class LetterVO {
         this.letterDate = letter.getLetterDate();
         this.diaryEntryVOS = letter.getDiaryEntries().stream().map(DiaryEntryVO::new).collect(Collectors.toList());
         this.auditSection = letter.getAuditSection();
-        this.totalAmount = letter.getDiaryEntries().stream().map(DiaryEntry::getSanctionAmount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+        this.totalAmount = BigDecimal.ZERO; //letter.getDiaryEntries().stream().map(DiaryEntry::getSanctionAmount).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
     }
 }
