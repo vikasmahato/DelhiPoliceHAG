@@ -29,12 +29,12 @@ public class LetterWebController {
         return "forwarding_home";
     }
 
-    @GetMapping("/printNotesheet/{id}")
+/*    @GetMapping("/printNotesheet/{id}")
     public String printNotesheet(@PathVariable UUID id, Model model) {
         LetterVO letterVO = new LetterVO(letterService.find(id));
         model.addAttribute("notesheet", letterVO);
         model.addAttribute("diaryEntry", letterVO.getDiaryEntryVOS().get(0));
         return "print_notesheet";
-    }
+    }*/
 
 }

@@ -37,42 +37,9 @@
     <div class="container pt-4">
         <div id="message-div"></div>
 
-        <div class="modal fade" id="hospitalModal" tabindex="-1" aria-labelledby="hospitalModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="hospitalModalLabel">Edit Hospital</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="hospitalEditForm">
-                            <input type="hidden" class="form-control" id="hospital-id" name="id">
-                            <div class="mb-3">
-                                <label for="hospital-name" class="col-form-label">Hospital Name:</label>
-                                <input type="text" class="form-control" id="hospital-name" name="name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="hospital-address" class="col-form-label">Address:</label>
-                                <input type="text" class="form-control" id="hospital-address" name="address">
-                            </div>
-                            <div class="mb-3">
-                                <label for="hospital-type" class="col-form-label">Hospital Type:</label>
-                                <select class="form-control" id="hospital-type" name="type">
-                                    <option value="">Select</option>
-                                    <option th:each="hospitalType : ${T(com.delhipolice.mediclaim.constants.HospitalType).values()}" th:value="${hospitalType}" th:text="${hospitalType}"></option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="submitForm();">Update</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div th:replace="modals/hospital_entry :: modal"></div>
 
-        <!--Section: Sales Performance KPIs-->
+
         <section class="mb-4">
             <div class="card">
                 <div class="card-header text-center py-3">
@@ -129,56 +96,5 @@
 
 <script>
     $('#hospitals').DataTable();
-</script>
-<script>
-    const hospitalModal = document.getElementById('hospitalModal');
-    hospitalModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-        const id = button.getAttribute('data-bs-id');
-        const name = button.getAttribute('data-bs-name');
-        const address = button.getAttribute('data-bs-address');
-        const type = button.getAttribute('data-bs-type');
-
-        const modalTitle = hospitalModal.querySelector('.modal-title');
-        modalTitle.textContent = name;
-
-        $("#hospital-id").val(id);
-        $("#hospital-name").val(name);
-        $("#hospital-address").val(address);
-        $("#hospital-type").val(type).change();
-    })
-</script>
-
-<script>
-    function submitForm() {
-        var data = $("#hospitalEditForm").serialize();
-
-        console.log(data);
-
-        $.ajax({
-            type:"post",
-            data:data,
-            url:"/updatehospital",
-            async: false,
-            dataType: "json",
-            success: function(response){
-                const  messageDiv = $("#message-div");
-                messageDiv.html(
-                    '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
-                    response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-                    '</div>');
-                $('#hospitalModal').modal('toggle');
-            },
-            error: function (jqXHR, exception) {
-               const  messageDiv = $("#message-div");
-               messageDiv.html(
-                   '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
-                   exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-                   '</div>');
-               $('#hospitalModal').modal('toggle');
-            }
-        });
-
-    }
 </script>
 </html>

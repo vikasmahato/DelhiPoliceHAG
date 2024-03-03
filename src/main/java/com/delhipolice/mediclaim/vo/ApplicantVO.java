@@ -3,6 +3,8 @@ package com.delhipolice.mediclaim.vo;
 import com.delhipolice.mediclaim.constants.CghsCategory;
 import com.delhipolice.mediclaim.constants.Designation;
 import com.delhipolice.mediclaim.model.Applicant;
+import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +27,7 @@ public class ApplicantVO {
     private String cghsNumber;
 
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date cghsExpiry;
 
     private CghsCategory cghsCategory;

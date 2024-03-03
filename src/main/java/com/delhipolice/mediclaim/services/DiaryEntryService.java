@@ -24,7 +24,7 @@ public interface DiaryEntryService {
 
     DiaryEntry update(DiaryEntry diaryEntry);
 
-    Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest);
+    Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes);
 
     void saveCalSheet(CalcSheetVO calcSheetVO);
 

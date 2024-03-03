@@ -21,11 +21,11 @@ public class MediclaimApplication {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		dateFormat.setLenient(false);
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		//dateFormat.setLenient(false);
 
 		// true passed to CustomDateEditor constructor means convert empty String to null
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+		//binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
 
 }

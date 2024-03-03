@@ -1,7 +1,9 @@
 package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.constants.*;
+import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
 import com.delhipolice.mediclaim.vo.ClaimDetailsVO;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -63,7 +65,8 @@ public class ClaimDetails implements Serializable {
 
     @Column
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date relativeCghsexpiry;
 
     @Column

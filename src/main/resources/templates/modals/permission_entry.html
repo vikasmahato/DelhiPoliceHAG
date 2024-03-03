@@ -1,0 +1,231 @@
+<div th:fragment="permissionModal">
+
+<div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="permissionModalLabel">Create a New Permission</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="permissionCreateForm">
+          <input type="hidden" class="form-control" id="claimType" name="claimType">
+          <div class="box-body">
+
+            <div class="input-group input-group-sm mb-3">
+              <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" required
+              />
+              <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required disabled>
+                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
+              </select>
+
+              <span class="input-group-text">/Genl. Branch/SD dated</span>
+
+              <input type="text" aria-label="Diary Date" id="datepicker" name="diaryDate" class="form-control datepicker" required>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="pis_number" class="form-control form-control-sm" name="applicant.pisNumber" required />
+                  <label class="form-label" for="pis_number">PIS No</label>
+                </div>
+              </div>
+
+              <div class="col-8">
+                <div class="input-group input-group-sm mb-3">
+                  <select class="form-control form-control-sm" id="rank" name="applicant.rank" required>
+                    <option value="">Select</option>
+                    <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
+                  </select>
+
+                  <input type="text" id="applicant_name" class="form-control" name="applicant.name" placeholder="Applicant Name" required />
+
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+              <div class="col-4">
+
+
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="belt_number" class="form-control form-control-sm" name="applicant.beltNumber" required />
+                  <label class="form-label" for="belt_number">Belt No</label>
+                </div>
+
+              </div>
+
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="cghs_number" class="form-control form-control-sm" name="applicant.cghsNumber" required />
+                  <label class="form-label" for="cghs_number">CGHS Number</label>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="cghs_expiry" class="form-control form-control-sm datepicker" name="applicant.cghsExpiry" required />
+                  <label class="form-label" for="cghs_expiry">CGHS Expiry</label>
+                </div>
+              </div>
+
+              </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="input-group input-group-sm mb-3">
+                  <span class="input-group-text">CGHS Category</span>
+                  <select class="form-control" id="cghs_category" name="applicant.cghsCategory" required>
+                    <option th:each="cghsCategory : ${T(com.delhipolice.mediclaim.constants.CghsCategory).values()}" th:value="${cghsCategory}" th:text="${cghsCategory.getEnumValue()}"></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
+                  <label class="form-label" for="hospital_name">Under Treatment At</label>
+                </div>
+                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
+              </div>
+
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="refer_hospital_name" class="form-control form-control-sm" name="referHospital.hospitalName" required />
+                  <label class="form-label" for="refer_hospital_name">Refer To Hospital</label>
+                </div>
+                <input type="hidden" class="form-control" id="refer_hospital_id" name="referHospital.id">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="input-group input-group-sm mb-3">
+
+                  <span class="input-group-text">Treatment Taken By</span>
+                  <select class="form-control form-control-sm" id="treatment_by" name="treatmentTakenBy" required>
+                    <option th:each="treatmentBy : ${T(com.delhipolice.mediclaim.constants.TreatmentBy).values()}" th:value="${treatmentBy}" th:text="${treatmentBy.getEnumValue()}"></option>
+                  </select>
+
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="input-group input-group-sm mb-3 relative">
+
+                  <span class="input-group-text">Relation</span>
+                  <select class="form-control form-control-sm" id="relation" name="claimDetails.relation" required>
+                    <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
+                  </select>
+
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-outline mb-3" data-mdb-input-init>
+                  <input type="text" id="treatment_start_date" class="form-control form-control-sm datepicker" name="claimDetails.startDate" required />
+                  <label class="form-label" for="treatment_start_date">Referral Date</label>
+                </div>
+              </div>
+
+            </div>
+
+              <div class="row relative">
+
+                <div class="col-4">
+
+                  <div class="form-outline mb-3" data-mdb-input-init>
+                    <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" required />
+                    <label class="form-label" for="relative_name">Relative Name</label>
+                  </div>
+
+                </div>
+
+                <div class="col-4">
+
+                  <div class="form-outline mb-3" data-mdb-input-init>
+                    <input type="text" id="relative_cghs_number" class="form-control form-control-sm" name="claimDetails.relativeCghsNumber" required />
+                    <label class="form-label" for="relative_cghs_number">Relative CGHS Number</label>
+                  </div>
+
+                </div>
+
+                <div class="col-4">
+
+                  <div class="form-outline mb-3" data-mdb-input-init>
+                    <input type="text" id="relative_cghs_expiry" class="form-control form-control-sm datepicker" name="claimDetails.relativeCghsexpiry" required />
+                    <label class="form-label" for="relative_cghs_expiry">Relative CGHS Expiry</label>
+                  </div>
+
+                </div>
+
+              </div>
+              <input type="hidden" class="form-control" id="applicant_id" name="applicant.id">
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-warning">Reset</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const permissionModal = document.getElementById('permissionModal');
+  permissionModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const type = button.getAttribute('data-bs-type');
+
+    const modalTitle = permissionModal.querySelector('.modal-title');
+
+    $("#diaryType").val('INDIVIDUAL')
+    $("#claimType").val(type)
+
+    modalTitle.textContent = type;
+
+  })
+</script>
+<script>
+  function submitForm() {
+    var data = $("#permissionCreateForm").serialize();
+
+    console.log(data);
+
+    $.ajax({
+      type:"post",
+      data:data,
+      url:"/diaryEntryCreate",
+      async: false,
+      dataType: "json",
+      success: function(response){
+        const  messageDiv = $("#message-div");
+        messageDiv.html(
+                '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                '</div>');
+        $('#permissionModal').modal('toggle');
+      },
+      error: function (jqXHR, exception) {
+        const  messageDiv = $("#message-div");
+        messageDiv.html(
+                '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                '</div>');
+        $('#permissionModal').modal('toggle');
+      }
+    });
+
+  }
+</script>
+
+</div>

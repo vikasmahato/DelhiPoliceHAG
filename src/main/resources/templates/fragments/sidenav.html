@@ -6,16 +6,18 @@
                 <a href="/diaryEntry" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/diaryEntry' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Diary</span>
                 </a>
+                <a href="/permission" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/permission' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-check-double fa-fw me-3"></i><span>Permission</span>
+                </a>
+                <a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Notesheets</span>
+                </a>
                 <a href="/hospitals" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/hospitals' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-building fa-fw me-3"></i><span>Hospitals</span>
                 </a>
                 <a href="/medicalrates" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/medicalrates' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-chart-bar fa-fw me-3"></i><span>Medical Rates</span>
                 </a>
-                <a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Notesheets</span>
-                </a>
-
             </div>
         </div>
     </nav>

@@ -4,6 +4,8 @@ import com.delhipolice.mediclaim.constants.ClaimStatus;
 import com.delhipolice.mediclaim.constants.HospitalType;
 import com.delhipolice.mediclaim.constants.Relation;
 import com.delhipolice.mediclaim.model.ClaimDetails;
+import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,13 +22,17 @@ public class ClaimDetailsVO{
     private Relation relation = Relation.SELF;
     private String relativeName;
     private String pincode;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date startDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date endDate;
     private String refHospitalName;
     private String disease;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date applicationDate;
     private BigDecimal amountAvailable;
     private String period;
@@ -34,7 +40,8 @@ public class ClaimDetailsVO{
     private HospitalType hospitalType;
     private String relativeCghsNumber;
     private Boolean isNewClaim = Boolean.TRUE;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    
+@JsonDeserialize(using = CustomDateDeserializer.class)
     private Date relativeCghsexpiry;
     private BigDecimal amountDue;
 

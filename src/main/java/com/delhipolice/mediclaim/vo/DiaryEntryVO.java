@@ -4,8 +4,10 @@ import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.*;
+import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
 import com.delhipolice.mediclaim.utils.EnglishNumberToWords;
 import com.delhipolice.mediclaim.utils.FinancialYearGenerator;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -33,21 +35,22 @@ public class DiaryEntryVO implements Serializable {
     private String displayNameSalutation;
     private String displayNameSalutationTreatmentBy;
     private DiaryType diaryType;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date diaryDate;
     private ApplicantVO applicant;
     private TreatmentBy treatmentTakenBy;
     private Hospital hospital;
+    private Hospital referHospital;
     private BigDecimal amountClaimed;
     private BigDecimal admissibleAmount;
     private String amountGrantedInWords;
     private String phqNumber;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date phqDate;
     private String sanctionNumber;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date sanctionDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date patientDOB;
     private BigDecimal sanctionAmount;
     private Boolean isObjection;
@@ -72,6 +75,7 @@ public class DiaryEntryVO implements Serializable {
         applicant = new ApplicantVO(diaryEntry.getApplicant());
         treatmentTakenBy = diaryEntry.getTreatmentTakenBy();
         hospital = diaryEntry.getHospital();
+        referHospital = diaryEntry.getReferHospital();
         claimType = diaryEntry.getClaimType();
         amountClaimed = diaryEntry.getAmountClaimed();
         admissibleAmount = diaryEntry.getAdmissibleAmount();

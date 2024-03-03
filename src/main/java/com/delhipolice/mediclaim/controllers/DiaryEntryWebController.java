@@ -62,7 +62,7 @@ public class DiaryEntryWebController {
 
     @PostMapping("/diaryEntryCreate")
     public RedirectView submit(@ModelAttribute DiaryEntryVO diaryEntryVO, Model model) {
-        log.error(diaryEntryVO.toString());
+        log.info(diaryEntryVO.toString());
         DiaryEntry diaryEntry = diaryEntryService.save(diaryEntryVO);
         return new RedirectView("/diaryEntry");
     }
@@ -84,61 +84,83 @@ public class DiaryEntryWebController {
     @GetMapping("/printCalculationSheet/{id}")
     public String printCalculationSheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_calculation_sheet";
+        return "prints/print_calculation_sheet";
     }
 
     @GetMapping("/printReferralNotesheet/{id}")
     public String printReferralNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_referral_notesheet";
+        return "prints/print_referral_notesheet";
     }
 
     @GetMapping("/printReferralOrder/{id}")
     public String printReferralOrder(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_referral_order";
+        return "prints/print_referral_order";
     }
 
     @GetMapping("/printOpEmergencyForwardingLetter/{id}")
     public String printOpEmergencyForwardingLetter(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_op_emg_forwarding_letter";
+        return "prints/print_op_emg_forwarding_letter";
     }
 
     @GetMapping("/printIpEmergencyForwardingLetter/{id}")
     public String printIpEmergencyForwardingLetter(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_ip_emg_forwarding_letter";
+        return "prints/print_ip_emg_forwarding_letter";
     }
 
     @GetMapping("/printCreditForwardingLetter/{id}")
     public String printCreditForwardingLetter(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_credit_fl";
+        return "prints/print_credit_fl";
     }
 
-    @GetMapping("/printCreditNotesheet/{id}")
-    public String printCreditNotesheet(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_credit_notesheet";
+    @GetMapping("/printNotesheet/{id}")
+    public String printNotesheet(@PathVariable UUID id, Model model) {
+        DiaryEntryVO diaryEntry = diaryEntryService.find(id);
+        model.addAttribute("diaryEntry", diaryEntry);
+
+        switch (diaryEntry.getClaimType()) {
+            case REFERRAL:
+                return "prints/print_referral_notesheet";
+            case PERMISSION:
+                return "prints/print_permission_notesheet";
+            case CREDIT:
+                return "prints/print_credit_notesheet";
+            default:
+                return "prints/print_treatment_notesheet";
+        }
     }
 
-    @GetMapping("/printCreditPermission/{id}")
+    @GetMapping("/printPermission/{id}")
     public String printCreditPermission(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_credit_permission";
+        DiaryEntryVO diaryEntry = diaryEntryService.find(id);
+        model.addAttribute("diaryEntry", diaryEntry);
+
+        switch (diaryEntry.getClaimType()) {
+            case REFERRAL:
+                return "prints/print_referral_notesheet";
+            case PERMISSION:
+                return "prints/print_permission_permission";
+            case CREDIT:
+                return "prints/print_credit_permission";
+            default:
+                return "prints/print_treatment_notesheet";
+        }
     }
 
     @GetMapping("/printTreatmentNotesheet/{id}")
     public String printTreatmentNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_treatment_notesheet";
+        return "prints/print_treatment_notesheet";
     }
 
     @GetMapping("/printTreatmentPermission/{id}")
     public String printTreatmentPermission(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "print_treatment_permission";
+        return "prints/print_treatment_permission";
     }
 
 

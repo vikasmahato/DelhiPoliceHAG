@@ -33,6 +33,7 @@ public class DiaryEntry implements Serializable, Auditable {
         this.diaryDate = diaryEntryVO.getDiaryDate();
         this.treatmentTakenBy = diaryEntryVO.getTreatmentTakenBy();
         this.hospital = diaryEntryVO.getHospital();
+        this.referHospital = diaryEntryVO.getReferHospital();
         this.amountClaimed = diaryEntryVO.getAmountClaimed();
         this.admissibleAmount = diaryEntryVO.getAdmissibleAmount();
         this.phqNumber = diaryEntryVO.getPhqNumber();
@@ -76,6 +77,9 @@ public class DiaryEntry implements Serializable, Auditable {
 
     @OneToOne(cascade = CascadeType.MERGE)
     private Hospital hospital;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    private Hospital referHospital;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<CalculationSheetEntry> calculationSheet;

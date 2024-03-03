@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Diary Entry</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Font Awesome -->
     <link
@@ -13,90 +13,119 @@
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
     />
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/body.css}" rel="stylesheet"></link>
+
+
 </head>
 <body>
+    <header>
+        <div th:replace="fragments/sidenav :: sidebarMenu"></div>
+        <div th:replace="fragments/topnav :: navbar"></div>
+    </header>
 
-<div th:replace="fragments/topnav :: navbar"></div>
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+        <div class="container pt-4">
+            <div id="message-div"></div>
 
-<div class="container">
+            <div th:replace="modals/permission_entry :: permissionModal"></div>
 
-    <div class="row mt-3">
-        <div class="col-lg-4">
-            <a class="btn btn-primary" href="/permissionEntryCreateForm">Create Permission</a>
-            <a class="btn btn-primary" href="/creditEntryCreateForm">Create Credit</a>
+            <section class="mb-4">
+                <div class="card">
+                    <div class="card-header py-3">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-type="PERMISSION">Create Permission</button>
+                        <a class="btn btn-primary btn-sm" href="/creditEntryCreateForm">Create Credit</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-hover table-sm text-nowrap table-group-divider">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Diary Number</th>
+                                    <th scope="col">Rank/Name/No</th>
+                                    <th scope="col">Treatment Taken By</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Notesheet</th>
+                                    <th scope="col">Permission</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th scope="col">Diary Number</th>
+                                    <th scope="col">Rank/Name/No</th>
+                                    <th scope="col">Treatment Taken By</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Notesheet</th>
+                                    <th scope="col">Permission</th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h3>Records</h3>
-            <table id="example" class="table table-bordered table-responsive" style="width: 100%">
-                <thead>
-                <tr>
-                    <th>Diary Number</th>
-                    <th>Rank/Name/No</th>
-                    <th>Treatment Taken By</th>
-                    <th>Type</th>
-                    <th>Notesheet</th>
-                    <th>Permission</th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th>Diary Number</th>
-                    <th>Rank/Name/No</th>
-                    <th>Treatment Taken By</th>
-                    <th>Type</th>
-                    <th>Notesheet</th>
-                    <th>Permission</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-
-</div>
-
-</body>
-<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
-<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
-<script th:src="@{/js/datatables.js}"></script>
-
+    </body>
+    <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/datatables.js}"></script>
+    <script th:src="@{/js/relative.js}" type="text/javascript"></script>
+    <script th:src="@{/js/pisNumberSearch.js}" type="text/javascript"></script>
+    <script th:src="@{/js/hospitalSearch.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap-datepicker.min.js}" type="text/javascript"></script>
 <script>
-    $('#example').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-            "url": "/permissions",
-            "type": "POST",
-            "dataType": "json",
-            "contentType": "application/json",
-            "data": function (d) {
-                return JSON.stringify(d);
-            }
-        },
-        "columns": [
-            {"data": "displayDiaryNumber", "width": "20%"},
-            {"data": "displayName", "width": "60%"},
-            {"data": "treatmentTakenBy","width": "10%"},
-            {"data": "caseType","width": "10%"},
-            {
-                sortable: false,
-                "render": function ( data, type, full, meta ) {
-                    var buttonID = "action_"+full.id;
-                    return '<a id='+buttonID+' class="btn btn-primary" href="/viewNotesheet?id='+ full.id +'">Notesheet</a>';
-                }
-            },
-            {
-                sortable: false,
-                "render": function ( data, type, full, meta ) {
-                    var buttonID = "action_"+full.id;
-                    return '<a id='+buttonID+' class="btn btn-primary" href="/viewPermission?id='+ full.id +'">Permission</a>';
-                }
-            },
-        ],
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'dd-MM-yyyy',
+            autoclose: true
+        });
     });
 </script>
+
+    <script>
+        $('#example').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/permissions",
+                "type": "POST",
+                "dataType": "json",
+                "contentType": "application/json",
+                "data": function (d) {
+                    return JSON.stringify(d);
+                }
+            },
+            "columns": [
+                {"data": "displayDiaryNumber", "width": "20%"},
+                {"data": "displayName", "width": "60%"},
+                {"data": "treatmentTakenBy","width": "10%"},
+                {"data": "claimType","width": "10%"},
+                {
+                    sortable: false,
+                    "render": function ( data, type, full, meta ) {
+                        var buttonID = "action_"+full.id;
+                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printNotesheet/'+ full.id +'">Notesheet</a>';
+                    }
+                },
+                {
+                    sortable: false,
+                    "render": function ( data, type, full, meta ) {
+                        var buttonID = "action_"+full.id;
+                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printPermission/'+ full.id +'">Permission</a>';
+                    }
+                },
+            ],
+        });
+    </script>
 </html>

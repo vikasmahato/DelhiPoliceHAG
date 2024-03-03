@@ -31,12 +31,14 @@ public class DiaryEntryRestController {
 
     @PostMapping("/diaryentries")
     public Page<DiaryEntryVO> listDiaryEntries(@RequestBody PagingRequest pagingRequest) {
-        return diaryEntryService.getDiaryEntries(pagingRequest);
+        List<ClaimType> claimTypes = Arrays.asList(ClaimType.EMERGENCY, ClaimType.REFERRAL);
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
     }
 
     @PostMapping("/permissions")
     public Page<DiaryEntryVO> listPermissions(@RequestBody PagingRequest pagingRequest) {
-        return diaryEntryService.getDiaryEntries(pagingRequest);
+        List<ClaimType> claimTypes = Arrays.asList(ClaimType.PERMISSION, ClaimType.CREDIT);
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
     }
 
 

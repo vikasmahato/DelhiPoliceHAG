@@ -96,8 +96,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest) {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll();
+    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes) {
+        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes);
         return getPage(diaryEntries, pagingRequest);
     }
 
