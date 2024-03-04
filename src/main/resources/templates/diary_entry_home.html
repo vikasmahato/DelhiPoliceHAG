@@ -16,6 +16,8 @@
     <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
     <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/body.css}" rel="stylesheet"></link>
 
 </head>
@@ -31,12 +33,16 @@
 
 <!--Main layout-->
 <main style="margin-top: 58px">
+
     <div class="container pt-4">
+
+        <div th:replace="modals/diary_entry :: diaryEntryModal"></div>
         <!--Section: Sales Performance KPIs-->
         <section class="mb-4">
             <div class="card">
-                <div class="card-header text-center py-3">
-                    <h5 class="mb-0 text-center">
+                <div class="card-header">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-type="Diary Entry">Create Diary Entry</button>
+                    <h5 class="text-center">
                         <strong>Diary Entries</strong>
                     </h5>
                 </div>
@@ -73,10 +79,24 @@
 
 </body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/datatables.js}"></script>
+<script th:src="@{/js/relative.js}" type="text/javascript"></script>
+<script th:src="@{/js/pisNumberSearch.js}" type="text/javascript"></script>
+<script th:src="@{/js/hospitalSearch.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap-datepicker.min.js}" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        $('.datepicker').datepicker({
+            format: 'dd-MM-yyyy',
+            autoclose: true
+        });
+    });
+</script>
 
 <script>
     $('#diaryEntries').DataTable({

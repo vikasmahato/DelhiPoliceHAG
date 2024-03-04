@@ -1,14 +1,14 @@
-<div th:fragment="permissionModal">
+<div th:fragment="diaryEntryModal">
 
-<div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalLabel" aria-hidden="true">
+<div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="permissionModalLabel">Create a New Permission</h5>
+        <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="permissionCreateForm">
+        <form id="diaryEntryCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <div class="box-body">
 
@@ -18,7 +18,7 @@
                       class="form-control"
                       aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" required
               />
-              <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required disabled>
+              <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required>
                 <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
               </select>
 
@@ -89,19 +89,26 @@
               </div>
 
               <div class="col-4">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
-                  <label class="form-label" for="hospital_name">Under Treatment At</label>
+                <div class="input-group input-group-sm mb-3">
+
+                  <span class="input-group-text">Claim Type</span>
+                  <select class="form-control form-control-sm" id="claim_type" name="claimType" required>
+                    <option th:each="claimType : ${T(com.delhipolice.mediclaim.constants.ClaimType).values()}"
+                            th:if="${claimType.getEnumValue() != 'Credit' and claimType.getEnumValue() != 'Permission'}"
+                            th:value="${claimType}"
+                            th:text="${claimType.getEnumValue()}">
+                    </option>
+                  </select>
+
                 </div>
-                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
               </div>
 
-              <div class="col-4" id="refer_hospital_div">
+              <div class="col-4" id="hospital_div">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="refer_hospital_name" class="form-control form-control-sm" name="referHospital.hospitalName" required />
-                  <label class="form-label" for="refer_hospital_name">Refer To Hospital</label>
+                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
+                  <label class="form-label" for="hospital_name">Hospital Name</label>
                 </div>
-                <input type="hidden" class="form-control" id="refer_hospital_id" name="referHospital.id">
+                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
               </div>
             </div>
 
@@ -181,21 +188,12 @@
 </div>
 
 <script>
-  const permissionModal = document.getElementById('permissionModal');
-  permissionModal.addEventListener('show.bs.modal', function (event) {
+  const diaryEntryModal = document.getElementById('diaryEntryModal');
+  diaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
 
-    const modalTitle = permissionModal.querySelector('.modal-title');
-
-    if(type === 'CREDIT') {
-      $("#refer_hospital_div").hide();
-    } else {
-      $("#refer_hospital_div").show();
-    }
-
-    $("#diaryType").val('INDIVIDUAL')
-    $("#claimType").val(type)
+    const modalTitle = diaryEntryModal.querySelector('.modal-title');
 
     modalTitle.textContent = type;
 
@@ -212,7 +210,7 @@
     return formData;
   }
   function submitForm() {
-    var data = $("#permissionCreateForm").serializeArray().reduce(function(obj, item) {
+    var data = $("#diaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
       obj[item.name] = item.value;
       return obj;
     }, {});
@@ -235,7 +233,7 @@
                 '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
                 response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
-        $('#permissionModal').modal('toggle');
+        $('#diaryEntryModal').modal('toggle');
       },
       error: function (jqXHR, exception) {
         const  messageDiv = $("#message-div");
@@ -243,7 +241,7 @@
                 '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
                 exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
-        $('#permissionModal').modal('toggle');
+        $('#diaryEntryModal').modal('toggle');
       }
     });
 
