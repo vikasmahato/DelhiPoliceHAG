@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.services;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
+import com.delhipolice.mediclaim.model.Applicant;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.utils.Page;
 import com.delhipolice.mediclaim.utils.PagingRequest;
@@ -19,6 +20,7 @@ public interface DiaryEntryService {
     List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS);
 
     List<DiaryEntry> findAllByUUIDs(List<UUID> uuids);
+    List<DiaryEntryVO> findAllByApplicant(Applicant applicant);
 
     DiaryEntry update(DiaryEntryVO diaryEntryVO);
 

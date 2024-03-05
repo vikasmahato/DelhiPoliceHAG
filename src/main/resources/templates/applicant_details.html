@@ -37,14 +37,14 @@
     <div class="container pt-4">
         <div id="message-div"></div>
 
-        <div th:replace="modals/hospital_entry :: modal"></div>
-
+        <div th:replace="modals/diary_entry :: diaryEntryModal"></div>
+        <div th:replace="modals/claim_view :: claimViewModal"></div>
 
         <section class="mb-4">
             <div class="card">
                 <div class="card-header text-center py-3">
                     <h5 class="mb-0 text-center">
-                        <strong>Applicants</strong>
+                        <strong>Applicant: [[${applicant.designation}]] [[${applicant.name}]] (PIS: [[${applicant.pisNumber}]]) </strong>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -53,32 +53,35 @@
                         <table id="applicants" class="table table-hover table-sm text-nowrap table-group-divider">
                             <thead>
                             <tr>
-                                <th scope="col">S. No.</th>
-                                <th scope="col">Rank</th>
-                                <th scope="col" class="address-header">Name</th>
-                                <th scope="col">Belt No</th>
-                                <th scope="col">PIS No</th>
+                                <th scope="col">Diary Number</th>
+                                <th scope="col">Rank/Name/No</th>
+                                <th scope="col">Treatment Taken By</th>
+                                <th scope="col">Diary Type</th>
+                                <th scope="col">Claim Type</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">View</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="applicant : ${applicants}">
-                                <td th:text="${applicant.id}"></td>
-                                <td th:text="${applicant.rank}"></td>
-                                <td th:text="${applicant.name}"></td>
-                                <td th:text="${applicant.beltNumber}"></td>
-                                <td th:text="${applicant.pisNumber}"></td>
-                                <td><a class="btn btn-primary btn-sm" target="_blank" th:href="'/applicantDetails/' + ${applicant.id}">Details</a></td>
+                            <tr th:each="diaryEntry : ${diaryEntries}">
+                                <td th:text="${diaryEntry.displayDiaryNumber}"></td>
+                                <td th:text="${diaryEntry.displayName}"></td>
+                                <td th:text="${diaryEntry.treatmentTakenBy}"></td>
+                                <td th:text="${diaryEntry.diaryType}"></td>
+                                <td th:text="${diaryEntry.claimType}"></td>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" th:data-bs-id="${diaryEntry.id}">Edit</button></td>
+                                <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" th:data-bs-id="${diaryEntry.id}">View</button></td>
                             </tr>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th scope="col">S. No.</th>
-                                <th scope="col">Rank</th>
-                                <th scope="col" class="address-header">Name</th>
-                                <th scope="col">Belt No</th>
-                                <th scope="col">PIS No</th>
+                                <th scope="col">Diary Number</th>
+                                <th scope="col">Rank/Name/No</th>
+                                <th scope="col">Treatment Taken By</th>
+                                <th scope="col">Diary Type</th>
+                                <th scope="col">Claim Type</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">View</th>
                             </tr>
                             </tfoot>
                         </table>

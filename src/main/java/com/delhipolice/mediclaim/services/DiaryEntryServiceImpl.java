@@ -74,6 +74,11 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
+    public List<DiaryEntryVO> findAllByApplicant(Applicant applicant) {
+        return diaryEntryRepository.findAll(applicant.getId()).stream().map(DiaryEntryVO::new).collect(Collectors.toList());
+    }
+
+    @Override
     public DiaryEntry update(DiaryEntryVO diaryEntryVO) {
         DiaryEntry diaryEntry = diaryEntryRepository.findById(diaryEntryVO.getId()).get();
         diaryEntry.setAmountClaimed(diaryEntryVO.getAmountClaimed());

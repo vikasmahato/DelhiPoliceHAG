@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.repositories;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
+import com.delhipolice.mediclaim.model.Applicant;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,9 @@ public interface DiaryEntryRepository extends JpaRepository<DiaryEntry, UUID> {
 
     @Query("SELECT d FROM DiaryEntry d WHERE d.claimType in :claimTypes")
     List<DiaryEntry> findAll(@Param("claimTypes")  List<ClaimType> claimTypes);
+
+    @Query("SELECT d FROM DiaryEntry d WHERE d.applicant.id in :applicantId")
+    List<DiaryEntry> findAll(@Param("applicantId") Long applicantId);
 
     @Query("SELECT d FROM DiaryEntry d")
     List<DiaryEntry> findAll();
