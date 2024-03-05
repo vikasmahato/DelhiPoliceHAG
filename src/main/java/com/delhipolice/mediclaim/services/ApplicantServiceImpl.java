@@ -27,6 +27,12 @@ public class ApplicantServiceImpl implements ApplicantService{
     }
 
     @Override
+    public List<ApplicantVO> findAll() {
+        List<Applicant> applicants = applicantRepository.findAll();
+        return applicants.stream().map(ApplicantVO::new).collect(Collectors.toList());
+    }
+
+    @Override
     public Applicant findByPisNumber(String pisNumber) {
         return applicantRepository.findByPisNumber(pisNumber);
     }

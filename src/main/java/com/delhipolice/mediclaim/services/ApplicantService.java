@@ -8,6 +8,7 @@ import java.util.List;
 public interface ApplicantService {
 
     Applicant find(Long id);
+    List<ApplicantVO> findAll();
 
     Applicant findByPisNumber(String pisNumber);
 

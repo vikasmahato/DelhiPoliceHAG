@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Applicants</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/body.css}" rel="stylesheet"></link>
+    <style>
+        .address-header {
+            max-width: 100px; /* Adjust as needed */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div th:replace="fragments/sidenav :: sidebarMenu"></div>
+    <div th:replace="fragments/topnav :: navbar"></div>
+</header>
+
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div id="message-div"></div>
+
+        <div th:replace="modals/hospital_entry :: modal"></div>
+
+
+        <section class="mb-4">
+            <div class="card">
+                <div class="card-header text-center py-3">
+                    <h5 class="mb-0 text-center">
+                        <strong>Applicants</strong>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table id="applicants" class="table table-hover table-sm text-nowrap table-group-divider">
+                            <thead>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col" class="address-header">Name</th>
+                                <th scope="col">Belt No</th>
+                                <th scope="col">PIS No</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="applicant : ${applicants}">
+                                <td th:text="${applicant.id}"></td>
+                                <td th:text="${applicant.rank}"></td>
+                                <td th:text="${applicant.name}"></td>
+                                <td th:text="${applicant.beltNumber}"></td>
+                                <td th:text="${applicant.pisNumber}"></td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Rank</th>
+                                <th scope="col" class="address-header">Name</th>
+                                <th scope="col">Belt No</th>
+                                <th scope="col">PIS No</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/datatables.js}"></script>
+
+<script>
+    $('#applicants').DataTable();
+</script>
+</html>

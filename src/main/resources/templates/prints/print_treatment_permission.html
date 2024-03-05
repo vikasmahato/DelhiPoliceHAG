@@ -6,15 +6,29 @@
     <title>Medical Claim</title>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
     <style>
-        h5{
+
+        .container{
+            font-size: 1.2em;
+            margin: 10px 1cm;
+        }
+
+        h3{
             text-align: center;
             text-decoration: underline;
             font-weight: bold;
-            padding:0px;
-            margin:0px;
+            margin-bottom: 30px;
         }
-        .container{
-            font-size: 1.3em;
+
+        body {
+            width: 8.27in;
+            /* height: 11.69in;*/
+            margin: 0 auto;
+            padding: 0;
+            page-break-inside: avoid;
+        }
+
+        .avoid-page-break {
+            page-break-after: avoid;
         }
     </style>
 </head>

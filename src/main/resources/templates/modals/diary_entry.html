@@ -10,6 +10,7 @@
       <div class="modal-body">
         <form id="diaryEntryCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
+          <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
 
             <div class="input-group input-group-sm mb-3">
@@ -192,10 +193,46 @@
   diaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
+    const id = button.getAttribute('data-bs-id');
 
     const modalTitle = diaryEntryModal.querySelector('.modal-title');
-
     modalTitle.textContent = type;
+
+    if(id != null) {
+      $.ajax({
+        type: "POST",
+        url: "/diaryEntry/" + id,
+        success: function(response) {
+          const fields = [
+            "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
+            "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
+            "applicant.cghsNumber", "applicant.cghsExpiry", "applicant.cghsCategory", "claimType",
+            "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
+            "claimDetails.startDate", "claimDetails.relativeName", "claimDetails.relativeCghsNumber",
+            "claimDetails.relativeCghsexpiry", "applicant.id"
+          ];
+          fields.forEach(function(field) {
+            const input = diaryEntryModal.querySelector(`[name="${field}"]`);
+            if(input != null) {
+              const value = field.split('.').reduce((o,i)=>o[i], response);
+              if(value != null) {
+                input.value = value;
+              }
+            }
+          });
+          $("#treatment_by").trigger("change");
+        },
+        error: function (jqXHR, exception) {
+          if (jqXHR.status === 404) {
+            console.log("DiaryEntry with id " + id + " not found");
+          } else {
+            console.log("Error fetching data: ", exception);
+          }
+        }
+      });
+    }
+
+
 
   })
 </script>

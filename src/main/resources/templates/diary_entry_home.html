@@ -22,8 +22,6 @@
 
 </head>
 <body>
-
-<body>
 <!--Main Navigation-->
 <header>
     <div th:replace="fragments/sidenav :: sidebarMenu"></div>
@@ -37,6 +35,7 @@
     <div class="container pt-4">
 
         <div th:replace="modals/diary_entry :: diaryEntryModal"></div>
+        <div th:replace="modals/claim_view :: claimViewModal"></div>
         <!--Section: Sales Performance KPIs-->
         <section class="mb-4">
             <div class="card">
@@ -57,6 +56,7 @@
                                 <th scope="col">Diary Type</th>
                                 <th scope="col">Claim Type</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">View</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -67,6 +67,7 @@
                                 <th scope="col">Diary Type</th>
                                 <th scope="col">Claim Type</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">View</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -120,12 +121,13 @@
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    var buttonID = "action_"+full.id;
-                    var isClaimMade = full.isNewClaim;
-                    if(isClaimMade)
-                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/viewclaim?id='+ full.id +'">View Claim</a>';
-                    else
-                        return '<a id='+buttonID+' class="btn btn-warning btn-sm" href="/viewclaim?id='+ full.id +'">Make Claim</a>';
+                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
+                }
+            },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
                 }
             },
         ],

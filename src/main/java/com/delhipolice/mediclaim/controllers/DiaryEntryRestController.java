@@ -10,6 +10,7 @@ import com.delhipolice.mediclaim.utils.PagingRequest;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +34,16 @@ public class DiaryEntryRestController {
     public Page<DiaryEntryVO> listDiaryEntries(@RequestBody PagingRequest pagingRequest) {
         List<ClaimType> claimTypes = Arrays.asList(ClaimType.EMERGENCY, ClaimType.REFERRAL);
         return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
+    }
+
+    @PostMapping("/diaryEntry/{id}")
+    public ResponseEntity<DiaryEntryVO> getDiaryEntry(@PathVariable UUID id) {
+        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
+        if (diaryEntryVO == null) {
+            // DiaryEntry with the given id not found, return a 404 Not Found response
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(diaryEntryVO);
     }
 
     @PostMapping("/permissions")

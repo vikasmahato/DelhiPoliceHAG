@@ -28,13 +28,17 @@ $(document).on('focus','#pis_number',function(){
         autoFocus: true,
         minLength: 0,
         select: function( event, ui ) {
-            $("#applicant_id").val(ui.item.id);
-            $("#belt_number").val(ui.item.belt_number);
-            $("#applicant_name").val(ui.item.text)
-            $("#cghs_number").val(ui.item.cghsNumber)
-            $("#cghs_expiry").val(ui.item.cghsExpiry)
-            $("#cghs_category").val(ui.item.cghsCategory).change();
-            $("#rank").val(ui.item.rank).change();
+            $("#applicant_id").val(ui.item.id).trigger('change');
+            $("#belt_number").val(ui.item.belt_number).trigger('change');
+            $("#applicant_name").val(ui.item.text).trigger('change');
+            $("#cghs_number").val(ui.item.cghsNumber).trigger('change');
+            $("#cghs_expiry").val(ui.item.cghsExpiry).trigger('change');
+            $("#cghs_category").val(ui.item.cghsCategory).trigger('change');
+            $("#rank").val(ui.item.rank).trigger('change');
+        },
+        open: function() {
+            $(this).autocomplete('widget').css('z-index', 1051000);
+            return false;
         }
     });
 });

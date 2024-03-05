@@ -6,11 +6,37 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
     <title>Fund Avaibility</title>
+    <style>
+
+        .container{
+            font-size: 1.2em;
+            margin: 10px 1cm;
+        }
+
+        h3{
+            text-align: center;
+            text-decoration: underline;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        body {
+            width: 8.27in;
+            /* height: 11.69in;*/
+            margin: 0 auto;
+            padding: 0;
+            page-break-inside: avoid;
+        }
+
+        .avoid-page-break {
+            page-break-after: avoid;
+        }
+    </style>
 </head>
 <body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
-<div class='container' style='margin-bottom:70px; margin-top:40px; font-size:1.3em;'>
+<div class='container'>
     <div style='text-align:center; margin-bottom:25px;'><b><u>ORDER</u></b></div>
     <p style='text-indent:12%;text-align:justify;' th:inline="text">Ex-post facto sanction is hereby conveyed for the re-imbursement of medical expenses amounting to<b> Rs. [[${diaryEntry.amountGranted1}]]/-(Rupees [[${diaryEntry.amountGrantedInWords}]] only)</b> to <b>[[${diaryEntry.displayName}]]</b> who has incurred the expenditure for his/her <b> [[${diaryEntry.claimDetails.relation}]]'s </b> treatment from his/her own pocket in accordance with the instructions contained in Ministry of Health and Family Welfare, Govt. Of India, New Delhi office
         memorandum No. Rec. 24/2001/JD (M) CGHS/DELHI (P), dated 7.9.2001. <b>[[${diaryEntry.displayName}]]</b> is a bonafide beneficiary of CGHS facility.</p>
