@@ -1,0 +1,155 @@
+<div th:fragment="diaryEntryModal">
+
+<div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="diaryEntryCreateForm">
+          <input type="hidden" class="form-control" id="claimType" name="claimType">
+          <input type="hidden" class="form-control" id="id" name="id">
+          <div class="box-body">
+
+            <div class="input-group input-group-sm mb-3">
+              <input
+                      type="text"
+                      class="form-control"
+                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" required
+              />
+
+              <input type="text" aria-label="Diary Date" id="datepicker" name="diaryDate" class="form-control datepicker" required>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+              <div class="row">
+                <table id="applicantsTable" class="table">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+
+              <button id="addRow" type="button" class="btn btn-primary btn-sm">Add Row</button>
+            </div>
+
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-warning">Reset</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const diaryEntryModal = document.getElementById('diaryEntryModal');
+  diaryEntryModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const type = button.getAttribute('data-bs-type');
+    const id = button.getAttribute('data-bs-id');
+
+    const modalTitle = diaryEntryModal.querySelector('.modal-title');
+    modalTitle.textContent = type;
+
+    if(id != null) {
+      $.ajax({
+        type: "POST",
+        url: "/diaryEntry/" + id,
+        success: function(response) {
+
+        },
+        error: function (jqXHR, exception) {
+          if (jqXHR.status === 404) {
+            console.log("DiaryEntry with id " + id + " not found");
+          } else {
+            console.log("Error fetching data: ", exception);
+          }
+        }
+      });
+    }
+
+
+
+  })
+</script>
+<script>
+
+  function submitForm() {
+    var data = $("#diaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
+      obj[item.name] = item.value;
+      return obj;
+    }, {});
+
+    /*data.healthCheckupApplicants = [];
+
+    $("#applicantsTable tbody tr").each(function() {
+      var applicant = {
+        applicantDetails: $(this).find('input[name="healthCheckupApplicants[].applicantDetails"]').val(),
+        amount: $(this).find('input[name="healthCheckupApplicants[].amount"]').val()
+      };
+      data.healthCheckupApplicants.push(applicant);
+    });*/
+
+    console.log(data);
+
+    $.ajax({
+      type:"post",
+      data:data,
+      url:"/healthDiaryEntryCreate",
+      async: false,
+      dataType: "json",
+      success: function(response){
+        const  messageDiv = $("#message-div");
+        messageDiv.html(
+                '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                '</div>');
+        $('#diaryEntryModal').modal('toggle');
+      },
+      error: function (jqXHR, exception) {
+        const  messageDiv = $("#message-div");
+        messageDiv.html(
+                '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                '</div>');
+        $('#diaryEntryModal').modal('toggle');
+      }
+    });
+
+  }
+</script>
+
+  <script>
+    $(document).ready(function() {
+      var counter = 0;
+      $("#addRow").click(function() {
+        var row = '<tr>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required></td>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="2000"></td>' +
+                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
+                '</tr>';
+        $("#applicantsTable tbody").append(row);
+        counter++;
+      });
+
+      $("#applicantsTable").on('click', '.deleteRow', function() {
+        $(this).closest('tr').remove();
+      });
+    });
+  </script>
+
+</div>

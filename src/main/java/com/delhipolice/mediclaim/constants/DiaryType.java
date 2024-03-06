@@ -3,7 +3,9 @@ package com.delhipolice.mediclaim.constants;
 public enum DiaryType {
 
     INDIVIDUAL("Individual"),
-    HOSPITAL("Hospital");
+    HOSPITAL("Hospital"),
+    CREDIT("Credit"),
+    HEALTH("Health Checkup");
 
     private String enumValue;
 

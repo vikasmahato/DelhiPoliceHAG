@@ -14,4 +14,9 @@ public class HomeController {
         return "diary_entry_home";
     }
 
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
 }

@@ -1,23 +1,21 @@
 package com.delhipolice.mediclaim.controllers;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
+import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
-import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.utils.Page;
-import com.delhipolice.mediclaim.utils.PageArray;
 import com.delhipolice.mediclaim.utils.PagingRequest;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
+import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -30,32 +28,44 @@ public class DiaryEntryRestController {
         this.diaryEntryService = diaryEntryService;
     }
 
-    @PostMapping("/diaryentries")
-    public Page<DiaryEntryVO> listDiaryEntries(@RequestBody PagingRequest pagingRequest) {
+    @PostMapping("/diaryentries/{type}")
+    public Page<DiaryEntryVO> listDiaryEntries(@RequestBody PagingRequest pagingRequest, @PathVariable String type) {
+
         List<ClaimType> claimTypes = Arrays.asList(ClaimType.EMERGENCY, ClaimType.REFERRAL);
-        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
+
+        DiaryType diaryType = DiaryType.valueOf(type.toUpperCase());
+
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes, diaryType);
+    }
+
+    @PostMapping("/healthdiaryentries")
+    public Page<HealthCheckupDiaryEntryVo> listDiaryEntries(@RequestBody PagingRequest pagingRequest) {
+
+        return diaryEntryService.getHealthCheckupDiaryEntries(pagingRequest);
     }
 
     @PostMapping("/diaryEntry/{id}")
     public ResponseEntity<DiaryEntryVO> getDiaryEntry(@PathVariable UUID id) {
-        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
-        if (diaryEntryVO == null) {
-            // DiaryEntry with the given id not found, return a 404 Not Found response
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(diaryEntryVO);
+        Optional<DiaryEntryVO> diaryEntryVO = diaryEntryService.find(id);
+        return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PostMapping("/healthCheckupDiaryEntry/{id}")
+    public ResponseEntity<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntry(@PathVariable UUID id) {
+        Optional<HealthCheckupDiaryEntryVo> diaryEntryVO = diaryEntryService.find1(id);
+        return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/permissions")
     public Page<DiaryEntryVO> listPermissions(@RequestBody PagingRequest pagingRequest) {
         List<ClaimType> claimTypes = Arrays.asList(ClaimType.PERMISSION, ClaimType.CREDIT);
-        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes);
+        return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes, DiaryType.INDIVIDUAL);
     }
 
 
     @GetMapping("/getCalSheetentries/{id}")
     public List<CalculationSheetEntry> getCalSheetentries(@PathVariable UUID id) {
-        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
+        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id).get();
         return diaryEntryVO.getCalculationSheet();
     }
 

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Order</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        margin-bottom:20px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+    .container{
+        font-size: 1em;
+        margin: 10px 1cm;
+    }
+
+    h3{
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    body {
+        width: 8.27in;
+        /* height: 11.69in;*/
+        margin: 0 auto;
+        padding: 0;
+        page-break-inside: avoid;
+    }
+
+    .avoid-page-break {
+        page-break-after: avoid;
+    }
+</style>
+<body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<div class='container'>
+
+    <img th:src="@{/images/img.png}" height="50" alt="" loading="lazy" style="display: block; margin: auto;" />
+    <h3 style='text-align:center;'><b><u>ORDER</u></b></h3>
+
+
+    <p style='text-align:justify;' th:inline="text">
+        The Deputy Commissioner of Police /[[${diaryEntry.branchName}]], Delhi is pleased to accord ex-post-facto sanction for the payment to following police personnel:-
+    </p>
+
+    <div class="row">
+        <table class='table table-condensed small' style='width: 100%;'>
+            <thead>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Name & Belt No. Applicant</th>
+                <th>Amount</th>
+            </tr>
+
+            </thead>
+            <tbody>
+
+            <tr th:each="applicant,iterStat : ${diaryEntry.healthCheckupApplicants}">
+                <td th:text="${iterStat.index + 1}"></td>
+                <td th:text="${applicant.applicantDetails}"></td>
+                <td th:text="${applicant.amount}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right;">Total</td>
+                <td>[[${diaryEntry.totalAdmissibleAmount}]]</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        The funds to the extent of <b>Rs. [[${diaryEntry.totalAdmissibleAmount}]]/- ([[${diaryEntry.amountGrantedInWords}]])</b> are available under Head  [[${diaryEntry.healthCheckupFundsHead}]] during the current financial year <b>[[${diaryEntry.financialYear}]]</b>.
+    </p>
+
+    <div style='text-align:right;font-weight:bold;margin-top:30px;'>ASSTT. COMMISIONER OF POLICE:</div>
+    <div style='text-align:right;'>HDQRS.:[[${diaryEntry.branchCode}]]: DELHI.</div>
+
+
+    <p style='margin-top:50px;'><b>[[${diaryEntry.displayDiaryNumber}]]</b></p>
+    <p>Copy to the:-</p>
+
+    <p>1. PAO-Delhi Police Head-Quarter New Delhi through Acctt./[[${diaryEntry.branchName}]]</p>
+    <p>2. Acctt./[[${diaryEntry.branchName}]] with one spare copy along with all relevant medical papers/documents  for  necessary action.</p>
+</div>
+</body>
+
+</html>

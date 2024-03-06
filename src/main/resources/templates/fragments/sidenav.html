@@ -3,11 +3,17 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-                <a href="/diaryEntry" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/diaryEntry' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Diary</span>
+                <a href="/individual" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/individual' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Individual</span>
+                </a>
+                <a href="/hospital" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/hospital' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Hospital</span>
                 </a>
                 <a href="/permission" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/permission' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-check-double fa-fw me-3"></i><span>Permission</span>
+                    <i class="fas fa-check-double fa-fw me-3"></i><span>Credit</span>
+                </a>
+                <a href="/health" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/health' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-check-double fa-fw me-3"></i><span>Health Checkup</span>
                 </a>
                <!-- <a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Notesheets</span>
@@ -21,6 +27,13 @@
                 <a href="/medicalrates" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/medicalrates' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-chart-bar fa-fw me-3"></i><span>Medical Rates</span>
                 </a>
+
+
+                <a href="/logout" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
+                    <i class="fas fa-sign-out-alt fa-fw me-3"></i><span>Logout</span>
+                </a>
+
+
             </div>
         </div>
     </nav>

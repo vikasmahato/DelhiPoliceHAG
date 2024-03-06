@@ -133,6 +133,17 @@ public class EnglishNumberToWords {
         if(paisa != 0)
             value += "and " + convertLessThanOneThousand(paisa) + "paise";
 
-        return value;
+        return "Rs. "  + toTitleCase(value) + " only/-";
+    }
+
+    public static String toTitleCase(String givenString) {
+        String[] arr = givenString.toLowerCase().split(" ");
+        StringBuilder sb = new StringBuilder();
+
+        for (String s : arr) {
+            sb.append(Character.toUpperCase(s.charAt(0)))
+                    .append(s.substring(1)).append(" ");
+        }
+        return sb.toString().trim();
     }
 }

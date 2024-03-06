@@ -94,7 +94,7 @@ public class HospitalSeeder {
             return;
         }
 
-        Random random = new Random();
+       /* Random random = new Random();
         String[] names = {"John Doe", "Jane Smith", "Robert Johnson", "Michael Brown", "Linda Garcia"};
 
         for (int i = 0; i < 15; i++) {
@@ -106,8 +106,8 @@ public class HospitalSeeder {
             DiaryType diaryType = DiaryType.values()[random.nextInt(DiaryType.values().length)];
             ClaimType claimType = ClaimType.values()[random.nextInt(ClaimType.values().length)];
 
-            diaryEntryService.save(buildVO(name, beltNumber, pisNumber, treatmentBy, diaryNumber, diaryType, claimType));
-        }
+            diaryEntryService.save(buildVO(name, beltNumber, pisNumber, treatmentBy, diaryNumber, DiaryType.INDIVIDUAL, ClaimType.EMERGENCY));
+        }*/
     }
 
     private DiaryEntryVO buildVO(String name, String beltNumber, String pisNumber, TreatmentBy treatmentBy, String diaryNumber, DiaryType diaryType, ClaimType claimType) {

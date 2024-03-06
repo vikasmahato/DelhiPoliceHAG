@@ -72,6 +72,9 @@ public class ClaimDetails implements Serializable {
     @Column
     private BigDecimal amountDue;
 
+    @Column
+    private Boolean isExpired = Boolean.FALSE;
+
     public ClaimDetails(ClaimDetailsVO claimDetailsVO) {
         relation = claimDetailsVO.getRelation();
         relativeName = claimDetailsVO.getRelativeName();
@@ -88,5 +91,6 @@ public class ClaimDetails implements Serializable {
         relativeCghsNumber = claimDetailsVO.getRelativeCghsNumber();
         relativeCghsexpiry = claimDetailsVO.getRelativeCghsexpiry();
         amountDue = claimDetailsVO.getAmountDue();
+        isExpired = claimDetailsVO.getIsExpired();
     }
 }

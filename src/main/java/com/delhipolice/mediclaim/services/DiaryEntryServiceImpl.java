@@ -2,12 +2,16 @@ package com.delhipolice.mediclaim.services;
 
 import com.delhipolice.mediclaim.constants.ClaimStatus;
 import com.delhipolice.mediclaim.constants.ClaimType;
+import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
+import com.delhipolice.mediclaim.model.comparators.HelathCheckupDiaryEntryComparators;
 import com.delhipolice.mediclaim.repositories.DiaryEntryRepository;
+import com.delhipolice.mediclaim.repositories.HealthCheckupDiaryEntryRepository;
 import com.delhipolice.mediclaim.utils.*;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
+import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +28,15 @@ import java.util.stream.Collectors;
 public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     private static final Comparator<DiaryEntry> EMPTY_COMPARATOR = (e1, e2) -> 0;
+    private static final Comparator<HealthCheckupDiaryEntry> HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR = (e1, e2) -> 0;
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     @Autowired
     DiaryEntryRepository diaryEntryRepository;
+
+    @Autowired
+    HealthCheckupDiaryEntryRepository healthCheckupDiaryEntryRepository;
 
     @Autowired
     HospitalService hospitalService;
@@ -41,9 +49,15 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public DiaryEntryVO find(UUID id) {
-        DiaryEntry diaryEntry = diaryEntryRepository.findById(id).get();
-        return new DiaryEntryVO(diaryEntry);
+    public Optional<DiaryEntryVO> find(UUID id) {
+        Optional<DiaryEntry> diaryEntry = diaryEntryRepository.findById(id);
+        return diaryEntry.map(DiaryEntryVO::new);
+    }
+
+    @Override
+    public Optional<HealthCheckupDiaryEntryVo> find1(UUID id) {
+        Optional<HealthCheckupDiaryEntry> diaryEntry = healthCheckupDiaryEntryRepository.findById(id);
+        return diaryEntry.map(HealthCheckupDiaryEntryVo::new);
     }
 
     @Override
@@ -60,6 +74,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         diaryEntry.setHospital(hospital);
         diaryEntry.getClaimDetails().setClaimStatus(ClaimStatus.D_HAND);
         return diaryEntryRepository.save(diaryEntry);
+    }
+
+    @Override
+    public HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO) {
+        HealthCheckupDiaryEntry diaryEntry = new HealthCheckupDiaryEntry(diaryEntryVO);
+        return healthCheckupDiaryEntryRepository.save(diaryEntry);
     }
 
     @Override
@@ -100,9 +120,16 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return diaryEntryRepository.save(diaryEntry);
     }
 
+
     @Override
-    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes) {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes);
+    public Page<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntries(PagingRequest pagingRequest) {
+        List<HealthCheckupDiaryEntry> diaryEntries = healthCheckupDiaryEntryRepository.findAll();
+        return getPageHealthCheckup(diaryEntries, pagingRequest);
+    }
+
+    @Override
+    public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes,  DiaryType diaryType) {
+        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType);
         return getPage(diaryEntries, pagingRequest);
     }
 
@@ -173,6 +200,27 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return page;
     }
 
+    private Page<HealthCheckupDiaryEntryVo> getPageHealthCheckup(List<HealthCheckupDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
+        List<HealthCheckupDiaryEntryVo> filtered = diaryEntries.stream()
+                .sorted(sortHealthCheckupEntries(pagingRequest))
+                .filter(filterHealthCHeckupDiaryEntries(pagingRequest))
+                .skip(pagingRequest.getStart())
+                .limit(pagingRequest.getLength())
+                .map(HealthCheckupDiaryEntryVo::new)
+                .collect(Collectors.toList());
+
+        long count = diaryEntries.stream()
+                .filter(filterHealthCHeckupDiaryEntries(pagingRequest))
+                .count();
+
+        Page<HealthCheckupDiaryEntryVo> page = new Page<>(filtered);
+        page.setRecordsFiltered((int) count);
+        page.setRecordsTotal((int) count);
+        page.setDraw(pagingRequest.getDraw());
+
+        return page;
+    }
+
     private Predicate<DiaryEntry> filterDiaryEntries(PagingRequest pagingRequest) {
         if (pagingRequest.getSearch() == null || StringUtils.isEmpty(pagingRequest.getSearch()
                 .getValue())) {
@@ -189,6 +237,20 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                 .toLowerCase()
                 .contains(value)
                 || diaryEntry.getTreatmentTakenBy().getEnumValue()
+                .toLowerCase()
+                .contains(value);
+    }
+
+    private Predicate<HealthCheckupDiaryEntry> filterHealthCHeckupDiaryEntries(PagingRequest pagingRequest) {
+        if (pagingRequest.getSearch() == null || StringUtils.isEmpty(pagingRequest.getSearch()
+                .getValue())) {
+            return diaryEntry -> true;
+        }
+
+        String value = pagingRequest.getSearch()
+                .getValue();
+
+        return diaryEntry -> diaryEntry.getDiaryNumber()
                 .toLowerCase()
                 .contains(value);
     }
@@ -218,5 +280,32 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         }
 
         return EMPTY_COMPARATOR;
+    }
+
+    private Comparator<HealthCheckupDiaryEntry> sortHealthCheckupEntries(PagingRequest pagingRequest) {
+        if (pagingRequest.getOrder() == null) {
+            return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
+        }
+
+        try {
+            Order order = pagingRequest.getOrder()
+                    .get(0);
+
+            int columnIndex = order.getColumn();
+            Column column = pagingRequest.getColumns()
+                    .get(columnIndex);
+
+            Comparator<HealthCheckupDiaryEntry> comparator = HelathCheckupDiaryEntryComparators.getComparator(column.getData(), order.getDir());
+            if (comparator == null) {
+                return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
+            }
+
+            return comparator;
+
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
+
+        return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
     }
 }

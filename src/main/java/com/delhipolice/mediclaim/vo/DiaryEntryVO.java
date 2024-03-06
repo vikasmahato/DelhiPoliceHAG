@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -32,8 +34,7 @@ public class DiaryEntryVO implements Serializable {
     private String diaryNumber;
     private String displayDiaryNumber;
     private String displayName;
-    private String displayNameSalutation;
-    private String displayNameSalutationTreatmentBy;
+    private String patientApplicantDisplay;
     private DiaryType diaryType;
     @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date diaryDate;
@@ -64,10 +65,21 @@ public class DiaryEntryVO implements Serializable {
     private String financialYear;
     private Boolean isNewClaim = Boolean.FALSE;
     private String patient;
+    private String fundsHead;
+    private String branchCode;
     private String patientCghs;
+    private String dateFormat;
+    private String branchAddress;
+    private String branchPhoneNo;
+    private String relationSimple;
     private Boolean isLetterGenerated = Boolean.FALSE;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = (User) userDetails;
+
         id = diaryEntry.getId();
         diaryNumber = diaryEntry.getDiaryNumber();
         diaryType = diaryEntry.getDiaryType();
@@ -83,12 +95,11 @@ public class DiaryEntryVO implements Serializable {
         phqDate = diaryEntry.getPhqDate();
         sanctionNumber = diaryEntry.getSanctionNumber();
         sanctionDate = diaryEntry.getSanctionDate();
-        displayDiaryNumber = buildDiaryNumber();
+        displayDiaryNumber = buildDiaryNumber(user);
         displayName = buildDisplayName();
         isObjection = diaryEntry.getIsObjection();
         claimDetails = new ClaimDetailsVO(diaryEntry.getClaimDetails());
         calculationSheet = diaryEntry.getCalculationSheet() == null ? new ArrayList<>() : diaryEntry.getCalculationSheet();
-        displayNameSalutation = buildDispplayNameSalutation();
         amountAsked1 = getAmountAsked().toString();
         amountGranted1 = getAmountGranted().toString();
         notesheetSalutation = buildNotesheetSalutation();
@@ -96,11 +107,18 @@ public class DiaryEntryVO implements Serializable {
         amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
         financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
         isNewClaim = claimDetails.getIsNewClaim();
-        patient = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName();
+        patient = (claimDetails.getIsExpired() ? "Late " : "") + (TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
         patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
         isLetterGenerated = diaryEntry.getIsLetterGenerated();
-        displayNameSalutationTreatmentBy = buildDisplayName() + " (" + claimDetails.getRelation() + ")";
+        patientApplicantDisplay = buildPatientApplicantDisplay();
+        fundsHead = user.getFundsHead();
+        branchCode = user.getBranchCode();
+        dateFormat = user.getDateFormat();
+        branchPhoneNo = user.getTelephone();
+        branchAddress = user.getAddress();
         patientDOB = diaryEntry.getPatientDOB();
+        relationSimple = TreatmentBy.SELF.equals(treatmentTakenBy) ? "Self" : claimDetails.getRelation().getEnumValue();
+
     }
 
     private Double getAmountAsked() {
@@ -111,11 +129,13 @@ public class DiaryEntryVO implements Serializable {
         return calculationSheet.stream().map(CalculationSheetEntry::getTotal).reduce(0d, Double::sum);
     }
 
-    private String buildDispplayNameSalutation() {
+
+
+    private String buildPatientApplicantDisplay() {
         if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {
-            return claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + buildDisplayName();
+            return (claimDetails.getIsExpired() ? "Late " : "") + claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " " + buildDisplayName();
         } else {
-            return buildDisplayName();
+            return (claimDetails.getIsExpired() ? "Late " : "") + buildDisplayName();
         }
     }
 
@@ -127,13 +147,19 @@ public class DiaryEntryVO implements Serializable {
         }
     }
 
-    private String buildDiaryNumber() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        return diaryNumber + "/Gen Br./SD/Dated/" + formatter.format(diaryDate);
+    private String buildDiaryNumber(User user) {
+        String diaryNumberFormat = user.getDiaryNumberFormat();
+
+        SimpleDateFormat formatter = new SimpleDateFormat(user.getDateFormat());
+        String formattedDate = formatter.format(diaryDate);
+
+
+        return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
+                .replace("{diaryDate}", formattedDate);
     }
 
     private String buildDisplayName() {
-        return applicant.getRank().getEnumValue() + " " + applicant.getName() + " No. " + applicant.getBeltNumber();
+        return applicant.getRank().getEnumValue() + " " + applicant.getName() + " No. " + applicant.getBeltNumber() + " (PIS No. " + applicant.getPisNumber() + ")";
     }
 
     @Override

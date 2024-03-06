@@ -1,16 +1,22 @@
 package com.delhipolice.mediclaim.controllers;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
+import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.DiaryEntry;
+import com.delhipolice.mediclaim.model.HealthCheckupDiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
+import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Locale;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -20,14 +26,26 @@ public class DiaryEntryWebController {
     @Autowired
     DiaryEntryService diaryEntryService;
 
-    @GetMapping("/diaryEntry")
-    public String diaryEntry(Model model) {
+    @GetMapping("/individual")
+    public String individualDiaryEntry(Model model) {
+        model.addAttribute("type", "individual");
+        return "diary_entry_home";
+    }
+
+    @GetMapping("/hospital")
+    public String hospitalDiaryEntry(Model model) {
+        model.addAttribute("type", "hospital");
         return "diary_entry_home";
     }
 
     @GetMapping("/permission")
     public String permissionEntry(Model model) {
         return "permission_entry_home";
+    }
+
+    @GetMapping("/health")
+    public String healthCheckupEntry(Model model) {
+        return "health_checkup_home";
     }
 
     @GetMapping("/diaryEntryCreateForm")
@@ -54,17 +72,23 @@ public class DiaryEntryWebController {
 
     @GetMapping("/viewclaim")
     public String viewclaim(@RequestParam(value = "id") UUID id, Model model) {
-        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id);
+        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id).get();
         diaryEntryVO.setViewMode(Boolean.TRUE);
         model.addAttribute("diaryEntry", diaryEntryVO);
         return "claim_view";
     }
 
     @PostMapping("/diaryEntryCreate")
-    public RedirectView submit(@ModelAttribute DiaryEntryVO diaryEntryVO, Model model) {
+    public ResponseEntity<DiaryEntry> submit(@ModelAttribute DiaryEntryVO diaryEntryVO, Model model) {
         log.info(diaryEntryVO.toString());
         DiaryEntry diaryEntry = diaryEntryService.save(diaryEntryVO);
-        return new RedirectView("/diaryEntry");
+        return ResponseEntity.ok(diaryEntry);
+    }
+
+    @PostMapping("/healthDiaryEntryCreate")
+    public ResponseEntity<HealthCheckupDiaryEntry> submit(@ModelAttribute HealthCheckupDiaryEntryVo diaryEntryVO, Model model) {
+        HealthCheckupDiaryEntry diaryEntry = diaryEntryService.save(diaryEntryVO);
+        return ResponseEntity.ok(diaryEntry);
     }
 
     @PostMapping("/diaryEntryUpdate")
@@ -93,10 +117,27 @@ public class DiaryEntryWebController {
         return "prints/print_referral_notesheet";
     }
 
-    @GetMapping("/printReferralOrder/{id}")
-    public String printReferralOrder(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
-        return "prints/print_referral_order";
+    @GetMapping("/printHealthNotesheet/{id}")
+    public String printHealthNotesheet(@PathVariable UUID id, Model model) {
+        model.addAttribute("diaryEntry", diaryEntryService.find1(id).get());
+        return "prints/health/notesheet";
+    }
+
+    @GetMapping("/printHealthOrder/{id}")
+    public String printHealthOrder(@PathVariable UUID id, Model model) {
+        model.addAttribute("diaryEntry", diaryEntryService.find1(id).get());
+        return "prints/health/order";
+    }
+
+    @GetMapping("/printReferralOrder/{id}/{renderSignature}")
+    public String printReferralOrder(@PathVariable UUID id, @PathVariable Optional<String> renderSignature, Model model) {
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
+
+        DiaryEntryVO diaryEntry = diaryEntryService.find(id).get();
+        model.addAttribute("diaryEntry", diaryEntry);
+        model.addAttribute("renderSignature", renderSignature.orElse("false"));
+
+        return "prints/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "/" + diaryEntry.getClaimType().getEnumValue().toLowerCase(Locale.ROOT) + "_order";
     }
 
     @GetMapping("/printOpEmergencyForwardingLetter/{id}")
@@ -119,24 +160,15 @@ public class DiaryEntryWebController {
 
     @GetMapping("/printNotesheet/{id}")
     public String printNotesheet(@PathVariable UUID id, Model model) {
-        DiaryEntryVO diaryEntry = diaryEntryService.find(id);
+        DiaryEntryVO diaryEntry = diaryEntryService.find(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
 
-        switch (diaryEntry.getClaimType()) {
-            case REFERRAL:
-                return "prints/print_referral_notesheet";
-            case PERMISSION:
-                return "prints/print_permission_notesheet";
-            case CREDIT:
-                return "prints/print_credit_notesheet";
-            default:
-                return "prints/print_treatment_notesheet";
-        }
+        return "prints/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "/" + diaryEntry.getClaimType().getEnumValue().toLowerCase(Locale.ROOT) + "_notesheet";
     }
 
     @GetMapping("/printPermission/{id}")
     public String printCreditPermission(@PathVariable UUID id, Model model) {
-        DiaryEntryVO diaryEntry = diaryEntryService.find(id);
+        DiaryEntryVO diaryEntry = diaryEntryService.find(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
 
         switch (diaryEntry.getClaimType()) {

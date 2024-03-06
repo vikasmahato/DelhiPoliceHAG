@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Medical Claim</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        margin-bottom:0px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    .container{
+        font-size: 1.2em;
+        margin: 10px 1cm;
+    }
+
+    h3{
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+        font-size:1.2em;
+    }
+
+    body {
+        width: 8.27in;
+        /* height: 11.69in;*/
+        margin: 0 auto;
+        padding: 0;
+        page-break-inside: avoid;
+    }
+
+    .avoid-page-break {
+        page-break-after: avoid;
+    }
+</style>
+<body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<div class='container' style='margin-top:15px; font-size:1em;'>
+    <img th:src="@{/images/img.png}" height="50" alt="" loading="lazy" style="display: block; margin: auto;" />
+    <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: [[${diaryEntry.branchCode}]] (HQ), DELHI,</u></b></h3>
+    <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
+    <h3><u><b>TELEPHONE NO. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
+    <p style='text-align:justify' th:inline="text" >No.[[${diaryEntry.diaryNumber}]]/ Genl. Br.(II)/SD Dated New Delhi, the [[${diaryEntry.diaryDate}]]. </p>
+
+    <table style="border: none;">
+        <tr>
+            <td style="vertical-align: top;border: none;">To,</td>
+            <td style="border: none;">
+                <p th:inline="text" style='padding-left:5%;'><br/>The Deputy Commissioner of Police<br>General Administration, Delhi</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top; border: none;"><b>Subject:-</b></td>
+            <td style="border: none;"><p th:inline="text" style='padding-left:5%;'><b>Re-imbursement of medical claim in respect of  [[${diaryEntry.displayName}]].</b></p></td>
+        </tr>
+    </table>
+    <p style='margin:0;'>Memo,</p>
+
+    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} == 'SELF'" style='text-indent:12%;text-align:justify;'>
+        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which he/she has intimated that his/her condition had suddenly detriorated and he/she was admitted in hospital in emergency condition
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>.
+        As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
+    </p>
+
+    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} != 'SELF'" style='text-indent:12%;text-align:justify;'>
+        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which he/she has intimated that his/her <b>[[${diaryEntry.relationSimple}]]'s</b> condition had suddenly detriorated and he/she was admitted in hospital in emergency condition
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
+    </p>
+
+    <table class='table w-auto small'>
+        <thead>
+        <tr>
+            <th>Rank, Name & No. treatment taken by</th>
+            <th>Name of Hospital</th>
+            <th>Name of Diesease</th>
+            <th>Period</th>
+            <th>Amount Claimed</th>
+            <th>Amount Admissible</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+            <td>[[${diaryEntry.displayName}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.hospital.hospitalName}]]</td>
+            <td>[[${diaryEntry.claimDetails.disease}]]</td>
+            <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] to [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
+            <td>[[${diaryEntry.amountAsked1}]]</td>
+            <td>[[${diaryEntry.amountGranted1}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        Funds for this purpose are available under head [[${diaryEntry.fundsHead}]] during the current financial year <b>[[${diaryEntry.financialYear}]]</b>.
+    </p>
+
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        It is therefore, requested that her medical re-imbursement claim may be considered sympathetically and necessary ex-post-facto permission/sanction of Competent Authority may kindly be obtained and conveyed to this office at an early date.
+    </p>
+    <div style='text-align:right;font-weight:bold;margin-top:50px;'>ACP/HQ</div>
+    <div style='text-align:right;'>For DY. COMMISIONER OF POLICE</div>
+    <div style='text-align:right;'>[[${diaryEntry.branchCode}]], DELHI</div>
+    <p th:if="${renderSignature} == 'true'" class='row' style="margin-top: -5px;">
+        <p>Encls.:- <b><u>As above</u></b>:-<br/>Submitted for favour of signatures please.</p>
+        <p style='margin-top:30px;'><u><b>HAG/[[${diaryEntry.branchCode}]]</b></u></p>
+        <p style='margin-top:30px;'><u><b>INSPR. (A)/[[${diaryEntry.branchCode}]]</b></u></p>
+        <p style='margin-top:30px;'><u><b>ACP/HQ/[[${diaryEntry.branchCode}]]</b></u></p>
+    </div>
+
+</div>
+</body>
+</html>

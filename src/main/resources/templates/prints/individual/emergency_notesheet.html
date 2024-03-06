@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Medical Claim</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        margin-bottom:20px;
+    }
+    table {
+        border-collapse: collapse;
+    }
+
+    .container{
+        font-size: 1.2em;
+        margin: 10px 1cm;
+    }
+
+    h3{
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    body {
+        width: 8.27in;
+        /* height: 11.69in;*/
+        margin: 0 auto;
+        padding: 0;
+        page-break-inside: avoid;
+    }
+
+    .avoid-page-break {
+        page-break-after: avoid;
+    }
+</style>
+<body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
+<div class='container'>
+
+    <div class="row">
+        <div class="col-1">
+            <b>FR:-</b>
+        </div>
+        <div class="col-11">
+            <b>[[${diaryEntry.displayDiaryNumber}]] regarding emergency case in respect of [[${diaryEntry.patientApplicantDisplay}]]</b>
+        </div>
+    </div>
+
+    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} == 'SELF'" style='text-indent:12%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of <b>his/her</b> treatment for medical re-imbursement claim along with all original papers vide which he/she has intimated that his/her condition had suddenly become deteriorated and he/she was admitted in hospital in emergency
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and placed below which may kindly be perused <b>at Flag-"A"</b>.</p>
+
+    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} != 'SELF'" style='text-indent:12%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of his/her <b>[[${diaryEntry.relationSimple}]]'s</b> treatment namely <b><th:block th:if="${diaryEntry.claimDetails.isExpired} == true">Late</th:block> [[${diaryEntry.claimDetails.relativeName}]]</b> for medical re-imbursement claim along with all original papers vide which he/she has intimated that his/her [[${diaryEntry.relationSimple}]]’s condition has suddenly become deteriorated and he/she was admitted in hospital in emergency
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
+        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and placed below which may kindly be perused <b>at Flag-"A"</b>.</p>
+
+    <table class='table w-auto small'>
+        <thead>
+        <tr>
+            <th>Rank, Name & No. treatment taken by</th>
+            <th>Name of Hospital</th>
+            <th>Name of Diesease</th>
+            <th>Period</th>
+            <th>Amount Claimed</th>
+            <th>Amount Admissible</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+            <td>[[${diaryEntry.displayName}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.hospital.hospitalName}]]</td>
+            <td>[[${diaryEntry.claimDetails.disease}]]</td>
+            <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] to [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
+            <td>[[${diaryEntry.amountAsked1}]]</td>
+            <td>[[${diaryEntry.amountGranted1}]]</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        In this connection it is stated that, if approved, we may request to PHQ for obtaining necessary administrative approval and ex-post facto sanction of the  Competent Authority for her medical re-imbursement claim may kindly be obtained and conveyed to this office at the earliest.
+    </p>
+
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        Funds for this purpose are available under head [[${diaryEntry.fundsHead}]] during the current financial year <b>[[${diaryEntry.financialYear}]]</b>.
+    </p>
+
+    <p style='margin-top:30px;'><u><b>HAG/[[${diaryEntry.branchCode}]]</b></u></p>
+    <p style='margin-top:30px;'><u><b>INSPR. (A)/[[${diaryEntry.branchCode}]]</b></u></p>
+    <p style='margin-top:30px;'><u><b>ACP/HQ/[[${diaryEntry.branchCode}]]</b></u></p>
+</div>
+</body>
+
+</html>

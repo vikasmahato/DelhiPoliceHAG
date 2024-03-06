@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Diary Entry</title>
+    <title>Health Checkup</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- Font Awesome -->
     <link
@@ -19,7 +19,7 @@
     <link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
     <link th:href="@{/css/body.css}" rel="stylesheet"></link>
-
+    <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 </head>
 <body>
 <!--Main Navigation-->
@@ -35,9 +35,8 @@
     <div class="container pt-4">
         <div th:with="type=${type}"></div>
 
-        <div th:replace="modals/diary_entry :: diaryEntryModal"></div>
-        <div th:replace="modals/claim_view :: claimViewModal"></div>
-        <!--Section: Sales Performance KPIs-->
+        <div th:replace="modals/health_diary_entry :: diaryEntryModal"></div>
+        <div th:replace="modals/health_checkup_view :: claimViewModal"></div>
         <section class="mb-4">
             <div class="card">
                 <div class="card-header">
@@ -52,9 +51,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Diary Number</th>
-                                <th scope="col">Rank/Name/No</th>
-                                <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
+                                <th scope="col">Amount</th>
                                 <th scope="col">Details</th>
                                 <th scope="col">View</th>
                             </tr>
@@ -62,9 +59,7 @@
                             <tfoot>
                             <tr>
                                 <th scope="col">Diary Number</th>
-                                <th scope="col">Rank/Name/No</th>
-                                <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
+                                <th scope="col">Amount</th>
                                 <th scope="col">Details</th>
                                 <th scope="col">View</th>
                             </tr>
@@ -78,7 +73,6 @@
 </main>
 
 </body>
-<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
@@ -107,7 +101,7 @@
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "/diaryentries/"+ type,
+            "url": "/healthdiaryentries",
             "type": "POST",
             "dataType": "json",
             "contentType": "application/json",
@@ -117,13 +111,11 @@
         },
         "columns": [
             {"data": "displayDiaryNumber", "width": "20%"},
-            {"data": "displayName", "width": "40%"},
-            {"data": "treatmentTakenBy","width": "10%"},
-            {"data": "claimType","width": "10%"},
+            {"data": "totalAdmissibleAmount","width": "10%"},
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
+                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" disabled data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
                 }
             },
             {
