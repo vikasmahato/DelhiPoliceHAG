@@ -6,43 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
     <title>Medical Claim</title>
-    <style>
-
-        .container{
-            font-size: 1em;
-            margin: 10px 1cm;
-            border: 1px solid black;
-            position: relative;
-        }
-
-        .container:after {
-            content: '';
-            position: absolute;
-            bottom: -1px; /* Extend border to bottom of the container */
-            left: 0;
-            width: 100%;
-            border-bottom: 1px solid black; /* Create the bottom border */
-        }
-
-        h3{
-            text-align: center;
-            text-decoration: underline;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        body {
-            width: 8.27in;
-            height: 11.69in;
-            margin: 0 auto;
-            padding: 0;
-            page-break-inside: avoid;
-        }
-
-        .avoid-page-break {
-            page-break-after: avoid;
-        }
-    </style>
+    <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
 </head>
 <body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>

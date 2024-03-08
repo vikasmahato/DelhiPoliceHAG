@@ -6,42 +6,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Medical Claim</title>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
 </head>
-<style>
-    table, th, td {
-        border: 1px solid black;
-        margin-bottom:20px;
-    }
-    table {
-        border-collapse: collapse;
-    }
-
-    .container{
-        font-size: 1.2em;
-        margin: 10px 1cm;
-    }
-
-    h3{
-        text-align: center;
-        text-decoration: underline;
-        font-weight: bold;
-        margin-bottom: 30px;
-    }
-
-    body {
-        width: 8.27in;
-        /* height: 11.69in;*/
-        margin: 0 auto;
-        padding: 0;
-        page-break-inside: avoid;
-    }
-
-    .avoid-page-break {
-        page-break-after: avoid;
-    }
-</style>
 <body>
-<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
 <div class='container'>
 
@@ -49,7 +16,7 @@
         <div class="col-1">
             <b>FR:-</b>
         </div>
-        <div class="col-11">
+        <div class="col-11" style="padding-right: unset;">
             <b>Regarding re-imbursement of medical claim in respect of [[${diaryEntry.patientApplicantDisplay}]]</b>
         </div>
     </div>
@@ -58,7 +25,7 @@
         It is submitted that, a medical claim amounting to <b>Rs. [[${diaryEntry.amountGranted1}]]/-</b> received from <b>Medical Superintendent, [[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> for the treatment of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> in emergency on credit basis. As per the details given below:-
     </p>
 
-    <table class='table w-auto small'>
+    <table class='table main-table w-auto small'>
         <thead>
         <tr>
             <th>Rank, Name & No. treatment taken by</th>
@@ -72,12 +39,12 @@
         </thead>
         <tbody>
         <tr>
-            <td style="text-align: center;">[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
-            <td style="text-align: center;">[[${diaryEntry.hospital.hospitalName}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.claimDetails.disease}]]</td>
-            <td style="text-align: center;">[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountAsked1}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountGranted1}]]</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.hospital.hospitalName}]]</td>
+            <td>[[${diaryEntry.claimDetails.disease}]]</td>
+            <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
+            <td>[[${diaryEntry.amountAsked1}]]</td>
+            <td>[[${diaryEntry.amountGranted1}]]</td>
         </tr>
         </tbody>
     </table>
