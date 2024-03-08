@@ -53,11 +53,11 @@
         </table>
     </div>
     <div>Sir,</div>
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">
-        In accordance with Ministry of Health & Family Welfare, Govt. Of India, Nirman Bhawan, New Delhi's O.M. No. S.11011/23/2009-CGHS D.II/Hospital Cell/CGHS(Part-1), dated 17.08.2010 at para-4 on the subject cited above. The Addl. Deputy Commissioner of Police (H.O.O.) South-East District, New Delhi is pleased to accord permission to <b>[[${diaryEntry.displayName}]] (PIS No. [[${diaryEntry.applicant.pisNumber}]])</b> for treatment in respect of his/her <b>[[${diaryEntry.claimDetails.relation.getEnumValue()}]]</b> at above said Hospital for a period of______________ w.e.f. <b>[[${#dates.format(diaryEntry.claimDetails.startDate, 'dd/MM/yyyy')}]]</b>.</p>
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">He/She is a member of CGHS having token card No.
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+        In accordance with Ministry of Health & Family Welfare, Govt. Of India, Nirman Bhawan, New Delhi's O.M. No. S.11011/23/2009-CGHS D.II/Hospital Cell/CGHS(Part-1), dated 17.08.2010 at para-4 on the subject cited above. The Addl. Deputy Commissioner of Police (H.O.O.) South-East District, New Delhi is pleased to accord permission to <b>[[${diaryEntry.displayName}]] (PIS No. [[${diaryEntry.applicant.pisNumber}]])</b> for treatment in respect of [[${diaryEntry.applicant.gender.getHisOrHer()}]] <b>[[${diaryEntry.claimDetails.relation.getEnumValue()}]]</b> at above said Hospital for a period of______________ w.e.f. <b>[[${#dates.format(diaryEntry.claimDetails.startDate, 'dd/MM/yyyy')}]]</b>.</p>
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">[[${diaryEntry.applicant.gender.getHeOrShe()}]]  is a member of CGHS having token card No.
         <b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} == 'SELF'" th:text="${diaryEntry.applicant.cghsNumber}"></b>
-        <b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} != 'SELF'" th:text="${diaryEntry.claimDetails.relativeCghsNumber}"></b>. He/She is entitled for <b>[[${diaryEntry.applicant.cghsCategory}]]</b> ward category.</p>
+        <b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} != 'SELF'" th:text="${diaryEntry.claimDetails.relativeCghsNumber}"></b>. [[${diaryEntry.applicant.gender.getHeOrShe()}]]  is entitled for <b>[[${diaryEntry.applicant.cghsCategory}]]</b> ward category.</p>
     <div style='text-align:right;margin-bottom:40px;margin-top:30px;'>Yours faithfully,</div>
     <div style='text-align:right;margin-top:60px;'>ASSTT. COMMINISSONER OF POLICE (HQ),</div>
     <div style='text-align:right'>SOUTH EAST DISTRICT, NEW DELHI.</div>
@@ -71,7 +71,7 @@
             </tr>
             <tr>
                 <td style='vertical-align:top'>2. </td>
-                <td style='text-align:justify;'>ACP/SHO/Inspector/RI/SO/PA ___________________ to deliver the same to the applicant and he/she may be directed to take the medicines from his concerned CGHS dispensary/wellness center as prescribed by the Hospital authority.</td>
+                <td style='text-align:justify;'>ACP/SHO/Inspector/RI/SO/PA ___________________ to deliver the same to the applicant and [[${diaryEntry.applicant.gender.getHeOrShe()}]]  may be directed to take the medicines from his concerned CGHS dispensary/wellness center as prescribed by the Hospital authority.</td>
             </tr>
         </table>
     </div>

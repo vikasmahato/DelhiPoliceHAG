@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.constants.CghsCategory;
 import com.delhipolice.mediclaim.constants.Designation;
+import com.delhipolice.mediclaim.constants.Gender;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
 import com.delhipolice.mediclaim.vo.ApplicantVO;
@@ -47,6 +48,9 @@ public class Applicant implements Serializable, Auditable {
     @Column
     private CghsCategory cghsCategory;
 
+    @Column
+    private Gender gender;
+
     @Embedded
     private AuditSection auditSection = new AuditSection();
 
@@ -68,5 +72,6 @@ public class Applicant implements Serializable, Auditable {
         this.designation = applicantVO.getRank();
         this.cghsNumber = applicantVO.getCghsNumber();
         this.cghsCategory = applicantVO.getCghsCategory();
+        this.gender = applicantVO.getGender();
     }
 }

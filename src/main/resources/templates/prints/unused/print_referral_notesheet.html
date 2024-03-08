@@ -48,7 +48,7 @@
         </tr>
     </table>
 </div>
-<p th:inline="text" style='text-indent:17%;text-align:justify;'>FR along with its enclosure may kindly be perused vide which<b>  [[${diaryEntry.displayName}]]</b> has stated that he/she/his/her<b> [[${diaryEntry.claimDetails.relation}]] </b> (relation with the principal employee) had taken treatment/test at<b> [[${diaryEntry.hospital.hospitalName}]]</b> (Name of Hospital/Lab) which is on panel of CGHS after referred from<b> [[${diaryEntry.hospital.hospitalName}]]</b>(Name of the CGHS wellness center/Govt. Hospital) and taken prior permission of HOO. He has further stated that an amounting to<b> Rs. [[${diaryEntry.amountAsked1}]]/-</b> was incurred on his/her treatment. Now he has requested to reimburse the same as per rules/instructions.
+<p th:inline="text" style='text-indent:17%;text-align:justify;'>FR along with its enclosure may kindly be perused vide which<b>  [[${diaryEntry.displayName}]]</b> has stated that [[${diaryEntry.applicant.gender.getHeOrShe()}]] /[[${diaryEntry.applicant.gender.getHisOrHer()}]]<b> [[${diaryEntry.claimDetails.relation}]] </b> (relation with the principal employee) had taken treatment/test at<b> [[${diaryEntry.hospital.hospitalName}]]</b> (Name of Hospital/Lab) which is on panel of CGHS after referred from<b> [[${diaryEntry.hospital.hospitalName}]]</b>(Name of the CGHS wellness center/Govt. Hospital) and taken prior permission of HOO. He has further stated that an amounting to<b> Rs. [[${diaryEntry.amountAsked1}]]/-</b> was incurred on [[${diaryEntry.applicant.gender.getHisOrHer()}]] treatment. Now he has requested to reimburse the same as per rules/instructions.
 </p>
 <p th:inline="text" style='text-indent:17%;text-align:justify;'>
     In this regard. It is submitted that [[${diaryEntry.notesheetSalutation}]] and valid up to<b> [[${diaryEntry.applicant.cghsExpiry}]]</b>. Accordingly, we have prepared a calculation sheet on the basis of rates approved by the CGHS time to time and <b>Rs [[${diaryEntry.amountGranted1}]]/-</b> has been found admissible.
@@ -57,7 +57,7 @@
     The Addl. DCP/SED may like to accord ex-post facto sanction of an amounting to<b> Rs [[${diaryEntry.amountGranted1}]]/- ( Rupees  [[${diaryEntry.amountGrantedInWords}]])</b> for making payment to him/her on account of expenditure incurred by him/her on the treatment as mentioned at para 1/N above.
 </p>
 <p style='text-indent:17%;text-align:justify;'>
-    Funds are available under head 01.01.06 Medical Treatment during the current financial year [[${diaryEntry.financialYear}]].
+    Funds are available under head 01.01.06 Medical Treatment during the Current Financial Year [[${diaryEntry.financialYear}]].
 </p>
 <p style='text-indent:17%;text-align:justify;'>
     Submitted for kind perusal and para 3N above may kindly be approved please.
@@ -66,7 +66,7 @@
 <div style='text-align:left;text-decoration:underline;font-weight:bold;margin-top:5px'>INSPR/ADMIN</div>
 <div style='text-align:left;text-decoration:underline;font-weight:bold;margin-top:5px'>ACP/HQ</div>
 <div style='text-align:left;text-decoration:underline;font-weight:bold;margin-bottom:15px;margin-top:5px'>ADDL.DCP/SED</div>
-<p style='text-indent:12%;text-align:justify;'>
+<p style='text-indent:8%;text-align:justify;'>
     Reference paras 1 to 6/N above, Necessary fair draft order is placed below for favour of signature, if approved please.
 </p>
 <div style='text-align:left;text-decoration:underline;font-weight:bold;margin-top:15px;'>HAG/SE</div>

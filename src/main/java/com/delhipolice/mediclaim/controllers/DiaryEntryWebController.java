@@ -4,12 +4,17 @@ import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.model.HealthCheckupDiaryEntry;
+import com.delhipolice.mediclaim.model.User;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
+import com.delhipolice.mediclaim.utils.UserHelper;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,32 +34,36 @@ public class DiaryEntryWebController {
     @GetMapping("/individual")
     public String individualDiaryEntry(Model model) {
         model.addAttribute("type", DiaryType.INDIVIDUAL.name());
+        model.addAttribute("branchCode", UserHelper.getBranchCode());
         return "diary_entry_home";
     }
 
     @GetMapping("/hospital")
     public String hospitalDiaryEntry(Model model) {
         model.addAttribute("type", DiaryType.HOSPITAL.name());
+        model.addAttribute("branchCode", UserHelper.getBranchCode());
         return "diary_entry_home";
     }
 
     @GetMapping("/permission")
     public String permissionEntry(Model model) {
+        model.addAttribute("branchCode", UserHelper.getBranchCode());
         return "permission_entry_home";
     }
 
     @GetMapping("/health")
     public String healthCheckupEntry(Model model) {
+        model.addAttribute("branchCode", UserHelper.getBranchCode());
         return "health_checkup_home";
     }
 
-    @GetMapping("/diaryEntryCreateForm")
+ /*   @GetMapping("/diaryEntryCreateForm")
     public String diaryEntryCreate(Model model) {
         model.addAttribute("diaryEntry", new DiaryEntryVO());
         return "create_diary_entry";
-    }
+    }*/
 
-    @GetMapping("/permissionEntryCreateForm")
+/*    @GetMapping("/permissionEntryCreateForm")
     public String permissionEntryCreate(Model model) {
         DiaryEntryVO diaryEntryVO = new DiaryEntryVO();
         diaryEntryVO.setClaimType(ClaimType.PERMISSION);
@@ -76,7 +85,7 @@ public class DiaryEntryWebController {
         diaryEntryVO.setViewMode(Boolean.TRUE);
         model.addAttribute("diaryEntry", diaryEntryVO);
         return "claim_view";
-    }
+    }*/
 
     @PostMapping("/diaryEntryCreate")
     public ResponseEntity<DiaryEntry> submit(@ModelAttribute DiaryEntryVO diaryEntryVO, Model model) {

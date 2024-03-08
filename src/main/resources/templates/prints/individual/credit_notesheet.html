@@ -6,27 +6,26 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
     <title>Medical Claim</title>
-    <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/notesheetStyles.css}" rel="stylesheet"></link>
 </head>
 <body>
-<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
-<script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
 <div class='container'>
+    <div class="borderDiv">
     <div style="margin: 10px;">
         <div>
             <table style='width:100%;margin-top:10px;'>
                 <tr>
                     <td style='vertical-align:top'><b>Subject:-</b></td>
-                    <td style='text-align:justify;' th:inline="text"><b>An application submitted by [[${diaryEntry.displayName}]] to provide credit facility for treatment of his/her <th:block th:if="${diaryEntry.claimDetails.relation.getEnumValue()} != 'SELF'" th:text="${diaryEntry.claimDetails.relation.getEnumValue()}">.</th:block></td>
+                    <td style='text-align:justify;' th:inline="text"><b>An application submitted by [[${diaryEntry.displayName}]] to provide credit facility for treatment of [[${diaryEntry.applicant.gender.getHisOrHer()}]] <th:block th:if="${diaryEntry.claimDetails.relation.getEnumValue()} != 'SELF'" th:text="${diaryEntry.claimDetails.relation.getEnumValue()}">.</th:block></td>
                 </tr>
             </table>
         </div>
-        <p style='text-indent:12%; text-align:justify;margin-top:10px;'>FR alongwith its enclosure may kindly be perused vide which a request has submitted stated there in that <b> [[${diaryEntry.patientApplicantDisplay}]]</b> is admitted in <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> in emergency condition due to as mentioned in emergency certificate issued by the Hospital Authority. Hospital is empanelled under CGHS. Further the Govt. servant has requested that he is not in a position to bear the medical expenses for the treatment and requested for proving credit facility from the said Hospital. She is having a valid Plastic <b>Card ID No. </b><b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} == 'SELF'" th:text="${diaryEntry.applicant.cghsNumber}"></b>
+        <p style='text-indent:8%; text-align:justify;margin-top:10px;'>FR alongwith its enclosure may kindly be perused vide which a request has submitted stated there in that <b> [[${diaryEntry.patientApplicantDisplay}]]</b> is admitted in <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> in emergency condition due to as mentioned in emergency certificate issued by the Hospital Authority. Hospital is empanelled under CGHS. Further the Govt. servant has requested that he is not in a position to bear the medical expenses for the treatment and requested for proving credit facility from the said Hospital. She is having a valid Plastic <b>Card ID No. </b><b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} == 'SELF'" th:text="${diaryEntry.applicant.cghsNumber}"></b>
             <b th:if="${diaryEntry.claimDetails.relation.getEnumValue()} != 'SELF'" th:text="${diaryEntry.claimDetails.relativeCghsNumber}"></b> and entitle for <b>[[${diaryEntry.applicant.cghsCategory.getEnumValue()}]]</b> ward category (Calculated as per basic pay of Govt. Servant).</p>
-        <p style='text-indent:12%;text-align:justify;'>In this connection, the above said Hospital is under CGHS recognized and according to CGHS instruction vide MH & FW O.M. S11045/36/2012-CGHS (HEC) dated 01.10.2014 vide para-4 there in mentioned that all CGHS beneficiaries are entitled for credit facility for the treatment from CGHS recognized Hospital under emergency condition.</p>
-        <p style='text-indent:12%;text-align:justify;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. [[${diaryEntry.diaryNumber}]]</b>.
+        <p style='text-indent:8%;text-align:justify;'>In this connection, the above said Hospital is under CGHS recognized and according to CGHS instruction vide MH & FW O.M. S11045/36/2012-CGHS (HEC) dated 01.10.2014 vide para-4 there in mentioned that all CGHS beneficiaries are entitled for credit facility for the treatment from CGHS recognized Hospital under emergency condition.</p>
+        <p style='text-indent:8%;text-align:justify;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. [[${diaryEntry.diaryNumber}]]</b>.
         </p>
-        <p style='text-indent:12%; text-align:justify;' class="avoid-page-break">In view of the position explained above, if approved we may issue a credit facility to the above said Hospital in favour of <b>[[${diaryEntry.displayName}]]</b> to provide credit facility for the treatment of his/her [[${diaryEntry.claimDetails.relation.getEnumValue()}]]</p>
+        <p style='text-indent:8%; text-align:justify;' class="avoid-page-break">In view of the position explained above, if approved we may issue a credit facility to the above said Hospital in favour of <b>[[${diaryEntry.displayName}]]</b> to provide credit facility for the treatment of [[${diaryEntry.applicant.gender.getHisOrHer()}]] [[${diaryEntry.claimDetails.relation.getEnumValue()}]]</p>
         <div style='margin-top:50px;'><b><u>HAG/[[${diaryEntry.branchCode}]]</u></b></div>
         <div style='margin-top:30px;'><b><u>INSPR. ADMN./[[${diaryEntry.branchCode}]]</u></b></div>
         <div style='margin-top:30px;'><b><u>ACP/HQ/[[${diaryEntry.branchCode}]]</u></b></div>
@@ -34,6 +33,7 @@
         <br/>
         <br/><br/><br/><br/>
 
+    </div>
     </div>
 </div>
 </body>

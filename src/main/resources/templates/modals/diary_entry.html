@@ -23,7 +23,7 @@
                 <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:if="${diaryType.name() == 'INDIVIDUAL' || diaryType.name() == 'HOSPITAL'}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
               </select>
 
-              <span class="input-group-text">/Genl. Branch/SD dated</span>
+              <span class="input-group-text">/Genl. Branch/[[${branchCode}]] Dated</span>
 
               <input type="text" aria-label="Diary Date" id="diaryDate" name="diaryDate" class="form-control datepicker" required>
             </div>
@@ -40,6 +40,11 @@
 
               <div class="col-8">
                 <div class="input-group input-group-sm mb-3">
+                  <select class="form-control form-control-sm" id="gender" name="applicant.gender" required>
+                    <option value="">Select Gender</option>
+                    <option th:each="gender : ${T(com.delhipolice.mediclaim.constants.Gender).values()}" th:value="${gender}" th:text="${gender.getEnumValue()}"></option>
+                  </select>
+
                   <select class="form-control form-control-sm" id="rank" name="applicant.rank" required>
                     <option value="">Select Rank</option>
                     <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>

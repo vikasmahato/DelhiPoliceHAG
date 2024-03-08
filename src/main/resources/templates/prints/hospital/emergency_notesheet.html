@@ -4,14 +4,14 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Medical Claim</title>
+    <title>Notesheet</title>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
-    <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/notesheetStyles.css}" rel="stylesheet"></link>
 </head>
 <body>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
 <div class='container'>
-
+<div class="borderDiv">
     <div class="row">
         <div class="col-1">
             <b>FR:-</b>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <p  style='text-indent:12%;text-align:justify;margin-top: 10px;'>
+    <p  style='text-indent:8%;text-align:justify;margin-top: 10px;'>
         It is submitted that, a medical claim amounting to <b>Rs. [[${diaryEntry.amountGranted1}]]/-</b> received from <b>Medical Superintendent, [[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> for the treatment of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> in emergency on credit basis. As per the details given below:-
     </p>
 
@@ -49,17 +49,18 @@
         </tbody>
     </table>
 
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">
         It is, therefore, requested if approved, we may request to PHQ for obtaining necessary administrative approval cum ex-post-facto sanction of the Competent Authority for making the payment to <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> may kindly be obtained and conveyed to this office at the earliest.
     </p>
 
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">
-        Funds for this purpose are available under head <b>[[${diaryEntry.fundsHead}]]</b> during the current financial year <b>[[${diaryEntry.financialYear}]]</b>.
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+        Funds for this purpose are available under head <b><b>[[${diaryEntry.fundsHead}]]</b></b> during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
     <p style='margin-top:30px;'><u><b>HAG/[[${diaryEntry.branchCode}]]</b></u></p>
-    <p style='margin-top:30px;'><u><b>INSPR. (A)/[[${diaryEntry.branchCode}]]</b></u></p>
+    <p style='margin-top:30px;'><u><b>INSPR. (ADMIN)/[[${diaryEntry.branchCode}]]</b></u></p>
     <p style='margin-top:30px;'><u><b>ACP/HQ/[[${diaryEntry.branchCode}]]</b></u></p>
+</div>
 </div>
 </body>
 

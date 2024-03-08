@@ -37,7 +37,7 @@ public class UserService implements UserDetailsService {
         adminUser.setDateFormat("dd.MM.yyyy");
         adminUser.setFundsHead("\"01-01.06 Medical treatment\" /Crime");
         adminUser.setHealthCheckupAdmissibleAmount(BigDecimal.valueOf(2000));
-        adminUser.setHealthCheckupFundsHead("\"2055-Police, 01-01.06 Medical treatment\" /Crime");
+        adminUser.setHealthCheckupFundsHead("\"255-Police, 01-01.06 Medical treatment\" /Crime");
         adminUser.setHealthCheckupSop("PHQ Standard Operating Procedure (SOP) No.4201-4350/HAR/PHQ dated 01.10.2021");
         adminUser.setAddress("2nd Floor, Old Police Head Quarter, MSO Building, ITO, Delhi");
         adminUser.setTelephone("011-20845026");

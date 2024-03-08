@@ -13,8 +13,8 @@ $(document).ready(function () {
                     response( $.map( data, function( item ) {
                         return {
                             id: item.id,
-                            text: item.name,
-                            value: item.name
+                            text: item.name + " - " + item.address,
+                            value: item.name + " - " + item.address
                         }
                     }));
                 }
@@ -45,8 +45,8 @@ $(document).ready(function () {
                     response( $.map( data, function( item ) {
                         return {
                             id: item.id,
-                            text: item.name,
-                            value: item.name
+                            text: item.name + " - " + item.address,
+                            value: item.name + " - " + item.address
                         }
                     }));
                 }

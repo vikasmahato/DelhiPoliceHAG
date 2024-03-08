@@ -15,9 +15,29 @@
     table {
         border-collapse: collapse;
     }
+     .container{
+         font-size: 1.2em;
+         margin: 10px 1cm;
+     }
+
     h3{
+        text-align: center;
+        text-decoration: underline;
+        font-weight: bold;
         font-size:0.8em;
-        text-align:center;
+        margin-bottom: 30px;
+    }
+
+    body {
+        width: 8.27in;
+        /* height: 11.69in;*/
+        margin: 0 auto;
+        padding: 0;
+        page-break-inside: avoid;
+    }
+
+    .avoid-page-break {
+        page-break-after: avoid;
     }
 </style>
 <body>
@@ -28,18 +48,18 @@
     <h3><u><b>HAUZ KHAS, NEW DELHI-110016.</b></u></h3>
     <p style='text-align:justify' th:inline="text" >No.[[${diaryEntry.diaryNumber}]]/ Genl. Br.(II)/SD Dated New Delhi, the [[${diaryEntry.diaryDate}]]. </p>
     <p style='margin:0;'>To</p>
-    <div style='text-indent:12%;margin:0;'>
+    <div style='text-indent:8%;margin:0;'>
         <p style='margin:0;'>The Deputy Commissioner of Police</p>
         <p style='margin:0;'>General Administration, New Delhi</p>
     </div>
 
     <div class='row'>
         <p style='margin:0;'>Subject:-</p>
-        <p style='text-indent:12%;text-align:justify;margin:0;' th:inline="text"><b>Regarding re-imbursement of medical claim.</b></p>
+        <p style='text-indent:8%;text-align:justify;margin:0;' th:inline="text">Regarding medical re-imbursement claim in respect of <b>[[${diaryEntry.displayName}]].</b></p>
     </div>
     <p style='margin:0;'>Memo,</p>
-    <p th:inline="text" style='text-indent:12%;text-align:justify;margin:0;'>
-        Enclosed please find herewith the medical claim case mentioned below received from <b>[[${diaryEntry.displayName}]]</b> for providing treatment to the [[${diaryEntry.claimDetails.relation}]] of [[${diaryEntry.displayName}]]  per details mentioned on Emergency basis, for making payment to the above said Hospital:-</p>
+    <p th:inline="text" style='text-indent:8%;text-align:justify;margin:0;'>
+        Enclosed please find herewith the medical claim case mentioned below received from <b>[[${diaryEntry.displayName}]]</b> providing treatment to the police personnel or [[${diaryEntry.applicant.gender.getHisOrHer()}]] dependent family member as per details mentioned on Emergency basis, for making payment to the above Police personnel:-</p>
     <table class='table w-auto small'>
         <tbody>
         <tr>
@@ -60,11 +80,11 @@
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">
-        On scrutiny of medical claim papers/bills which is in accordance with CGHS/CS(MA) Rules a calculation statement has also been prepared which is enclosed herewith. Funds under the head <b>"2055-Police-05, South Distt., 01-01-06, Medical Treatment"</b> during the current financial year [[${diaryEntry.financialYear}]].
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+        Funds under the head <b>"2055-Police-05, South Distt., 01-01-06, Medical Treatment"</b> during the Current Financial Year [[${diaryEntry.financialYear}]].
     </p>
 
-    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+    <p style='text-indent:8%;text-align:justify;' th:inline="text">
         It is, therefore, requested that necessary sanction of the competent authority may kindly be obtained and conveyed to this office at the earliest. The written request along-with all medical papers, cash memo's duly verified by concerned doctor of the hospital are also enclosed herewith for ready reference.
     </p>
     <div style='text-align:right;margin-top:50px;'>Yours faithfully,</div>
@@ -76,5 +96,4 @@
     <div style='text-align:right'>SOUTH DISTRICT, NEW DELHI</div>
 </div>
 </body>
-
 </html>

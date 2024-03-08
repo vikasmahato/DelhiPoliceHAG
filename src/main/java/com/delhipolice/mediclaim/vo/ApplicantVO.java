@@ -2,6 +2,7 @@ package com.delhipolice.mediclaim.vo;
 
 import com.delhipolice.mediclaim.constants.CghsCategory;
 import com.delhipolice.mediclaim.constants.Designation;
+import com.delhipolice.mediclaim.constants.Gender;
 import com.delhipolice.mediclaim.model.Applicant;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class ApplicantVO {
     private String cghsNumber;
 
     private CghsCategory cghsCategory;
+    private Gender gender;
 
     public ApplicantVO(Applicant applicant) {
         id = applicant.getId();
@@ -29,5 +31,6 @@ public class ApplicantVO {
         rank = applicant.getDesignation();
         cghsNumber = applicant.getCghsNumber();
         cghsCategory = applicant.getCghsCategory();
+        gender = applicant.getGender();
     }
 }

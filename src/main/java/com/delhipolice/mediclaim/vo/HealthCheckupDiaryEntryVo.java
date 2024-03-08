@@ -59,8 +59,8 @@ public class HealthCheckupDiaryEntryVo {
         this.diaryNumber = diaryEntry.getDiaryNumber();
         this.diaryDate = diaryEntry.getDiaryDate();
         this.displayDiaryNumber = buildDiaryNumber(user);
-        this.branchName = user.getBranchCode();
-        this.branchCode = user.getBranchName();
+        this.branchName = user.getBranchName();
+        this.branchCode = user.getBranchCode();
         this.healthCheckupApplicants = diaryEntry.getHealthCheckupApplicants();
         this.admissibleAmount = diaryEntry.getAdmissibleAmount();
         this.allowedAdmissibleAmount = user.getHealthCheckupAdmissibleAmount();
