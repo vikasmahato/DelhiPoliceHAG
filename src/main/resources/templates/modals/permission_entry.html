@@ -258,6 +258,7 @@
                 response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
         $('#permissionModal').modal('toggle');
+        $('#creditPermissionTable').DataTable().ajax.reload();
       },
       error: function (jqXHR, exception) {
         const  messageDiv = $("#message-div");
