@@ -4,22 +4,22 @@
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
                 <a href="/individual" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/individual' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Individual</span>
+                    <i class="fas fa-person fa-fw me-3"></i><span>Individual</span>
                 </a>
                 <a href="/hospital" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/hospital' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Hospital</span>
+                    <i class="fas fa-hospital fa-fw me-3"></i><span>Hospital</span>
                 </a>
                 <a href="/permission" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/permission' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-check-double fa-fw me-3"></i><span>Credit</span>
+                    <i class="fas fa-credit-card fa-fw me-3"></i><span>Credit</span>
                 </a>
                 <a href="/health" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/health' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-check-double fa-fw me-3"></i><span>Health Checkup</span>
+                    <i class="fas fa-notes-medical fa-fw me-3"></i><span>Health Checkup</span>
                 </a>
-               <!-- <a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
+                <!--<a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-chart-area fa-fw me-3"></i><span>Notesheets</span>
                 </a>-->
                 <a href="/applicants" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/applicants' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-person fa-fw me-3"></i><span>Applicants</span>
+                    <i class="fas fa-users fa-fw me-3"></i><span>Applicants</span>
                 </a>
                 <a href="/hospitals" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/hospitals' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-building fa-fw me-3"></i><span>Hospitals</span>
