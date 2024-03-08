@@ -13,16 +13,18 @@ public class MedicalRateVO {
     private Long id;
     private Integer productCode;
     private String productName;
+    private String rule;
     private Float rate;
     private Float nonNabhNablRate;
     private Float nabhNablRate;
 
 
 
-    public MedicalRateVO(Integer productCode, String productName, Float rate) {
+    public MedicalRateVO(Integer productCode, String productName, Float rate, String rule) {
         this.productCode = productCode;
         this.productName = productName;
         this.rate = rate;
+        this.rule = rule;
     }
 
     public MedicalRateVO(MedicalRates medicalRates) {
@@ -31,5 +33,6 @@ public class MedicalRateVO {
         productName = medicalRates.getProductName();
         nonNabhNablRate = medicalRates.getNonNabhNablRate();
         nabhNablRate = medicalRates.getNabhNablRate();
+        rule = medicalRates.getRule();
     }
 }

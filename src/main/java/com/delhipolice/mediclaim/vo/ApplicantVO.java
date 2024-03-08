@@ -3,16 +3,9 @@ package com.delhipolice.mediclaim.vo;
 import com.delhipolice.mediclaim.constants.CghsCategory;
 import com.delhipolice.mediclaim.constants.Designation;
 import com.delhipolice.mediclaim.model.Applicant;
-import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -26,10 +19,6 @@ public class ApplicantVO {
     private Designation rank;
     private String cghsNumber;
 
-    @Temporal(TemporalType.DATE)
-    @JsonDeserialize(using = CustomDateDeserializer.class)
-    private Date cghsExpiry;
-
     private CghsCategory cghsCategory;
 
     public ApplicantVO(Applicant applicant) {
@@ -40,6 +29,5 @@ public class ApplicantVO {
         rank = applicant.getDesignation();
         cghsNumber = applicant.getCghsNumber();
         cghsCategory = applicant.getCghsCategory();
-        cghsExpiry = applicant.getCghsExpiry();
     }
 }

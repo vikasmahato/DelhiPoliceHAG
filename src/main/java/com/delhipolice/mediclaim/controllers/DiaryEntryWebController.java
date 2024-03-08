@@ -28,13 +28,13 @@ public class DiaryEntryWebController {
 
     @GetMapping("/individual")
     public String individualDiaryEntry(Model model) {
-        model.addAttribute("type", "individual");
+        model.addAttribute("type", DiaryType.INDIVIDUAL.name());
         return "diary_entry_home";
     }
 
     @GetMapping("/hospital")
     public String hospitalDiaryEntry(Model model) {
-        model.addAttribute("type", "hospital");
+        model.addAttribute("type", DiaryType.HOSPITAL.name());
         return "diary_entry_home";
     }
 
@@ -107,13 +107,13 @@ public class DiaryEntryWebController {
     }
     @GetMapping("/printCalculationSheet/{id}")
     public String printCalculationSheet(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_calculation_sheet";
     }
 
     @GetMapping("/printReferralNotesheet/{id}")
     public String printReferralNotesheet(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_referral_notesheet";
     }
 
@@ -142,19 +142,19 @@ public class DiaryEntryWebController {
 
     @GetMapping("/printOpEmergencyForwardingLetter/{id}")
     public String printOpEmergencyForwardingLetter(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_op_emg_forwarding_letter";
     }
 
     @GetMapping("/printIpEmergencyForwardingLetter/{id}")
     public String printIpEmergencyForwardingLetter(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_ip_emg_forwarding_letter";
     }
 
     @GetMapping("/printCreditForwardingLetter/{id}")
     public String printCreditForwardingLetter(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_credit_fl";
     }
 
@@ -185,13 +185,13 @@ public class DiaryEntryWebController {
 
     @GetMapping("/printTreatmentNotesheet/{id}")
     public String printTreatmentNotesheet(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_treatment_notesheet";
     }
 
     @GetMapping("/printTreatmentPermission/{id}")
     public String printTreatmentPermission(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.find(id));
+        model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
         return "prints/print_treatment_permission";
     }
 

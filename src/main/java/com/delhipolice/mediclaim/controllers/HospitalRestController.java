@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.controllers;
 
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
+import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.services.HospitalService;
 import com.delhipolice.mediclaim.services.MedicalRatesService;
@@ -35,13 +36,23 @@ public class HospitalRestController {
         return medicalRatesService.findByNameContaining(searchTerm, diaryId);
     }
 
-    @PostMapping("/updatehospital")
+    @PostMapping("/persisthospital")
     public @ResponseBody HospitalVO updateHospital(HospitalVO hospitalVO) {
-        return hospitalService.update(hospitalVO);
+        if(hospitalVO.getId() != null) {
+            return hospitalService.update(hospitalVO);
+        } else {
+            return new HospitalVO(hospitalService.save(hospitalVO));
+        }
     }
 
-    @PostMapping("/updatemedicalrates")
-    public @ResponseBody MedicalRateVO updateMedicalRates(MedicalRateVO medicalRateVO) {
-        return medicalRatesService.update(medicalRateVO);
+    @PostMapping("/persistmedicalrates")
+    public @ResponseBody MedicalRateVO persistMedicalRates(MedicalRateVO medicalRateVO) {
+
+        if(medicalRateVO.getId() != null) {
+            return medicalRatesService.update(medicalRateVO);
+        } else {
+            MedicalRates medicalRate = new MedicalRates(medicalRateVO);
+            return new MedicalRateVO(medicalRatesService.save(medicalRate));
+        }
     }
 }

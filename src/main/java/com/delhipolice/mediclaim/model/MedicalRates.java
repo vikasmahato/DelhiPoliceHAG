@@ -38,6 +38,9 @@ public class MedicalRates implements Serializable, Auditable {
     private Float nabhNablRate;
 
     @Column
+    private String rule;
+
+    @Column
     private String state;
 
     @Column
@@ -60,5 +63,6 @@ public class MedicalRates implements Serializable, Auditable {
         productName = medicalRateVO.getProductName();
         nonNabhNablRate = medicalRateVO.getNonNabhNablRate();
         nabhNablRate = medicalRateVO.getNabhNablRate();
+        rule = medicalRateVO.getRule();
     }
 }

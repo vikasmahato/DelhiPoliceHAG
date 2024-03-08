@@ -52,6 +52,11 @@
                                 <label for="medical-rate-nabhNablRate" class="col-form-label">NABH Rate:</label>
                                 <input type="number" class="form-control" id="medical-rate-nabhNablRate" name="nabhNablRate">
                             </div>
+
+                            <div class="mb-3">
+                                <label for="rule" class="col-form-label">Rule:</label>
+                                <input type="text" class="form-control" id="rule" name="rule">
+                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -65,7 +70,8 @@
         <!--Section: Sales Performance KPIs-->
         <section class="mb-4">
             <div class="card">
-                <div class="card-header text-center py-3">
+                <div class="card-header">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#medicalRatesModal">Add Medical Rate</button>
                     <h5 class="mb-0 text-center">
                         <strong>Rate List</strong>
                     </h5>
@@ -128,15 +134,18 @@
         const name = button.getAttribute('data-bs-name');
         const nabh = button.getAttribute('data-bs-nabh');
         const nonnabh = button.getAttribute('data-bs-nonnabh');
-
         const modalTitle = medicalRatesModal.querySelector('.modal-title');
-        modalTitle.textContent = name;
-        debugger;
-        $("#medical-rate-id").val(id);
-        $("#medical-rate-name").val(name);
-        $("#medical-rate-nonNabhNablRate").val(nabh);
-        $("#medical-rate-nabhNablRate").val(nonnabh);
-    })
+
+        if(id != null) {
+            modalTitle.textContent = name;
+            $("#medical-rate-id").val(id);
+            $("#medical-rate-name").val(name);
+            $("#medical-rate-nonNabhNablRate").val(nabh);
+            $("#medical-rate-nabhNablRate").val(nonnabh);
+        } else {
+            modalTitle.textContent = "Add New Medical Rate";
+        }
+    });
 </script>
 
 <script>
@@ -148,7 +157,7 @@
         $.ajax({
             type:"post",
             data:data,
-            url:"/updatemedicalrates",
+            url:"/persistmedicalrates",
             async: false,
             dataType: "json",
             success: function(response){

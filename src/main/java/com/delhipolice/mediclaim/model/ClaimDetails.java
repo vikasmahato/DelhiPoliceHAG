@@ -64,12 +64,6 @@ public class ClaimDetails implements Serializable {
     private String relativeCghsNumber;
 
     @Column
-    @Temporal(TemporalType.DATE)
-    
-    @JsonDeserialize(using = CustomDateDeserializer.class)
-    private Date relativeCghsexpiry;
-
-    @Column
     private BigDecimal amountDue;
 
     @Column
@@ -89,7 +83,6 @@ public class ClaimDetails implements Serializable {
         claimStatus = claimDetailsVO.getClaimStatus();
         hospitalType = claimDetailsVO.getHospitalType();
         relativeCghsNumber = claimDetailsVO.getRelativeCghsNumber();
-        relativeCghsexpiry = claimDetailsVO.getRelativeCghsexpiry();
         amountDue = claimDetailsVO.getAmountDue();
         isExpired = claimDetailsVO.getIsExpired();
     }

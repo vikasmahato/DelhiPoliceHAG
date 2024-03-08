@@ -45,10 +45,6 @@ public class Applicant implements Serializable, Auditable {
     private String cghsNumber;
 
     @Column
-    @Temporal(TemporalType.DATE)
-    private Date cghsExpiry;
-
-    @Column
     private CghsCategory cghsCategory;
 
     @Embedded
@@ -72,6 +68,5 @@ public class Applicant implements Serializable, Auditable {
         this.designation = applicantVO.getRank();
         this.cghsNumber = applicantVO.getCghsNumber();
         this.cghsCategory = applicantVO.getCghsCategory();
-        this.cghsExpiry = applicantVO.getCghsExpiry();
     }
 }

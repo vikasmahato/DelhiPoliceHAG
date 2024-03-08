@@ -1,6 +1,5 @@
 package com.delhipolice.mediclaim.services;
 
-import com.delhipolice.mediclaim.constants.HospitalType;
 import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.repositories.MedicalRatesRepository;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
@@ -46,7 +45,7 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
         List<MedicalRateVO> medicalRateVOS = new ArrayList<>();
 
         for(MedicalRates mr : medicalRates) {
-            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate() ));
+            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate(), mr.getRule() ));
         }
 
         return medicalRateVOS;

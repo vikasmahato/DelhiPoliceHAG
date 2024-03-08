@@ -41,7 +41,7 @@
         <section class="mb-4">
             <div class="card">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-type="Diary Entry">Create Diary Entry</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-type="Diary Entry" th:data-bs-diaryType="${type}" >Create Diary Entry</button>
                     <h5 class="text-center">
                         <strong>Diary Entries</strong>
                     </h5>
@@ -101,13 +101,12 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     const type = /*[[${type}]]*/ 'default';
-    console.log(type);
     /*]]>*/
     $('#diaryEntries').DataTable({
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "/diaryentries/"+ type,
+            "url": "/diaryentries/"+ type.toLowerCase(),
             "type": "POST",
             "dataType": "json",
             "contentType": "application/json",

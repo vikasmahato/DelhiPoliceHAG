@@ -38,7 +38,6 @@
             <section class="mb-4">
                 <div class="card">
                     <div class="card-header py-3">
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-type="PERMISSION">Create Permission</button>
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-type="CREDIT">Create Credit</button>
                     </div>
                     <div class="card-body">
@@ -51,7 +50,7 @@
                                     <th scope="col">Treatment Taken By</th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Notesheet</th>
-                                    <th scope="col">Permission</th>
+                                    <th scope="col">Order</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -61,7 +60,7 @@
                                     <th scope="col">Treatment Taken By</th>
                                     <th scope="col">Type</th>
                                     <th scope="col">Notesheet</th>
-                                    <th scope="col">Permission</th>
+                                    <th scope="col">Order</th>
                                 </tr>
                                 </tfoot>
                             </table>
@@ -122,7 +121,7 @@
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
                         var buttonID = "action_"+full.id;
-                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printPermission/'+ full.id +'">Permission</a>';
+                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralOrder/'+ full.id +'/true">Order</a>';
                     }
                 },
             ],

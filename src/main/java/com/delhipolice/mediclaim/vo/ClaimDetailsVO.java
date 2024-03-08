@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -41,9 +40,6 @@ public class ClaimDetailsVO{
     private HospitalType hospitalType;
     private String relativeCghsNumber;
     private Boolean isNewClaim = Boolean.TRUE;
-    
-@JsonDeserialize(using = CustomDateDeserializer.class)
-    private Date relativeCghsexpiry;
     private BigDecimal amountDue;
 
     public ClaimDetailsVO(ClaimDetails claimDetails) {
@@ -60,7 +56,6 @@ public class ClaimDetailsVO{
         claimStatus = claimDetails.getClaimStatus();
         hospitalType = claimDetails.getHospitalType();
         relativeCghsNumber = claimDetails.getRelativeCghsNumber();
-        relativeCghsexpiry = claimDetails.getRelativeCghsexpiry();
         isNewClaim = ClaimStatus.NEW.equals(claimDetails.getClaimStatus());
         amountDue = claimDetails.getAmountDue();
         isExpired = claimDetails.getIsExpired() == null ? Boolean.FALSE : claimDetails.getIsExpired();

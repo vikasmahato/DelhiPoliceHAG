@@ -140,7 +140,6 @@ public class HospitalSeeder {
         claimDetails.setRelation( TreatmentBy.SELF.equals(treatmentBy) ? Relation.SELF : Relation.MOTHER);
         claimDetails.setApplicationDate(new Date());
         claimDetails.setRelativeCghsNumber( TreatmentBy.SELF.equals(treatmentBy) ? null : "123123");
-        claimDetails.setRelativeCghsexpiry(TreatmentBy.SELF.equals(treatmentBy) ? null : new Date());
 
         diaryEntryVO.setClaimDetails(new ClaimDetailsVO(claimDetails));
 

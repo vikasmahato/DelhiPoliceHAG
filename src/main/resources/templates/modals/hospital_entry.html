@@ -43,14 +43,19 @@
     const name = button.getAttribute('data-bs-name');
     const address = button.getAttribute('data-bs-address');
     const type = button.getAttribute('data-bs-type');
-
     const modalTitle = hospitalModal.querySelector('.modal-title');
-    modalTitle.textContent = name;
 
-    $("#hospital-id").val(id);
-    $("#hospital-name").val(name);
-    $("#hospital-address").val(address);
-    $("#hospital-type").val(type).change();
+    if(id != null) {
+      modalTitle.textContent = name;
+      $("#hospital-id").val(id);
+      $("#hospital-name").val(name);
+      $("#hospital-address").val(address);
+      $("#hospital-type").val(type).change();
+    } else {
+      modalTitle.textContent = "Add New Hospital";
+    }
+
+
   })
 </script>
 
@@ -63,7 +68,7 @@
     $.ajax({
       type:"post",
       data:data,
-      url:"/updatehospital",
+      url:"/persisthospital",
       async: false,
       dataType: "json",
       success: function(response){

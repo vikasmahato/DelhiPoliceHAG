@@ -23,7 +23,6 @@
     h3{
         text-align: center;
         text-decoration: underline;
-        font-weight: bold;
         font-size:1.2em;
     }
 
@@ -58,22 +57,13 @@
         </tr>
         <tr>
             <td style="vertical-align: top; border: none;"><b>Subject:-</b></td>
-            <td style="border: none;"><p th:inline="text" style='padding-left:5%;'><b>Re-imbursement of medical claim in respect of  [[${diaryEntry.displayName}]].</b></p></td>
+            <td style="border: none;"><p th:inline="text" style='padding-left:5%;'><b>Re-imbursement of medical claim in respect of  [[${diaryEntry.patientApplicantDisplay}]].</b></p></td>
         </tr>
     </table>
     <p style='margin:0;'>Memo,</p>
 
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} == 'SELF'" style='text-indent:12%;text-align:justify;'>
-        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which he/she has intimated that his/her condition had suddenly detriorated and he/she was admitted in hospital in emergency condition
-        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
-        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>.
-        As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
-    </p>
-
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} != 'SELF'" style='text-indent:12%;text-align:justify;'>
-        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which he/she has intimated that his/her <b>[[${diaryEntry.relationSimple}]]'s</b> condition had suddenly detriorated and he/she was admitted in hospital in emergency condition
-        <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
-        <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
+    <p  style='text-indent:12%;text-align:justify;margin-top: 10px;'>
+        Enclosed please find herewith a medical claim amounting to <b>Rs. [[${diaryEntry.amountGranted1}]]/-</b> received from <b>Medical Superintendent, [[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> for the treatment of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> in emergency on credit basis. As per the details given below:-
     </p>
 
     <table class='table w-auto small'>
@@ -104,24 +94,23 @@
     </p>
 
     <p style='text-indent:12%;text-align:justify;' th:inline="text">
-        It is therefore, requested that her medical re-imbursement claim may be considered sympathetically and necessary ex-post-facto permission/sanction of Competent Authority may kindly be obtained and conveyed to this office at an early date.
+        It is, therefore, requested that necessary ex-post-facto sanction of the competent authority for making the payment to <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> may kindly be obtained and conveyed to this office at the earliest.
     </p>
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-6">
-            <p th:if="${renderSignature} == 'true'" class='row' style="margin-top: 20px;">
-            <p th:if="${renderSignature} == 'true'">Encls.:- <b><u>As above</u></b>:-<br/>Submitted for favour of signatures please.</p>
-            <p th:if="${renderSignature} == 'true'" style='margin-top:30px;'><u><b>HAG/[[${diaryEntry.branchCode}]]</b></u></p>
-            <p th:if="${renderSignature} == 'true'" style='margin-top:30px;'><u><b>INSPR. (A)/[[${diaryEntry.branchCode}]]</b></u></p>
-            <p th:if="${renderSignature} == 'true'" style='margin-top:30px;'><u><b>ACP/HQ/[[${diaryEntry.branchCode}]]</b></u>
-            </p>
-        </div>
-        <div class="col-6">
-            <div style='text-align:right;font-weight:bold;'>ACP/HQ</div>
-            <div style='text-align:right;'>For DY. COMMISIONER OF POLICE,</div>
-            <div style='text-align:right;'>[[${diaryEntry.branchCode}]]: (HQ) :DELHI.</div>
-        </div>
-    </div>
-    </div>
+
+    <table style="margin-top:50px;border: none;width: 100%">
+        <tr>
+            <td style="border: none;width: 50%"></td>
+            <td style="text-align:right;font-weight:bold;border: none;width: 50%">ACP/HQ</td>
+        </tr>
+        <tr>
+            <td style="border: none;width: 50%"></td>
+            <td style="text-align:right;border: none;width: 50%">For DY. COMMISIONER OF POLICE</td>
+        </tr>
+        <tr>
+            <td style="border: none;width: 50%"></td>
+            <td style="text-align:right;border: none;width: 50%">[[${diaryEntry.branchCode}]]: (HQ) :DELHI</td>
+        </tr>
+    </table>
 
 </div>
 </body>

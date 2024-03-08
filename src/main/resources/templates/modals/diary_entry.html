@@ -17,15 +17,15 @@
               <input
                       type="text"
                       class="form-control"
-                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" required
+                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" autocomplete="off" required
               />
               <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required>
-                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
+                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:if="${diaryType.name() == 'INDIVIDUAL' || diaryType.name() == 'HOSPITAL'}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
               </select>
 
               <span class="input-group-text">/Genl. Branch/SD dated</span>
 
-              <input type="text" aria-label="Diary Date" id="datepicker" name="diaryDate" class="form-control datepicker" required>
+              <input type="text" aria-label="Diary Date" id="diaryDate" name="diaryDate" class="form-control datepicker" required>
             </div>
 
             <hr/>
@@ -41,7 +41,7 @@
               <div class="col-8">
                 <div class="input-group input-group-sm mb-3">
                   <select class="form-control form-control-sm" id="rank" name="applicant.rank" required>
-                    <option value="">Select</option>
+                    <option value="">Select Rank</option>
                     <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
                   </select>
 
@@ -57,7 +57,7 @@
 
 
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="belt_number" class="form-control form-control-sm" name="applicant.beltNumber" required />
+                  <input type="text" id="belt_number" class="form-control form-control-sm" name="applicant.beltNumber" autocomplete="off" required />
                   <label class="form-label" for="belt_number">Belt No</label>
                 </div>
 
@@ -65,16 +65,18 @@
 
               <div class="col-4">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="cghs_number" class="form-control form-control-sm" name="applicant.cghsNumber" required />
+                  <input type="text" id="cghs_number" class="form-control form-control-sm" name="applicant.cghsNumber" autocomplete="off" required />
                   <label class="form-label" for="cghs_number">CGHS Number</label>
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-4" id="hospital_div">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="cghs_expiry" class="form-control form-control-sm datepicker" name="applicant.cghsExpiry" required />
-                  <label class="form-label" for="cghs_expiry">CGHS Expiry</label>
+                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
+                  <label class="form-label" for="hospital_name">Hospital Name</label>
                 </div>
+                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
+
               </div>
 
               </div>
@@ -133,12 +135,11 @@
                 </div>
               </div>
 
-              <div class="col-4" id="hospital_div">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
-                  <label class="form-label" for="hospital_name">Hospital Name</label>
+              <div class="col-4" >
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="claimDetails.isExpired" value="" id="isExpired" />
+                  <label class="form-check-label" for="isExpired">Is Expired</label>
                 </div>
-                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
               </div>
             </div>
 
@@ -166,10 +167,7 @@
               </div>
 
               <div class="col-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="claimDetails.isExpired" value="" id="isExpired" />
-                  <label class="form-check-label" for="isExpired">Is Expired</label>
-                </div>
+
               </div>
 
             </div>
@@ -196,10 +194,7 @@
 
                 <div class="col-4">
 
-                  <div class="form-outline mb-3" data-mdb-input-init>
-                    <input type="text" id="relative_cghs_expiry" class="form-control form-control-sm datepicker" name="claimDetails.relativeCghsexpiry" required />
-                    <label class="form-label" for="relative_cghs_expiry">Relative CGHS Expiry</label>
-                  </div>
+
 
                 </div>
 
@@ -218,14 +213,50 @@
 </div>
 
 <script>
+  function resetDiaryForm() {
+    let i;
+    const inputs = document.querySelectorAll('#diaryEntryCreateForm input');
+
+    for (i = 0; i < inputs.length; i++) {
+      inputs[i].value = '';
+    }
+    const selects = document.querySelectorAll('#diaryEntryCreateForm select');
+    for (i = 0; i < selects.length; i++) {
+      selects[i].selectedIndex = 0;
+    }
+
+    $("#diaryDate").datepicker("update", new Date());
+  }
+
+  // Attach the resetForm function to the reset button's click event
+  document.querySelector('button[type="reset"]').addEventListener('click', resetDiaryForm);
+</script>
+
+<script>
   const diaryEntryModal = document.getElementById('diaryEntryModal');
+
+  diaryEntryModal.addEventListener('hidden.bs.modal', function () {
+    resetDiaryForm();
+  });
+
+  function removeOptions(diaryType) {
+    const selectElement = document.getElementById('diaryType');
+
+    for(let i = 0; i < selectElement.options.length; i++){
+      const option = selectElement.options[i];
+      if(option.value !== diaryType){
+        selectElement.remove(i);
+        i--;
+      }
+    }
+  }
+
   diaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
-    const type = button.getAttribute('data-bs-type');
     const id = button.getAttribute('data-bs-id');
+    const diaryType = button.getAttribute('data-bs-diaryType');
 
-    const modalTitle = diaryEntryModal.querySelector('.modal-title');
-    modalTitle.textContent = type;
+    removeOptions(diaryType);
 
     if(id != null) {
       $.ajax({
@@ -235,10 +266,9 @@
           const fields = [
             "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
             "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
-            "applicant.cghsNumber", "applicant.cghsExpiry", "applicant.cghsCategory", "claimType",
+            "applicant.cghsNumber", "applicant.cghsCategory", "claimType",
             "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
-            "claimDetails.startDate", "claimDetails.relativeName", "claimDetails.relativeCghsNumber",
-            "claimDetails.relativeCghsexpiry", "applicant.id", "claimDetails.endDate", "claimDetails.isExpired", "claimDetails.disease"
+            "claimDetails.startDate", "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.endDate", "claimDetails.isExpired", "claimDetails.disease"
           ];
           fields.forEach(function(field) {
             const input = diaryEntryModal.querySelector(`[name="${field}"]`);
@@ -259,10 +289,9 @@
           }
         }
       });
+    } else {
+      $("#diaryDate").datepicker("update", new Date());
     }
-
-
-
   })
 </script>
 <script>
