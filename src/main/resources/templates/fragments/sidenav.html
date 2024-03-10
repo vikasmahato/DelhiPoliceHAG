@@ -9,6 +9,9 @@
                 <a href="/hospital" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/hospital' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-hospital fa-fw me-3"></i><span>Hospital</span>
                 </a>
+                <a href="/referral" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/referral' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-solid fa-arrow-up-right-from-square fa-fw me-3"></i><span>Referral</span>
+                </a>
                 <a href="/permission" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/permission' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-credit-card fa-fw me-3"></i><span>Credit</span>
                 </a>

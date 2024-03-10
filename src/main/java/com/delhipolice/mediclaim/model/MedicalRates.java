@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.model;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
 import com.delhipolice.mediclaim.vo.MedicalRateVO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -64,5 +65,8 @@ public class MedicalRates implements Serializable, Auditable {
         nonNabhNablRate = medicalRateVO.getNonNabhNablRate();
         nabhNablRate = medicalRateVO.getNabhNablRate();
         rule = medicalRateVO.getRule();
+        state = medicalRateVO.getState();
     }
+
+
 }

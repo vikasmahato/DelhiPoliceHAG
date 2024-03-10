@@ -9,6 +9,7 @@ import com.delhipolice.mediclaim.utils.PagingRequest;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
+import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,12 @@ public class DiaryEntryRestController {
         DiaryType diaryType = DiaryType.valueOf(type.toUpperCase());
 
         return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes, diaryType);
+    }
+
+    @PostMapping("/referraldiaryentries/")
+    public Page<ReferralDiaryEntryVO> listReferralDiaryEntries(@RequestBody PagingRequest pagingRequest) {
+
+        return diaryEntryService.getDiaryEntries(pagingRequest, ClaimType.REFERRAL);
     }
 
     @PostMapping("/healthdiaryentries")

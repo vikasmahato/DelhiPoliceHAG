@@ -1,6 +1,6 @@
 package com.delhipolice.mediclaim.model.comparators;
 
-import com.delhipolice.mediclaim.model.DiaryEntry;
+import com.delhipolice.mediclaim.model.IDiaryEntry;
 import com.delhipolice.mediclaim.utils.Direction;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -21,20 +21,18 @@ public class DiaryEntryComparators {
     }
 
 
-    static Map<Key, Comparator<DiaryEntry>> map = new HashMap<>();
+    static Map<Key, Comparator<IDiaryEntry>> map = new HashMap<>();
 
     static {
-        map.put(new Key("diaryNumber", Direction.asc), Comparator.comparing(DiaryEntry::getDiaryNumber));
-        map.put(new Key("diaryNumber", Direction.desc), Comparator.comparing(DiaryEntry::getDiaryNumber)
+        map.put(new Key("diaryNumber", Direction.asc), Comparator.comparing(IDiaryEntry::getDiaryNumber));
+        map.put(new Key("diaryNumber", Direction.desc), Comparator.comparing(IDiaryEntry::getDiaryNumber)
                 .reversed());
 
-        map.put(new Key("diaryType", Direction.asc), Comparator.comparing(DiaryEntry::getDiaryType));
-        map.put(new Key("diaryType", Direction.desc), Comparator.comparing(DiaryEntry::getDiaryType)
-                .reversed());
-
+        map.put(new Key("creationDate", Direction.asc), Comparator.comparing(i -> i.getAuditSection().getDateCreated()));
+        map.put(new Key("creationDate", Direction.desc), Comparator.comparing(i -> i.getAuditSection().getDateCreated()));
     }
 
-    public static Comparator<DiaryEntry> getComparator(String name, Direction dir) {
+    public static Comparator<IDiaryEntry> getComparator(String name, Direction dir) {
         return map.get(new Key(name, dir));
     }
 

@@ -46,6 +46,7 @@
                 <div class="box-body">
 
                     <input type="hidden" th:value="${diaryId}" name="diaryNo" id="diaryNo">
+                    <input type="checkbox" id="toggleAutocomplete" checked> Enable Search
 
                     <div>
                         <table class="table table-bordered table-hover" style="padding:0.3rem 0.5rem;">
@@ -247,39 +248,42 @@
 
     //autocomplete script
     $(document).on('focus','.autocomplete_txt',function(){
-        $(this).autocomplete({
-            source: function( request, response ) {
-                $.ajax({
-                    url : '/searchMedicalRate',
-                    contentType : 'application/json; charset=utf-8',
-                    dataType : 'json',
-                    method: 'get',
-                    data: {
-                        searchTerm: request.term,
-                        diaryId: $("#diaryNo").val()
-                    },
-                    success: function( data ) {
-                        response( $.map( data, function( item ) {
-                            return {
-                                label: item.productName,
-                                value: item.productName,
-                                data : item
-                            }
-                        }));
-                    }
-                });
-            },
-            autoFocus: true,
-            minLength: 0,
-            select: function( event, ui ) {
-                var id_arr = $(this).attr('id');
-                var id = id_arr.split("_");
-                $('#itemNo_'+id[1]).val(ui.item.data.productCode);
-                $('#itemName_'+id[1]).val(ui.item.data.productName);
-                $('#total_'+id[1]).val( ui.item.data.rate);
-                calculateTotal();
-            }
-        });
+        if($('#toggleAutocomplete').is(":checked")) {
+            $(this).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url : '/searchMedicalRate',
+                        contentType : 'application/json; charset=utf-8',
+                        dataType : 'json',
+                        method: 'get',
+                        data: {
+                            searchTerm: request.term,
+                            diaryId: $("#diaryNo").val()
+                        },
+                        success: function( data ) {
+                            response( $.map( data, function( item ) {
+                                return {
+                                    label: item.productName,
+                                    value: item.productName,
+                                    data : item
+                                }
+                            }));
+                        }
+                    });
+                },
+                autoFocus: true,
+                minLength: 0,
+                select: function( event, ui ) {
+                    var id_arr = $(this).attr('id');
+                    var id = id_arr.split("_");
+                    $('#itemNo_'+id[1]).val(ui.item.data.productCode);
+                    $('#itemName_'+id[1]).val(ui.item.data.productName);
+                    $('#total_'+id[1]).val( ui.item.data.rate);
+                    calculateTotal();
+                }
+            });
+        }
+
     });
 
 </script>

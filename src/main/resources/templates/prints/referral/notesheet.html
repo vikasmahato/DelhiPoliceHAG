@@ -26,10 +26,6 @@
     </p>
 
     <p style='text-indent:8%;text-align:justify;' th:inline="text">
-        In this context, it is worth to mention here that as per [[${diaryEntry.healthCheckupSop}]]. The beneficiary (police personnel) shall be able to get their comprehensive investigations & diagnostic tests, as are applicable to class-“A” officers can be got conducted at any of the CGHS empanelled hospital @ of Rs. 2000/- (Male) and Rs. 2200/- (Female) or at the rates as may be revised by the CGHS/Govt. of India, from time to time.
-    </p>
-
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
         A calculation sheet has been prepared in accordance with C.G.H.S. approved rates as well as package deal rates dated 1.10.2014. The DCP(HQ)/Crime is competent to accord ex-post sanction for the payment to following police personnel as under:-
     </p>
 
@@ -39,16 +35,24 @@
         <tr>
             <th>Sl. No.</th>
             <th>Name & Belt No. Applicant</th>
+            <th>Relationship</th>
             <th>Amount</th>
         </tr>
 
         </thead>
         <tbody>
 
-        <tr th:each="applicant,iterStat : ${diaryEntry.healthCheckupApplicants}">
+        <tr th:each="applicant,iterStat : ${diaryEntry.referralApplicants}">
             <td th:text="${iterStat.index + 1}"></td>
             <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
+            <td th:text="${applicant.relation.getEnumValue()}"></td>
             <td th:text="${applicant.amount}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td><b>[[${diaryEntry.totalAdmissibleAmount}]]</b></td>
         </tr>
         </tbody>
     </table>
@@ -59,7 +63,7 @@
     </p>
 
     <p style='text-indent:8%;text-align:justify;' th:inline="text">
-        Funds are available under Head [[${diaryEntry.healthCheckupFundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
+        Funds are available under Head [[${diaryEntry.fundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
     <p style='margin-top:70px;'><u><b>HAG/[[${diaryEntry.branchCode}]]</b></u></p>

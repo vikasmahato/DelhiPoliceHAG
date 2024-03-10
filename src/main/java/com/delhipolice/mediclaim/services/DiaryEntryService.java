@@ -5,11 +5,13 @@ import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.Applicant;
 import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.model.HealthCheckupDiaryEntry;
+import com.delhipolice.mediclaim.model.ReferralDiaryEntry;
 import com.delhipolice.mediclaim.utils.Page;
 import com.delhipolice.mediclaim.utils.PagingRequest;
 import com.delhipolice.mediclaim.vo.CalcSheetVO;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
+import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +21,10 @@ public interface DiaryEntryService {
 
     Optional<DiaryEntryVO> find(UUID id);
     Optional<HealthCheckupDiaryEntryVo> find1(UUID id);
+    Optional<ReferralDiaryEntryVO> find2(UUID id);
 
     DiaryEntry save(DiaryEntryVO diaryEntryVO);
+    ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO);
     HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO);
 
     List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS);
@@ -33,6 +37,7 @@ public interface DiaryEntryService {
     DiaryEntry update(DiaryEntry diaryEntry);
 
     Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes, DiaryType diaryType);
+    Page<ReferralDiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, ClaimType claimType);
 
     Page<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntries(PagingRequest pagingRequest);
 

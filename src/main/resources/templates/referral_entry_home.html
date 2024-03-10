@@ -35,13 +35,12 @@
     <div class="container pt-4">
         <div th:with="type=${type}"></div>
 
-        <div th:replace="modals/diary_entry :: diaryEntryModal"></div>
-        <div th:replace="modals/claim_view :: claimViewModal"></div>
+        <div th:replace="modals/ind_referral_entry :: indRefDiaryEntryModal"></div>
         <!--Section: Sales Performance KPIs-->
         <section class="mb-4">
             <div class="card">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-type="Diary Entry" th:data-bs-diaryType="${type}" >Create Diary Entry</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#indRefDiaryEntryModal" data-bs-type="Referral Diary Entry" th:data-bs-diaryType="${type}" >Create Referral Entry</button>
                     <h5 class="text-center">
                         <strong>Diary Entries</strong>
                     </h5>
@@ -51,22 +50,16 @@
                         <table id="diaryEntries" class="table table-hover table-sm text-nowrap table-group-divider">
                             <thead>
                             <tr>
-                                <th scope="col">Diary Number</th>
-                                <th scope="col">Rank/Name/No</th>
-                                <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
-                                <th scope="col">Details</th>
-                                <th scope="col">View</th>
+                                <th scope="col" style="width: 80%;">Diary Number</th>
+                                <th scope="col">Note sheet</th>
+                                <th scope="col">Order</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th scope="col">Diary Number</th>
-                                <th scope="col">Rank/Name/No</th>
-                                <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
-                                <th scope="col">Details</th>
-                                <th scope="col">View</th>
+                                <th scope="col" style="width: 80%;">Diary Number</th>
+                                <th scope="col">Note sheet</th>
+                                <th scope="col">Order</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -105,7 +98,7 @@
         "processing": true,
         "serverSide": true,
         "ajax": {
-            "url": "/diaryentries/"+ type.toLowerCase(),
+            "url": "/referraldiaryentries/",
             "type": "POST",
             "dataType": "json",
             "contentType": "application/json",
@@ -114,20 +107,19 @@
             }
         },
         "columns": [
-            {"data": "displayDiaryNumber", "width": "20%"},
-            {"data": "displayName", "width": "40%"},
-            {"data": "treatmentTakenBy","width": "10%"},
-            {"data": "claimType","width": "10%"},
+            {"data": "displayDiaryNumber", "width": "80%"},
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
+                    var buttonID = "action_"+full.id;
+                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralNotesheet/'+ full.id +'">Notesheet</a>';
                 }
             },
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
+                    var buttonID = "action_"+full.id;
+                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralOrder/'+ full.id +'">Order</a>';
                 }
             },
         ],

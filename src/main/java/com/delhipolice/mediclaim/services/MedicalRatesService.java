@@ -19,4 +19,6 @@ public interface MedicalRatesService {
     MedicalRateVO update(MedicalRateVO medicalRateVO);
 
     int count();
+
+    void deleteAll();
 }

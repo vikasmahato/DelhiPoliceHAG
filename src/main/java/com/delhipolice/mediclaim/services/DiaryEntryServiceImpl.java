@@ -8,10 +8,9 @@ import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
 import com.delhipolice.mediclaim.model.comparators.HelathCheckupDiaryEntryComparators;
 import com.delhipolice.mediclaim.repositories.DiaryEntryRepository;
 import com.delhipolice.mediclaim.repositories.HealthCheckupDiaryEntryRepository;
+import com.delhipolice.mediclaim.repositories.ReferralDiaryEntryRepository;
 import com.delhipolice.mediclaim.utils.*;
-import com.delhipolice.mediclaim.vo.CalcSheetVO;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
-import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
+import com.delhipolice.mediclaim.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ import java.util.stream.Collectors;
 @Service
 public class DiaryEntryServiceImpl implements DiaryEntryService{
 
-    private static final Comparator<DiaryEntry> EMPTY_COMPARATOR = (e1, e2) -> 0;
+    private static final Comparator<IDiaryEntry> EMPTY_COMPARATOR = (e1, e2) -> 0;
     private static final Comparator<HealthCheckupDiaryEntry> HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR = (e1, e2) -> 0;
 
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -37,6 +36,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Autowired
     HealthCheckupDiaryEntryRepository healthCheckupDiaryEntryRepository;
+
+    @Autowired
+    ReferralDiaryEntryRepository referralDiaryEntryRepository;
 
     @Autowired
     HospitalService hospitalService;
@@ -61,6 +63,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
+    public Optional<ReferralDiaryEntryVO> find2(UUID id) {
+        Optional<ReferralDiaryEntry> diaryEntry = referralDiaryEntryRepository.findById(id);
+        return diaryEntry.map(ReferralDiaryEntryVO::new);
+    }
+
+    @Override
     public DiaryEntry save(DiaryEntryVO diaryEntryVO) {
 
 
@@ -80,6 +88,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     public HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO) {
         HealthCheckupDiaryEntry diaryEntry = new HealthCheckupDiaryEntry(diaryEntryVO);
         return healthCheckupDiaryEntryRepository.save(diaryEntry);
+    }
+
+    @Override
+    public ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO) {
+        ReferralDiaryEntry diaryEntry = new ReferralDiaryEntry(diaryEntryVO);
+        return referralDiaryEntryRepository.save(diaryEntry);
     }
 
     @Override
@@ -129,8 +143,28 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes,  DiaryType diaryType) {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType);
-        return getPage(diaryEntries, pagingRequest);
+        List<IDiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType);
+
+        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
+
+        Page<DiaryEntryVO> page1 = new Page<>(page.getData().stream().map(DiaryEntryVO.class::cast).collect(Collectors.toList()));
+        page1.setRecordsFiltered(page.getRecordsFiltered());
+        page1.setRecordsTotal(page.getRecordsTotal());
+        page1.setDraw(page.getDraw());
+
+        return page1;
+    }
+
+    @Override
+    public Page<ReferralDiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, ClaimType claimType) {
+        List<IDiaryEntry> diaryEntries = referralDiaryEntryRepository.findAllEntries();
+        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
+
+        Page<ReferralDiaryEntryVO> page1 = new Page<>(page.getData().stream().map(ReferralDiaryEntryVO.class::cast).collect(Collectors.toList()));
+        page1.setRecordsFiltered(page.getRecordsFiltered());
+        page1.setRecordsTotal(page.getRecordsTotal());
+        page1.setDraw(page.getDraw());
+        return page1;
     }
 
     @Override
@@ -179,20 +213,27 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return (int) diaryEntryRepository.count();
     }
 
-    private Page<DiaryEntryVO> getPage(List<DiaryEntry> diaryEntries, PagingRequest pagingRequest) {
-        List<DiaryEntryVO> filtered = diaryEntries.stream()
+    private Page<IDiaryEntryVO> getPage(List<IDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
+        List<IDiaryEntryVO> filtered = diaryEntries.stream()
                 .sorted(sortEntries(pagingRequest))
                 .filter(filterDiaryEntries(pagingRequest))
                 .skip(pagingRequest.getStart())
                 .limit(pagingRequest.getLength())
-                .map(DiaryEntryVO::new)
+                .map(diaryEntry -> {
+                    if (diaryEntry instanceof DiaryEntry) {
+                        return new DiaryEntryVO((DiaryEntry) diaryEntry);
+                    } else if (diaryEntry instanceof ReferralDiaryEntry) {
+                        return new ReferralDiaryEntryVO((ReferralDiaryEntry) diaryEntry);
+                    }
+                    return null;
+                })
                 .collect(Collectors.toList());
 
         long count = diaryEntries.stream()
                 .filter(filterDiaryEntries(pagingRequest))
                 .count();
 
-        Page<DiaryEntryVO> page = new Page<>(filtered);
+        Page<IDiaryEntryVO> page = new Page<>(filtered);
         page.setRecordsFiltered((int) count);
         page.setRecordsTotal((int) count);
         page.setDraw(pagingRequest.getDraw());
@@ -221,7 +262,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return page;
     }
 
-    private Predicate<DiaryEntry> filterDiaryEntries(PagingRequest pagingRequest) {
+    private Predicate<IDiaryEntry> filterDiaryEntries(PagingRequest pagingRequest) {
         if (pagingRequest.getSearch() == null || StringUtils.isEmpty(pagingRequest.getSearch()
                 .getValue())) {
             return diaryEntry -> true;
@@ -230,15 +271,18 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         String value = pagingRequest.getSearch()
                 .getValue();
 
-        return diaryEntry -> diaryEntry.getApplicant().getName()
-                .toLowerCase()
-                .contains(value)
-                || diaryEntry.getDiaryNumber()
-                .toLowerCase()
-                .contains(value)
-                || diaryEntry.getTreatmentTakenBy().getEnumValue()
-                .toLowerCase()
-                .contains(value);
+        return diaryEntry -> {
+            if (diaryEntry instanceof DiaryEntry) {
+                DiaryEntry diaryEntryCast = (DiaryEntry) diaryEntry;
+                return diaryEntryCast.getApplicant().getName().toLowerCase().contains(value)
+                        || diaryEntryCast.getDiaryNumber().toLowerCase().contains(value)
+                        || diaryEntryCast.getTreatmentTakenBy().getEnumValue().toLowerCase().contains(value);
+            } else if (diaryEntry instanceof ReferralDiaryEntry) {
+                ReferralDiaryEntry referralDiaryEntryCast = (ReferralDiaryEntry) diaryEntry;
+                return referralDiaryEntryCast.getReferralApplicants().stream().anyMatch(applicant -> applicant.getApplicantDetails().toLowerCase().contains(value));
+            }
+            return false;
+        };
     }
 
     private Predicate<HealthCheckupDiaryEntry> filterHealthCHeckupDiaryEntries(PagingRequest pagingRequest) {
@@ -255,7 +299,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                 .contains(value);
     }
 
-    private Comparator<DiaryEntry> sortEntries(PagingRequest pagingRequest) {
+    private Comparator<IDiaryEntry> sortEntries(PagingRequest pagingRequest) {
         if (pagingRequest.getOrder() == null) {
             return EMPTY_COMPARATOR;
         }
@@ -268,7 +312,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             Column column = pagingRequest.getColumns()
                     .get(columnIndex);
 
-            Comparator<DiaryEntry> comparator = DiaryEntryComparators.getComparator(column.getData(), order.getDir());
+            Comparator<IDiaryEntry> comparator = DiaryEntryComparators.getComparator(column.getData(), order.getDir());
             if (comparator == null) {
                 return EMPTY_COMPARATOR;
             }

@@ -8,10 +8,8 @@ import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.services.HospitalService;
 import com.delhipolice.mediclaim.services.MedicalRatesService;
-import com.delhipolice.mediclaim.vo.ApplicantVO;
-import com.delhipolice.mediclaim.vo.ClaimDetailsVO;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
-import com.delhipolice.mediclaim.vo.HospitalVO;
+import com.delhipolice.mediclaim.vo.*;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -68,6 +66,8 @@ public class HospitalSeeder {
 
     private void seedMedicalRates() throws IOException {
 
+         medicalRatesService.deleteAll();
+
         if(medicalRatesService.count() > 0) {
             log.info(medicalRatesService.count() + " medical rates already exist");
             return;
@@ -75,10 +75,26 @@ public class HospitalSeeder {
 
         File file = new ClassPathResource("data/medicalRates.json").getFile();
         ObjectMapper objectMapper = new ObjectMapper();
-        MedicalRates[] list = objectMapper.readValue(file, MedicalRates[].class);
+        //MedicalRates[] list = objectMapper.readValue(file, MedicalRates[].class);
+        List<Map<String, String>> list = objectMapper.readValue(file, new TypeReference<List<Map<String, String>>>() {});
 
-        for(MedicalRates medicalRates : list) {
-            medicalRatesService.save(medicalRates);
+        for(Map<String, String> map : list) {
+            try {
+                medicalRatesService.save(
+                        new MedicalRates(
+                                new MedicalRateVO(
+                                        Integer.parseInt(map.get("productCode")),
+                                        map.get("productName"),
+                                        Float.parseFloat(map.get("nonNabhNablRate")),
+                                        Float.parseFloat(map.get("nabhNablRate")),
+                                        map.get("state")
+                                )
+                        )
+                );
+            } catch (Exception e) {
+                log.error("Error saving: " + map.toString());
+            }
+
             //log.info("Saved: " + medicalRates.getProductName());
 
         }

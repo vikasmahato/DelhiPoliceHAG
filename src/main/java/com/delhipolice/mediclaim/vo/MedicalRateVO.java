@@ -17,14 +17,24 @@ public class MedicalRateVO {
     private Float rate;
     private Float nonNabhNablRate;
     private Float nabhNablRate;
+    private String state;
 
 
 
-    public MedicalRateVO(Integer productCode, String productName, Float rate, String rule) {
+    public MedicalRateVO(Integer productCode, String productName, Float rate, String rule, String state) {
         this.productCode = productCode;
         this.productName = productName;
         this.rate = rate;
         this.rule = rule;
+        this.state = state;
+    }
+
+    public MedicalRateVO(Integer productCode, String productName, Float nonNabhNablRate, Float nabhNablRate,   String state) {
+        this.productCode = productCode;
+        this.productName = productName;
+        this.nonNabhNablRate = nonNabhNablRate;
+        this.nabhNablRate = nabhNablRate;
+        this.state = state;
     }
 
     public MedicalRateVO(MedicalRates medicalRates) {
@@ -34,5 +44,6 @@ public class MedicalRateVO {
         nonNabhNablRate = medicalRates.getNonNabhNablRate();
         nabhNablRate = medicalRates.getNabhNablRate();
         rule = medicalRates.getRule();
+        state = medicalRates.getState();
     }
 }

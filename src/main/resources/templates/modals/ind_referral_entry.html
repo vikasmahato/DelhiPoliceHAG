@@ -1,14 +1,14 @@
-<div th:fragment="diaryEntryModal">
+<div th:fragment="indRefDiaryEntryModal">
 
-<div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
+<div class="modal fade" id="indRefDiaryEntryModal" tabindex="-1" aria-labelledby="indRefDiaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
+        <h5 class="modal-title" id="indRefDiaryEntryModalLabel">Create a New Diary Entry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="diaryEntryCreateForm">
+        <form id="indRefDiaryEntryCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
@@ -31,16 +31,33 @@
                   <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Relationship</th>
                     <th>Amount</th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
+                    <tr>
+                    <td><input type="text" class="form-control" name="referralApplicants[0].applicantDetails" required></td>
+                    <td>
+                       <select class="form-control" id="relation_0" name="referralApplicants[0].relation" required>
+                           <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
+                         </select>
+                      </td>
+                    <td><input type="text" class="form-control" name="referralApplicants[0].amount" required></td>
+                    <td></td>
+                    </tr>'
                   </tbody>
                 </table>
               </div>
 
-              <button id="addRow" type="button" class="btn btn-primary btn-sm">Add Row</button>
+              <div class="row">
+                <div class="col-10">
+                  </div>
+                <div class="col-2">
+                  <button id="addRow" type="button" class="btn btn-primary btn-sm">Add Row</button>
+                </div>
+              </div>
             </div>
 
             </div>
@@ -56,25 +73,25 @@
 </div>
 
 <script>
-  const diaryEntryModal = document.getElementById('diaryEntryModal');
-  diaryEntryModal.addEventListener('show.bs.modal', function (event) {
+  const indRefDiaryEntryModal = document.getElementById('indRefDiaryEntryModal');
+  indRefDiaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
     const id = button.getAttribute('data-bs-id');
 
-    const modalTitle = diaryEntryModal.querySelector('.modal-title');
+    const modalTitle = indRefDiaryEntryModal.querySelector('.modal-title');
     modalTitle.textContent = type;
 
     if(id != null) {
       $.ajax({
         type: "POST",
-        url: "/diaryEntry/" + id,
+        url: "/indRefDiaryEntry/" + id,
         success: function(response) {
 
         },
         error: function (jqXHR, exception) {
           if (jqXHR.status === 404) {
-            console.log("DiaryEntry with id " + id + " not found");
+            console.log("indRefDiaryEntry with id " + id + " not found");
           } else {
             console.log("Error fetching data: ", exception);
           }
@@ -89,27 +106,17 @@
 <script>
 
   function submitForm() {
-    var data = $("#diaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
+    var data = $("#indRefDiaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
       obj[item.name] = item.value;
       return obj;
     }, {});
-
-    /*data.healthCheckupApplicants = [];
-
-    $("#applicantsTable tbody tr").each(function() {
-      var applicant = {
-        applicantDetails: $(this).find('input[name="healthCheckupApplicants[].applicantDetails"]').val(),
-        amount: $(this).find('input[name="healthCheckupApplicants[].amount"]').val()
-      };
-      data.healthCheckupApplicants.push(applicant);
-    });*/
 
     console.log(data);
 
     $.ajax({
       type:"post",
       data:data,
-      url:"/healthDiaryEntryCreate",
+      url:"/indRefDiaryEntryCreate",
       async: false,
       dataType: "json",
       success: function(response){
@@ -118,7 +125,7 @@
                 '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
                 response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
-        $('#diaryEntryModal').modal('toggle');
+        $('#indRefDiaryEntryModal').modal('toggle');
         $('#diaryEntries').DataTable().ajax.reload();
       },
       error: function (jqXHR, exception) {
@@ -127,7 +134,7 @@
                 '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
                 exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
-        $('#diaryEntryModal').modal('toggle');
+        $('#indRefDiaryEntryModal').modal('toggle');
       }
     });
 
@@ -136,14 +143,22 @@
 
   <script>
     $(document).ready(function() {
-      var counter = 0;
+      var counter = 1;
       $("#addRow").click(function() {
         var row = '<tr>' +
-                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required></td>' +
-                '<td><input type="number" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="2000"></td>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].applicantDetails" required></td>' +
+                '<td>' +
+                ' <select class="form-control" id="relation_'+ counter +'" name="referralApplicants[' + counter + '].relation" required>' +
+                ' </select>' +
+                '</td>' +
+                '<td><input type="number" class="form-control" name="referralApplicants[' + counter + '].amount" required></td>' +
                 '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
                 '</tr>';
         $("#applicantsTable tbody").append(row);
+
+        var options = $('#relation_0 option').clone();
+        $('#relation_' + counter).append(options);
+
         counter++;
       });
 

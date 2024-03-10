@@ -22,7 +22,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Table(name = "DIARY_ENTRY")
-public class DiaryEntry implements Serializable, Auditable {
+public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
 
     public DiaryEntry(DiaryEntryVO diaryEntryVO) {

@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.model;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
+import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,8 +20,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "HEALTH_CHECKUP_DIARY_ENTRY")
-public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryEntry {
+@Table(name = "REFERRAL_DIARY_ENTRY")
+public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -41,7 +42,7 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     private Date diaryDate;
 
     @OneToMany(cascade=CascadeType.ALL)
-    private List<HealthCheckupApplicants> healthCheckupApplicants = new ArrayList<>();
+    private List<ReferralApplicants> referralApplicants = new ArrayList<>();
 
     @Column
     private  BigDecimal admissibleAmount;
@@ -56,12 +57,12 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
         this.auditSection = auditSection;
     }
 
-    public HealthCheckupDiaryEntry(HealthCheckupDiaryEntryVo vo) {
+    public ReferralDiaryEntry(ReferralDiaryEntryVO vo) {
         this.id = vo.getId();
         this.tenantId = vo.getTenantId();
         this.diaryNumber = vo.getDiaryNumber();
         this.diaryDate = vo.getDiaryDate();
         this.admissibleAmount = vo.getAdmissibleAmount();
-        this.healthCheckupApplicants = vo.getHealthCheckupApplicants();
+        this.referralApplicants = vo.getReferralApplicants();
     }
 }

@@ -45,7 +45,7 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
         List<MedicalRateVO> medicalRateVOS = new ArrayList<>();
 
         for(MedicalRates mr : medicalRates) {
-            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate(), mr.getRule() ));
+            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate(), mr.getRule(), mr.getState() ));
         }
 
         return medicalRateVOS;
@@ -75,6 +75,11 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
     @Override
     public int count() {
         return (int) medicalRatesRepository.count();
+    }
+
+    @Override
+    public void deleteAll() {
+        medicalRatesRepository.deleteAll();
     }
 
 }

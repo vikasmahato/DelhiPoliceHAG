@@ -26,7 +26,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DiaryEntryVO implements Serializable {
+public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private static final long serialVersionUID = 1L;
 
     private UUID id;
