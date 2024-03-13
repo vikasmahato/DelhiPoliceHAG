@@ -17,6 +17,12 @@
     <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
     <h3><u><b>Telephone No. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
 
+    <p style="text-align: center">
+        ____________________________________________________________________________________
+    </p>
+    <p style='text-align:justify; margin-top: 10px;' th:inline="text" >[[${diaryEntry.displayEndorsement}]]</p>
+
+
     <table style="border: none;width:100%">
         <tr>
             <td style="vertical-align: top;border: none;">To,</td>
@@ -31,15 +37,15 @@
     </table>
     <p style='margin:0;'>Memo,</p>
 
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} == 'SELF'" style='text-indent:8%;text-align:justify;'>
-        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which [[${diaryEntry.applicant.gender.getHeOrShe()}]] has intimated that [[${diaryEntry.applicant.gender.getHisOrHer()}]] condition had suddenly detriorated and [[${diaryEntry.applicant.gender.getHeOrShe()}]]  was admitted in hospital in emergency condition
+    <p th:if="${diaryEntry.claimDetails.relation.name} == 'SELF'" style='text-indent:14%;text-align:justify;'>
+        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which  [[${diaryEntry.applicantGender.getHeOrShe()}]] has intimated that [[${diaryEntry.applicantGender.getHisOrHer()}]] condition had suddenly detriorated and [[${diaryEntry.patientGender.getHeOrShe()}]]  was admitted in hospital in emergency condition
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>.
         As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
     </p>
 
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} != 'SELF'" style='text-indent:8%;text-align:justify;'>
-        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which [[${diaryEntry.applicant.gender.getHeOrShe()}]]  has intimated that [[${diaryEntry.applicant.gender.getHisOrHer()}]] <b>[[${diaryEntry.relationSimple}]]'s</b> condition had suddenly detriorated and [[${diaryEntry.applicant.gender.getHeOrShe()}]]  was admitted in hospital in emergency condition
+    <p th:if="${diaryEntry.claimDetails.relation.name} != 'SELF'" style='text-indent:14%;text-align:justify;'>
+        Enclosed please find herewith a medical re-imbursement claim along with all original papers in respect of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> vide which [[${diaryEntry.applicantGender.getHeOrShe()}]] has intimated that [[${diaryEntry.applicantGender.getHisOrHer()}]] <b>[[${diaryEntry.relationSimple}]]'s</b> condition had suddenly detriorated and [[${diaryEntry.patientGender.getHeOrShe()}]]  was admitted in hospital in emergency condition
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and enclosed herewith.  As per the details given below:-
     </p>
@@ -58,27 +64,26 @@
         </thead>
         <tbody>
         <tr>
-            <td style="text-align: center;">[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] <br/>([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]]<br/>
+                No. [[${diaryEntry.applicant.beltNumber}]] <br/>
+                (PIS No. [[${diaryEntry.applicant.pisNumber}]])<br/>
+                ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
             <td style="text-align: center;">[[${diaryEntry.hospital.hospitalName}]]</td>
             <td style="text-align: center;">[[${diaryEntry.claimDetails.disease}]]</td>
             <td style="text-align: center;">[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountAsked1}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountGranted1}]]</td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
+
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;' th:inline="text">
         Funds for this purpose are available under head <b>[[${diaryEntry.fundsHead}]]</b> during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;' th:inline="text">
         It is therefore, requested that [[${diaryEntry.applicant.gender.getHisOrHer()}]] medical re-imbursement claim may be considered sympathetically and necessary ex-post-facto permission/sanction of Competent Authority may kindly be obtained and conveyed to this office at an early date.
     </p>
-
-    <p th:inline="text">
-        No. _____________/Genl/(III)/[[${diaryEntry.branchCode}]] Dated Delhi, the _______________/[[${#dates.year(#dates.createNow())}]].
-    </p>
-
 
     <div class="row" style="padding-top: 70px;">
         <div class="col-6">

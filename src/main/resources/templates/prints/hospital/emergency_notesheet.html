@@ -39,12 +39,15 @@
         </thead>
         <tbody>
         <tr>
-            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]]<br/>
+                No. [[${diaryEntry.applicant.beltNumber}]] <br/>
+                (PIS No. [[${diaryEntry.applicant.pisNumber}]])<br/>
+                ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
             <td>[[${diaryEntry.hospital.hospitalName}]]</td>
             <td>[[${diaryEntry.claimDetails.disease}]]</td>
             <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td>[[${diaryEntry.amountAsked1}]]</td>
-            <td>[[${diaryEntry.amountGranted1}]]</td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
         </tr>
         </tbody>
     </table>

@@ -14,7 +14,11 @@
     <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: [[${diaryEntry.branchCode}]] (HQ), DELHI,</u></b></h3>
     <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
     <h3><u><b>Telephone No. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
-    <p style='text-align:justify' th:inline="text" >[[${diaryEntry.displayDiaryNumber}]]</p>
+    <p style="text-align: center">
+        ____________________________________________________________________________________
+    </p>
+    <p style='text-align:justify; margin-top: 10px;' th:inline="text" >[[${diaryEntry.displayEndorsement}]]</p>
+
 
     <table style="border: none;width: 100%;">
         <tr>
@@ -30,7 +34,7 @@
     </table>
     <p style='margin:0;'>Memo,</p>
 
-    <p  style='text-indent:8%;text-align:justify;margin-top: 10px;'>
+    <p  style='text-indent:14%;text-align:justify;margin-top: 10px;'>
         Enclosed please find herewith a medical claim amounting to <b>Rs. [[${diaryEntry.amountGranted1}]]/-</b> received from <b>Medical Superintendent, [[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> for the treatment of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> in emergency on credit basis. As per the details given below:-
     </p>
 
@@ -48,20 +52,23 @@
         </thead>
         <tbody>
         <tr>
-            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]]<br/>
+                No. [[${diaryEntry.applicant.beltNumber}]] <br/>
+                (PIS No. [[${diaryEntry.applicant.pisNumber}]])<br/>
+                ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
             <td>[[${diaryEntry.hospital.hospitalName}]]</td>
             <td>[[${diaryEntry.claimDetails.disease}]]</td>
             <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td>[[${diaryEntry.amountAsked1}]]</td>
-            <td>[[${diaryEntry.amountGranted1}]]</td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;' th:inline="text">
         Funds for this purpose are available under head <b>[[${diaryEntry.fundsHead}]]</b> during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;' th:inline="text">
         It is, therefore, requested that necessary ex-post-facto sanction of the competent authority for making the payment to <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> may kindly be obtained and conveyed to this office at the earliest.
     </p>
 

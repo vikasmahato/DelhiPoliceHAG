@@ -114,14 +114,14 @@
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
                         var buttonID = "action_"+full.id;
-                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printNotesheet/'+ full.id +'">Notesheet</a>';
+                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" target="_blank" href="/printNotesheet/'+ full.id +'">Notesheet</a>';
                     }
                 },
                 {
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
                         var buttonID = "action_"+full.id;
-                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printOrder/'+ full.id +'/true">Order</a>';
+                        return '<a id='+buttonID+' class="btn btn-primary btn-sm" target="_blank" href="/printOrder/'+ full.id +'/true">Order</a>';
                     }
                 },
             ],

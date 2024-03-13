@@ -41,9 +41,11 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
     private BigDecimal totalAdmissibleAmount;
 
     private String displayDiaryNumber;
+    private String displayEndorsement;
     private String branchCode;
     private String branchName;
     private String financialYear;
+    private String diaryYear;
     private String amountGrantedInWords;
     private String fundsHead;
 
@@ -64,7 +66,9 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
         this.admissibleAmount = diaryEntry.getAdmissibleAmount();
         this.allowedAdmissibleAmountMale = user.getHealthCheckupAdmissibleAmountMale();
         this.allowedAdmissibleAmountFemale = user.getHealthCheckupAdmissibleAmountFemale();
-        financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
+        financialYear = user.getFinancialYear();
+        diaryYear = user.getDiaryYear();
+        displayEndorsement = buildDisplayEndorsement(user);
         this.totalAdmissibleAmount = diaryEntry.getReferralApplicants().stream().map(ReferralApplicants::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
         amountGrantedInWords = EnglishNumberToWords.convert(totalAdmissibleAmount.doubleValue());
     }
@@ -78,5 +82,12 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
 
         return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
                 .replace("{diaryDate}", formattedDate);
+    }
+
+    private String buildDisplayEndorsement(User user) {
+        String diaryYear = user.getDiaryYear();
+        String endorsementFormat = user.getEndorsementFormat();
+        return endorsementFormat
+                .replace("{diaryYear}", diaryYear);
     }
 }

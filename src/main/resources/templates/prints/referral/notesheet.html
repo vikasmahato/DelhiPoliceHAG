@@ -48,14 +48,15 @@
             <td th:text="${applicant.registerNumber}" style="text-align: left"></td>
             <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
             <td th:text="${applicant.relation.getEnumValue()}"></td>
-            <td th:text="${applicant.amount}"></td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(applicant.amount, 0, 'COMMA')} + '/-'"></td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
             <td style="text-align: left;"><b>Total</b></td>
-            <td><b>[[${diaryEntry.totalAdmissibleAmount}]]</b></td>
+
+            <td><b>Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/-</b></td>
         </tr>
         </tbody>
     </table>

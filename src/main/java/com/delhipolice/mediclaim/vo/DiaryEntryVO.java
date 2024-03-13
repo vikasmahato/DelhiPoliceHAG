@@ -2,6 +2,7 @@ package com.delhipolice.mediclaim.vo;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
+import com.delhipolice.mediclaim.constants.Gender;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
@@ -75,6 +76,8 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String relationSimple;
     private Boolean isLetterGenerated = Boolean.FALSE;
     private String displayEndorsement;
+    private Gender applicantGender;
+    private Gender patientGender;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
 
@@ -122,6 +125,8 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         branchAddress = user.getAddress();
         patientDOB = diaryEntry.getPatientDOB();
         relationSimple = TreatmentBy.SELF.equals(treatmentTakenBy) ? "Self" : claimDetails.getRelation().getEnumValue();
+        applicantGender = diaryEntry.getApplicant().getGender();
+        patientGender = TreatmentBy.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicant().getGender() : claimDetails.getRelation().getGender();
 
     }
 

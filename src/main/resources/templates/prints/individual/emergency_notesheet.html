@@ -21,11 +21,11 @@
         </div>
     </div>
 
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} == 'SELF'" style='text-indent:8%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of <b>[[${diaryEntry.applicant.gender.getHisOrHer()}]]</b> treatment for medical re-imbursement claim along with all original papers vide which [[${diaryEntry.applicant.gender.getHeOrShe()}]]  has intimated that [[${diaryEntry.applicant.gender.getHisOrHer()}]] condition had suddenly become deteriorated and [[${diaryEntry.applicant.gender.getHeOrShe()}]]  was admitted in hospital in emergency
+    <p th:if="${diaryEntry.claimDetails.relation.name} == 'SELF'" style='text-indent:8%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of <b>[[${diaryEntry.applicantGender.getHisOrHer()}]]</b> treatment for medical re-imbursement claim along with all original papers vide which [[${diaryEntry.applicantGender.getHeOrShe()}]]  has intimated that [[${diaryEntry.patientGender.getHisOrHer()}]] condition had suddenly become deteriorated and [[${diaryEntry.patientGender.getHeOrShe()}]]  was admitted in hospital in emergency
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and placed below which may kindly be perused <b>at Flag-"A"</b>.</p>
 
-    <p th:if="${diaryEntry.claimDetails.relation.getEnumValue().toUpperCase()} != 'SELF'" style='text-indent:8%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of [[${diaryEntry.applicant.gender.getHisOrHer()}]] <b>[[${diaryEntry.relationSimple}]]'s</b> treatment namely <b><th:block th:if="${diaryEntry.claimDetails.isExpired} == true">Late</th:block> [[${diaryEntry.claimDetails.relativeName}]]</b> for medical re-imbursement claim along with all original papers vide which [[${diaryEntry.applicant.gender.getHeOrShe()}]]  has intimated that [[${diaryEntry.applicant.gender.getHisOrHer()}]] [[${diaryEntry.relationSimple}]]’s condition has suddenly become deteriorated and [[${diaryEntry.applicant.gender.getHeOrShe()}]]  was admitted in hospital in emergency
+    <p th:if="${diaryEntry.claimDetails.relation.name} != 'SELF'" style='text-indent:8%;text-align:justify;'>It is submitted that, <b>[[${diaryEntry.displayName}]]</b> has submitted an application in respect of [[${diaryEntry.applicantGender.getHisOrHer()}]] <b>[[${diaryEntry.relationSimple}]]'s</b> treatment namely <b><th:block th:if="${diaryEntry.claimDetails.isExpired} == true">Late</th:block> [[${diaryEntry.claimDetails.relativeName}]]</b> for medical re-imbursement claim along with all original papers vide which [[${diaryEntry.applicantGender.getHeOrShe()}]]  has intimated that [[${diaryEntry.applicantGender.getHisOrHer()}]] [[${diaryEntry.relationSimple}]]’s condition has suddenly become deteriorated and [[${diaryEntry.patientGender.getHeOrShe()}]]  was admitted in hospital in emergency
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == true">and <b>expired on [[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</b></th:block>
         <th:block th:if="${diaryEntry.claimDetails.isExpired} == false">on <b>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]]</b></th:block>. As per the M.A Rules, calculation statement has been prepared and placed below which may kindly be perused <b>at Flag-"A"</b>.</p>
 
@@ -43,12 +43,16 @@
         </thead>
         <tbody>
         <tr>
-            <td style="text-align: center;">[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]] [[${diaryEntry.applicant.beltNumber}]] <br/> ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
+            <td>[[${diaryEntry.applicant.rank.getEnumValue()}]] [[${diaryEntry.applicant.name}]]<br/>
+                No. [[${diaryEntry.applicant.beltNumber}]] <br/>
+                (PIS No. [[${diaryEntry.applicant.pisNumber}]])<br/>
+                ([[${diaryEntry.claimDetails.relation.getEnumValue()}]])</td>
             <td style="text-align: center;">[[${diaryEntry.hospital.hospitalName}]]</td>
             <td style="text-align: center;">[[${diaryEntry.claimDetails.disease}]]</td>
             <td style="text-align: center;">[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountAsked1}]]</td>
-            <td style="text-align: center;">[[${diaryEntry.amountGranted1}]]</td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
+
         </tr>
         </tbody>
     </table>
