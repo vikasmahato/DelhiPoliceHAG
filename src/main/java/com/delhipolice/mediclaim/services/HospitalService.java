@@ -23,4 +23,6 @@ public interface HospitalService {
     HospitalVO update(HospitalVO hospitalVO);
 
     int count();
+
+    void deleteAll();
 }

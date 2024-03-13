@@ -45,15 +45,14 @@ public class HospitalSeeder {
     }
 
     private void seedHospitals() throws IOException {
-
         if(hospitalService.count() > 0) {
             log.info(hospitalService.count() + " hospitals already exist");
             return;
         }
 
-        File file = new ClassPathResource("data/cghs_hospital.json").getFile();
+        InputStream is = new ClassPathResource("data/cghs_hospital.json").getInputStream();
         ObjectMapper objectMapper = new ObjectMapper();
-        HospitalVO[] list = objectMapper.readValue(file, HospitalVO[].class);
+        HospitalVO[] list = objectMapper.readValue(is, HospitalVO[].class);
 
         for(HospitalVO hospitalVO : list) {
             hospitalService.save(hospitalVO);
@@ -66,17 +65,17 @@ public class HospitalSeeder {
 
     private void seedMedicalRates() throws IOException {
 
-        // medicalRatesService.deleteAll();
+         medicalRatesService.deleteAll();
 
         if(medicalRatesService.count() > 0) {
             log.info(medicalRatesService.count() + " medical rates already exist");
             return;
         }
 
-        File file = new ClassPathResource("data/medicalRates.json").getFile();
+        InputStream is = new ClassPathResource("data/medicalRates.json").getInputStream();
         ObjectMapper objectMapper = new ObjectMapper();
         //MedicalRates[] list = objectMapper.readValue(file, MedicalRates[].class);
-        List<Map<String, String>> list = objectMapper.readValue(file, new TypeReference<List<Map<String, String>>>() {});
+        List<Map<String, String>> list = objectMapper.readValue(is, new TypeReference<List<Map<String, String>>>() {});
 
         for(Map<String, String> map : list) {
             try {

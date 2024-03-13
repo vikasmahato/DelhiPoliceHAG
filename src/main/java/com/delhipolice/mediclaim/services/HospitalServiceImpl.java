@@ -64,4 +64,9 @@ public class HospitalServiceImpl implements HospitalService{
     public int count() {
         return (int) hospitalRepository.count();
     }
+
+    @Override
+    public void deleteAll() {
+        hospitalRepository.deleteAll();
+    }
 }
