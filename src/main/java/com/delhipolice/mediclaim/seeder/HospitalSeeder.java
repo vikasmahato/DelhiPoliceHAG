@@ -66,7 +66,7 @@ public class HospitalSeeder {
 
     private void seedMedicalRates() throws IOException {
 
-         medicalRatesService.deleteAll();
+        // medicalRatesService.deleteAll();
 
         if(medicalRatesService.count() > 0) {
             log.info(medicalRatesService.count() + " medical rates already exist");
