@@ -28,10 +28,8 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
 
     private Integer tenantId;
 
-    private String diaryNumber;
-
     @JsonDeserialize(using = CustomDateDeserializer.class)
-    private Date diaryDate;
+    private Date diaryDate = new Date();
 
     private List<ReferralApplicants> referralApplicants = new ArrayList<>();
 
@@ -56,7 +54,6 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
 
         this.id = diaryEntry.getId();
         this.tenantId = diaryEntry.getTenantId();
-        this.diaryNumber = diaryEntry.getDiaryNumber();
         this.diaryDate = diaryEntry.getDiaryDate();
         this.displayDiaryNumber = buildDiaryNumber(user);
         this.branchName = user.getBranchName();
@@ -74,13 +71,11 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
     }
 
     private String buildDiaryNumber(User user) {
-        String diaryNumberFormat = user.getDiaryNumberFormat();
-
         SimpleDateFormat formatter = new SimpleDateFormat(user.getDateFormat());
         String formattedDate = formatter.format(diaryDate);
 
 
-        return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
+        return "Diary Dated {diaryDate}"
                 .replace("{diaryDate}", formattedDate);
     }
 

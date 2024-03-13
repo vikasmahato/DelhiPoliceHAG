@@ -35,9 +35,6 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     private AuditSection auditSection = new AuditSection();
 
     @Column
-    private String diaryNumber;
-
-    @Column
     @Temporal(TemporalType.DATE)
     private Date diaryDate;
 
@@ -46,6 +43,11 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
 
     @Column
     private  BigDecimal admissibleAmount;
+
+    @Override
+    public String getDiaryNumber() {
+        return "";
+    }
 
     @Override
     public AuditSection getAuditSection() {
@@ -60,7 +62,6 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     public ReferralDiaryEntry(ReferralDiaryEntryVO vo) {
         this.id = vo.getId();
         this.tenantId = vo.getTenantId();
-        this.diaryNumber = vo.getDiaryNumber();
         this.diaryDate = vo.getDiaryDate();
         this.admissibleAmount = vo.getAdmissibleAmount();
         this.referralApplicants = vo.getReferralApplicants();

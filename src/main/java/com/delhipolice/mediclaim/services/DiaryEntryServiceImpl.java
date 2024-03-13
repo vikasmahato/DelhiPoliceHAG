@@ -71,7 +71,6 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     @Override
     public DiaryEntry save(DiaryEntryVO diaryEntryVO) {
 
-
         DiaryEntry diaryEntry = new DiaryEntry(diaryEntryVO);
 
         Applicant applicant = applicantService.findByPisNumber(diaryEntryVO.getApplicant().getPisNumber());
@@ -81,6 +80,11 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
         diaryEntry.setHospital(hospital);
         diaryEntry.getClaimDetails().setClaimStatus(ClaimStatus.D_HAND);
+
+        if(diaryEntryVO.getId() != null) {
+            diaryEntry.setId(diaryEntryVO.getId());
+        }
+
         return diaryEntryRepository.save(diaryEntry);
     }
 

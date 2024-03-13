@@ -1,5 +1,5 @@
 <div th:fragment="diaryEntryModal">
-
+  <div th:with="type=${type}"></div>
 <div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -20,7 +20,7 @@
                       aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" autocomplete="off" required
               />
               <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required>
-                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:if="${diaryType.name() == 'INDIVIDUAL' || diaryType.name() == 'HOSPITAL'}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
+                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:if="${diaryType.name().toUpperCase() == type}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
               </select>
 
               <span class="input-group-text">/Genl. Branch/[[${branchCode}]] Dated</span>
@@ -244,24 +244,14 @@
     resetDiaryForm();
   });
 
-  function removeOptions(diaryType) {
-    const selectElement = document.getElementById('diaryType');
-
-    for(let i = 0; i < selectElement.options.length; i++){
-      const option = selectElement.options[i];
-      if(option.value !== diaryType){
-        selectElement.remove(i);
-        i--;
-      }
-    }
-  }
-
   diaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const id = button.getAttribute('data-bs-id');
     const diaryType = button.getAttribute('data-bs-diaryType');
 
-    removeOptions(diaryType);
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
 
     if(id != null) {
       $.ajax({
@@ -271,9 +261,9 @@
           const fields = [
             "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
             "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
-            "applicant.cghsNumber", "applicant.cghsCategory", "claimType",
+            "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
             "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
-            "claimDetails.startDate", "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.endDate", "claimDetails.isExpired", "claimDetails.disease"
+            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.isExpired", "claimDetails.disease"
           ];
           fields.forEach(function(field) {
             const input = diaryEntryModal.querySelector(`[name="${field}"]`);
@@ -285,6 +275,14 @@
             }
           });
           $("#treatment_by").trigger("change");
+
+          let startDate = new Date(response.claimDetails.startDate);
+          let endDate = new Date(response.claimDetails.endDate);
+          let diaryDate = new Date(response.diaryDate);
+          diaryEntryModal.querySelector(`[name="diaryDate"]`).value = diaryDate.getDate() + '-' + monthNames[diaryDate.getMonth()] + '-' + diaryDate.getFullYear();
+          diaryEntryModal.querySelector(`[name="claimDetails.startDate"]`).value = startDate.getDate() + '-' + monthNames[startDate.getMonth()] + '-' + startDate.getFullYear();
+          diaryEntryModal.querySelector(`[name="claimDetails.endDate"]`).value = endDate.getDate() + '-' + monthNames[endDate.getMonth()] + '-' + endDate.getFullYear();
+
         },
         error: function (jqXHR, exception) {
           if (jqXHR.status === 404) {
@@ -296,6 +294,7 @@
       });
     } else {
       $("#diaryDate").datepicker("update", new Date());
+
     }
   })
 </script>
