@@ -248,7 +248,9 @@
 
     //autocomplete script
     $(document).on('focus','.autocomplete_txt',function(){
+        debugger;
         if($('#toggleAutocomplete').is(":checked")) {
+            debugger;
             $(this).autocomplete({
                 source: function( request, response ) {
                     $.ajax({
