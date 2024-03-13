@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary Entry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/jqueryui.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/body.css}" rel="stylesheet"></link>
+
+
+</head>
+<body>
+    <header>
+        <div th:replace="fragments/sidenav :: sidebarMenu"></div>
+        <div th:replace="fragments/topnav :: navbar"></div>
+    </header>
+
+    <!--Main layout-->
+    <main style="margin-top: 58px">
+        <div class="container pt-4">
+            <div id="message-div"></div>
+
+            <section class="mb-4">
+                <div class="card">
+                    <div class="card-header py-3">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-type="CREDIT">Create Credit</button>
+                    </div>
+
+                    <div class="card-body">
+                        <form th:action="@{/settings}" th:object="${user}" method="post">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="username">Username</label>
+                                        <input type="text" th:field="*{username}" id="username" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="diaryNumberFormat">Diary Number Format</label>
+                                        <input type="text" th:field="*{diaryNumberFormat}" id="diaryNumberFormat" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="branchCode">Branch Code</label>
+                                        <input type="text" th:field="*{branchCode}" id="branchCode" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="fundsHead">Funds Head</label>
+                                        <input type="text" th:field="*{fundsHead}" id="fundsHead" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="address">Address</label>
+                                        <input type="text" th:field="*{address}" id="address" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="healthCheckupAdmissibleAmountMale">Health Checkup Admissible Amount (Male)</label>
+                                        <input type="text" th:field="*{healthCheckupAdmissibleAmountMale}" id="healthCheckupAdmissibleAmountMale" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="dateFormat">Date Format</label>
+                                        <input type="text" th:field="*{dateFormat}" id="dateFormat" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="healthCheckupSop">Financial Year</label>
+                                        <div class="input-group">
+                                            <input type="text" th:field="*{financialYear}" id="financialYear" class="form-control">
+                                            <button class="btn btn-outline-secondary" type="button" id="resetFinancialYear">Reset</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-6" >
+
+                                    <div class="row"  style="margin-top:10px;">
+                                        <div class="form-group col-6">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control">
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="confirmpassword">Confirm Password</label>
+                                            <input type="password" id="confirmpassword" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="endorsementFormat">Endorsement Format</label>
+                                        <input type="text" th:field="*{endorsementFormat}" id="endorsementFormat" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="branchName">Branch Name</label>
+                                        <input type="text" th:field="*{branchName}" id="branchName" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="healthCheckupFundsHead">Health Checkup Funds Head</label>
+                                        <input type="text" th:field="*{healthCheckupFundsHead}" id="healthCheckupFundsHead" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="telephone">Telephone</label>
+                                        <input type="text" th:field="*{telephone}" id="telephone" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="healthCheckupAdmissibleAmountFemale">Health Checkup Admissible Amount (Female)</label>
+                                        <input type="text" th:field="*{healthCheckupAdmissibleAmountFemale}" id="healthCheckupAdmissibleAmountFemale" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="healthCheckupSop">Health Checkup SOP</label>
+                                        <input type="text" th:field="*{healthCheckupSop}" id="healthCheckupSop" class="form-control">
+                                    </div>
+
+                                    <div class="form-group" style="margin-top:10px;">
+                                        <label for="diaryYear">Diary Year</label>
+                                        <div class="input-group">
+                                            <input type="text" th:field="*{diaryYear}" id="diaryYear" class="form-control">
+                                            <button class="btn btn-outline-secondary" type="button" id="resetDiaryYear">Reset</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Update</button>
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    </body>
+    <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jqueryui.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmpassword').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                $('#message-div').html('<div class="alert alert-error alert-dismissible fade show"  role="alert">Password and confirm password do not match.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>')
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('resetDiaryYear').addEventListener('click', function() {
+            document.getElementById('diaryYear').value = new Date().getFullYear();
+        });
+
+        document.getElementById('resetFinancialYear').addEventListener('click', function() {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            document.getElementById('financialYear').value = month < 3 ? (year - 1) + "-" + year : year + "-" + (year + 1);
+        });
+    </script>
+</html>

@@ -21,6 +21,7 @@
                 <thead>
                 <tr>
                   <th>Sl. No.</th>
+                  <th>Register No</th>
                   <th>Name & Belt No. Applicant</th>
                   <th>Amount</th>
                 </tr>
@@ -33,10 +34,14 @@
           </div>
         </form>
 
-        <div style="display: flex; justify-content: space-between;">
-          <a class="btn btn-primary btn-sm" id="printHealthNotesheet" target="_blank">Notesheet</a>
-          <a class="btn btn-primary btn-sm" id="printHealthOrder" target="_blank">Order</a>
+        <div class="row">
+          <div class="col-8"></div>
+          <div class="col-4" style="display: flex; justify-content: space-between;">
+              <a class="btn btn-primary btn-sm" id="printHealthNotesheet" target="_blank">Notesheet</a>
+              <a class="btn btn-primary btn-sm" id="printHealthOrder" target="_blank">Order</a>
+          </div>
         </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -70,6 +75,7 @@
           $.each(applicants, function(i, applicant) {
             var row = '<tr>' +
                     '<td>' + (i+1) + '</td>' +
+                    '<td>' + applicant.registerNumber + '</td>' +
                     '<td>' + applicant.applicantDetails + '</td>' +
                     '<td>' + applicant.amount + '</td>' +
                     '</tr>';

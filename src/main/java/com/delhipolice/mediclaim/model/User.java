@@ -2,7 +2,9 @@ package com.delhipolice.mediclaim.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
@@ -25,6 +27,8 @@ public class User implements UserDetails {
 
     private String diaryNumberFormat;
 
+    private String endorsementFormat;
+
     private String branchCode;
 
     private String branchName;
@@ -37,11 +41,16 @@ public class User implements UserDetails {
 
     private String telephone;
 
-    private BigDecimal healthCheckupAdmissibleAmount;
+    private BigDecimal healthCheckupAdmissibleAmountMale;
+    private BigDecimal healthCheckupAdmissibleAmountFemale;
 
     private String healthCheckupFundsHead;
 
     private String healthCheckupSop;
+
+    private String financialYear;
+
+    private String diaryYear;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -66,5 +75,11 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public static User getLoggedInUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return (User) userDetails;
     }
 }

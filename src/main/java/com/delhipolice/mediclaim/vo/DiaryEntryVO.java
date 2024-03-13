@@ -63,6 +63,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String notesheetSalutation;
     private Boolean viewMode = Boolean.FALSE;
     private String financialYear;
+    private String diaryYear;
     private Boolean isNewClaim = Boolean.FALSE;
     private String patient;
     private String fundsHead;
@@ -73,6 +74,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String branchPhoneNo;
     private String relationSimple;
     private Boolean isLetterGenerated = Boolean.FALSE;
+    private String displayEndorsement;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
 
@@ -105,7 +107,9 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         notesheetSalutation = buildNotesheetSalutation();
         sanctionAmount = diaryEntry.getSanctionAmount();
         amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
-        financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
+        financialYear = user.getFinancialYear();
+        displayEndorsement = buildDisplayEndorsement(user);
+        diaryYear = user.getDiaryYear();
         isNewClaim = claimDetails.getIsNewClaim();
         patient = (claimDetails.getIsExpired() ? "Late " : "") + (TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
         patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
@@ -156,6 +160,13 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
 
         return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
                 .replace("{diaryDate}", formattedDate);
+    }
+
+    private String buildDisplayEndorsement(User user) {
+        String diaryYear = user.getDiaryYear();
+        String endorsementFormat = user.getEndorsementFormat();
+        return endorsementFormat
+                .replace("{diaryYear}", diaryYear);
     }
 
     private String buildDisplayName() {

@@ -36,7 +36,8 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
     private List<ReferralApplicants> referralApplicants = new ArrayList<>();
 
     private BigDecimal admissibleAmount;
-    private BigDecimal allowedAdmissibleAmount;
+    private BigDecimal allowedAdmissibleAmountMale;
+    private BigDecimal allowedAdmissibleAmountFemale;
     private BigDecimal totalAdmissibleAmount;
 
     private String displayDiaryNumber;
@@ -61,7 +62,8 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
         this.referralApplicants = diaryEntry.getReferralApplicants();
         this.fundsHead = user.getHealthCheckupFundsHead();
         this.admissibleAmount = diaryEntry.getAdmissibleAmount();
-        this.allowedAdmissibleAmount = user.getHealthCheckupAdmissibleAmount();
+        this.allowedAdmissibleAmountMale = user.getHealthCheckupAdmissibleAmountMale();
+        this.allowedAdmissibleAmountFemale = user.getHealthCheckupAdmissibleAmountFemale();
         financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
         this.totalAdmissibleAmount = diaryEntry.getReferralApplicants().stream().map(ReferralApplicants::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
         amountGrantedInWords = EnglishNumberToWords.convert(totalAdmissibleAmount.doubleValue());

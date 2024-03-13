@@ -2,16 +2,16 @@ package com.delhipolice.mediclaim.constants;
 
 public enum Relation {
     SELF("Self", ""),
-    WIFE("Wife", "W/O"),
-    HUSBAND("Husband", "H/O"),
-    MOTHER("Mother", "M/O"),
-    FATHER("Father", "F/O"),
+    WIFE("Wife", "W/o"),
+    HUSBAND("Husband", "H/o"),
+    MOTHER("Mother", "M/o"),
+    FATHER("Father", "F/o"),
     MOTHER_IN_LAW("Mother In Law", "Mother-in-law of"),
     FATHER_IN_LAW("Father In Law", "Father-in-law of"),
     BROTHER("Brother", "Brother of"),
     SISTER("Sister", "Sister of"),
-    SON("Son", "S/O"),
-    DAUGHTER("Daughter", "D/O");
+    SON("Son", "S/o"),
+    DAUGHTER("Daughter", "D/o");
 
 
     private String enumValue;

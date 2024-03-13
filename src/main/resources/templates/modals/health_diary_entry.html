@@ -13,24 +13,13 @@
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
 
-            <div class="input-group input-group-sm mb-3">
-              <input
-                      type="text"
-                      class="form-control"
-                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" required
-              />
-
-              <input type="text" aria-label="Diary Date" id="datepicker" name="diaryDate" class="form-control datepicker" required>
-            </div>
-
-            <hr/>
-
             <div class="row">
               <div class="row">
                 <table id="applicantsTable" class="table">
                   <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Register Number</th>
                     <th>Amount</th>
                     <th></th>
                   </tr>
@@ -40,7 +29,15 @@
                 </table>
               </div>
 
-              <button id="addRow" type="button" class="btn btn-primary btn-sm">Add Row</button>
+              <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3">
+                  <button id="addRow" type="button" class="btn btn-primary btn-sm">Add Row</button>
+                </div>
+
+
+              </div>
+
             </div>
 
             </div>
@@ -140,6 +137,7 @@
       $("#addRow").click(function() {
         var row = '<tr>' +
                 '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required></td>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].registerNumber" required></td>' +
                 '<td><input type="number" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="2000"></td>' +
                 '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
                 '</tr>';

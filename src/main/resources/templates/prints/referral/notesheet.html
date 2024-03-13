@@ -34,6 +34,7 @@
         <thead>
         <tr>
             <th>Sl. No.</th>
+            <th>Register No.</th>
             <th>Name & Belt No. Applicant</th>
             <th>Relationship</th>
             <th>Amount</th>
@@ -44,11 +45,13 @@
 
         <tr th:each="applicant,iterStat : ${diaryEntry.referralApplicants}">
             <td th:text="${iterStat.index + 1}"></td>
+            <td th:text="${applicant.registerNumber}" style="text-align: left"></td>
             <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
             <td th:text="${applicant.relation.getEnumValue()}"></td>
             <td th:text="${applicant.amount}"></td>
         </tr>
         <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td style="text-align: left;"><b>Total</b></td>

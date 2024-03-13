@@ -30,6 +30,7 @@
                 <table id="applicantsTable" class="table">
                   <thead>
                   <tr>
+                    <th>Register No.</th>
                     <th>Name</th>
                     <th>Relationship</th>
                     <th>Amount</th>
@@ -38,6 +39,7 @@
                   </thead>
                   <tbody>
                     <tr>
+                    <td><input type="text" class="form-control" name="referralApplicants[0].registerNumber" required></td>
                     <td><input type="text" class="form-control" name="referralApplicants[0].applicantDetails" required></td>
                     <td>
                        <select class="form-control" id="relation_0" name="referralApplicants[0].relation" required>
@@ -146,6 +148,7 @@
       var counter = 1;
       $("#addRow").click(function() {
         var row = '<tr>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].registerNumber" required></td>' +
                 '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].applicantDetails" required></td>' +
                 '<td>' +
                 ' <select class="form-control" id="relation_'+ counter +'" name="referralApplicants[' + counter + '].relation" required>' +

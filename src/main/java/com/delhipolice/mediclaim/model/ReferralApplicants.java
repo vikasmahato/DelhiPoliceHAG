@@ -36,6 +36,9 @@ public class ReferralApplicants implements Serializable, Auditable {
     @Column
     private String applicantDetails;
 
+    @Column
+    private String registerNumber;
+
     private Relation relation;
 
     @Column

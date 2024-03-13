@@ -38,7 +38,8 @@ public class HealthCheckupDiaryEntryVo {
     private List<HealthCheckupApplicants> healthCheckupApplicants = new ArrayList<>();
     
     private BigDecimal admissibleAmount;
-    private BigDecimal allowedAdmissibleAmount;
+    private BigDecimal allowedAdmissibleAmountMale;
+    private BigDecimal allowedAdmissibleAmountFemale;
     private String healthCheckupFundsHead;
     private String healthCheckupSop;
     private BigDecimal totalAdmissibleAmount;
@@ -47,6 +48,8 @@ public class HealthCheckupDiaryEntryVo {
     private String branchCode;
     private String branchName;
     private String financialYear;
+    private String diaryYear;
+    private String displayEndorsement;
     private String amountGrantedInWords;
 
     public HealthCheckupDiaryEntryVo(HealthCheckupDiaryEntry diaryEntry) {
@@ -63,9 +66,12 @@ public class HealthCheckupDiaryEntryVo {
         this.branchCode = user.getBranchCode();
         this.healthCheckupApplicants = diaryEntry.getHealthCheckupApplicants();
         this.admissibleAmount = diaryEntry.getAdmissibleAmount();
-        this.allowedAdmissibleAmount = user.getHealthCheckupAdmissibleAmount();
+        this.allowedAdmissibleAmountMale = user.getHealthCheckupAdmissibleAmountMale();
+        this.allowedAdmissibleAmountFemale = user.getHealthCheckupAdmissibleAmountFemale();
         this.healthCheckupFundsHead = user.getHealthCheckupFundsHead();
-        financialYear = FinancialYearGenerator.getActualFinancialYear(diaryEntry.getDiaryDate());
+        this.financialYear = user.getFinancialYear();
+        this.diaryYear = user.getDiaryYear();
+        this.displayEndorsement = buildDisplayEndorsement(user);
         this.healthCheckupSop = user.getHealthCheckupSop();
         this.totalAdmissibleAmount = diaryEntry.getHealthCheckupApplicants().stream().map(HealthCheckupApplicants::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
         amountGrantedInWords = EnglishNumberToWords.convert(totalAdmissibleAmount.doubleValue());
@@ -80,5 +86,12 @@ public class HealthCheckupDiaryEntryVo {
 
         return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
                 .replace("{diaryDate}", formattedDate);
+    }
+
+    private String buildDisplayEndorsement(User user) {
+        String diaryYear = user.getDiaryYear();
+        String endorsementFormat = user.getEndorsementFormat();
+        return endorsementFormat
+                .replace("{diaryYear}", diaryYear);
     }
 }

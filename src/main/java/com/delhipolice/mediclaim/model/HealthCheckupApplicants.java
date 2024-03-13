@@ -42,6 +42,9 @@ public class HealthCheckupApplicants implements Serializable, Auditable {
     private String applicantDetails;
 
     @Column
+    private String registerNumber;
+
+    @Column
     private BigDecimal amount;
 
     @Override

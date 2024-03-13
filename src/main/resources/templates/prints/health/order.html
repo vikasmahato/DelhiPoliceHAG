@@ -17,8 +17,8 @@
     <h3 style='text-align:center;'><b><u>ORDER</u></b></h3>
 
 
-    <p style='text-align:justify;' th:inline="text">
-        The Deputy Commissioner of Police /[[${diaryEntry.branchName}]], Delhi is pleased to accord ex-post-facto sanction for the payment to following police personnel:-
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        The Deputy Commissioner of Police/[[${diaryEntry.branchName}]], Delhi is pleased to accord ex-post-facto sanction for the payment to following police personnel:-
     </p>
 
     <div class="row">
@@ -36,33 +36,36 @@
             <tr th:each="applicant,iterStat : ${diaryEntry.healthCheckupApplicants}">
                 <td th:text="${iterStat.index + 1}"></td>
                 <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
-                <td th:text="${applicant.amount}"></td>
+                <td th:text="'Rs. ' + ${#numbers.formatInteger(applicant.amount, 0, 'COMMA')} + '/-'"></td>
             </tr>
             <tr>
                 <td></td>
-                <td style="text-align: right;">Total</td>
-                <td>[[${diaryEntry.totalAdmissibleAmount}]]</td>
+                <td style="text-align: right;font-weight: bold;">Total</td>
+                <td style="font-weight: bold;">Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/-</td>
             </tr>
 
             </tbody>
         </table>
     </div>
 
-    <p style='text-indent:8%;text-align:justify;' th:inline="text">
-        The funds to the extent of <b>Rs. [[${diaryEntry.totalAdmissibleAmount}]]/- ([[${diaryEntry.amountGrantedInWords}]])</b> are available under Head  [[${diaryEntry.healthCheckupFundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
+    <p style='text-indent:12%;text-align:justify;' th:inline="text">
+        The funds to the extent of <b>Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/- ([[${diaryEntry.amountGrantedInWords}]])</b> are available under Head  [[${diaryEntry.healthCheckupFundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
     <div style='text-align:right;font-weight:bold;margin-top:70px;'>ASSTT. COMMISIONER OF POLICE:</div>
-    <div style='text-align:right;'>HDQRS.:[[${diaryEntry.branchCode}]]: DELHI.</div>
+    <div style='text-align:right;font-weight: bold;'>HDQRS.:[[${diaryEntry.branchCode}]]: DELHI.</div>
 
 
-    <p th:inline="text" style="margin-top:50px;">
-        No. _____________/Genl/(III)/[[${diaryEntry.branchCode}]] Dated Delhi, the _______________/[[${#dates.year(#dates.createNow())}]].
+    <p th:inline="text" style="margin-top:50px;text-align: justify">
+        [[${diaryEntry.displayEndorsement}]]
     </p>
     <p>Copy to the:-</p>
+    <ol>
+        <li style="text-align: justify;padding-left: 50px;">PAO-Delhi Police Head-Quarter New Delhi through Acctt./[[${diaryEntry.branchName}]]</li>
+        <li style="text-align: justify;padding-left: 50px;">Acctt./[[${diaryEntry.branchName}]] with one spare copy along with all relevant medical papers/documents  for  necessary action.</li>
 
-    <p>1. PAO-Delhi Police Head-Quarter New Delhi through Acctt./[[${diaryEntry.branchName}]]</p>
-    <p>2. Acctt./[[${diaryEntry.branchName}]] with one spare copy along with all relevant medical papers/documents  for  necessary action.</p>
+    </ol>
+
 </div>
 </body>
 
