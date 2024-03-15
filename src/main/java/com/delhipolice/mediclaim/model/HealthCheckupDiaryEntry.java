@@ -46,9 +46,21 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     @Column
     private  BigDecimal admissibleAmount;
 
+    @Column
+    private Boolean isDeleted = Boolean.FALSE;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedAt;
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
+    }
+
+    @Override
+    public void setIsDeleted(boolean b) {
+        this.isDeleted = b;
     }
 
     @Override

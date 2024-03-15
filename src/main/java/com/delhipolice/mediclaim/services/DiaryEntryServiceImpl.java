@@ -217,6 +217,40 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return (int) diaryEntryRepository.count();
     }
 
+    @Override
+    public void deleteDiaryEntry(UUID id, String diaryEntryClass) {
+        IDiaryEntry diaryEntry = null;
+
+        switch (diaryEntryClass) {
+            case "DiaryEntry":
+                diaryEntry = diaryEntryRepository.findById(id).orElse(null);
+                break;
+            case "ReferralDiaryEntry":
+                diaryEntry = referralDiaryEntryRepository.findById(id).orElse(null);
+                break;
+            case "HealthCheckupDiaryEntry":
+                diaryEntry = healthCheckupDiaryEntryRepository.findById(id).orElse(null);
+                break;
+        }
+
+        if (diaryEntry != null) {
+            diaryEntry.setIsDeleted(true);
+            diaryEntry.setDeletedAt(new Date());
+
+            switch (diaryEntryClass) {
+                case "DiaryEntry":
+                    diaryEntryRepository.save((DiaryEntry) diaryEntry);
+                    break;
+                case "ReferralDiaryEntry":
+                    referralDiaryEntryRepository.save((ReferralDiaryEntry) diaryEntry);
+                    break;
+                case "HealthCheckupDiaryEntry":
+                    healthCheckupDiaryEntryRepository.save((HealthCheckupDiaryEntry) diaryEntry);
+                    break;
+            }
+        }
+    }
+
     private Page<IDiaryEntryVO> getPage(List<IDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
         List<IDiaryEntryVO> filtered = diaryEntries.stream()
                 .sorted(sortEntries(pagingRequest))

@@ -44,6 +44,13 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     @Column
     private  BigDecimal admissibleAmount;
 
+    @Column
+    private Boolean isDeleted = Boolean.FALSE;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedAt;
+
     @Override
     public String getDiaryNumber() {
         return "";
@@ -52,6 +59,11 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
+    }
+
+    @Override
+    public void setIsDeleted(boolean b) {
+        this.isDeleted = b;
     }
 
     @Override

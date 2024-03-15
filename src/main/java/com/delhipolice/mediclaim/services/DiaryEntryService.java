@@ -46,4 +46,6 @@ public interface DiaryEntryService {
     List<DiaryEntryVO> findCandidateDiaryEntries();
 
     int count();
+
+    void deleteDiaryEntry(UUID id, String diaryEntryClass);
 }

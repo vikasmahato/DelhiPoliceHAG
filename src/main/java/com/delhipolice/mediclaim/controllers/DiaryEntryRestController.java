@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.controllers;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
+import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.utils.Page;
 import com.delhipolice.mediclaim.utils.PagingRequest;
@@ -11,6 +12,7 @@ import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +39,16 @@ public class DiaryEntryRestController {
         DiaryType diaryType = DiaryType.valueOf(type.toUpperCase());
 
         return diaryEntryService.getDiaryEntries(pagingRequest, claimTypes, diaryType);
+    }
+
+    @PostMapping("/diaryentries/delete/{id}/{type}")
+    public ResponseEntity<String> deleteDiaryEntry(@PathVariable UUID id, @PathVariable String type) {
+        try {
+            diaryEntryService.deleteDiaryEntry(id, type);
+            return ResponseEntity.ok("Delete operation was successful");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @PostMapping("/referraldiaryentries/")

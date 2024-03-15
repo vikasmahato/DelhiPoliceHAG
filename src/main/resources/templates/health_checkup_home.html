@@ -54,6 +54,7 @@
                                 <th scope="col">Amount</th>
                                 <th scope="col">Details</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Delete</th>
                             </tr>
                             </thead>
                             <tfoot>
@@ -62,6 +63,7 @@
                                 <th scope="col">Amount</th>
                                 <th scope="col">Details</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Delete</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -124,7 +126,33 @@
                     return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
                 }
             },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<td><button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button></td>';
+                }
+            }
         ],
+    });
+
+    $(document).on('click', '.delete-btn', function() {
+        var table = $('#diaryEntries').DataTable();
+        var row = $(this).closest('tr');
+        var data = table.row(row).data();
+
+        var confirmation = confirm("Are you sure you want to delete this entry?");
+        if (confirmation) {
+            $.ajax({
+                url: "/diaryentries/delete/" + data.id + "/HealthCheckupDiaryEntry",
+                type: "POST",
+                success: function() {
+                    table.row(row).remove().draw();
+                },
+                error: function() {
+                    alert("There was an error deleting the entry.");
+                }
+            });
+        }
     });
 </script>
 </html>
