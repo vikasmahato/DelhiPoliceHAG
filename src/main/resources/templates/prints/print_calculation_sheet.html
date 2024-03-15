@@ -67,7 +67,7 @@
             <td th:text="${entry.serialNumber}"></td>
             <td th:text="${entry.billNumber}"></td>
             <td th:text="${entry.billDate}"></td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(entry.treatment, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="${entry.treatment}"></td>
             <td th:text="${entry.amountAsked}"></td>
             <td th:text="${entry.total}"></td>
         </tr>
@@ -78,8 +78,8 @@
             <td ></td>
             <td></td>
             <td><b>Total</b></td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="${diaryEntry.amountAsked1}"></td>
+            <td th:text="${diaryEntry.amountGranted1}"></td>
         </tr>
         </tbody>
     </table>
