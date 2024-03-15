@@ -29,6 +29,7 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
         this.id = diaryEntryVO.getId();
         this.tenantId = diaryEntryVO.getTenantId();
         this.diaryNumber = diaryEntryVO.getDiaryNumber();
+        this.serialNo = diaryEntryVO.getSerialNo();
         this.diaryType = diaryEntryVO.getDiaryType();
         this.diaryDate = diaryEntryVO.getDiaryDate();
         this.treatmentTakenBy = diaryEntryVO.getTreatmentTakenBy();
@@ -61,6 +62,9 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
 
     @Column
     private String diaryNumber;
+
+    @Column
+    private String serialNo;
 
     @Column
     private DiaryType diaryType;

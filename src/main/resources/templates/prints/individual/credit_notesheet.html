@@ -25,7 +25,7 @@
             is not in a position to bear the medical expenses for the treatment and requested for proving credit facility from the said Hospital. [[${diaryEntry.patientGender.getHeOrShe()}]] is having a valid Plastic <b>Card ID No. </b><b th:if="${diaryEntry.claimDetails.relation.name} == 'SELF'" th:text="${diaryEntry.applicant.cghsNumber}"></b>
             <b th:if="${diaryEntry.claimDetails.relation.name} != 'SELF'" th:text="${diaryEntry.claimDetails.relativeCghsNumber}"></b> and entitle for <b>[[${diaryEntry.applicant.cghsCategory.getEnumValue()}]] Ward Category</b> (Calculated as per basic pay of Govt. Servant).</p>
         <p style='text-indent:10%;text-align:justify;'>In this connection, the above said Hospital is under CGHS recognized and according to CGHS instruction vide MH & FW O.M. S11045/36/2012-CGHS (HEC) dated 01.10.2014 vide para-4 there in mentioned that all CGHS beneficiaries are entitled for credit facility for the treatment from CGHS recognized Hospital under emergency condition.</p>
-        <p style='text-indent:10%;text-align:justify;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. _____________</b>.
+        <p style='text-indent:10%;text-align:justify;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. [[${diaryEntry.serialNo}]]</b>.
         </p>
         <p style='text-indent:10%; text-align:justify;' class="avoid-page-break">
             In view of the position explained above, if approved we may issue a credit facility to the above said Hospital in favour of <b>[[${diaryEntry.displayName}]]</b> to provide credit facility for the treatment of

@@ -33,6 +33,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private UUID id;
     private Integer tenantId;
     private String diaryNumber;
+    private String serialNo;
     private String displayDiaryNumber;
     private String displayName;
     private String patientApplicantDisplay;
@@ -86,6 +87,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         User user = (User) userDetails;
 
         id = diaryEntry.getId();
+        serialNo = diaryEntry.getSerialNo();
         diaryNumber = diaryEntry.getDiaryNumber();
         diaryType = diaryEntry.getDiaryType();
         diaryDate = diaryEntry.getDiaryDate();
