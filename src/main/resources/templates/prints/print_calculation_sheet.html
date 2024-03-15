@@ -63,13 +63,13 @@
         </tr>
 
 
-        <tr th:each="entry: ${diaryEntry.calculationSheet}">
-            <td th:text="${entry.serialNumber}"></td>
+        <tr th:each="entry,iterStat: ${diaryEntry.calculationSheet}">
+            <td th:text="${entry.isAdjustment} ? '' : ${iterStat.index + 1}"></td>
             <td th:text="${entry.billNumber}"></td>
             <td th:text="${entry.billDate}"></td>
-            <td th:text="${entry.treatment}"></td>
-            <td th:text="${entry.amountAsked}"></td>
-            <td th:text="${entry.total}"></td>
+            <td th:text="${entry.treatment}" th:style="${entry.isAdjustment} ? 'font-weight: bold' : ''"></td>
+            <td th:text="${entry.isAdjustment} ? '' : ${currencyFormatUtil.formatCurrencyInr(entry.amountAsked)}"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(entry.total)}" th:style="${entry.isAdjustment} ? 'font-weight: bold' : ''"></td>
         </tr>
 
 
@@ -78,8 +78,8 @@
             <td ></td>
             <td></td>
             <td><b>Total</b></td>
-            <td th:text="${diaryEntry.amountAsked1}"></td>
-            <td th:text="${diaryEntry.amountGranted1}"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(diaryEntry.amountAsked1)}" style="font-weight: bold"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(diaryEntry.amountGranted1)}" style="font-weight: bold"></td>
         </tr>
         </tbody>
     </table>

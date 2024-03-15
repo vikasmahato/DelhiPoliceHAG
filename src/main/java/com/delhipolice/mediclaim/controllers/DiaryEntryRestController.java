@@ -16,10 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 public class DiaryEntryRestController {
@@ -89,9 +87,21 @@ public class DiaryEntryRestController {
 
 
     @GetMapping("/getCalSheetentries/{id}")
-    public List<CalculationSheetEntry> getCalSheetentries(@PathVariable UUID id) {
+    public Map<String, Object> getCalSheetentries(@PathVariable UUID id) {
         DiaryEntryVO diaryEntryVO = diaryEntryService.find(id).get();
-        return diaryEntryVO.getCalculationSheet();
+        Double adjustmentFactor = diaryEntryVO.getCalculationSheetAdjustmentFactor();
+        List<CalculationSheetEntry> calculationSheet = diaryEntryVO.getCalculationSheet();
+
+        List<CalculationSheetEntry> mainEntries = calculationSheet.stream().filter(entry -> !entry.getAdjustment()).collect(Collectors.toList());
+        CalculationSheetEntry adjustmentEntry = calculationSheet.stream().filter(CalculationSheetEntry::getAdjustment).findFirst().orElse(null);
+
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("adjustmentFactor", adjustmentFactor);
+        response.put("calculationSheet", mainEntries);
+        response.put("adjustmentEntry", adjustmentEntry);
+
+        return response;
     }
 
     @PostMapping("/saveCalcSheet")

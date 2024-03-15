@@ -2,19 +2,17 @@ package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "CALCULATION_SHEET")
 public class CalculationSheetEntry implements Serializable, Auditable {
     private static final long serialVersionUID = 1L;
@@ -46,6 +44,9 @@ public class CalculationSheetEntry implements Serializable, Auditable {
     private String billDate;
 
     @Column
+    private Boolean isAdjustment = Boolean.FALSE;
+
+    @Column
     private Double amountAsked;
 
     @Embedded
@@ -68,5 +69,9 @@ public class CalculationSheetEntry implements Serializable, Auditable {
 
     public Double getAmountAsked() {
         return amountAsked == null ? 0.0: amountAsked;
+    }
+
+    public Boolean getAdjustment() {
+        return isAdjustment == null ? Boolean.FALSE: isAdjustment;
     }
 }

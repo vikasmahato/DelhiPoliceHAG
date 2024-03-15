@@ -79,6 +79,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String displayEndorsement;
     private Gender applicantGender;
     private Gender patientGender;
+    private Double calculationSheetAdjustmentFactor;
 
     public DiaryEntryVO(DiaryEntry diaryEntry) {
 
@@ -107,11 +108,11 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         isObjection = diaryEntry.getIsObjection();
         claimDetails = new ClaimDetailsVO(diaryEntry.getClaimDetails());
         calculationSheet = diaryEntry.getCalculationSheet() == null ? new ArrayList<>() : diaryEntry.getCalculationSheet();
-        amountAsked1 = getAmountAsked().toString();
-        amountGranted1 = getAmountGranted().toString();
+        amountAsked1 = diaryEntry.getAmountClaimed().toString();
+        amountGranted1 = diaryEntry.getAdmissibleAmount().toString();
         notesheetSalutation = buildNotesheetSalutation();
         sanctionAmount = diaryEntry.getSanctionAmount();
-        amountGrantedInWords = EnglishNumberToWords.convert(getAmountGranted());
+        amountGrantedInWords = EnglishNumberToWords.convert(diaryEntry.getAdmissibleAmount().doubleValue());
         financialYear = user.getFinancialYear();
         displayEndorsement = buildDisplayEndorsement(user);
         diaryYear = user.getDiaryYear();
@@ -129,18 +130,8 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         relationSimple = TreatmentBy.SELF.equals(treatmentTakenBy) ? "Self" : claimDetails.getRelation().getEnumValue();
         applicantGender = diaryEntry.getApplicant().getGender();
         patientGender = TreatmentBy.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicant().getGender() : claimDetails.getRelation().getGender();
-
+        calculationSheetAdjustmentFactor = diaryEntry.getCalculationSheetAdjustmentFactor();
     }
-
-    private Double getAmountAsked() {
-        return calculationSheet.stream().map(CalculationSheetEntry::getAmountAsked).reduce(0d, Double::sum);
-    }
-
-    private Double getAmountGranted() {
-        return calculationSheet.stream().map(CalculationSheetEntry::getTotal).reduce(0d, Double::sum);
-    }
-
-
 
     private String buildPatientApplicantDisplay() {
         if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {

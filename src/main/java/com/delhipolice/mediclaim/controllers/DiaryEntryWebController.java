@@ -7,6 +7,7 @@ import com.delhipolice.mediclaim.model.HealthCheckupDiaryEntry;
 import com.delhipolice.mediclaim.model.ReferralDiaryEntry;
 import com.delhipolice.mediclaim.model.User;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
+import com.delhipolice.mediclaim.utils.CurrencyFormatUtil;
 import com.delhipolice.mediclaim.utils.UserHelper;
 import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
@@ -32,6 +33,9 @@ public class DiaryEntryWebController {
 
     @Autowired
     DiaryEntryService diaryEntryService;
+
+    @Autowired
+    private CurrencyFormatUtil currencyFormatUtil;
 
     @GetMapping("/individual")
     public String individualDiaryEntry(Model model) {
@@ -133,6 +137,7 @@ public class DiaryEntryWebController {
     @GetMapping("/printCalculationSheet/{id}")
     public String printCalculationSheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find(id).get());
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/print_calculation_sheet";
     }
 
@@ -145,24 +150,28 @@ public class DiaryEntryWebController {
     @GetMapping("/printHealthNotesheet/{id}")
     public String printHealthNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find1(id).get());
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/health/notesheet";
     }
 
     @GetMapping("/printHealthOrder/{id}")
     public String printHealthOrder(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find1(id).get());
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/health/order";
     }
 
     @GetMapping("/printReferralNotesheet/{id}")
     public String printReferralNotesheet(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find2(id).get());
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/referral/notesheet";
     }
 
     @GetMapping("/printReferralOrder/{id}")
     public String printReferralOrder(@PathVariable UUID id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.find2(id).get());
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/referral/order";
     }
 
@@ -173,6 +182,7 @@ public class DiaryEntryWebController {
         DiaryEntryVO diaryEntry = diaryEntryService.find(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
         model.addAttribute("renderSignature", renderSignature.orElse("false"));
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
 
         return "prints/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "/" + diaryEntry.getClaimType().getEnumValue().toLowerCase(Locale.ROOT) + "_order";
     }
@@ -202,7 +212,7 @@ public class DiaryEntryWebController {
     public String printNotesheet(@PathVariable UUID id, Model model) {
         DiaryEntryVO diaryEntry = diaryEntryService.find(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
-
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "/" + diaryEntry.getClaimType().getEnumValue().toLowerCase(Locale.ROOT) + "_notesheet";
     }
 

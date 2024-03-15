@@ -59,8 +59,8 @@
             <td>[[${diaryEntry.hospital.hospitalName}]]</td>
             <td>[[${diaryEntry.claimDetails.disease}]]</td>
             <td>[[${#dates.format(diaryEntry.claimDetails.startDate, diaryEntry.dateFormat)}]] <br/>to <br/>[[${#dates.format(diaryEntry.claimDetails.endDate, diaryEntry.dateFormat)}]]</td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountAsked1, 0, 'COMMA')} + '/-'"></td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(diaryEntry.amountGranted1, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(diaryEntry.amountAsked1)}"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(diaryEntry.amountGranted1)}"></td>
         </tr>
         </tbody>
     </table>

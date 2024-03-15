@@ -48,6 +48,7 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
         this.claimType = diaryEntryVO.getClaimType();
         this.isLetterGenerated = diaryEntryVO.getIsLetterGenerated();
         this.patientDOB = diaryEntryVO.getPatientDOB();
+        this.calculationSheetAdjustmentFactor = diaryEntryVO.getCalculationSheetAdjustmentFactor();
     }
 
     @Id
@@ -125,6 +126,9 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private Boolean isObjection;
 
     @Column
+    private Double calculationSheetAdjustmentFactor;
+
+    @Column
     private Boolean isLetterGenerated = Boolean.FALSE;
 
     @Column
@@ -147,5 +151,13 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
+    }
+
+    public BigDecimal getAmountClaimed() {
+        return amountClaimed == null ? BigDecimal.ZERO: amountClaimed;
+    }
+
+    public BigDecimal getAdmissibleAmount() {
+        return admissibleAmount == null ? BigDecimal.ZERO: admissibleAmount;
     }
 }

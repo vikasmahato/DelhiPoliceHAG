@@ -33,7 +33,7 @@ public class ClaimDetailsVO{
     private Boolean isExpired;
 
     @JsonDeserialize(using = CustomDateDeserializer.class)
-    private Date applicationDate;
+    private Date expiryDate;
     private BigDecimal amountAvailable;
     private String period;
     private ClaimStatus claimStatus;
@@ -50,7 +50,7 @@ public class ClaimDetailsVO{
         endDate = claimDetails.getEndDate();
         refHospitalName = claimDetails.getRefHospitalName();
         disease = claimDetails.getDisease();
-        applicationDate = claimDetails.getApplicationDate();
+        expiryDate = claimDetails.getExpiryDate();
         amountAvailable = claimDetails.getAmountAvailable();
         period = claimDetails.getPeriod();
         claimStatus = claimDetails.getClaimStatus();

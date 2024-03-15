@@ -172,7 +172,10 @@
               </div>
 
               <div class="col-4">
-
+                <div class="form-outline mb-3" data-mdb-input-init id="expiryDateDiv">
+                  <input type="text" id="expiryDate" class="form-control form-control-sm datepicker" name="claimDetails.expiryDate" required />
+                  <label class="form-label" for="expiryDate">Expired On</label>
+                </div>
               </div>
 
             </div>
@@ -248,6 +251,7 @@
     const button = event.relatedTarget;
     const id = button.getAttribute('data-bs-id');
     const diaryType = button.getAttribute('data-bs-diaryType');
+    $("#expiryDateDiv").hide();
 
     let monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
@@ -263,7 +267,7 @@
             "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
             "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
             "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
-            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.isExpired", "claimDetails.disease"
+            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.isExpired", "claimDetails.disease", "claimDetails.expiryDate"
           ];
           fields.forEach(function(field) {
             const input = diaryEntryModal.querySelector(`[name="${field}"]`);
@@ -284,6 +288,14 @@
           diaryEntryModal.querySelector(`[name="claimDetails.startDate"]`).value = startDate.getDate() + '-' + monthNames[startDate.getMonth()] + '-' + startDate.getFullYear();
           diaryEntryModal.querySelector(`[name="claimDetails.endDate"]`).value = endDate.getDate() + '-' + monthNames[endDate.getMonth()] + '-' + endDate.getFullYear();
 
+          if(response.claimDetails.isExpired) {
+            $("#isExpired").prop('checked', true);
+            let expiryDate = new Date(response.claimDetails.expiryDate);
+            diaryEntryModal.querySelector(`[name="claimDetails.expiryDate"]`).value = expiryDate.getDate() + '-' + monthNames[expiryDate.getMonth()] + '-' + expiryDate.getFullYear();
+          } else {
+            $("#isExpired").prop('checked', false);
+          }
+          $("#isExpired").trigger("change");
         },
         error: function (jqXHR, exception) {
           if (jqXHR.status === 404) {
@@ -297,7 +309,16 @@
       $("#diaryDate").datepicker("update", new Date());
 
     }
-  })
+  });
+
+  $('#isExpired').on('change', function() {
+    var isChecked = $('#isExpired').is(':checked');
+    if(isChecked) {
+      $("#expiryDateDiv").show();
+    } else {
+      $("#expiryDateDiv").hide();
+    }
+  });
 </script>
 <script>
 

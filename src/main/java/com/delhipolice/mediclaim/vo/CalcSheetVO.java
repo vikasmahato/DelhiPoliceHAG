@@ -19,4 +19,7 @@ public class CalcSheetVO {
     LinkedList<Double> total_asked;
     LinkedList<Double> total;
 
+    Double adjustmentFactor;
+    String adjustmentDescription;
+
 }

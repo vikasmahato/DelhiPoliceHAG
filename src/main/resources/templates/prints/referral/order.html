@@ -38,13 +38,13 @@
                 <td th:text="${iterStat.index + 1}"></td>
                 <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
                 <td th:text="${applicant.relation.getEnumValue()}"></td>
-                <td th:text="'Rs. ' + ${#numbers.formatInteger(applicant.amount, 0, 'COMMA')} + '/-'"></td>
+                <td th:text="${currencyFormatUtil.formatCurrencyInr(applicant.amount)}"></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td style="text-align: left;"><b>Total</b></td>
-                <td><b>Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/-</b></td>
+                <td><b>[[${currencyFormatUtil.formatCurrencyInr(diaryEntry.totalAdmissibleAmount)}]]</b></td>
             </tr>
 
             </tbody>
@@ -52,7 +52,7 @@
     </div>
 
     <p style='text-indent:8%;text-align:justify;' th:inline="text">
-        The funds to the extent of <b>Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/- ([[${diaryEntry.amountGrantedInWords}]])</b> are available under Head  [[${diaryEntry.fundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
+        The funds to the extent of <b>[[${currencyFormatUtil.formatCurrencyInr(diaryEntry.totalAdmissibleAmount)}]] ([[${diaryEntry.amountGrantedInWords}]])</b> are available under Head  [[${diaryEntry.fundsHead}]] during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
     <div style='text-align:right;font-weight:bold;margin-top:70px;'>ASSTT. COMMISIONER OF POLICE:</div>

@@ -202,24 +202,42 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         LinkedList<Double> totalAsked = calcSheetVO.getTotal_asked();
         LinkedList<Double> totalGranted = calcSheetVO.getTotal();
 
-        diaryEntry.setAmountClaimed(BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum)));
-        diaryEntry.setAdmissibleAmount(BigDecimal.valueOf(totalGranted.stream().reduce(0d, Double::sum)));
-
-
         int count = itemNo.size();
 
         List<CalculationSheetEntry> calculationSheetEntries = new ArrayList<>();
 
         for(int i = 0; i<count; i++) {
-            CalculationSheetEntry calculationSheetEntry = new CalculationSheetEntry();
-            calculationSheetEntry.setSerialNumber(itemNo.get(i));
-            calculationSheetEntry.setBillNumber(itemHosp.get(i));
-            calculationSheetEntry.setBillDate(itemDate.get(i));
-            calculationSheetEntry.setTreatment(itemName.get(i));
-            calculationSheetEntry.setAmountAsked(totalAsked.get(i));
-            calculationSheetEntry.setTotal(totalGranted.get(i));
-            calculationSheetEntries.add(calculationSheetEntry);
+
+            CalculationSheetEntry.CalculationSheetEntryBuilder builder = CalculationSheetEntry.builder();
+            builder.serialNumber(itemNo.get(i))
+                    .billNumber(itemHosp.get(i))
+                    .billDate(itemDate.get(i))
+                    .treatment(itemName.get(i))
+                    .amountAsked(totalAsked.get(i))
+                    .total(totalGranted.get(i));
+            calculationSheetEntries.add(builder.build());
         }
+
+        diaryEntry.setAmountClaimed(BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum)));
+
+        Double amountGranted = totalGranted.stream().reduce(0d, Double::sum);
+
+        String adjustmentDescription = calcSheetVO.getAdjustmentDescription();
+        Double adjustmentFactor = calcSheetVO.getAdjustmentFactor();
+
+        if(adjustmentFactor != null && adjustmentFactor != 0d) {
+            diaryEntry.setCalculationSheetAdjustmentFactor(adjustmentFactor);
+            double adjustmentAmount = amountGranted * (adjustmentFactor/100);
+            amountGranted += adjustmentAmount;
+
+            CalculationSheetEntry.CalculationSheetEntryBuilder builder = CalculationSheetEntry.builder();
+            builder.serialNumber("0").billNumber("").billDate("").treatment(adjustmentDescription).amountAsked(0d).total(adjustmentAmount).isAdjustment(true);
+            calculationSheetEntries.add(builder.build());
+        }
+
+
+        diaryEntry.setAdmissibleAmount(BigDecimal.valueOf(amountGranted));
+
 
         diaryEntry.setCalculationSheet(calculationSheetEntries);
 

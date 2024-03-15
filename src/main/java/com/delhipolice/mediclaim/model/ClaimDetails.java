@@ -46,7 +46,7 @@ public class ClaimDetails implements Serializable {
 
     @Column
     @Temporal(TemporalType.DATE)
-    private Date applicationDate;
+    private Date expiryDate;
 
     @Column
     private BigDecimal amountAvailable;
@@ -77,7 +77,7 @@ public class ClaimDetails implements Serializable {
         endDate = claimDetailsVO.getEndDate();
         refHospitalName = claimDetailsVO.getRefHospitalName();
         disease = claimDetailsVO.getDisease();
-        applicationDate = claimDetailsVO.getApplicationDate();
+        expiryDate = claimDetailsVO.getExpiryDate();
         amountAvailable = claimDetailsVO.getAmountAvailable();
         period = claimDetailsVO.getPeriod();
         claimStatus = claimDetailsVO.getClaimStatus();

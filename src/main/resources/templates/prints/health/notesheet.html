@@ -50,13 +50,13 @@
             <td th:text="${iterStat.index + 1}"></td>
             <td th:text="${applicant.registerNumber}" style="text-align: left"></td>
             <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
-            <td th:text="'Rs. ' + ${#numbers.formatInteger(applicant.amount, 0, 'COMMA')} + '/-'"></td>
+            <td th:text="${currencyFormatUtil.formatCurrencyInr(applicant.amount)}"></td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td style="text-align: right;font-weight: bold;">Total</td>
-            <td style="font-weight: bold;">Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/-</td>
+            <td style="font-weight: bold;">[[${currencyFormatUtil.formatCurrencyInr(diaryEntry.totalAdmissibleAmount)}]]</td>
         </tr>
         </tbody>
     </table>

@@ -1,6 +1,7 @@
 package com.delhipolice.mediclaim.utils;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 public class EnglishNumberToWords {
     private static final String[] tensNames = {
@@ -59,85 +60,49 @@ public class EnglishNumberToWords {
     }
 
     public static String convert(Double amount) {
-
         int number = amount.intValue();
         int paisa = (int) ((amount - (double) number) * 100);
 
-        // 0 to 999 999 999 999
         if (number == 0) { return "zero"; }
 
         String mask = "000000000000";
         DecimalFormat df = new DecimalFormat(mask);
         String snumber = df.format(number);
 
-        // XXXnnnnnnnnn
-        int billions = Integer.parseInt(snumber.substring(0,3));
-        // nnnXXXnnnnnn
-        int millions  = Integer.parseInt(snumber.substring(3,6));
-        // nnnnnnXXXnnn
-        int hundredThousands = Integer.parseInt(snumber.substring(6,9));
-        // nnnnnnnnnXXX
-        int thousands = Integer.parseInt(snumber.substring(9,12));
+        int crores = Integer.parseInt(snumber.substring(0,5));
+        int lakhs = Integer.parseInt(snumber.substring(5,7));
+        int thousands = Integer.parseInt(snumber.substring(7,9));
+        int hundreds = Integer.parseInt(snumber.substring(9,12));
 
-        String tradBillions;
-        switch (billions) {
-            case 0:
-                tradBillions = "";
-                break;
-            case 1 :
-                tradBillions = convertLessThanOneThousand(billions)
-                        + " billion ";
-                break;
-            default :
-                tradBillions = convertLessThanOneThousand(billions)
-                        + " billion ";
-        }
-        String result =  tradBillions;
+        String tradCrores = convertLessThanOneThousand(crores) + " crore ";
+        String tradLakhs = convertLessThanOneThousand(lakhs) + " lakh ";
+        String tradThousands = convertLessThanOneThousand(thousands) + " thousand ";
+        String tradHundreds = convertLessThanOneThousand(hundreds);
 
-        String tradMillions;
-        switch (millions) {
-            case 0:
-                tradMillions = "";
-                break;
-            case 1 :
-                tradMillions = convertLessThanOneThousand(millions)
-                        + " million ";
-                break;
-            default :
-                tradMillions = convertLessThanOneThousand(millions)
-                        + " million ";
-        }
-        result =  result + tradMillions;
+        String result = "";
 
-        String tradHundredThousands;
-        switch (hundredThousands) {
-            case 0:
-                tradHundredThousands = "";
-                break;
-            case 1 :
-                tradHundredThousands = "one thousand ";
-                break;
-            default :
-                tradHundredThousands = convertLessThanOneThousand(hundredThousands)
-                        + " thousand ";
-        }
-        result =  result + tradHundredThousands;
+        if (crores != 0)
+            result += tradCrores;
+        if (lakhs != 0)
+            result += tradLakhs;
+        if (thousands != 0)
+            result += tradThousands;
+        if (hundreds != 0)
+            result += tradHundreds;
 
-        String tradThousand;
-        tradThousand = convertLessThanOneThousand(thousands);
-        result =  result + tradThousand;
-
-        // remove extra spaces!
-        String value = result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
-
+        String value = result.trim();
         if(paisa != 0)
-            value += "and " + convertLessThanOneThousand(paisa) + "paise";
+            value += " and" + convertLessThanOneThousand(paisa) + " paise";
 
         return "Rs. "  + toTitleCase(value) + " only/-";
     }
 
     public static String toTitleCase(String givenString) {
         String[] arr = givenString.toLowerCase().split(" ");
+        arr = Arrays.stream(arr)
+                .filter(str -> !str.isEmpty())
+                .toArray(String[]::new);
+
         StringBuilder sb = new StringBuilder();
 
         for (String s : arr) {
