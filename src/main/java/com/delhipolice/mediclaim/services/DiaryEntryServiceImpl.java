@@ -6,9 +6,7 @@ import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
 import com.delhipolice.mediclaim.model.comparators.HelathCheckupDiaryEntryComparators;
-import com.delhipolice.mediclaim.repositories.DiaryEntryRepository;
-import com.delhipolice.mediclaim.repositories.HealthCheckupDiaryEntryRepository;
-import com.delhipolice.mediclaim.repositories.ReferralDiaryEntryRepository;
+import com.delhipolice.mediclaim.repositories.*;
 import com.delhipolice.mediclaim.utils.*;
 import com.delhipolice.mediclaim.vo.*;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +34,13 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Autowired
     HealthCheckupDiaryEntryRepository healthCheckupDiaryEntryRepository;
+
+    @Autowired
+    HealthCheckupApplicantRepository healthCheckupApplicantRepository;
+
+
+    @Autowired
+    ReferralApplicantRepository referralApplicantRepository;
 
     @Autowired
     ReferralDiaryEntryRepository referralDiaryEntryRepository;
@@ -93,6 +98,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         HealthCheckupDiaryEntry diaryEntry = new HealthCheckupDiaryEntry(diaryEntryVO);
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
+
+            HealthCheckupDiaryEntry exisitingEntry = healthCheckupDiaryEntryRepository.findById(diaryEntryVO.getId()).get();
+            healthCheckupApplicantRepository.deleteAll(exisitingEntry.getHealthCheckupApplicants());
+
             diaryEntry.setHealthCheckupApplicants(diaryEntryVO.getHealthCheckupApplicants());
         }
         return healthCheckupDiaryEntryRepository.save(diaryEntry);
@@ -103,6 +112,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         ReferralDiaryEntry diaryEntry = new ReferralDiaryEntry(diaryEntryVO);
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
+
+            ReferralDiaryEntry exisitingEntry = referralDiaryEntryRepository.findById(diaryEntryVO.getId()).get();
+            referralApplicantRepository.deleteAll(exisitingEntry.getReferralApplicants());
             diaryEntry.setReferralApplicants(diaryEntryVO.getReferralApplicants());
         }
         return referralDiaryEntryRepository.save(diaryEntry);
