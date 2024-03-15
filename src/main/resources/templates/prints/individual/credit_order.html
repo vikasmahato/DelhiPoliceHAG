@@ -24,12 +24,16 @@
         <tr>
             <td style="vertical-align: top;border: none;">To,</td>
             <td style="border: none;">
-                <p th:inline="text" style='padding-left:5%;'><br/>The Medical Superintendent,
+                <div class="row" style="margin-bottom: 8px;">
+                    <div class="col-6" style='padding-left:6%;'>
+                    <br/>The Medical Superintendent,
                     <br/>
                     <b>[[${diaryEntry.hospital.hospitalName}]],</b>
                     <br/>
-                    <b>[[${diaryEntry.hospital.hospitalAddress}]]</b>
-                </p>
+                    <b style="max-width: 50%; word-wrap: break-word;">[[${diaryEntry.hospital.hospitalAddress}]]</b>
+                    </div>
+                    <div class="col-6"></div>
+                </div>
             </td>
         </tr>
         <tr>
