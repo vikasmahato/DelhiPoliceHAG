@@ -52,6 +52,12 @@
             <td th:text="${applicant.applicantDetails}" style="text-align: left"></td>
             <td th:text="'Rs. ' + ${#numbers.formatInteger(applicant.amount, 0, 'COMMA')} + '/-'"></td>
         </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;font-weight: bold;">Total</td>
+            <td style="font-weight: bold;">Rs. [[${#numbers.formatInteger(diaryEntry.totalAdmissibleAmount, 0, 'COMMA')}]]/-</td>
+        </tr>
         </tbody>
     </table>
     </div>
