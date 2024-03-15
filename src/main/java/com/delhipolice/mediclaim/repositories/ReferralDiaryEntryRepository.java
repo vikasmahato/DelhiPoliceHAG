@@ -13,12 +13,12 @@ import java.util.UUID;
 @Repository
 public interface ReferralDiaryEntryRepository extends JpaRepository<ReferralDiaryEntry, UUID> {
 
-    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.isDeleted = false")
+    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.deletedAt is null")
     List<IDiaryEntry> findAllEntries();
 
-    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.isDeleted = false")
+    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.deletedAt is null")
     List<ReferralDiaryEntry> findAll();
 
-    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.id = :id AND d.isDeleted = false")
+    @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.id = :id AND d.deletedAt is null")
     Optional<ReferralDiaryEntry> find(UUID id);
 }

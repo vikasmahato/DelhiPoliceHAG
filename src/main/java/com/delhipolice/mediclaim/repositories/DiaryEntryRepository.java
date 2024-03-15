@@ -17,18 +17,18 @@ import java.util.UUID;
 @Repository
 public interface DiaryEntryRepository extends JpaRepository<DiaryEntry, UUID> {
 
-    @Query("SELECT d FROM DiaryEntry d WHERE d.claimType in :claimTypes and d.diaryType = :diaryType and d.isDeleted = false")
+    @Query("SELECT d FROM DiaryEntry d WHERE d.claimType in :claimTypes and d.diaryType = :diaryType and d.deletedAt is null")
     List<IDiaryEntry> findAll(@Param("claimTypes")  List<ClaimType> claimTypes, @Param("diaryType") DiaryType diaryType);
 
-    @Query("SELECT d FROM DiaryEntry d WHERE d.applicant.id in :applicantId and d.isDeleted = false")
+    @Query("SELECT d FROM DiaryEntry d WHERE d.applicant.id in :applicantId and d.deletedAt is null")
     List<DiaryEntry> findAll(@Param("applicantId") Long applicantId);
 
-    @Query("SELECT d FROM DiaryEntry d where d.isDeleted = false")
+    @Query("SELECT d FROM DiaryEntry d where d.deletedAt is null")
     List<DiaryEntry> findAll();
 
-    @Query("SELECT d FROM DiaryEntry d where d.id = :id and d.isDeleted = false")
+    @Query("SELECT d FROM DiaryEntry d where d.id = :id and d.deletedAt is null")
     List<DiaryEntry> find(UUID id);
 
-    @Query("SELECT d FROM DiaryEntry d WHERE d.isLetterGenerated = :isLetterGenerated and d.isDeleted = false")
+    @Query("SELECT d FROM DiaryEntry d WHERE d.isLetterGenerated = :isLetterGenerated and d.deletedAt is null")
     List<DiaryEntry> findByIsLetterGenerated(boolean isLetterGenerated);
 }

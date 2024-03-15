@@ -12,10 +12,10 @@ import java.util.UUID;
 @Repository
 public interface HealthCheckupDiaryEntryRepository extends JpaRepository<HealthCheckupDiaryEntry, UUID> {
 
-    @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.isDeleted = false")
+    @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.deletedAt is null")
     List<HealthCheckupDiaryEntry> findAll();
 
-    @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.id = :id AND d.isDeleted = false")
+    @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.id = :id AND d.deletedAt is null")
     Optional<HealthCheckupDiaryEntry> find(UUID id);
 
 }
