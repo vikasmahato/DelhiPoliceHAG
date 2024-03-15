@@ -316,7 +316,7 @@
     }, {});
 
     var isChecked = $('#isExpired').is(':checked');
-
+    data['claimDetails.isExpired'] = isChecked;
     console.log(data);
 
     data = removeEmptyOrNull(data);
