@@ -56,4 +56,9 @@ public class HealthCheckupApplicants implements Serializable, Auditable {
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
     }
+
+
+    public BigDecimal getAmount() {
+        return amount == null ? BigDecimal.ZERO : amount;
+    }
 }
