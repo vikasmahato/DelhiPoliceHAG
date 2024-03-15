@@ -30,8 +30,6 @@ public class HealthCheckupDiaryEntryVo {
     
     private Integer tenantId;
     
-    private String diaryNumber;
-
     @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date diaryDate;
     
@@ -59,7 +57,6 @@ public class HealthCheckupDiaryEntryVo {
 
         this.id = diaryEntry.getId();
         this.tenantId = diaryEntry.getTenantId();
-        this.diaryNumber = diaryEntry.getDiaryNumber();
         this.diaryDate = diaryEntry.getDiaryDate();
         this.displayDiaryNumber = buildDiaryNumber(user);
         this.branchName = user.getBranchName();
@@ -84,7 +81,7 @@ public class HealthCheckupDiaryEntryVo {
         String formattedDate = formatter.format(diaryDate);
 
 
-        return diaryNumberFormat.replace("{diaryNumber}", diaryNumber)
+        return diaryNumberFormat
                 .replace("{diaryDate}", formattedDate);
     }
 

@@ -38,7 +38,7 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
 
     @Column
     @Temporal(TemporalType.DATE)
-    private Date diaryDate;
+    private Date diaryDate = new Date();
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<HealthCheckupApplicants> healthCheckupApplicants = new ArrayList<>();
@@ -71,8 +71,8 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     public HealthCheckupDiaryEntry(HealthCheckupDiaryEntryVo vo) {
         this.id = vo.getId();
         this.tenantId = vo.getTenantId();
-        this.diaryNumber = vo.getDiaryNumber();
-        this.diaryDate = vo.getDiaryDate();
+        this.diaryNumber = "";
+        this.diaryDate = vo.getDiaryDate() != null ? vo.getDiaryDate() : new Date();
         this.admissibleAmount = vo.getAdmissibleAmount();
         this.healthCheckupApplicants = vo.getHealthCheckupApplicants();
     }

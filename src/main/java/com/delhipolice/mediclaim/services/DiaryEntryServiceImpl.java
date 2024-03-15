@@ -91,6 +91,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     @Override
     public HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO) {
         HealthCheckupDiaryEntry diaryEntry = new HealthCheckupDiaryEntry(diaryEntryVO);
+        if(diaryEntryVO.getId() != null) {
+            diaryEntry.setId(diaryEntryVO.getId());
+            diaryEntry.setHealthCheckupApplicants(diaryEntryVO.getHealthCheckupApplicants());
+        }
         return healthCheckupDiaryEntryRepository.save(diaryEntry);
     }
 

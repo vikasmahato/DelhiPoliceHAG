@@ -52,6 +52,32 @@
   </div>
 </div>
 
+  <script>
+
+    var counter = 0;
+    function addRow(values) {
+      let row;
+      if(values != null) {
+        row = '<tr>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required value="' + values.applicantDetails + '"></td>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].registerNumber" required value="' + values.registerNumber + '"></td>' +
+                '<td><input type="number" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="' + values.amount + '"></td>' +
+                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
+                '</tr>';
+      } else {
+        row = '<tr>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required></td>' +
+                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].registerNumber" required></td>' +
+                '<td><input type="number" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="2000"></td>' +
+                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
+                '</tr>';
+      }
+      $("#applicantsTable tbody").append(row);
+      counter++;
+    }
+
+  </script>
+
 <script>
   const diaryEntryModal = document.getElementById('diaryEntryModal');
   diaryEntryModal.addEventListener('show.bs.modal', function (event) {
@@ -65,8 +91,14 @@
     if(id != null) {
       $.ajax({
         type: "POST",
-        url: "/diaryEntry/" + id,
+        url: "/healthCheckupDiaryEntry/" + id,
         success: function(response) {
+
+          console.log(response);
+          $("#id").val(response.id);
+          for(var i = 0; i < response.healthCheckupApplicants.length; i++) {
+            addRow(response.healthCheckupApplicants[i]);
+          }
 
         },
         error: function (jqXHR, exception) {
@@ -133,16 +165,8 @@
 
   <script>
     $(document).ready(function() {
-      var counter = 0;
       $("#addRow").click(function() {
-        var row = '<tr>' +
-                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].applicantDetails" required></td>' +
-                '<td><input type="text" class="form-control" name="healthCheckupApplicants[' + counter + '].registerNumber" required></td>' +
-                '<td><input type="number" class="form-control" name="healthCheckupApplicants[' + counter + '].amount" required value="2000"></td>' +
-                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
-                '</tr>';
-        $("#applicantsTable tbody").append(row);
-        counter++;
+        addRow(null);
       });
 
       $("#applicantsTable").on('click', '.deleteRow', function() {
