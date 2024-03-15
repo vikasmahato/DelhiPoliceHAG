@@ -275,6 +275,7 @@
             }
           });
           $("#treatment_by").trigger("change");
+          $("#applicant.gender").trigger("change");
 
           let startDate = new Date(response.claimDetails.startDate);
           let endDate = new Date(response.claimDetails.endDate);

@@ -42,7 +42,7 @@ public class ReferralApplicants implements Serializable, Auditable {
     private Relation relation;
 
     @Column
-    private BigDecimal amount;
+    private BigDecimal amount = BigDecimal.ZERO;
 
     @Override
     public AuditSection getAuditSection() {
@@ -52,5 +52,9 @@ public class ReferralApplicants implements Serializable, Auditable {
     @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
+    }
+
+    public BigDecimal getAmount() {
+        return amount == null ? BigDecimal.ZERO : amount;
     }
 }

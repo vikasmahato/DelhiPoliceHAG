@@ -74,7 +74,7 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     public ReferralDiaryEntry(ReferralDiaryEntryVO vo) {
         this.id = vo.getId();
         this.tenantId = vo.getTenantId();
-        this.diaryDate = vo.getDiaryDate();
+        this.diaryDate = vo.getDiaryDate() == null ? new Date() : vo.getDiaryDate();
         this.admissibleAmount = vo.getAdmissibleAmount();
         this.referralApplicants = vo.getReferralApplicants();
     }

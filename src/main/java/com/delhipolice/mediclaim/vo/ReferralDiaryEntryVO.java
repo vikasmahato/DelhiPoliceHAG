@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -58,7 +59,7 @@ public class ReferralDiaryEntryVO implements IDiaryEntryVO {
         this.displayDiaryNumber = buildDiaryNumber(user);
         this.branchName = user.getBranchName();
         this.branchCode = user.getBranchCode();
-        this.referralApplicants = diaryEntry.getReferralApplicants();
+        this.referralApplicants = diaryEntry.getReferralApplicants().stream().filter(referralApplicant -> referralApplicant.getApplicantDetails() != null).collect(Collectors.toList());
         this.fundsHead = user.getHealthCheckupFundsHead();
         this.admissibleAmount = diaryEntry.getAdmissibleAmount();
         this.allowedAdmissibleAmountMale = user.getHealthCheckupAdmissibleAmountMale();

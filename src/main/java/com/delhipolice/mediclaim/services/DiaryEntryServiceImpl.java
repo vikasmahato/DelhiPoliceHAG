@@ -101,6 +101,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     @Override
     public ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO) {
         ReferralDiaryEntry diaryEntry = new ReferralDiaryEntry(diaryEntryVO);
+        if(diaryEntryVO.getId() != null) {
+            diaryEntry.setId(diaryEntryVO.getId());
+            diaryEntry.setReferralApplicants(diaryEntryVO.getReferralApplicants());
+        }
         return referralDiaryEntryRepository.save(diaryEntry);
     }
 

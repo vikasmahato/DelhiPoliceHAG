@@ -75,6 +75,12 @@ public class DiaryEntryRestController {
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PostMapping("/indRefDiaryEntry/{id}")
+    public ResponseEntity<ReferralDiaryEntryVO> getIndRefDiaryEntry(@PathVariable UUID id) {
+        Optional<ReferralDiaryEntryVO> diaryEntryVO = diaryEntryService.find2(id);
+        return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/permissions")
     public Page<DiaryEntryVO> listPermissions(@RequestBody PagingRequest pagingRequest) {
         List<ClaimType> claimTypes = Arrays.asList(ClaimType.PERMISSION, ClaimType.CREDIT);

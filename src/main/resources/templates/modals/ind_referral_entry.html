@@ -77,6 +77,14 @@
         type: "POST",
         url: "/indRefDiaryEntry/" + id,
         success: function(response) {
+          console.log(response);
+            $("#id").val(response.id);
+            $("#applicantsTable tbody").empty();
+            for(var i = 0; i < response.referralApplicants.length; i++) {
+              addRow(response.referralApplicants[i]);
+              $("#relation_" + (counter-1)).val(response.referralApplicants[i].relation);
+              $("#relation_" + (counter-1)).trigger("change");
+            }
 
         },
         error: function (jqXHR, exception) {
@@ -91,7 +99,15 @@
 
 
 
-  })
+  });
+
+  $('#indRefDiaryEntryModal').on('hidden.bs.modal', function () {
+    $('#indRefDiaryEntryCreateForm')[0].reset();
+    $("#applicantsTable tbody").empty();
+
+    counter = 0;
+    addRow(null);
+  });
 </script>
 <script>
 
@@ -133,30 +149,51 @@
 
   <script>
     $(document).ready(function() {
-      var counter = 1;
       $("#addRow").click(function() {
-        var row = '<tr>' +
-                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].registerNumber" required></td>' +
-                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].applicantDetails" required></td>' +
-                '<td>' +
-                ' <select class="form-control" id="relation_'+ counter +'" name="referralApplicants[' + counter + '].relation" required>' +
-                ' </select>' +
-                '</td>' +
-                '<td><input type="number" class="form-control" name="referralApplicants[' + counter + '].amount" required></td>' +
-                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
-                '</tr>';
-        $("#applicantsTable tbody").append(row);
-
-        var options = $('#relation_0 option').clone();
-        $('#relation_' + counter).append(options);
-
-        counter++;
+        addRow(null);
       });
 
       $("#applicantsTable").on('click', '.deleteRow', function() {
         $(this).closest('tr').remove();
       });
     });
+  </script>
+
+  <script>
+    var options = $('#relation_0 option').clone();
+    var counter = 1;
+    function addRow(values) {
+      var row;
+      if(values != null) {
+        row = '<tr>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].registerNumber" value="' + values.registerNumber + '" required></td>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].applicantDetails" value="' + values.applicantDetails + '" required></td>' +
+                '<td>' +
+                ' <select class="form-control relation" id="relation_'+ counter +'" name="referralApplicants[' + counter + '].relation" required>' +
+                ' </select>' +
+                '</td>' +
+                '<td><input type="number" class="form-control" name="referralApplicants[' + counter + '].amount" value="' + values.amount + '" required></td>' +
+                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
+                '</tr>';
+      } else {
+        row = '<tr>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].registerNumber" required></td>' +
+                '<td><input type="text" class="form-control" name="referralApplicants[' + counter + '].applicantDetails" required></td>' +
+                '<td>' +
+                ' <select class="form-control relation" id="relation_'+ counter +'" name="referralApplicants[' + counter + '].relation" required>' +
+                ' </select>' +
+                '</td>' +
+                '<td><input type="number" class="form-control" name="referralApplicants[' + counter + '].amount" required></td>' +
+                '<td><button type="button" class="btn btn-danger deleteRow">Delete</button></td>' +
+                '</tr>';
+      }
+      $("#applicantsTable tbody").append(row);
+
+      $('#relation_' + counter).append(options.clone());
+
+      counter++;
+    }
+
   </script>
 
 </div>

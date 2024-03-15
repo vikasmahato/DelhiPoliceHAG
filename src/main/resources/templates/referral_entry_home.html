@@ -53,6 +53,7 @@
                                 <th scope="col" style="width: 80%;">Diary Number</th>
                                 <th scope="col">Note sheet</th>
                                 <th scope="col">Order</th>
+                                <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                             </thead>
@@ -61,6 +62,7 @@
                                 <th scope="col" style="width: 80%;">Diary Number</th>
                                 <th scope="col">Note sheet</th>
                                 <th scope="col">Order</th>
+                                <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                             </tfoot>
@@ -122,6 +124,12 @@
                 "render": function ( data, type, full, meta ) {
                     var buttonID = "action_"+full.id;
                     return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralOrder/'+ full.id +'">Order</a>';
+                }
+            },
+            {
+                sortable: false,
+                "render": function ( data, type, full, meta ) {
+                    return '<td><button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#indRefDiaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
                 }
             },
             {
