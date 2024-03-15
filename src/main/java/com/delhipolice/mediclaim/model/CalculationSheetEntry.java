@@ -61,4 +61,12 @@ public class CalculationSheetEntry implements Serializable, Auditable {
         this.auditSection = auditSection;
     }
 
+
+    public Double getTotal() {
+        return total == null? 0.0: total;
+    }
+
+    public Double getAmountAsked() {
+        return amountAsked == null ? 0.0: amountAsked;
+    }
 }
