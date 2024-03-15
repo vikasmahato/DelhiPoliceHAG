@@ -54,9 +54,8 @@
                                 <th scope="col">Diary Number</th>
                                 <th scope="col">Rank/Name/No</th>
                                 <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
-                                <th scope="col">Details</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                             </thead>
@@ -65,9 +64,8 @@
                                 <th scope="col">Diary Number</th>
                                 <th scope="col">Rank/Name/No</th>
                                 <th scope="col">Treatment Taken By</th>
-                                <th scope="col">Claim Type</th>
-                                <th scope="col">Details</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                             </tfoot>
@@ -119,17 +117,16 @@
             {"data": "displayDiaryNumber", "width": "20%"},
             {"data": "displayName", "width": "40%"},
             {"data": "treatmentTakenBy","width": "10%"},
-            {"data": "claimType","width": "10%"},
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
+                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
                 }
             },
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
+                    return '<td><button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#diaryEntryModal" data-bs-id="'+full.id+'">Edit</button></td>';
                 }
             },
             {

@@ -10,6 +10,7 @@
       <div class="modal-body">
         <form id="permissionCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
+          <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
 
             <div class="input-group input-group-sm mb-3">
@@ -109,14 +110,6 @@
                   <label class="form-label" for="serialNo">Serial No.</label>
                 </div>
               </div>
-
-              <div class="col-4" id="refer_hospital_div">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="refer_hospital_name" class="form-control form-control-sm" name="referHospital.hospitalName" required />
-                  <label class="form-label" for="refer_hospital_name">Refer To Hospital</label>
-                </div>
-                <input type="hidden" class="form-control" id="refer_hospital_id" name="referHospital.id">
-              </div>
             </div>
 
             <div class="row">
@@ -213,20 +206,62 @@
   permissionModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
+    const id = button.getAttribute('data-bs-id');
 
     const modalTitle = permissionModal.querySelector('.modal-title');
 
-    if(type === 'CREDIT') {
-      $("#refer_hospital_div").hide();
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    $("#diaryType").val('INDIVIDUAL');
+    $("#claimType").val(type);
+
+
+    if(id != null) {
+      $.ajax({
+        type: "POST",
+        url: "/diaryEntry/" + id,
+        success: function(response) {
+          const fields = [
+            "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
+            "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
+            "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
+            "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation", "serialNo",
+            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.isExpired", "claimDetails.disease"
+          ];
+          fields.forEach(function(field) {
+            const input = permissionModal.querySelector(`[name="${field}"]`);
+            if(input != null) {
+              const value = field.split('.').reduce((o,i)=>o[i], response);
+              if(value != null) {
+                input.value = value;
+              }
+            }
+          });
+          $("#treatment_by").trigger("change");
+          $("#applicant.gender").trigger("change");
+
+          let startDate = new Date(response.claimDetails.startDate);
+          let endDate = new Date(response.claimDetails.endDate);
+          let diaryDate = new Date(response.diaryDate);
+          permissionModal.querySelector(`[name="diaryDate"]`).value = diaryDate.getDate() + '-' + monthNames[diaryDate.getMonth()] + '-' + diaryDate.getFullYear();
+          permissionModal.querySelector(`[name="claimDetails.startDate"]`).value = startDate.getDate() + '-' + monthNames[startDate.getMonth()] + '-' + startDate.getFullYear();
+
+            modalTitle.textContent = "Edit Diary No." + response['diaryNumber'];
+        },
+        error: function (jqXHR, exception) {
+          if (jqXHR.status === 404) {
+            console.log("DiaryEntry with id " + id + " not found");
+          } else {
+            console.log("Error fetching data: ", exception);
+          }
+        }
+      });
     } else {
-      $("#refer_hospital_div").show();
+      $("#diaryDate").datepicker("update", new Date());
+      modalTitle.textContent = "New " + type;
     }
-
-    $("#diaryType").val('INDIVIDUAL')
-    $("#claimType").val(type)
-    $("#diaryDate").datepicker("update", new Date());
-
-    modalTitle.textContent = type;
 
   })
 </script>

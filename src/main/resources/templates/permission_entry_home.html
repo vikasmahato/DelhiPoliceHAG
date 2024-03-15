@@ -48,9 +48,9 @@
                                     <th scope="col">Diary Number</th>
                                     <th scope="col">Rank/Name/No</th>
                                     <th scope="col">Treatment Taken By</th>
-                                    <th scope="col">Type</th>
                                     <th scope="col">Notesheet</th>
                                     <th scope="col">Order</th>
+                                    <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                                 </thead>
@@ -59,9 +59,9 @@
                                     <th scope="col">Diary Number</th>
                                     <th scope="col">Rank/Name/No</th>
                                     <th scope="col">Treatment Taken By</th>
-                                    <th scope="col">Type</th>
                                     <th scope="col">Notesheet</th>
                                     <th scope="col">Order</th>
+                                    <th scope="col">Edit</th>
                                     <th scope="col">Delete</th>
                                 </tr>
                                 </tfoot>
@@ -111,7 +111,6 @@
                 {"data": "displayDiaryNumber", "width": "20%"},
                 {"data": "displayName", "width": "60%"},
                 {"data": "treatmentTakenBy","width": "10%"},
-                {"data": "claimType","width": "10%"},
                 {
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
@@ -124,6 +123,12 @@
                     "render": function ( data, type, full, meta ) {
                         var buttonID = "action_"+full.id;
                         return '<a id='+buttonID+' class="btn btn-primary btn-sm" target="_blank" href="/printOrder/'+ full.id +'/true">Order</a>';
+                    }
+                },
+                {
+                    sortable: false,
+                    "render": function ( data, type, full, meta ) {
+                        return '<td><button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-id="'+full.id+'">Edit</button></td>';
                     }
                 },
                 {
