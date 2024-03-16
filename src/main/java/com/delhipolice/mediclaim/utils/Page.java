@@ -15,9 +15,16 @@ public class Page<T> {
         this.data = data;
     }
 
+    public Page(List<T> data, long recordsFiltered, long recordsTotal, int draw) {
+        this.data = data;
+        this.recordsFiltered = recordsFiltered;
+        this.recordsTotal = recordsTotal;
+        this.draw = draw;
+    }
+
     private List<T> data;
-    private int recordsFiltered;
-    private int recordsTotal;
+    private long recordsFiltered;
+    private long recordsTotal;
     private int draw;
 
 }

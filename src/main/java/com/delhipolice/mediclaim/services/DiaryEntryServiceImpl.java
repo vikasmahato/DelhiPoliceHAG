@@ -4,18 +4,16 @@ import com.delhipolice.mediclaim.constants.ClaimStatus;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.*;
-import com.delhipolice.mediclaim.model.comparators.DiaryEntryComparators;
-import com.delhipolice.mediclaim.model.comparators.HelathCheckupDiaryEntryComparators;
 import com.delhipolice.mediclaim.repositories.*;
 import com.delhipolice.mediclaim.utils.*;
 import com.delhipolice.mediclaim.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -23,11 +21,6 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class DiaryEntryServiceImpl implements DiaryEntryService{
-
-    private static final Comparator<IDiaryEntry> EMPTY_COMPARATOR = (e1, e2) -> 0;
-    private static final Comparator<HealthCheckupDiaryEntry> HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR = (e1, e2) -> 0;
-
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     @Autowired
     DiaryEntryRepository diaryEntryRepository;
@@ -188,40 +181,71 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public Page<ExpiryDiaryEntryVO> getExpiryDiaryEntries(PagingRequest pagingRequest) {
-        List<IDiaryEntry> diaryEntries = expiryDiaryEntryRepository.findAll(ClaimType.EMERGENCY);
-        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
-        Page<ExpiryDiaryEntryVO> page1 = new Page<>(page.getData().stream().map(ExpiryDiaryEntryVO.class::cast).collect(Collectors.toList()));
-        page1.setRecordsFiltered(page.getRecordsFiltered());
-        page1.setRecordsTotal(page.getRecordsTotal());
-        page1.setDraw(page.getDraw());
 
-        return page1;
+        if(StringUtils.isNotEmpty(pagingRequest.getSearch().getValue())) {
+            List<ExpiryDiaryEntry> diaryEntries = expiryDiaryEntryRepository.findAll(ClaimType.EMERGENCY);
+            List<ExpiryDiaryEntryVO> filtered = diaryEntries.stream()
+                    .filter(filterDiaryEntries(pagingRequest))
+                    .sorted(Comparator.comparing(e -> e.getAuditSection().getDateCreated()))
+                    .skip(pagingRequest.getStart())
+                    .limit(pagingRequest.getLength())
+                    .map(ExpiryDiaryEntryVO::new)
+                    .collect(Collectors.toList());
+
+            return new Page<>(filtered, diaryEntries.size(), diaryEntries.size(), pagingRequest.getDraw());
+
+        } else {
+            Pageable pageable = pagingRequest.toPageable();
+            org.springframework.data.domain.Page<ExpiryDiaryEntry> diaryEntries = expiryDiaryEntryRepository.findAll(ClaimType.EMERGENCY, pageable);
+            List<ExpiryDiaryEntryVO> content = diaryEntries.getContent().stream().map(ExpiryDiaryEntryVO::new).collect(Collectors.toList());
+            return new Page<>(content, diaryEntries.getTotalElements(), diaryEntries.getTotalElements(), pagingRequest.getDraw());
+        }
+
     }
 
     @Override
     public Page<DiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, List<ClaimType> claimTypes,  DiaryType diaryType) {
-        List<IDiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType);
 
-        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
+        if(StringUtils.isNotEmpty(pagingRequest.getSearch().getValue())) {
+            List<IDiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType);
+            List<DiaryEntryVO> filtered = diaryEntries.stream()
+                    .filter(filterDiaryEntries(pagingRequest))
+                    .sorted(Comparator.comparing(e -> e.getAuditSection().getDateCreated()))
+                    .skip(pagingRequest.getStart())
+                    .limit(pagingRequest.getLength())
+                    .map(diaryEntry -> new DiaryEntryVO((DiaryEntry) diaryEntry))
+                    .collect(Collectors.toList());
 
-        Page<DiaryEntryVO> page1 = new Page<>(page.getData().stream().map(DiaryEntryVO.class::cast).collect(Collectors.toList()));
-        page1.setRecordsFiltered(page.getRecordsFiltered());
-        page1.setRecordsTotal(page.getRecordsTotal());
-        page1.setDraw(page.getDraw());
+            return new Page<>(filtered, diaryEntries.size(), diaryEntries.size(), pagingRequest.getDraw());
 
-        return page1;
+        } else {
+            Pageable pageable = pagingRequest.toPageable();
+            org.springframework.data.domain.Page<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType, pageable);
+            List<DiaryEntryVO> content = diaryEntries.getContent().stream().map(DiaryEntryVO::new).collect(Collectors.toList());
+            return new Page<>(content, diaryEntries.getTotalElements(), diaryEntries.getTotalElements(), pagingRequest.getDraw());
+        }
     }
 
     @Override
     public Page<ReferralDiaryEntryVO> getDiaryEntries(PagingRequest pagingRequest, ClaimType claimType) {
-        List<IDiaryEntry> diaryEntries = referralDiaryEntryRepository.findAllEntries();
-        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
+        if(StringUtils.isNotEmpty(pagingRequest.getSearch().getValue())) {
+            List<IDiaryEntry> diaryEntries = referralDiaryEntryRepository.findAllEntries();
+            List<ReferralDiaryEntryVO> filtered = diaryEntries.stream()
+                    .filter(filterDiaryEntries(pagingRequest))
+                    .sorted(Comparator.comparing(e -> e.getAuditSection().getDateCreated()))
+                    .skip(pagingRequest.getStart())
+                    .limit(pagingRequest.getLength())
+                    .map(diaryEntry -> new ReferralDiaryEntryVO((ReferralDiaryEntry) diaryEntry))
+                    .collect(Collectors.toList());
 
-        Page<ReferralDiaryEntryVO> page1 = new Page<>(page.getData().stream().map(ReferralDiaryEntryVO.class::cast).collect(Collectors.toList()));
-        page1.setRecordsFiltered(page.getRecordsFiltered());
-        page1.setRecordsTotal(page.getRecordsTotal());
-        page1.setDraw(page.getDraw());
-        return page1;
+            return new Page<>(filtered, diaryEntries.size(), diaryEntries.size(), pagingRequest.getDraw());
+
+        } else {
+            org.springframework.data.domain.Page<ReferralDiaryEntry> diaryEntries = referralDiaryEntryRepository.findAll(pagingRequest.toPageable());
+            List<ReferralDiaryEntryVO> content = diaryEntries.getContent().stream().map(ReferralDiaryEntryVO::new).collect(Collectors.toList());
+            return new Page<>(content, diaryEntries.getTotalElements(), diaryEntries.getTotalElements(), pagingRequest.getDraw());
+        }
+
     }
 
     @Override
@@ -329,39 +353,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         }
     }
 
-    private Page<IDiaryEntryVO> getPage(List<IDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
-        List<IDiaryEntryVO> filtered = diaryEntries.stream()
-                .sorted(sortEntries(pagingRequest))
-                .filter(filterDiaryEntries(pagingRequest))
-                .skip(pagingRequest.getStart())
-                .limit(pagingRequest.getLength())
-                .map(diaryEntry -> {
-                    if (diaryEntry instanceof DiaryEntry) {
-                        return new DiaryEntryVO((DiaryEntry) diaryEntry);
-                    } else if (diaryEntry instanceof ReferralDiaryEntry) {
-                        return new ReferralDiaryEntryVO((ReferralDiaryEntry) diaryEntry);
-                    } else if (diaryEntry instanceof ExpiryDiaryEntry) {
-                        return new ExpiryDiaryEntryVO((ExpiryDiaryEntry) diaryEntry);
-                    }
-                    return null;
-                })
-                .collect(Collectors.toList());
-
-        long count = diaryEntries.stream()
-                .filter(filterDiaryEntries(pagingRequest))
-                .count();
-
-        Page<IDiaryEntryVO> page = new Page<>(filtered);
-        page.setRecordsFiltered((int) count);
-        page.setRecordsTotal((int) count);
-        page.setDraw(pagingRequest.getDraw());
-
-        return page;
-    }
-
     private Page<HealthCheckupDiaryEntryVo> getPageHealthCheckup(List<HealthCheckupDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
         List<HealthCheckupDiaryEntryVo> filtered = diaryEntries.stream()
-                .sorted(sortHealthCheckupEntries(pagingRequest))
+                .sorted(Comparator.comparing(e -> e.getAuditSection().getDateCreated()))
                 .filter(filterHealthCHeckupDiaryEntries(pagingRequest))
                 .skip(pagingRequest.getStart())
                 .limit(pagingRequest.getLength())
@@ -386,12 +380,16 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             return diaryEntry -> true;
         }
 
-        String value = pagingRequest.getSearch()
-                .getValue();
+        String value = pagingRequest.getSearch().getValue();
 
         return diaryEntry -> {
             if (diaryEntry instanceof DiaryEntry) {
                 DiaryEntry diaryEntryCast = (DiaryEntry) diaryEntry;
+                return diaryEntryCast.getApplicant().getName().toLowerCase().contains(value)
+                        || diaryEntryCast.getDiaryNumber().toLowerCase().contains(value)
+                        || diaryEntryCast.getTreatmentTakenBy().getEnumValue().toLowerCase().contains(value);
+            }  if (diaryEntry instanceof ExpiryDiaryEntry) {
+                ExpiryDiaryEntry diaryEntryCast = (ExpiryDiaryEntry) diaryEntry;
                 return diaryEntryCast.getApplicant().getName().toLowerCase().contains(value)
                         || diaryEntryCast.getDiaryNumber().toLowerCase().contains(value)
                         || diaryEntryCast.getTreatmentTakenBy().getEnumValue().toLowerCase().contains(value);
@@ -416,59 +414,5 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         return diaryEntry -> diaryEntry.getDiaryNumber()
                 .toLowerCase()
                 .contains(value);
-    }
-
-    private Comparator<IDiaryEntry> sortEntries(PagingRequest pagingRequest) {
-        if (pagingRequest.getOrder() == null) {
-            return EMPTY_COMPARATOR;
-        }
-
-        try {
-            Order order = pagingRequest.getOrder()
-                    .get(0);
-
-            int columnIndex = order.getColumn();
-            Column column = pagingRequest.getColumns()
-                    .get(columnIndex);
-
-            Comparator<IDiaryEntry> comparator = DiaryEntryComparators.getComparator(column.getData(), order.getDir());
-            if (comparator == null) {
-                return EMPTY_COMPARATOR;
-            }
-
-            return comparator;
-
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-
-        return EMPTY_COMPARATOR;
-    }
-
-    private Comparator<HealthCheckupDiaryEntry> sortHealthCheckupEntries(PagingRequest pagingRequest) {
-        if (pagingRequest.getOrder() == null) {
-            return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
-        }
-
-        try {
-            Order order = pagingRequest.getOrder()
-                    .get(0);
-
-            int columnIndex = order.getColumn();
-            Column column = pagingRequest.getColumns()
-                    .get(columnIndex);
-
-            Comparator<HealthCheckupDiaryEntry> comparator = HelathCheckupDiaryEntryComparators.getComparator(column.getData(), order.getDir());
-            if (comparator == null) {
-                return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
-            }
-
-            return comparator;
-
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-        }
-
-        return HEALTH_CHECKUP_DIARY_ENTRY_EMPTY_COMPARATOR;
     }
 }
