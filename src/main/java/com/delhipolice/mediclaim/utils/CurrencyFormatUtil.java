@@ -13,8 +13,10 @@ public class CurrencyFormatUtil {
     private String insertCommas(String number) {
         int indexOfDecimal = number.indexOf(".");
 
-        String decimalPart = number.substring(indexOfDecimal);
-        String numericPartReversed =  new StringBuilder(number.substring(0, indexOfDecimal)).reverse().toString();
+        String decimalPart = indexOfDecimal == -1 ? ".00" : number.substring(indexOfDecimal);
+
+
+        String numericPartReversed =  new StringBuilder(number.substring(0, indexOfDecimal == -1 ? number.length() : indexOfDecimal )).reverse().toString();
 
         if(numericPartReversed.length() > 3) {
             StringBuilder result = new StringBuilder();

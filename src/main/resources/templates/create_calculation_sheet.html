@@ -133,7 +133,14 @@
 <script>
 
     function submitForm() {
-        var data = $("#calcSheetForm").serialize();
+        const clonedForm = $("#calcSheetForm").clone();
+        clonedForm.find("#calculationSheetTable input:not(:checkbox)").each(function() {
+                if (!$(this).val()) {
+                    $(this).val("NULL");
+                }
+            });
+
+        const data = clonedForm.serialize();
 
         $.ajax({
             type:"post",
@@ -162,7 +169,6 @@
 
         $("#adjustmentTable").hide();
         $("#adjustmentFactor").on('change keyup blur', function() {
-            debugger;
             const grantedTotal = getTotalGrantedPrice();
             const adjustmentAmount = getAdjustmentAmount();
             $("#adjustmentAmount").val(adjustmentAmount);
@@ -191,7 +197,6 @@
             async: false,
             dataType: "json",
             success: function(data){
-                debugger;
 
                 let calculationSheet = data.calculationSheet;
                 for (let index = 0; index < calculationSheet.length; index++) {
@@ -229,9 +234,9 @@
         html += '<td style="padding:0.3rem 0.5rem;"><input type="text" name="itemDate[]" id="itemDate_'+i+'" class="form-control" autocomplete="off"></td>';
         html += '<td style="padding:0.3rem 0.5rem;"><input type="text" name="itemName[]" id="itemName_'+i+'" class="form-control autocomplete_txt" autocomplete="off"></td>';
 
-        html += '<td style="padding:0.3rem 0.5rem;"><input type="number" step="any" name="total_asked[]" id="total_asked_'+i+'" class="form-control totalAskedPrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+        html += '<td style="padding:0.3rem 0.5rem;"><input type="number" required step="any" name="total_asked[]" id="total_asked_'+i+'" class="form-control totalAskedPrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
 
-        html += '<td style="padding:0.3rem 0.5rem;"><input type="number" step="any" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
+        html += '<td style="padding:0.3rem 0.5rem;"><input type="number" required step="any" name="total[]" id="total_'+i+'" class="form-control totalLinePrice" autocomplete="off" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;"></td>';
         html += '</tr>';
 
         if ($("#CalculationSheet input:checkbox:checked").length > 0)
@@ -304,9 +309,7 @@
 
     //autocomplete script
     $(document).on('focus','.autocomplete_txt',function(){
-        debugger;
         if($('#toggleAutocomplete').is(":checked")) {
-            debugger;
             $(this).autocomplete({
                 source: function( request, response ) {
                     $.ajax({

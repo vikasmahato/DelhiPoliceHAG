@@ -209,10 +209,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         for(int i = 0; i<count; i++) {
 
             CalculationSheetEntry.CalculationSheetEntryBuilder builder = CalculationSheetEntry.builder();
-            builder.serialNumber(itemNo.get(i))
-                    .billNumber(itemHosp.get(i))
-                    .billDate(itemDate.get(i))
-                    .treatment(itemName.get(i))
+            builder.serialNumber("NULL".equals(itemNo.get(i)) ? "" : itemNo.get(i))
+                    .billNumber("NULL".equals(itemHosp.get(i)) ? "" : itemHosp.get(i) )
+                    .billDate("NULL".equals(itemDate.get(i)) ? "" : itemDate.get(i) )
+                    .treatment("NULL".equals(itemName.get(i)) ? "" : itemName.get(i) )
                     .amountAsked(totalAsked.get(i))
                     .total(totalGranted.get(i));
             calculationSheetEntries.add(builder.build());
