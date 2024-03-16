@@ -2,16 +2,10 @@ package com.delhipolice.mediclaim.services;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
-import com.delhipolice.mediclaim.model.Applicant;
-import com.delhipolice.mediclaim.model.DiaryEntry;
-import com.delhipolice.mediclaim.model.HealthCheckupDiaryEntry;
-import com.delhipolice.mediclaim.model.ReferralDiaryEntry;
+import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.utils.Page;
 import com.delhipolice.mediclaim.utils.PagingRequest;
-import com.delhipolice.mediclaim.vo.CalcSheetVO;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
-import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
-import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
+import com.delhipolice.mediclaim.vo.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,9 +13,11 @@ import java.util.UUID;
 
 public interface DiaryEntryService {
 
-    Optional<DiaryEntryVO> find(UUID id);
-    Optional<HealthCheckupDiaryEntryVo> find1(UUID id);
-    Optional<ReferralDiaryEntryVO> find2(UUID id);
+    Optional<DiaryEntryVO> findDiaryEntry(UUID id);
+    Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(UUID id);
+    Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(UUID id);
+
+    Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(UUID id);
 
     DiaryEntry save(DiaryEntryVO diaryEntryVO);
     ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO);
@@ -43,9 +39,11 @@ public interface DiaryEntryService {
 
     void saveCalSheet(CalcSheetVO calcSheetVO);
 
-    List<DiaryEntryVO> findCandidateDiaryEntries();
-
     int count();
 
     void deleteDiaryEntry(UUID id, String diaryEntryClass);
+
+    ExpiryDiaryEntry save(ExpiryDiaryEntryVO diaryEntryVO);
+
+    Page<ExpiryDiaryEntryVO> getExpiryDiaryEntries(PagingRequest pagingRequest);
 }

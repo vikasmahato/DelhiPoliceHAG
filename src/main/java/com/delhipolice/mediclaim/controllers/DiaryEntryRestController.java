@@ -3,14 +3,10 @@ package com.delhipolice.mediclaim.controllers;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
-import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.utils.Page;
 import com.delhipolice.mediclaim.utils.PagingRequest;
-import com.delhipolice.mediclaim.vo.CalcSheetVO;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
-import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
-import com.delhipolice.mediclaim.vo.ReferralDiaryEntryVO;
+import com.delhipolice.mediclaim.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,21 +57,27 @@ public class DiaryEntryRestController {
         return diaryEntryService.getHealthCheckupDiaryEntries(pagingRequest);
     }
 
+    @PostMapping("/expirydiaryentries")
+    public Page<ExpiryDiaryEntryVO> listExpiryDiaryEntries(@RequestBody PagingRequest pagingRequest) {
+
+        return diaryEntryService.getExpiryDiaryEntries(pagingRequest);
+    }
+
     @PostMapping("/diaryEntry/{id}")
     public ResponseEntity<DiaryEntryVO> getDiaryEntry(@PathVariable UUID id) {
-        Optional<DiaryEntryVO> diaryEntryVO = diaryEntryService.find(id);
+        Optional<DiaryEntryVO> diaryEntryVO = diaryEntryService.findDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/healthCheckupDiaryEntry/{id}")
     public ResponseEntity<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntry(@PathVariable UUID id) {
-        Optional<HealthCheckupDiaryEntryVo> diaryEntryVO = diaryEntryService.find1(id);
+        Optional<HealthCheckupDiaryEntryVo> diaryEntryVO = diaryEntryService.findHealthCheckupDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/indRefDiaryEntry/{id}")
     public ResponseEntity<ReferralDiaryEntryVO> getIndRefDiaryEntry(@PathVariable UUID id) {
-        Optional<ReferralDiaryEntryVO> diaryEntryVO = diaryEntryService.find2(id);
+        Optional<ReferralDiaryEntryVO> diaryEntryVO = diaryEntryService.findReferralDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -88,7 +90,7 @@ public class DiaryEntryRestController {
 
     @GetMapping("/getCalSheetentries/{id}")
     public Map<String, Object> getCalSheetentries(@PathVariable UUID id) {
-        DiaryEntryVO diaryEntryVO = diaryEntryService.find(id).get();
+        DiaryEntryVO diaryEntryVO = diaryEntryService.findDiaryEntry(id).get();
         Double adjustmentFactor = diaryEntryVO.getCalculationSheetAdjustmentFactor();
         List<CalculationSheetEntry> calculationSheet = diaryEntryVO.getCalculationSheet();
 
@@ -109,16 +111,6 @@ public class DiaryEntryRestController {
         diaryEntryService.saveCalSheet(calcSheetVO);
         return true;
 
-    }
-
-    @GetMapping("/getCandidateDiaryEntries")
-    public @ResponseBody  Page<DiaryEntryVO> getCandidateDiaryEntries() {
-       return new Page<>(diaryEntryService.findCandidateDiaryEntries());
-    }
-
-    @GetMapping("/notesheetDiaryEntries")
-    public @ResponseBody  Page<DiaryEntryVO> getNotesheetDiaryEntries() {
-        return new Page<>(diaryEntryService.findCandidateDiaryEntries());
     }
 
 }

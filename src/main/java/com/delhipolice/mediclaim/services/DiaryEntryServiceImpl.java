@@ -46,6 +46,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     ReferralDiaryEntryRepository referralDiaryEntryRepository;
 
     @Autowired
+    ExpiryDiaryEntryRepository expiryDiaryEntryRepository;
+
+    @Autowired
     HospitalService hospitalService;
 
     @Autowired
@@ -56,21 +59,27 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public Optional<DiaryEntryVO> find(UUID id) {
+    public Optional<DiaryEntryVO> findDiaryEntry(UUID id) {
         Optional<DiaryEntry> diaryEntry = diaryEntryRepository.findById(id);
         return diaryEntry.map(DiaryEntryVO::new);
     }
 
     @Override
-    public Optional<HealthCheckupDiaryEntryVo> find1(UUID id) {
+    public Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(UUID id) {
         Optional<HealthCheckupDiaryEntry> diaryEntry = healthCheckupDiaryEntryRepository.findById(id);
         return diaryEntry.map(HealthCheckupDiaryEntryVo::new);
     }
 
     @Override
-    public Optional<ReferralDiaryEntryVO> find2(UUID id) {
+    public Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(UUID id) {
         Optional<ReferralDiaryEntry> diaryEntry = referralDiaryEntryRepository.findById(id);
         return diaryEntry.map(ReferralDiaryEntryVO::new);
+    }
+
+    @Override
+    public Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(UUID id) {
+        Optional<ExpiryDiaryEntry> diaryEntry = expiryDiaryEntryRepository.findById(id);
+        return diaryEntry.map(ExpiryDiaryEntryVO::new);
     }
 
     @Override
@@ -121,6 +130,25 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
+    public ExpiryDiaryEntry save(ExpiryDiaryEntryVO diaryEntryVO) {
+        ExpiryDiaryEntry diaryEntry = new ExpiryDiaryEntry(diaryEntryVO);
+
+        Applicant applicant = applicantService.findByPisNumber(diaryEntryVO.getApplicant().getPisNumber());
+        diaryEntry.setApplicant(applicant == null ? new Applicant(diaryEntryVO.getApplicant()) : applicant);
+
+        Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
+
+        diaryEntry.setHospital(hospital);
+        diaryEntry.getClaimDetails().setClaimStatus(ClaimStatus.D_HAND);
+
+        if(diaryEntryVO.getId() != null) {
+            diaryEntry.setId(diaryEntryVO.getId());
+        }
+
+        return expiryDiaryEntryRepository.save(diaryEntry);
+    }
+
+    @Override
     public List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS) {
         List<UUID> uuids = diaryEntryVOS.stream().map(DiaryEntryVO::getId).collect(Collectors.toList());
         return diaryEntryRepository.findAllById(uuids);
@@ -140,15 +168,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     public DiaryEntry update(DiaryEntryVO diaryEntryVO) {
         DiaryEntry diaryEntry = diaryEntryRepository.findById(diaryEntryVO.getId()).get();
         diaryEntry.setAmountClaimed(diaryEntryVO.getAmountClaimed());
-        diaryEntry.setPhqNumber(diaryEntryVO.getPhqNumber());
-        diaryEntry.setPhqDate(diaryEntryVO.getPhqDate());
-        diaryEntry.setSanctionDate(diaryEntryVO.getSanctionDate());
-        diaryEntry.setSanctionNumber(diaryEntryVO.getSanctionNumber());
-        diaryEntry.setSanctionAmount(diaryEntryVO.getSanctionAmount());
         diaryEntry.getClaimDetails().setStartDate(diaryEntryVO.getClaimDetails().getStartDate());
         diaryEntry.getClaimDetails().setEndDate(diaryEntryVO.getClaimDetails().getEndDate());
-        diaryEntry.setIsLetterGenerated(diaryEntryVO.getIsLetterGenerated());
-        diaryEntry.setPatientDOB(diaryEntryVO.getPatientDOB());
         diaryEntry.getClaimDetails().setDisease(diaryEntryVO.getClaimDetails().getDisease());
         return diaryEntryRepository.save(diaryEntry);
     }
@@ -163,6 +184,18 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     public Page<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntries(PagingRequest pagingRequest) {
         List<HealthCheckupDiaryEntry> diaryEntries = healthCheckupDiaryEntryRepository.findAll();
         return getPageHealthCheckup(diaryEntries, pagingRequest);
+    }
+
+    @Override
+    public Page<ExpiryDiaryEntryVO> getExpiryDiaryEntries(PagingRequest pagingRequest) {
+        List<IDiaryEntry> diaryEntries = expiryDiaryEntryRepository.findAll(ClaimType.EMERGENCY);
+        Page<IDiaryEntryVO> page =  getPage(diaryEntries, pagingRequest);
+        Page<ExpiryDiaryEntryVO> page1 = new Page<>(page.getData().stream().map(ExpiryDiaryEntryVO.class::cast).collect(Collectors.toList()));
+        page1.setRecordsFiltered(page.getRecordsFiltered());
+        page1.setRecordsTotal(page.getRecordsTotal());
+        page1.setDraw(page.getDraw());
+
+        return page1;
     }
 
     @Override
@@ -245,12 +278,6 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public List<DiaryEntryVO> findCandidateDiaryEntries() {
-        List<DiaryEntry> diaryEntries = diaryEntryRepository.findByIsLetterGenerated(false);
-        return diaryEntries.stream().map(DiaryEntryVO::new).collect(Collectors.toList());
-    }
-
-    @Override
     public int count() {
         return (int) diaryEntryRepository.count();
     }
@@ -269,6 +296,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             case "HealthCheckupDiaryEntry":
                 diaryEntry = healthCheckupDiaryEntryRepository.findById(id).orElse(null);
                 break;
+            case "ExpiryDiaryEntry":
+                diaryEntry = expiryDiaryEntryRepository.findById(id).orElse(null);
+                break;
         }
 
         if (diaryEntry != null) {
@@ -285,6 +315,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                 case "HealthCheckupDiaryEntry":
                     healthCheckupDiaryEntryRepository.save((HealthCheckupDiaryEntry) diaryEntry);
                     break;
+                case "ExpiryDiaryEntry":
+                    expiryDiaryEntryRepository.save((ExpiryDiaryEntry) diaryEntry);
+                    break;
             }
         }
     }
@@ -300,6 +333,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                         return new DiaryEntryVO((DiaryEntry) diaryEntry);
                     } else if (diaryEntry instanceof ReferralDiaryEntry) {
                         return new ReferralDiaryEntryVO((ReferralDiaryEntry) diaryEntry);
+                    } else if (diaryEntry instanceof ExpiryDiaryEntry) {
+                        return new ExpiryDiaryEntryVO((ExpiryDiaryEntry) diaryEntry);
                     }
                     return null;
                 })

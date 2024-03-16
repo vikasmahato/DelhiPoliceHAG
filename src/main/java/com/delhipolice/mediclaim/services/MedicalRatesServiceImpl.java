@@ -38,7 +38,7 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
         if(StringUtils.isEmpty(searchTerm))
             return new ArrayList<>();
 
-        DiaryEntryVO diaryEntry = diaryEntryService.find(diaryId).get();
+        DiaryEntryVO diaryEntry = diaryEntryService.findDiaryEntry(diaryId).get();
 
         List<MedicalRates> medicalRates = medicalRatesRepository.findByNameContaining(searchTerm.toLowerCase(Locale.ROOT));
 

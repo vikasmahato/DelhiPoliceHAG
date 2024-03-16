@@ -18,9 +18,9 @@
                 <a href="/health" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/health' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-notes-medical fa-fw me-3"></i><span>Health Checkup</span>
                 </a>
-                <!--<a href="/notesheets" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/notesheets' ? 'active':''}" data-mdb-ripple-init>
-                    <i class="fas fa-chart-area fa-fw me-3"></i><span>Notesheets</span>
-                </a>-->
+                <a href="/expiry" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/expiry' ? 'active':''}" data-mdb-ripple-init>
+                    <i class="fas fa-bed fa-fw me-3"></i><span>Expiry</span>
+                </a>
                 <a href="/applicants" class="list-group-item list-group-item-action py-2" th:classappend="${#httpServletRequest.getRequestURI() == '/applicants' ? 'active':''}" data-mdb-ripple-init>
                     <i class="fas fa-users fa-fw me-3"></i><span>Applicants</span>
                 </a>

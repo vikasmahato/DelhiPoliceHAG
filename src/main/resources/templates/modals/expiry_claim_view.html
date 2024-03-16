@@ -1,0 +1,78 @@
+<div th:fragment="claimViewModal">
+
+<div class="modal fade" id="claimViewModal" tabindex="-1" aria-labelledby="claimViewModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="claimViewModalLabel">View Claim</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="claimEditForm">
+          <input type="hidden" class="form-control" id="claim-id" name="id">
+          <div class="mb-3">
+            <div>
+            <span><b>Diary Number: </b></span>
+            <p id="displayDiaryNumber"></p>
+            </div>
+          <div>
+            <span><b>Name: </b></span>
+            <p id="displayName"></p>
+          </div>
+          </div>
+        </form>
+
+        <div style="display: flex; justify-content: space-between;">
+          <a class="btn btn-danger btn-sm" id="createCalculationSheet">Create Calculation Sheet</a>
+          <a class="btn btn-primary btn-sm" id="printNotesheet" target="_blank">Notesheet</a>
+          <a class="btn btn-primary btn-sm" id="printCalculation" target="_blank">Calculation Sheet</a>
+          <div class="btn-group" role="group" aria-label="Order">
+            <a class="btn btn-primary btn-sm"  id="printOrder" target="_blank" data-mdb-ripple-init>Order p1</a>
+            <a class="btn btn-primary btn-sm"  id="printOrderUnsigned" target="_blank" data-mdb-ripple-init>Order p2</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const claimViewModal = document.getElementById('claimViewModal');
+  claimViewModal.addEventListener('show.bs.modal', function (event) {
+    const button = event.relatedTarget;
+    const id = button.getAttribute('data-bs-id');
+    const modalTitle = diaryEntryModal.querySelector('.modal-title');
+    modalTitle.textContent = 'View Claim';
+
+    $("#printNotesheet").attr("href", "/printNotesheet/" + id);
+    $("#printCalculation").attr("href", "/printCalculationSheet/" + id);
+    $("#printOrder").attr("href", "/printOrder/" + id + "/true");
+    $("#printOrderUnsigned").attr("href", "/printOrder/" + id + "/false");
+    $("#createCalculationSheet").attr("href", "/createCalculationSheet/" + id);
+
+    if(id != null) {
+      $.ajax({
+        type: "POST",
+        url: "/diaryEntry/" + id,
+        success: function(response) {
+          $("#displayDiaryNumber").text(response.displayDiaryNumber);
+          $("#displayName").text(response.displayName + " (PIS No. " + response.applicant.pisNumber + ")");
+        },
+        error: function (jqXHR, exception) {
+          if (jqXHR.status === 404) {
+            console.log("DiaryEntry with id " + id + " not found");
+          } else {
+            console.log("Error fetching data: ", exception);
+          }
+        }
+      });
+    }
+
+  })
+</script>
+
+
+</div>

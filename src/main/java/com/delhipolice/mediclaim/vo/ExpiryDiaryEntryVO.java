@@ -1,9 +1,6 @@
 package com.delhipolice.mediclaim.vo;
 
-import com.delhipolice.mediclaim.constants.ClaimType;
-import com.delhipolice.mediclaim.constants.DiaryType;
-import com.delhipolice.mediclaim.constants.Gender;
-import com.delhipolice.mediclaim.constants.TreatmentBy;
+import com.delhipolice.mediclaim.constants.*;
 import com.delhipolice.mediclaim.model.*;
 import com.delhipolice.mediclaim.utils.CustomDateDeserializer;
 import com.delhipolice.mediclaim.utils.EnglishNumberToWords;
@@ -26,7 +23,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
+public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
     private static final long serialVersionUID = 1L;
 
     private UUID id;
@@ -40,13 +37,14 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date diaryDate;
     private ApplicantVO applicant;
-    private TreatmentBy treatmentTakenBy;
+    private Relation treatmentTakenBy;
     private Hospital hospital;
-    private Hospital referHospital;
     private BigDecimal amountClaimed;
     private BigDecimal admissibleAmount;
     private String amountGrantedInWords;
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private List<CalculationSheetEntry> calculationSheet;
+    private Relation applicationSubmittedBy = Relation.SELF;
     private ClaimDetailsVO claimDetails;
     private ClaimType claimType;
     private String amountAsked1;
@@ -69,7 +67,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private Gender patientGender;
     private Double calculationSheetAdjustmentFactor;
 
-    public DiaryEntryVO(DiaryEntry diaryEntry) {
+    public ExpiryDiaryEntryVO(ExpiryDiaryEntry diaryEntry) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -83,7 +81,6 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         applicant = new ApplicantVO(diaryEntry.getApplicant());
         treatmentTakenBy = diaryEntry.getTreatmentTakenBy();
         hospital = diaryEntry.getHospital();
-        referHospital = diaryEntry.getReferHospital();
         claimType = diaryEntry.getClaimType();
         amountClaimed = diaryEntry.getAmountClaimed();
         admissibleAmount = diaryEntry.getAdmissibleAmount();

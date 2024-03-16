@@ -2,10 +2,11 @@ package com.delhipolice.mediclaim.model;
 
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
+import com.delhipolice.mediclaim.constants.Relation;
 import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
+import com.delhipolice.mediclaim.vo.ExpiryDiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,11 +22,11 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "DIARY_ENTRY")
-public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
+@Table(name = "EXPIRY_DIARY_ENTRY")
+public class ExpiryDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
 
-    public DiaryEntry(DiaryEntryVO diaryEntryVO) {
+    public ExpiryDiaryEntry(ExpiryDiaryEntryVO diaryEntryVO) {
         this.id = diaryEntryVO.getId();
         this.tenantId = diaryEntryVO.getTenantId();
         this.diaryNumber = diaryEntryVO.getDiaryNumber();
@@ -33,13 +34,13 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
         this.diaryType = diaryEntryVO.getDiaryType();
         this.diaryDate = diaryEntryVO.getDiaryDate();
         this.treatmentTakenBy = diaryEntryVO.getTreatmentTakenBy();
+        this.applicationSubmittedBy = diaryEntryVO.getApplicationSubmittedBy();
         this.hospital = diaryEntryVO.getHospital();
-        this.referHospital = diaryEntryVO.getReferHospital();
-        this.amountClaimed = diaryEntryVO.getAmountClaimed();
-        this.admissibleAmount = diaryEntryVO.getAdmissibleAmount();
         this.calculationSheet = diaryEntryVO.getCalculationSheet();
         this.claimDetails = new ClaimDetails(diaryEntryVO.getClaimDetails());
         this.claimType = diaryEntryVO.getClaimType();
+        this.amountClaimed = diaryEntryVO.getAmountClaimed();
+        this.admissibleAmount = diaryEntryVO.getAdmissibleAmount();
         this.calculationSheetAdjustmentFactor = diaryEntryVO.getCalculationSheetAdjustmentFactor();
     }
 
@@ -60,7 +61,7 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private String serialNo;
 
     @Column
-    private DiaryType diaryType;
+    private DiaryType diaryType = DiaryType.INDIVIDUAL;
 
     @Column
     @Temporal(TemporalType.DATE)
@@ -70,13 +71,13 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private Applicant applicant;
 
     @Column
-    private TreatmentBy treatmentTakenBy = TreatmentBy.SELF;
+    private Relation treatmentTakenBy = Relation.SELF;
+
+    @Column
+    private Relation applicationSubmittedBy = Relation.SELF;
 
     @OneToOne(cascade = CascadeType.MERGE)
     private Hospital hospital;
-
-    @OneToOne(cascade = CascadeType.MERGE)
-    private Hospital referHospital;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<CalculationSheetEntry> calculationSheet;
@@ -85,7 +86,7 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private ClaimDetails claimDetails;
 
     @Column
-    private ClaimType claimType = ClaimType.REFERRAL;
+    private ClaimType claimType = ClaimType.EMERGENCY;
 
     @Column
     private BigDecimal amountClaimed;
@@ -93,10 +94,8 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Column
     private  BigDecimal admissibleAmount;
 
-    @Column
     private Double calculationSheetAdjustmentFactor;
 
-    @Column
     private Boolean isDeleted = Boolean.FALSE;
 
     @Column
