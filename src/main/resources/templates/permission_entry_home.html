@@ -128,13 +128,13 @@
                 {
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
-                        return '<td><button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-id="'+full.id+'">Edit</button></td>';
+                        return '<td><button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-id="'+full.id+'"><i class="fa-solid fa-pen-to-square"></i></button></td>';
                     }
                 },
                 {
                     sortable: false,
                     "render": function ( data, type, full, meta ) {
-                        return '<td><button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button></td>';
+                        return '<td><button type="button" class="btn btn-danger btn-sm delete-btn"><i class="fa-solid fa-trash"></i></button></td>';
                     }
                 },
             ],
