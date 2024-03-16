@@ -3,12 +3,12 @@
 <div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
+      <form id="diaryEntryCreateForm">
       <div class="modal-header">
         <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="diaryEntryCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
@@ -41,13 +41,13 @@
             </div>
 
             </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="reset" class="btn btn-warning">Reset</button>
-        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -80,6 +80,11 @@
 
 <script>
   const diaryEntryModal = document.getElementById('diaryEntryModal');
+
+  diaryEntryModal.addEventListener('hidden.bs.modal', function () {
+    $("#applicantsTable tbody").empty()
+  });
+
   diaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
@@ -117,23 +122,16 @@
 </script>
 <script>
 
+  $("#diaryEntryCreateForm").on("submit", function(event) {
+    event.preventDefault();
+    submitForm();
+  });
+
   function submitForm() {
     var data = $("#diaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
       obj[item.name] = item.value;
       return obj;
     }, {});
-
-    /*data.healthCheckupApplicants = [];
-
-    $("#applicantsTable tbody tr").each(function() {
-      var applicant = {
-        applicantDetails: $(this).find('input[name="healthCheckupApplicants[].applicantDetails"]').val(),
-        amount: $(this).find('input[name="healthCheckupApplicants[].amount"]').val()
-      };
-      data.healthCheckupApplicants.push(applicant);
-    });*/
-
-    console.log(data);
 
     $.ajax({
       type:"post",

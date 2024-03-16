@@ -120,7 +120,7 @@
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
-                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'">View</button></td>';
+                    return '<td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#claimViewModal" data-bs-id="'+full.id+'" data-bs-hospitalType="'+full.hospital.hospitalType+'">View</button></td>';
                 }
             },
             {

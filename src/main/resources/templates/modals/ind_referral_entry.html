@@ -3,12 +3,13 @@
 <div class="modal fade" id="indRefDiaryEntryModal" tabindex="-1" aria-labelledby="indRefDiaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
+      <form id="indRefDiaryEntryCreateForm">
       <div class="modal-header">
         <h5 class="modal-title" id="indRefDiaryEntryModalLabel">Create a New Diary Entry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="indRefDiaryEntryCreateForm">
+
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
@@ -51,18 +52,25 @@
             </div>
 
             </div>
-        </form>
+
       </div>
       <div class="modal-footer">
         <button type="reset" class="btn btn-warning">Reset</button>
-        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
 
 <script>
+
+  $("#indRefDiaryEntryCreateForm").on("submit", function(event) {
+    event.preventDefault();
+    submitForm();
+  });
+
   const indRefDiaryEntryModal = document.getElementById('indRefDiaryEntryModal');
   indRefDiaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;

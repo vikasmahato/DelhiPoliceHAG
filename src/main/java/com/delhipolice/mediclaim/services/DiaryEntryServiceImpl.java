@@ -226,7 +226,6 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public void saveCalSheet(CalcSheetVO calcSheetVO) {
-        DiaryEntry diaryEntry = diaryEntryRepository.findById(calcSheetVO.getDiaryNo()).get();
 
         LinkedList<String> itemNo = calcSheetVO.getItemNo();
         LinkedList<String> itemHosp = calcSheetVO.getItemHosp();
@@ -251,12 +250,20 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             calculationSheetEntries.add(builder.build());
         }
 
-        diaryEntry.setAmountClaimed(BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum)));
-
+        BigDecimal totalAmountClaimed = BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum));
         Double amountGranted = totalGranted.stream().reduce(0d, Double::sum);
-
         String adjustmentDescription = calcSheetVO.getAdjustmentDescription();
         Double adjustmentFactor = calcSheetVO.getAdjustmentFactor();
+
+        IDiaryEntry diaryEntry = null;
+        if("DiaryEntry".equals(calcSheetVO.getDiaryClass())) {
+            diaryEntry = diaryEntryRepository.findById(calcSheetVO.getDiaryNo()).get();
+        } else if ("ExpiryDiaryEntry".equals(calcSheetVO.getDiaryClass())){
+            diaryEntry = expiryDiaryEntryRepository.findById(calcSheetVO.getDiaryNo()).get();
+        }
+
+        assert diaryEntry != null;
+        diaryEntry.setAmountClaimed(totalAmountClaimed);
 
         if(adjustmentFactor != null && adjustmentFactor != 0d) {
             diaryEntry.setCalculationSheetAdjustmentFactor(adjustmentFactor);
@@ -267,14 +274,14 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             builder.serialNumber("0").billNumber("").billDate("").treatment(adjustmentDescription).amountAsked(0d).total(adjustmentAmount).isAdjustment(true);
             calculationSheetEntries.add(builder.build());
         }
-
-
         diaryEntry.setAdmissibleAmount(BigDecimal.valueOf(amountGranted));
-
-
         diaryEntry.setCalculationSheet(calculationSheetEntries);
 
-        diaryEntryRepository.save(diaryEntry);
+        if("DiaryEntry".equals(calcSheetVO.getDiaryClass())) {
+            diaryEntryRepository.save((DiaryEntry) diaryEntry);
+        } else if ("ExpiryDiaryEntry".equals(calcSheetVO.getDiaryClass())){
+            expiryDiaryEntryRepository.save((ExpiryDiaryEntry) diaryEntry);
+        }
     }
 
     @Override
@@ -390,7 +397,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                         || diaryEntryCast.getTreatmentTakenBy().getEnumValue().toLowerCase().contains(value);
             } else if (diaryEntry instanceof ReferralDiaryEntry) {
                 ReferralDiaryEntry referralDiaryEntryCast = (ReferralDiaryEntry) diaryEntry;
-                return referralDiaryEntryCast.getReferralApplicants().stream().anyMatch(applicant -> applicant.getApplicantDetails().toLowerCase().contains(value));
+                return referralDiaryEntryCast.getReferralApplicants()
+                        .stream().anyMatch(applicant -> applicant.getApplicantDetails().toLowerCase().contains(value));
             }
             return false;
         };

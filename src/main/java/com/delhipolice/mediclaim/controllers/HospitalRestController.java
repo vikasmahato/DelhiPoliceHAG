@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.controllers;
 
+import com.delhipolice.mediclaim.constants.HospitalType;
 import com.delhipolice.mediclaim.model.CalculationSheetEntry;
 import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
@@ -7,6 +8,7 @@ import com.delhipolice.mediclaim.services.HospitalService;
 import com.delhipolice.mediclaim.services.MedicalRatesService;
 import com.delhipolice.mediclaim.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +34,8 @@ public class HospitalRestController {
     }
 
     @GetMapping("/searchMedicalRate")
-    public List<MedicalRateVO> searchMedicalRate(@RequestParam(value = "searchTerm") String searchTerm,@RequestParam(value = "diaryId") UUID diaryId) {
-        return medicalRatesService.findByNameContaining(searchTerm, diaryId);
+    public List<MedicalRateVO> searchMedicalRate(@RequestParam(value = "searchTerm") String searchTerm, @RequestParam(value = "hospitalType") String hospitalType) {
+        return medicalRatesService.findByNameContaining(searchTerm, HospitalType.valueOf(hospitalType));
     }
 
     @PostMapping("/persisthospital")

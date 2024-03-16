@@ -3,12 +3,12 @@
 <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
+      <form id="permissionCreateForm">
       <div class="modal-header">
         <h5 class="modal-title" id="permissionModalLabel">Create a New Permission</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="permissionCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
@@ -128,7 +128,7 @@
                 <div class="input-group input-group-sm mb-3 relative">
 
                   <span class="input-group-text">Relation</span>
-                  <select class="form-control form-control-sm" id="relation" name="claimDetails.relation" required>
+                  <select class="form-control form-control-sm" id="relation" name="claimDetails.relation">
                     <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
                   </select>
 
@@ -138,7 +138,7 @@
               <div class="col-4 relative">
 
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" required />
+                  <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" />
                   <label class="form-label" for="relative_name">Relative Name</label>
                 </div>
 
@@ -151,7 +151,7 @@
                 <div class="col-4">
 
                   <div class="form-outline mb-3" data-mdb-input-init>
-                    <input type="text" id="relative_cghs_number" class="form-control form-control-sm" name="claimDetails.relativeCghsNumber" required />
+                    <input type="text" id="relative_cghs_number" class="form-control form-control-sm" name="claimDetails.relativeCghsNumber" />
                     <label class="form-label" for="relative_cghs_number">Relative CGHS Number</label>
                   </div>
 
@@ -165,18 +165,24 @@
               </div>
               <input type="hidden" class="form-control" id="applicant_id" name="applicant.id">
             </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="reset" class="btn btn-warning">Reset</button>
-        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
 
 <script>
+
+  $("#permissionCreateForm").on("submit", function(event) {
+    event.preventDefault();
+    submitForm();
+  });
+
   function resetPermissionForm() {
     let i;
     const inputs = document.querySelectorAll('#permissionCreateForm input');

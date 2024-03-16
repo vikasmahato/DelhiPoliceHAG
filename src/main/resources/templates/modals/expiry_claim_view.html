@@ -44,19 +44,20 @@
   claimViewModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const id = button.getAttribute('data-bs-id');
+    const hospitalType = button.getAttribute('data-bs-hospitalType');
     const modalTitle = diaryEntryModal.querySelector('.modal-title');
     modalTitle.textContent = 'View Claim';
 
-    $("#printNotesheet").attr("href", "/printNotesheet/" + id);
-    $("#printCalculation").attr("href", "/printCalculationSheet/" + id);
-    $("#printOrder").attr("href", "/printOrder/" + id + "/true");
-    $("#printOrderUnsigned").attr("href", "/printOrder/" + id + "/false");
-    $("#createCalculationSheet").attr("href", "/createCalculationSheet/" + id);
+    $("#printNotesheet").attr("href", "/printExpiryNotesheet/" + id);
+    $("#printCalculation").attr("href", "/printCalculationSheet/" + id + "/ExpiryDiaryEntry");
+    $("#printOrder").attr("href", "/printExpiryOrder/" + id + "/true");
+    $("#printOrderUnsigned").attr("href", "/printExpiryOrder/" + id + "/false");
+    $("#createCalculationSheet").attr("href", "/createCalculationSheet/" + id + "/" + hospitalType + "/ExpiryDiaryEntry");
 
     if(id != null) {
       $.ajax({
         type: "POST",
-        url: "/diaryEntry/" + id,
+        url: "/expiryDiaryEntry/" + id,
         success: function(response) {
           $("#displayDiaryNumber").text(response.displayDiaryNumber);
           $("#displayName").text(response.displayName + " (PIS No. " + response.applicant.pisNumber + ")");

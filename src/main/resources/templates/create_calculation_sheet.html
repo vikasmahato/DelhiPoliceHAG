@@ -46,6 +46,8 @@
                 <div class="box-body">
 
                     <input type="hidden" th:value="${diaryId}" name="diaryNo" id="diaryNo">
+                    <input type="hidden" th:value="${diaryClass}" name="diaryClass" id="diaryClass">
+                    <input type="hidden" th:value="${hospitalType}" name="hospitalType" id="hospitalType">
                     <input type="checkbox" id="toggleAutocomplete"> Enable Search
 
                     <div>
@@ -319,7 +321,7 @@
                         method: 'get',
                         data: {
                             searchTerm: request.term,
-                            diaryId: $("#diaryNo").val()
+                            hospitalType: $("#hospitalType").val()
                         },
                         success: function( data ) {
                             response( $.map( data, function( item ) {

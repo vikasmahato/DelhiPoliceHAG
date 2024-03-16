@@ -44,14 +44,15 @@
   claimViewModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const id = button.getAttribute('data-bs-id');
+    const hospitalType = button.getAttribute('data-bs-hospitalType');
     const modalTitle = diaryEntryModal.querySelector('.modal-title');
     modalTitle.textContent = 'View Claim';
 
     $("#printNotesheet").attr("href", "/printNotesheet/" + id);
-    $("#printCalculation").attr("href", "/printCalculationSheet/" + id);
+    $("#printCalculation").attr("href", "/printCalculationSheet/" + id + "/DiaryEntry");
     $("#printOrder").attr("href", "/printOrder/" + id + "/true");
     $("#printOrderUnsigned").attr("href", "/printOrder/" + id + "/false");
-    $("#createCalculationSheet").attr("href", "/createCalculationSheet/" + id);
+    $("#createCalculationSheet").attr("href", "/createCalculationSheet/" + id + "/" + hospitalType + "/DiaryEntry");
 
     if(id != null) {
       $.ajax({

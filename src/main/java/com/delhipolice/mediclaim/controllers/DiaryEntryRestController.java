@@ -69,6 +69,12 @@ public class DiaryEntryRestController {
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @PostMapping("/expiryDiaryEntry/{id}")
+    public ResponseEntity<ExpiryDiaryEntryVO> getExpiryDiaryEntry(@PathVariable UUID id) {
+        Optional<ExpiryDiaryEntryVO> diaryEntryVO = diaryEntryService.findExpiryDiaryEntry(id);
+        return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @PostMapping("/healthCheckupDiaryEntry/{id}")
     public ResponseEntity<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntry(@PathVariable UUID id) {
         Optional<HealthCheckupDiaryEntryVo> diaryEntryVO = diaryEntryService.findHealthCheckupDiaryEntry(id);

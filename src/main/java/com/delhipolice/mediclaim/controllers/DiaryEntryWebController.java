@@ -98,14 +98,22 @@ public class DiaryEntryWebController {
 
 
 
-    @GetMapping("/createCalculationSheet/{id}")
-    public String createCalculationSheet(@PathVariable UUID id, Model model) {
+    @GetMapping("/createCalculationSheet/{id}/{hospitalType}/{diaryClass}")
+    public String createCalculationSheet(@PathVariable UUID id, @PathVariable String hospitalType, @PathVariable String diaryClass, Model model) {
         model.addAttribute("diaryId", id);
+        model.addAttribute("diaryClass", diaryClass);
+        model.addAttribute("hospitalType", hospitalType);
         return "create_calculation_sheet";
     }
-    @GetMapping("/printCalculationSheet/{id}")
-    public String printCalculationSheet(@PathVariable UUID id, Model model) {
-        model.addAttribute("diaryEntry", diaryEntryService.findDiaryEntry(id).get());
+    @GetMapping("/printCalculationSheet/{id}/{diaryClass}")
+    public String printCalculationSheet(@PathVariable UUID id, @PathVariable String diaryClass, Model model) {
+
+        if(diaryClass.equals("DiaryEntry")) {
+            model.addAttribute("diaryEntry", diaryEntryService.findDiaryEntry(id).get());
+        } else {
+            model.addAttribute("diaryEntry", diaryEntryService.findExpiryDiaryEntry(id).get());
+        }
+
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/print_calculation_sheet";
     }
@@ -158,8 +166,23 @@ public class DiaryEntryWebController {
         return "prints/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "/" + diaryEntry.getClaimType().getEnumValue().toLowerCase(Locale.ROOT) + "_notesheet";
     }
 
+    @GetMapping("/printExpiryNotesheet/{id}")
+    public String printExpiryNotesheet(@PathVariable UUID id, Model model) {
+        ExpiryDiaryEntryVO diaryEntry = diaryEntryService.findExpiryDiaryEntry(id).get();
+        model.addAttribute("diaryEntry", diaryEntry);
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
+        return "prints/expiry/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "_notesheet";
+    }
 
 
+    @GetMapping("/printExpiryOrder/{id}/{renderSignature}")
+    public String printExpiryOrder(@PathVariable UUID id, @PathVariable Optional<String> renderSignature, Model model) {
+        ExpiryDiaryEntryVO diaryEntry = diaryEntryService.findExpiryDiaryEntry(id).get();
+        model.addAttribute("diaryEntry", diaryEntry);
+        model.addAttribute("renderSignature", renderSignature.orElse("false"));
+        model.addAttribute("currencyFormatUtil", currencyFormatUtil);
+        return "prints/expiry/" + diaryEntry.getDiaryType().getEnumValue().toLowerCase(Locale.ROOT) + "_order";
+    }
 
 
 

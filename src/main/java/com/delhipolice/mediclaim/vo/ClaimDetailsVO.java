@@ -30,8 +30,6 @@ public class ClaimDetailsVO{
     private Date endDate;
     private String refHospitalName;
     private String disease;
-    private Boolean isExpired;
-
     @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date expiryDate;
     private BigDecimal amountAvailable;
@@ -58,6 +56,5 @@ public class ClaimDetailsVO{
         relativeCghsNumber = claimDetails.getRelativeCghsNumber();
         isNewClaim = ClaimStatus.NEW.equals(claimDetails.getClaimStatus());
         amountDue = claimDetails.getAmountDue();
-        isExpired = claimDetails.getIsExpired() == null ? Boolean.FALSE : claimDetails.getIsExpired();
     }
 }

@@ -20,6 +20,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import static com.delhipolice.mediclaim.constants.Gender.MALE;
+import static com.delhipolice.mediclaim.constants.Relation.*;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -44,12 +47,13 @@ public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String amountGrantedInWords;
     @JsonDeserialize(using = CustomDateDeserializer.class)
     private List<CalculationSheetEntry> calculationSheet;
-    private Relation applicationSubmittedBy = Relation.SELF;
+    private Relation applicationSubmittedBy;
     private ClaimDetailsVO claimDetails;
     private ClaimType claimType;
     private String amountAsked1;
     private String amountGranted1;
     private String notesheetSalutation;
+    private Relation inverseRelationToApplicant;
     private Boolean viewMode = Boolean.FALSE;
     private String financialYear;
     private String diaryYear;
@@ -61,7 +65,6 @@ public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
     private String dateFormat;
     private String branchAddress;
     private String branchPhoneNo;
-    private String relationSimple;
     private String displayEndorsement;
     private Gender applicantGender;
     private Gender patientGender;
@@ -80,6 +83,8 @@ public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
         diaryDate = diaryEntry.getDiaryDate();
         applicant = new ApplicantVO(diaryEntry.getApplicant());
         treatmentTakenBy = diaryEntry.getTreatmentTakenBy();
+        applicationSubmittedBy = diaryEntry.getApplicationSubmittedBy();
+        inverseRelationToApplicant = getInverseRelationToApplicant(diaryEntry.getTreatmentTakenBy());
         hospital = diaryEntry.getHospital();
         claimType = diaryEntry.getClaimType();
         amountClaimed = diaryEntry.getAmountClaimed();
@@ -96,25 +101,96 @@ public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
         displayEndorsement = buildDisplayEndorsement(user);
         diaryYear = user.getDiaryYear();
         isNewClaim = claimDetails.getIsNewClaim();
-        patient = (claimDetails.getIsExpired() ? "Late " : "") + (TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
-        patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
+        patient = (Relation.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
+        patientCghs = Relation.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
         patientApplicantDisplay = buildPatientApplicantDisplay();
         fundsHead = user.getFundsHead();
         branchCode = user.getBranchCode();
         dateFormat = user.getDateFormat();
         branchPhoneNo = user.getTelephone();
         branchAddress = user.getAddress();
-        relationSimple = TreatmentBy.SELF.equals(treatmentTakenBy) ? "Self" : claimDetails.getRelation().getEnumValue();
-        applicantGender = diaryEntry.getApplicant().getGender();
-        patientGender = TreatmentBy.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicant().getGender() : claimDetails.getRelation().getGender();
+        applicantGender = Relation.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicationSubmittedBy().getGender() : diaryEntry.getApplicant().getGender();
+        patientGender = Relation.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicant().getGender() : diaryEntry.getTreatmentTakenBy().getGender();
         calculationSheetAdjustmentFactor = diaryEntry.getCalculationSheetAdjustmentFactor();
     }
 
-    private String buildPatientApplicantDisplay() {
-        if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {
-            return (claimDetails.getIsExpired() ? "Late " : "") + claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " " + buildDisplayName();
+    private Relation getInverseRelationToApplicant(Relation treatmentTakenBy) {
+        if(!SELF.equals(treatmentTakenBy)) {
+            return treatmentTakenBy;
         } else {
-            return (claimDetails.getIsExpired() ? "Late " : "") + buildDisplayName();
+            if(WIFE.equals(applicationSubmittedBy)) {
+                return HUSBAND;
+            }
+            if (HUSBAND.equals(applicationSubmittedBy)) {
+                return WIFE;
+            }
+            if(MOTHER.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return SON;
+                } else {
+                    return DAUGHTER;
+                }
+            }
+            if(FATHER.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return SON;
+                } else {
+                    return DAUGHTER;
+                }
+            }
+            if(MOTHER_IN_LAW.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return SON;
+                } else {
+                    return DAUGHTER;
+                }
+            }
+            if(FATHER_IN_LAW.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return SON;
+                } else {
+                    return DAUGHTER;
+                }
+            }
+            if(BROTHER.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return BROTHER;
+                } else {
+                    return SISTER;
+                }
+            }
+            if(SISTER.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return BROTHER;
+                } else {
+                    return SISTER;
+                }
+            }
+            if(SON.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return FATHER;
+                } else {
+                    return MOTHER;
+                }
+            }
+            if(DAUGHTER.equals(applicationSubmittedBy)) {
+                if(MALE.equals(applicant.getGender())) {
+                    return FATHER;
+                } else {
+                    return MOTHER;
+                }
+            }
+
+        }
+        return null;
+    }
+
+    private String buildPatientApplicantDisplay() {
+        if(SELF.equals(treatmentTakenBy)) {
+            // Self expired. So application submitted by relative
+            return claimDetails.getRelativeName() +  " " + applicationSubmittedBy.getRelation() + " Late " + buildDisplayName();
+        } else {
+            return "Late " + claimDetails.getRelativeName() +  " " + treatmentTakenBy.getRelation() + " " + buildDisplayName();
         }
     }
 

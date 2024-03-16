@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.vo;
 
+import com.delhipolice.mediclaim.constants.HospitalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class CalcSheetVO {
     UUID diaryNo;
-
+    String diaryClass;
+    HospitalType hospitalType;
     LinkedList<String> itemNo;
     LinkedList<String> itemHosp;
     LinkedList<String> itemDate;

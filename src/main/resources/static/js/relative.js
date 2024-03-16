@@ -1,12 +1,13 @@
 $('#treatment_by').on('change', function() {
     let selected = this.value;
+    debugger;
     if(selected === 'SELF') {
         $(".relative").hide();
-        $("#relative_name").val("");
-        $("#relative_cghs_number").val("");
-        $("#relative_cghs_expiry").val("");
+        $(".relative input").val("");
+        $(".relative input").attr("required", false);
     } else {
         $(".relative").show();
+        $(".relative input").attr("required", "required")
     }
 });
 

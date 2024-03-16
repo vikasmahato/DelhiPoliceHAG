@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.utils;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -11,6 +12,13 @@ import java.util.Locale;
 public class CurrencyFormatUtil {
 
     private String insertCommas(String number) {
+        Boolean isNegative = false;
+
+        if(number.startsWith("-")) {
+            isNegative = true;
+            number = number.substring(1);
+        }
+
         int indexOfDecimal = number.indexOf(".");
 
         String decimalPart = indexOfDecimal == -1 ? ".00" : number.substring(indexOfDecimal);
@@ -29,11 +37,14 @@ public class CurrencyFormatUtil {
                 }
                 result.append(numericPartReversed.charAt(i));
             }
-            return result.append(".sR").reverse().append(decimalPart).append("/-").toString();
+
+            number =  result.reverse().append(decimalPart).toString();
         }
 
+        number =  "Rs." + number + "/-";
 
-        return "Rs." + number + "/-";
+
+        return isNegative ? "-" + number : number;
     }
     public String formatCurrencyInr(double amount) {
         String number = new DecimalFormat("#############.00").format(amount);

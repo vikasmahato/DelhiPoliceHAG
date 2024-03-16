@@ -3,12 +3,12 @@
 <div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
+      <form id="diaryEntryCreateForm">
       <div class="modal-header">
         <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form id="diaryEntryCreateForm">
           <input type="hidden" class="form-control" id="claimType" name="claimType">
           <input type="hidden" class="form-control" id="id" name="id">
           <div class="box-body">
@@ -152,7 +152,7 @@
               <div class="col-4">
                 <div class="input-group input-group-sm mb-3">
                   <span class="input-group-text">Expired Person</span>
-                  <select class="form-control form-control-sm" id="treatmentTakenBy" name="treatmentTakenBy" required>
+                  <select class="form-control form-control-sm" id="treatmentTakenBy" name="treatmentTakenBy">
                     <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
                   </select>
                 </div>
@@ -161,7 +161,7 @@
               <div class="col-4">
                 <div class="input-group input-group-sm mb-3">
                   <span class="input-group-text">Aplication Submitted By</span>
-                  <select class="form-control form-control-sm" id="applicationSubmittedBy" name="applicationSubmittedBy" required>
+                  <select class="form-control form-control-sm" id="applicationSubmittedBy" name="applicationSubmittedBy">
                     <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
                   </select>
                 </div>
@@ -202,18 +202,24 @@
               </div>
               <input type="hidden" class="form-control" id="applicant_id" name="applicant.id">
             </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="reset" class="btn btn-warning">Reset</button>
-        <button type="button" class="btn btn-primary" onclick="submitForm();">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
 
 <script>
+
+  $("#diaryEntryCreateForm").on("submit", function(event) {
+    event.preventDefault();
+    submitForm();
+  });
+
   function resetDiaryForm() {
     let i;
     const inputs = document.querySelectorAll('#diaryEntryCreateForm input');
@@ -263,13 +269,13 @@
     if(id != null) {
       $.ajax({
         type: "POST",
-        url: "/diaryEntry/" + id,
+        url: "/expiryDiaryEntry/" + id,
         success: function(response) {
           const fields = [
             "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
             "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
             "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
-            "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
+            "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation", "applicationSubmittedBy",
             "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.isExpired", "claimDetails.disease", "claimDetails.expiryDate"
           ];
           fields.forEach(function(field) {

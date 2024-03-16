@@ -67,6 +67,21 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     }
 
     @Override
+    public void setAmountClaimed(BigDecimal totalAmountClaimed) {
+
+    }
+
+    @Override
+    public void setCalculationSheetAdjustmentFactor(Double adjustmentFactor) {
+
+    }
+
+    @Override
+    public void setCalculationSheet(List<CalculationSheetEntry> calculationSheetEntries) {
+
+    }
+
+    @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
     }

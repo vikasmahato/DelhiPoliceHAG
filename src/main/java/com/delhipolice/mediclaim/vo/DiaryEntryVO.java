@@ -99,7 +99,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         displayEndorsement = buildDisplayEndorsement(user);
         diaryYear = user.getDiaryYear();
         isNewClaim = claimDetails.getIsNewClaim();
-        patient = (claimDetails.getIsExpired() ? "Late " : "") + (TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
+        patient = (TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getName() : claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " of " + applicant.getName());
         patientCghs = TreatmentBy.SELF.equals(treatmentTakenBy) ? applicant.getCghsNumber() : claimDetails.getRelativeCghsNumber();
         patientApplicantDisplay = buildPatientApplicantDisplay();
         fundsHead = user.getFundsHead();
@@ -115,9 +115,9 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
 
     private String buildPatientApplicantDisplay() {
         if(TreatmentBy.RELATIVE.equals(treatmentTakenBy)) {
-            return (claimDetails.getIsExpired() ? "Late " : "") + claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " " + buildDisplayName();
+            return claimDetails.getRelativeName() +  " " + claimDetails.getRelation().getRelation() + " " + buildDisplayName();
         } else {
-            return (claimDetails.getIsExpired() ? "Late " : "") + buildDisplayName();
+            return buildDisplayName();
         }
     }
 

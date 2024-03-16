@@ -57,4 +57,8 @@ public class ReferralApplicants implements Serializable, Auditable {
     public BigDecimal getAmount() {
         return amount == null ? BigDecimal.ZERO : amount;
     }
+
+    public String getApplicantDetails() {
+        return applicantDetails == null ? "" : applicantDetails;
+    }
 }

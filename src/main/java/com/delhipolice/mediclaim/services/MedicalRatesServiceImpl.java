@@ -1,11 +1,10 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.constants.HospitalType;
 import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.repositories.MedicalRatesRepository;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import com.delhipolice.mediclaim.vo.MedicalRateVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,19 +32,14 @@ public class MedicalRatesServiceImpl implements MedicalRatesService{
     }
 
     @Override
-    public List<MedicalRateVO> findByNameContaining(String searchTerm, UUID diaryId) {
-
-        if(StringUtils.isEmpty(searchTerm))
-            return new ArrayList<>();
-
-        DiaryEntryVO diaryEntry = diaryEntryService.findDiaryEntry(diaryId).get();
+    public List<MedicalRateVO> findByNameContaining(String searchTerm, HospitalType hospitalType) {
 
         List<MedicalRates> medicalRates = medicalRatesRepository.findByNameContaining(searchTerm.toLowerCase(Locale.ROOT));
 
         List<MedicalRateVO> medicalRateVOS = new ArrayList<>();
 
         for(MedicalRates mr : medicalRates) {
-            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(diaryEntry.getHospital().getHospitalType()) ? mr.getNabhNablRate() : mr.getNonNabhNablRate(), mr.getRule(), mr.getState() ));
+            medicalRateVOS.add(new MedicalRateVO(mr.getProductCode(), mr.getProductName(), NABH.equals(hospitalType) ? mr.getNabhNablRate() : mr.getNonNabhNablRate(), mr.getRule(), mr.getState() ));
         }
 
         return medicalRateVOS;
