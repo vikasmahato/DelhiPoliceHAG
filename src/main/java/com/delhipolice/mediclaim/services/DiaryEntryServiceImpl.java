@@ -81,7 +81,19 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         DiaryEntry diaryEntry = new DiaryEntry(diaryEntryVO);
 
         Applicant applicant = applicantService.findByPisNumber(diaryEntryVO.getApplicant().getPisNumber());
-        diaryEntry.setApplicant(applicant == null ? new Applicant(diaryEntryVO.getApplicant()) : applicant);
+
+        if(applicant != null) {
+            applicant.setName(diaryEntryVO.getApplicant().getName());
+            applicant.setGender(diaryEntryVO.getApplicant().getGender());
+            applicant.setName(diaryEntryVO.getApplicant().getName());
+            applicant.setCghsNumber(diaryEntryVO.getApplicant().getCghsNumber());
+            applicant.setCghsCategory(diaryEntryVO.getApplicant().getCghsCategory());
+            applicant = applicantService.update(applicant);
+        } else {
+            applicant = new Applicant(diaryEntryVO.getApplicant());
+        }
+
+        diaryEntry.setApplicant(applicant);
 
         Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
 
@@ -97,13 +109,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO) {
+        diaryEntryVO.getHealthCheckupApplicants().removeIf(x -> StringUtils.isEmpty(x.getApplicantDetails()) && StringUtils.isEmpty(x.getRegisterNumber()));
         HealthCheckupDiaryEntry diaryEntry = new HealthCheckupDiaryEntry(diaryEntryVO);
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
-
             HealthCheckupDiaryEntry exisitingEntry = healthCheckupDiaryEntryRepository.findById(diaryEntryVO.getId()).get();
             healthCheckupApplicantRepository.deleteAll(exisitingEntry.getHealthCheckupApplicants());
-
             diaryEntry.setHealthCheckupApplicants(diaryEntryVO.getHealthCheckupApplicants());
         }
         return healthCheckupDiaryEntryRepository.save(diaryEntry);
@@ -111,6 +122,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO) {
+        diaryEntryVO.getReferralApplicants().removeIf(x -> StringUtils.isEmpty(x.getApplicantDetails()) && StringUtils.isEmpty(x.getRegisterNumber()));
         ReferralDiaryEntry diaryEntry = new ReferralDiaryEntry(diaryEntryVO);
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
@@ -127,7 +139,19 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         ExpiryDiaryEntry diaryEntry = new ExpiryDiaryEntry(diaryEntryVO);
 
         Applicant applicant = applicantService.findByPisNumber(diaryEntryVO.getApplicant().getPisNumber());
-        diaryEntry.setApplicant(applicant == null ? new Applicant(diaryEntryVO.getApplicant()) : applicant);
+
+        if(applicant != null) {
+            applicant.setName(diaryEntryVO.getApplicant().getName());
+            applicant.setGender(diaryEntryVO.getApplicant().getGender());
+            applicant.setName(diaryEntryVO.getApplicant().getName());
+            applicant.setCghsNumber(diaryEntryVO.getApplicant().getCghsNumber());
+            applicant.setCghsCategory(diaryEntryVO.getApplicant().getCghsCategory());
+            applicant = applicantService.update(applicant);
+        } else {
+            applicant = new Applicant(diaryEntryVO.getApplicant());
+        }
+
+        diaryEntry.setApplicant(applicant);
 
         Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
 
@@ -356,7 +380,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     private Page<HealthCheckupDiaryEntryVo> getPageHealthCheckup(List<HealthCheckupDiaryEntry> diaryEntries, PagingRequest pagingRequest) {
         List<HealthCheckupDiaryEntryVo> filtered = diaryEntries.stream()
                 .sorted(Comparator.comparing(e -> e.getAuditSection().getDateCreated()))
-                .filter(filterHealthCHeckupDiaryEntries(pagingRequest))
+                .filter(filterDiaryEntries(pagingRequest))
                 .skip(pagingRequest.getStart())
                 .limit(pagingRequest.getLength())
                 .map(HealthCheckupDiaryEntryVo::new)
@@ -396,6 +420,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             } else if (diaryEntry instanceof ReferralDiaryEntry) {
                 ReferralDiaryEntry referralDiaryEntryCast = (ReferralDiaryEntry) diaryEntry;
                 return referralDiaryEntryCast.getReferralApplicants()
+                        .stream().anyMatch(applicant -> applicant.getApplicantDetails().toLowerCase().contains(value));
+            } else if( diaryEntry instanceof HealthCheckupDiaryEntry) {
+                HealthCheckupDiaryEntry healthCheckupDiaryEntry = (HealthCheckupDiaryEntry) diaryEntry;
+                return healthCheckupDiaryEntry.getHealthCheckupApplicants()
                         .stream().anyMatch(applicant -> applicant.getApplicantDetails().toLowerCase().contains(value));
             }
             return false;

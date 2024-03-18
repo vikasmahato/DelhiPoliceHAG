@@ -116,14 +116,14 @@
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
                     var buttonID = "action_"+full.id;
-                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralNotesheet/'+ full.id +'">Notesheet</a>';
+                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" target="_blank" href="/printReferralNotesheet/'+ full.id +'">Notesheet</a>';
                 }
             },
             {
                 sortable: false,
                 "render": function ( data, type, full, meta ) {
                     var buttonID = "action_"+full.id;
-                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" href="/printReferralOrder/'+ full.id +'">Order</a>';
+                    return '<a id='+buttonID+' class="btn btn-primary btn-sm" target="_blank" href="/printReferralOrder/'+ full.id +'">Order</a>';
                 }
             },
             {

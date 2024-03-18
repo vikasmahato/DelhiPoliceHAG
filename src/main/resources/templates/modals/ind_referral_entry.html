@@ -72,6 +72,12 @@
   });
 
   const indRefDiaryEntryModal = document.getElementById('indRefDiaryEntryModal');
+
+  indRefDiaryEntryModal.addEventListener('hidden.bs.modal', function () {
+    $("#applicantsTable tbody").empty()
+    $("#id").val('');
+  });
+
   indRefDiaryEntryModal.addEventListener('show.bs.modal', function (event) {
     const button = event.relatedTarget;
     const type = button.getAttribute('data-bs-type');
@@ -141,6 +147,7 @@
                 '</div>');
         $('#indRefDiaryEntryModal').modal('toggle');
         $('#diaryEntries').DataTable().ajax.reload();
+        $("#id").val("");
       },
       error: function (jqXHR, exception) {
         const  messageDiv = $("#message-div");
@@ -149,6 +156,7 @@
                 exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
                 '</div>');
         $('#indRefDiaryEntryModal').modal('toggle');
+        $("#id").val("");
       }
     });
 

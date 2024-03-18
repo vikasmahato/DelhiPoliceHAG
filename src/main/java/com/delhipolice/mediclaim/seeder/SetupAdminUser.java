@@ -18,14 +18,14 @@ public class SetupAdminUser implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
-            userService.loadUserByUsername("hagcrimebranch1@gmail.com");
+            userService.loadUserByUsername("vikasmahato0@gmail.com");
 
         } catch (Exception e) {
             String encodedPassword = passwordEncoder.encode("adminPassword");
             userService.createAdminUser("hagcrimebranch1@gmail.com", encodedPassword);
             userService.createAdminUser("hagcrimebranch2@gmail.com", encodedPassword);
-            //userService.createAdminUser("vikasmahato0@gmail.com", encodedPassword);
-            //userService.createAdminUser("hagcrimebranch@gmail.com", encodedPassword);
+            userService.createAdminUser("hagcrimebranch3@gmail.com", encodedPassword);
+            userService.createAdminUser("hagcrimebranch@gmail.com", encodedPassword);
         }
     }
 }

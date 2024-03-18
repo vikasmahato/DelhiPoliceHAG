@@ -35,10 +35,6 @@
 
             <section class="mb-4">
                 <div class="card">
-                    <div class="card-header py-3">
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal" data-bs-type="CREDIT">Create Credit</button>
-                    </div>
-
                     <div class="card-body">
                         <form th:action="@{/settings}" th:object="${user}" method="post">
                             <div class="row">

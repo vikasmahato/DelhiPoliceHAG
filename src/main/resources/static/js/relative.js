@@ -1,6 +1,5 @@
 $('#treatment_by').on('change', function() {
     let selected = this.value;
-    debugger;
     if(selected === 'SELF') {
         $(".relative").hide();
         $(".relative input").val("");

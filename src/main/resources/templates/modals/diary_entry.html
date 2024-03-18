@@ -297,6 +297,11 @@
 
   $("#diaryEntryCreateForm").on("submit", function(event) {
     event.preventDefault();
+    if($("#hospital_id") == null || $("#hospital_id").val() == "") {
+      alert("Please select a hospital from the list");
+      return;
+    }
+
     submitForm();
   });
 
