@@ -1,15 +1,18 @@
 package com.delhipolice.mediclaim.services;
 
+import com.delhipolice.mediclaim.model.Role;
 import com.delhipolice.mediclaim.model.User;
+import com.delhipolice.mediclaim.repositories.RoleRepository;
 import com.delhipolice.mediclaim.repositories.UserRepository;
+import com.delhipolice.mediclaim.utils.FinancialYearGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -17,16 +20,20 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
+
         return user;
     }
 
-    public void createAdminUser(String username, String password) {
+    public void createAdminUser(String username, String password, Role role) {
 
         User adminUser = new User();
         adminUser.setUsername(username);
@@ -42,7 +49,13 @@ public class UserService implements UserDetailsService {
         adminUser.setHealthCheckupSop("PHQ Standard Operating Procedure (SOP) No.4201-4350/HAR/PHQ dated 01.10.2021");
         adminUser.setAddress("2nd Floor, Old Police Head Quarter, MSO Building, ITO, Delhi");
         adminUser.setTelephone("011-20845026");
-        userRepository.save(adminUser);
+        adminUser.setEndorsementFormat("No. ____________________/Genl/(III)/Crime Dated Delhi, the _______________________/{diaryYear}.");
+        adminUser.setFinancialYear(FinancialYearGenerator.getActualFinancialYear(new Date()));
+        adminUser.getRoles().add(role);
+        User savedUser = userRepository.save(adminUser);
+
+        role.getUsers().add(savedUser);
+        roleRepository.save(role);
     }
 
     public void save(User user) {
