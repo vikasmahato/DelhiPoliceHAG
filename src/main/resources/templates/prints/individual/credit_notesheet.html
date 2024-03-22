@@ -12,6 +12,9 @@
 <div class='container'>
     <div class="borderDiv">
     <div style="margin: 10px;">
+        <p>
+            FR: &nbsp Dy. No.<b>[[${diaryEntry.diaryNumber}]]/HAG/[[${#strings.capitalize(diaryEntry.branchCode.toLowerCase())}]]</b> dated:- <b>[[${#dates.format(diaryEntry.diaryDate, diaryEntry.dateFormat)}]]</b>
+        </p>
         <div>
             <table style='width:100%;margin-top:10px;'>
                 <tr>
@@ -20,14 +23,14 @@
                 </tr>
             </table>
         </div>
-        <p style='text-indent:10%; text-align:justify;margin-top:10px;'>FR alongwith its enclosure may kindly be perused vide which a request has submitted stated there in that <b> [[${diaryEntry.patientApplicantDisplay}]]</b> is admitted in <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> in emergency condition as mentioned in emergency certificate issued by the Hospital Authority. Hospital is empanelled under CGHS. Further the Govt. servant has requested that
+        <p style='text-indent:10%; text-align:justify;margin-top:20px;'>FR alongwith its enclosure may kindly be perused vide which a request has submitted stated there in that <b> [[${diaryEntry.patientApplicantDisplay}]]</b> is admitted in <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> in emergency condition as mentioned in emergency certificate issued by the Hospital Authority. Hospital is empanelled under CGHS. Further the Govt. servant has requested that
             [[${diaryEntry.applicantGender.getHeOrShe()}]]
             is not in a position to bear the medical expenses for the treatment and requested for proving credit facility from the said Hospital. [[${#strings.capitalize(diaryEntry.patientGender.getHeOrShe().toLowerCase())}]] is having a valid Plastic <b>Card ID No. </b><b th:if="${diaryEntry.claimDetails.relation.name} == 'SELF'" th:text="${diaryEntry.applicant.cghsNumber}"></b>
             <b th:if="${diaryEntry.claimDetails.relation.name} != 'SELF'" th:text="${diaryEntry.claimDetails.relativeCghsNumber}"></b> and entitle for <b>[[${diaryEntry.applicant.cghsCategory.getEnumValue()}]] Ward Category</b> (Calculated as per basic pay of Govt. Servant).</p>
-        <p style='text-indent:10%;text-align:justify;'>In this connection, the above said Hospital is under CGHS recognized and according to CGHS instruction vide MH & FW O.M. S11045/36/2012-CGHS (HEC) dated 01.10.2014 vide para-4 there in mentioned that all CGHS beneficiaries are entitled for credit facility for the treatment from CGHS recognized Hospital under emergency condition.</p>
-        <p style='text-indent:10%;text-align:justify;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. [[${diaryEntry.serialNo}]]</b>.
+        <p style='text-indent:10%;text-align:justify;margin-top:20px;'>In this connection, the above said Hospital is under CGHS recognized and according to CGHS instruction vide MH & FW O.M. S11045/36/2012-CGHS (HEC) dated 01.10.2014 vide para-4 there in mentioned that all CGHS beneficiaries are entitled for credit facility for the treatment from CGHS recognized Hospital under emergency condition.</p>
+        <p style='text-indent:10%;text-align:justify;margin-top:20px;'>Necessary entry has been made on Credit Facility register at <b>Sl. No. [[${diaryEntry.serialNo}]]</b>.
         </p>
-        <p style='text-indent:10%; text-align:justify;' class="avoid-page-break">
+        <p style='text-indent:10%; text-align:justify;margin-top:20px;' class="avoid-page-break">
             In view of the position explained above, if approved we may issue a credit facility to the above said Hospital in favour of <b>[[${diaryEntry.displayName}]]</b> to provide credit facility for the treatment of
             <b><th:block th:if="${diaryEntry.claimDetails.relation.name} == 'SELF'" th:text="${diaryEntry.applicant.gender.getHimSelfOrHerself()}"/><th:block th:if="${diaryEntry.claimDetails.relation.name} != 'SELF'" th:text="${diaryEntry.applicant.gender.getHisOrHer() + ' ' + diaryEntry.claimDetails.relation.getEnumValue()}"/>.</b>
         </p>
