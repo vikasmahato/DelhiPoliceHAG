@@ -8,15 +8,15 @@
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet"></link>
     <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
 </head>
-<body>
-<div class='container'>
+<body style="background-color: coral;">
+<div class='container' style="background-color: #80ced6;padding-right:30px;padding-left:30px;">
     <img th:src="@{/images/img.png}" height="50" alt="" loading="lazy" style="display: block; margin: auto;" />
     <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: [[${diaryEntry.branchCode}]] (HQ), DELHI,</u></b></h3>
     <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
     <h3><u><b>Telephone No. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
-    <p style="text-align: center">
-        ____________________________________________________________________________________
-    </p>
+
+    <hr style="border: none;height: 2px;background-color: 'black';"/>
+
     <p style='text-align:justify; margin-top: 10px;' th:inline="text" >[[${diaryEntry.displayEndorsement}]]</p>
 
 
