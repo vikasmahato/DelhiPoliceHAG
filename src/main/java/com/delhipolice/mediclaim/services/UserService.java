@@ -35,7 +35,10 @@ public class UserService implements UserDetailsService {
 
     public void createAdminUser(String username, String password, Role role) {
 
-        User adminUser = new User();
+        User adminUser = userRepository.findByUsername(username);
+        if(adminUser == null) {
+            adminUser = new User();
+        }
         adminUser.setUsername(username);
         adminUser.setPassword(password);
         adminUser.setDiaryNumberFormat("Diary No. {diaryNumber} Genl. Br.(III)/Crime dated {diaryDate}");
@@ -47,10 +50,12 @@ public class UserService implements UserDetailsService {
         adminUser.setHealthCheckupAdmissibleAmountFemale(BigDecimal.valueOf(2200));
         adminUser.setHealthCheckupFundsHead("\"255-Police, 01-01.06 Medical treatment\" /Crime");
         adminUser.setHealthCheckupSop("PHQ Standard Operating Procedure (SOP) No.4201-4350/HAR/PHQ dated 01.10.2021");
-        adminUser.setAddress("2nd Floor, Old Police Head Quarter, MSO Building, ITO, Delhi");
+        adminUser.setAddress("2ND FLOOR, OLD POLICE HEAD QUARTER, MSO BUILDING, ITO, DELHI");
         adminUser.setTelephone("011-20845026");
-        adminUser.setEndorsementFormat("No. ____________________/Genl/(III)/Crime Dated Delhi, the _______________________/{diaryYear}.");
+        adminUser.setEndorsementFormat("No. __________________/Genl/(III)/Crime Dated Delhi, the _____________________/{diaryYear}");
         adminUser.setFinancialYear(FinancialYearGenerator.getActualFinancialYear(new Date()));
+        adminUser.setDiaryYear(FinancialYearGenerator.getCurrentYear());
+
         adminUser.getRoles().add(role);
         User savedUser = userRepository.save(adminUser);
 

@@ -55,7 +55,7 @@ public class ApplicantServiceImpl implements ApplicantService{
 
     @Override
     public Applicant update(Applicant applicant) {
-        return null;
+        return applicantRepository.save(applicant);
     }
 
 }

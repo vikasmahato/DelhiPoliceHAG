@@ -11,14 +11,14 @@
 <body>
 <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
 <script th:src="@{/js/bootstrap.js}" type="text/javascript"></script>
-<div class='container'>
+<div class='container' style="padding-right:30px;padding-left:30px;">
     <img th:src="@{/images/img.png}" height="50" alt="" loading="lazy" style="display: block; margin: auto;" />
     <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: [[${diaryEntry.branchCode}]] (HQ), DELHI,</u></b></h3>
     <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
     <h3><u><b>Telephone No. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
 
     <p style="text-align: center">
-        ____________________________________________________________________________________
+        _________________________________________________________________________
     </p>
     <p style='text-align:justify; margin-top: 10px;' th:inline="text" >[[${diaryEntry.displayEndorsement}]]</p>
 

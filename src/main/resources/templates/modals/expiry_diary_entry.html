@@ -217,6 +217,21 @@
 
   $("#diaryEntryCreateForm").on("submit", function(event) {
     event.preventDefault();
+
+    if($("#applicationSubmittedBy").val() == $("#treatmentTakenBy").val()) {
+      alert("Application submitted by and treatment taken by cannot be same");
+      return;
+    }
+
+    if($("#treatmentTakenBy").val() != 'SELF' && $("#applicationSubmittedBy").val() != 'SELF') {
+      alert("Application submitted by or treatment taken by is incorrect");
+      return;
+    }
+
+    if($("#hospital_id") == null || $("#hospital_id").val() == "") {
+      alert("Please select a hospital from the list");
+      return;
+    }
     submitForm();
   });
 
@@ -341,7 +356,6 @@
       async: false,
       dataType: "json",
       success: function(response){
-        debugger;
         const  messageDiv = $("#message-div");
         messageDiv.html(
                 '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +

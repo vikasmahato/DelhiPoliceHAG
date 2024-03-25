@@ -24,4 +24,10 @@ public class FinancialYearGenerator {
         }
         return financialYear;
     }
+
+    public static String getCurrentYear() {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(new Date());
+        return String.valueOf(calendar.get(Calendar.YEAR));
+    }
 }

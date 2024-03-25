@@ -9,14 +9,16 @@
     <link th:href="@{/css/printstyles.css}" rel="stylesheet"></link>
 </head>
 <body>
-<div class='container'>
+<div class='container' style="padding-right:30px;padding-left:30px;">
     <img th:src="@{/images/img.png}" height="50" alt="" loading="lazy" style="display: block; margin: auto;" />
     <h3 style='text-align:center;'><b><u>OFFICE OF THE DY. COMMISSIONER OF POLICE: [[${diaryEntry.branchCode}]] (HQ), DELHI,</u></b></h3>
     <h3><u><b>[[${diaryEntry.branchAddress}]]</b></u></h3>
     <h3><u><b>Telephone No. [[${diaryEntry.branchPhoneNo}]]</b></u></h3>
+
     <p style="text-align: center">
-        ____________________________________________________________________________________
+        _________________________________________________________________________
     </p>
+
     <p style='text-align:justify; margin-top: 10px;' th:inline="text" >[[${diaryEntry.displayEndorsement}]]</p>
 
 
@@ -34,11 +36,11 @@
     </table>
     <p style='margin:0;'>Memo,</p>
 
-    <p  style='text-indent:14%;text-align:justify;margin-top: 10px;'>
+    <p  style='text-indent:14%;text-align:justify;margin-top: 10px;margin-bottom: 10px;'>
         Enclosed please find herewith a medical claim amounting to <b>Rs. [[${diaryEntry.amountGranted1}]]/-</b> received from <b>Medical Superintendent, [[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> for the treatment of <b>[[${diaryEntry.patientApplicantDisplay}]]</b> in emergency on credit basis. As per the details given below:-
     </p>
 
-    <table class='table w-auto small main-table'>
+    <table class='table w-auto small main-table' style="margin-bottom:0px;">
         <thead>
         <tr>
             <th>Rank, Name & No. treatment taken by</th>
@@ -64,11 +66,11 @@
         </tr>
         </tbody>
     </table>
-    <p style='text-indent:14%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;margin-bottom:0px;' th:inline="text">
         Funds for this purpose are available under head <b>[[${diaryEntry.fundsHead}]]</b> during the Current Financial Year <b>[[${diaryEntry.financialYear}]]</b>.
     </p>
 
-    <p style='text-indent:14%;text-align:justify;' th:inline="text">
+    <p style='text-indent:14%;text-align:justify;margin-bottom:0px;' th:inline="text">
         It is, therefore, requested that necessary ex-post-facto sanction of the competent authority for making the payment to <b>[[${diaryEntry.hospital.hospitalName}]], [[${diaryEntry.hospital.hospitalAddress}]]</b> may kindly be obtained and conveyed to this office at the earliest.
     </p>
 
