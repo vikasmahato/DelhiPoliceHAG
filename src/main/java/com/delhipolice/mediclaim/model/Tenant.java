@@ -63,6 +63,6 @@ public class Tenant {
     @Column
     private String diaryYear;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tenant")
     private Collection<User> users;
 }

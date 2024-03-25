@@ -25,8 +25,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles = new HashSet<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Collection<GrantedAuthority> authorities;
 
     private String diaryNumberFormat;
 
@@ -55,9 +55,12 @@ public class User implements UserDetails {
 
     private String diaryYear;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Tenant tenant;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream().map(role -> (GrantedAuthority) role::getName).collect(Collectors.toList());
+        return authorities;
     }
 
     @Override

@@ -1,17 +1,19 @@
 package com.delhipolice.mediclaim.services;
 
-import com.delhipolice.mediclaim.model.Role;
+import com.delhipolice.mediclaim.constants.Roles;
+import com.delhipolice.mediclaim.model.Tenant;
 import com.delhipolice.mediclaim.model.User;
-import com.delhipolice.mediclaim.repositories.RoleRepository;
 import com.delhipolice.mediclaim.repositories.UserRepository;
 import com.delhipolice.mediclaim.utils.FinancialYearGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 
 @Service
@@ -21,7 +23,10 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    TenantService tenantService;
 
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,10 +35,13 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
+        user.getAuthorities();
         return user;
     }
 
-    public void createAdminUser(String username, String password, Role role) {
+    public void createAdminUser(String username, String password) {
+
+        password = passwordEncoder.encode(password);
 
         User adminUser = userRepository.findByUsername(username);
         if(adminUser == null) {
@@ -56,14 +64,43 @@ public class UserService implements UserDetailsService {
         adminUser.setFinancialYear(FinancialYearGenerator.getActualFinancialYear(new Date()));
         adminUser.setDiaryYear(FinancialYearGenerator.getCurrentYear());
 
-        adminUser.getRoles().add(role);
+        adminUser.setAuthorities(Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
         User savedUser = userRepository.save(adminUser);
-
-        role.getUsers().add(savedUser);
-        roleRepository.save(role);
     }
 
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    public User save(Long tenantId, String username, String password) {
+        Tenant tenant = tenantService.find(tenantId);
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setDiaryNumberFormat(tenant.getDiaryNumberFormat());
+        user.setBranchCode(tenant.getBranchCode());
+        user.setBranchName(tenant.getBranchName());
+        user.setDateFormat(tenant.getDateFormat());
+        user.setFundsHead(tenant.getFundsHead());
+        user.setHealthCheckupAdmissibleAmountMale(tenant.getHealthCheckupAdmissibleAmountMale());
+        user.setHealthCheckupAdmissibleAmountFemale(tenant.getHealthCheckupAdmissibleAmountFemale());
+        user.setHealthCheckupFundsHead(tenant.getHealthCheckupFundsHead());
+        user.setHealthCheckupSop(tenant.getHealthCheckupSop());
+        user.setAddress(tenant.getAddress());
+        user.setTelephone(tenant.getTelephone());
+        user.setEndorsementFormat(tenant.getEndorsementFormat());
+        user.setFinancialYear(FinancialYearGenerator.getActualFinancialYear(new Date()));
+        user.setDiaryYear(FinancialYearGenerator.getCurrentYear());
+
+        user.setAuthorities(Arrays.asList(new SimpleGrantedAuthority("USER")));
+
+        user.setTenant(tenant);
+        tenant.getUsers().add(user);
+
+        User savedUser = userRepository.save(user);
+        tenantService.save(tenant);
+
+        return savedUser;
     }
 }
