@@ -1,5 +1,6 @@
 package com.delhipolice.mediclaim.seeder;
 
+import com.delhipolice.mediclaim.constants.Roles;
 import com.delhipolice.mediclaim.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,20 +13,13 @@ public class SetupAdminUser implements CommandLineRunner {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @Override
     public void run(String... args) throws Exception {
         try {
-            userService.loadUserByUsername("vikasmahato0@gmail.com");
+            userService.loadUserByUsername("vikasmahato1@gmail.com");
 
         } catch (Exception e) {
-            String encodedPassword = passwordEncoder.encode("adminPassword");
-            userService.createAdminUser("hagcrimebranch1@gmail.com", encodedPassword);
-            userService.createAdminUser("hagcrimebranch2@gmail.com", encodedPassword);
-            userService.createAdminUser("hagcrimebranch3@gmail.com", encodedPassword);
-            userService.createAdminUser("hagcrimebranch@gmail.com", encodedPassword);
+            userService.createAdminUser("vikasmahato0@gmail.com", "adminPassword");
         }
     }
 }

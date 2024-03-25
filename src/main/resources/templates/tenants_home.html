@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Diary Entry</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <link th:href="@{/css/new-prism.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/mdb.min.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/datatables.css}" rel="stylesheet"></link>
+    <link th:href="@{/css/body.css}" rel="stylesheet"></link>
+
+</head>
+<body>
+
+<header>
+    <div th:replace="fragments/sidenav :: sidebarMenu"></div>
+    <div th:replace="fragments/topnav :: navbar"></div>
+</header>
+
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <div id="message-div"></div>
+
+        <div class="modal fade" id="tenantModal" tabindex="-1" aria-labelledby="tenantModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tenantModalLabel">New Tenant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="tenantEditForm">
+                            <input type="hidden" class="form-control" id="tenant-id" name="id">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="tenantName" class="col-form-label">Tenant Name:</label>
+                                        <input type="text" class="form-control" id="tenantName" name="tenantName">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="diaryNumberFormat" class="col-form-label">Diary Number Format:</label>
+                                        <input type="text" class="form-control" id="diaryNumberFormat" name="diaryNumberFormat">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="branchCode" class="col-form-label">Branch Code:</label>
+                                        <input type="text" class="form-control" id="branchCode" name="branchCode">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="fundsHead" class="col-form-label">Funds Head:</label>
+                                        <input type="text" class="form-control" id="fundsHead" name="fundsHead">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="address" class="col-form-label">Address:</label>
+                                        <input type="text" class="form-control" id="address" name="address">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="healthCheckupAdmissibleAmountMale" class="col-form-label">Health Checkup Amount Male:</label>
+                                        <input type="number" class="form-control" id="healthCheckupAdmissibleAmountMale" name="healthCheckupAdmissibleAmountMale" value="2000">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="telephone" class="col-form-label">Financial Year:</label>
+                                        <input type="text" class="form-control" id="financialYear" name="financialYear">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="diaryYear" class="col-form-label">Diary Year:</label>
+                                        <input type="text" class="form-control" id="diaryYear" name="diaryYear">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+
+                                    <div class="mb-3">
+                                        <label for="dateFormat" class="col-form-label">Date Format:</label>
+                                        <input type="text" class="form-control" id="dateFormat" name="dateFormat">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="endorsementFormat" class="col-form-label">Endorsement Format:</label>
+                                        <input type="text" class="form-control" id="endorsementFormat" name="endorsementFormat">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="branchName" class="col-form-label">Branch Name:</label>
+                                        <input type="text" class="form-control" id="branchName" name="branchName">
+                                    </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="healthCheckupFundsHead" class="col-form-label">Health Checkup Funds Head:</label>
+                                        <input type="text" class="form-control" id="healthCheckupFundsHead" name="healthCheckupFundsHead">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="telephone" class="col-form-label">Telephone:</label>
+                                        <input type="text" class="form-control" id="telephone" name="telephone">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="healthCheckupAdmissibleAmountFemale" class="col-form-label">Health Checkup Amount Female:</label>
+                                        <input type="number" class="form-control" id="healthCheckupAdmissibleAmountFemale" name="healthCheckupAdmissibleAmountFemale" value="2200">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="healthCheckupSop" class="col-form-label">Health Checkup Sop:</label>
+                                        <input type="text" class="form-control" id="healthCheckupSop" name="healthCheckupSop">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="submitForm();">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="usersModal" tabindex="-1" aria-labelledby="usersModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="usersModalLabel">Users</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-sm text-nowrap table-group-divider">
+                            <thead>
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addUsersModal" tabindex="-1" aria-labelledby="addUsersModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addUsersModalLabel">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="userAddForm">
+                            <input type="hidden" class="form-control" id="user-tenant-id" name="tenantId">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="username" class="col-form-label">Email:</label>
+                                        <input type="email" class="form-control" id="username" name="username">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="text" class="form-control" id="password" name="password">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="submitUserForm();">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tenantModal">Add Tenant</button>
+                    <h5 class="mb-0 text-center">
+                        <strong>Tenants</strong>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table id="tenants" class="table table-hover table-sm text-nowrap table-group-divider">
+                            <thead>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Branch Name</th>
+                                <th scope="col">Telephone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                            <tr th:each="tenant : ${tenants}">
+                                <td th:text="${tenant.id}"></td>
+                                <td th:text="${tenant.tenantName}"></td>
+                                <td th:text="${tenant.branchName}"></td>
+                                <td th:text="${tenant.telephone}"></td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tenantModal" th:data-bs-id="${tenant.id}"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#usersModal" th:data-bs-id="${tenant.id}"><i class="fa-solid fa-users"></i></button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#addUsersModal" th:data-bs-id="${tenant.id}"><i class="fa-solid fa-user-plus"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th scope="col">S. No.</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Branch Name</th>
+                                <th scope="col">Telephone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+</body>
+<script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/new-prism.js}" type="text/javascript"></script>
+<script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdbsnippet.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/mdb.min.js}" type="text/javascript"></script>
+<script th:src="@{/js/datatables.js}"></script>
+
+<script>
+    $('#medicalrates').DataTable();
+</script>
+<script>
+    const tenantModal = document.getElementById('tenantModal');
+    const usersModal = document.getElementById('usersModal');
+    const addUserModal = document.getElementById('addUsersModal');
+
+    addUserModal.addEventListener('show.bs.modal', function (event) {
+        debugger;
+        const button = event.relatedTarget;
+        const id = button.getAttribute('data-bs-id');
+        debugger;
+        $("#user-tenant-id").val(id);
+    });
+
+    usersModal.addEventListener('show.bs.modal', function (event) {
+        debugger;
+        const button = event.relatedTarget;
+        const id = button.getAttribute('data-bs-id');
+        $.ajax({
+            type:"get",
+            url:"/tenants/" + id,
+            async: false,
+            dataType: "json",
+            success: function(response){
+                const users = response.users;
+                $("#usersModal tbody").empty();
+
+                for (let i = 0; i < users.length; i++) {
+                    const user = users[i];
+                    $("#usersModal tbody").append(
+                        '<tr>' +
+                        '<td>' + user.username + '</td>' +
+                        '<td>' + 'Active' + '</td>' +
+                        '<td>' +
+                        '</td>' +
+                        '</tr>'
+                    );
+                }
+            },
+            error: function (jqXHR, exception) {
+                console.log(exception);
+            }
+        });
+    });
+
+    tenantModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const id = button.getAttribute('data-bs-id');
+        const modalTitle = tenantModal.querySelector('.modal-title');
+
+        if(id != null) {
+            modalTitle.textContent = name;
+
+            $.ajax({
+                type:"get",
+                url:"/tenants/" + id,
+                async: false,
+                dataType: "json",
+                success: function(response){
+                    console.log(response);
+                    $("#tenant-id").val(response.id);
+                    $("#tenantName").val(response.tenantName);
+                    $("#diaryNumberFormat").val(response.diaryNumberFormat);
+                    $("#branchCode").val(response.branchCode);
+                    $("#fundsHead").val(response.fundsHead);
+                    $("#address").val(response.address);
+                    $("#healthCheckupAdmissibleAmountMale").val(response.healthCheckupAdmissibleAmountMale);
+                    $("#financialYear").val(response.financialYear);
+                    $("#diaryYear").val(response.diaryYear);
+                    $("#dateFormat").val(response.dateFormat);
+                    $("#endorsementFormat").val(response.endorsementFormat);
+                    $("#branchName").val(response.branchName);
+                    $("#healthCheckupFundsHead").val(response.healthCheckupFundsHead);
+                    $("#telephone").val(response.telephone);
+                    $("#healthCheckupAdmissibleAmountFemale").val(response.healthCheckupAdmissibleAmountFemale);
+                    $("#healthCheckupSop").val(response.healthCheckupSop);
+                },
+                error: function (jqXHR, exception) {
+                    console.log(exception);
+                }
+            });
+
+
+
+        } else {
+            modalTitle.textContent = "Add New Medical Rate";
+        }
+    });
+</script>
+
+<script>
+
+    function submitUserForm() {
+        var data = $("#userAddForm").serialize();
+
+        console.log(data);
+
+        $.ajax({
+            type:"post",
+            data:data,
+            url:"/userSave",
+            async: false,
+            dataType: "json",
+            success: function(response){
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                    'Tenant updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#addUserModal').modal('toggle');
+            },
+            error: function (jqXHR, exception) {
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                    exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#addUserModal').modal('toggle');
+            }
+        });
+    }
+    function submitForm() {
+        var data = $("#tenantEditForm").serialize();
+
+        console.log(data);
+
+        $.ajax({
+            type:"post",
+            data:data,
+            url:"/tenantSave",
+            async: false,
+            dataType: "json",
+            success: function(response){
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                    'Tenant updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#tenantModal').modal('toggle');
+            },
+            error: function (jqXHR, exception) {
+                const  messageDiv = $("#message-div");
+                messageDiv.html(
+                    '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                    exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                $('#tenantModal').modal('toggle');
+            }
+        });
+
+    }
+</script>
+</html>
