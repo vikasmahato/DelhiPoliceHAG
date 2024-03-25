@@ -3,6 +3,7 @@ package com.delhipolice.mediclaim.model;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
 import lombok.*;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EnableJpaAuditing
 @Table(name = "CALCULATION_SHEET")
 public class CalculationSheetEntry implements Serializable, Auditable {
     private static final long serialVersionUID = 1L;

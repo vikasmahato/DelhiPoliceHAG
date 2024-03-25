@@ -10,15 +10,16 @@ import com.delhipolice.mediclaim.vo.ApplicantVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "APPLICANTS")
 public class Applicant implements Serializable, Auditable {
     private static final long serialVersionUID = 1L;
@@ -30,7 +31,7 @@ public class Applicant implements Serializable, Auditable {
     @Column
     private String name;
 
-    @Column(unique = true)
+    @Column
     private String beltNumber;
 
     @Column

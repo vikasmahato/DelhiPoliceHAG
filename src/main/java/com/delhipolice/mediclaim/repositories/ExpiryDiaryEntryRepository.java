@@ -11,10 +11,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @Repository
-public interface ExpiryDiaryEntryRepository extends JpaRepository<ExpiryDiaryEntry, UUID> {
+public interface ExpiryDiaryEntryRepository extends JpaRepository<ExpiryDiaryEntry, Long> {
 
     @Query("SELECT d FROM ExpiryDiaryEntry d WHERE d.deletedAt is null and d.claimType = :claimType")
     Page<ExpiryDiaryEntry> findAll(@Param("claimType")  ClaimType claimType, Pageable pageable);
@@ -32,6 +32,6 @@ public interface ExpiryDiaryEntryRepository extends JpaRepository<ExpiryDiaryEnt
     Page<ExpiryDiaryEntry> findAll(Pageable pageable);
 
     @Query("SELECT d FROM ExpiryDiaryEntry d where d.id = :id and d.deletedAt is null")
-    List<DiaryEntry> find(UUID id);
+    List<DiaryEntry> find(Long id);
 
 }

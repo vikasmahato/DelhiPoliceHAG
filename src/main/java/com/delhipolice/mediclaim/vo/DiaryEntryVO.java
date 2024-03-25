@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -29,7 +29,7 @@ import java.util.UUID;
 public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
+    private Long id;
     private Integer tenantId;
     private String diaryNumber;
     private String serialNo;

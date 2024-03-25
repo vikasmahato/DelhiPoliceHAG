@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 import static com.delhipolice.mediclaim.constants.Gender.MALE;
 import static com.delhipolice.mediclaim.constants.Relation.*;
@@ -29,7 +29,7 @@ import static com.delhipolice.mediclaim.constants.Relation.*;
 public class ExpiryDiaryEntryVO implements Serializable, IDiaryEntryVO {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
+    private Long id;
     private Integer tenantId;
     private String diaryNumber;
     private String serialNo;

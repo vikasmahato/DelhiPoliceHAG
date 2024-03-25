@@ -9,15 +9,15 @@ import com.delhipolice.mediclaim.vo.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 public interface DiaryEntryService {
 
-    Optional<DiaryEntryVO> findDiaryEntry(UUID id);
-    Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(UUID id);
-    Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(UUID id);
+    Optional<DiaryEntryVO> findDiaryEntry(Long id);
+    Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(Long id);
+    Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(Long id);
 
-    Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(UUID id);
+    Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(Long id);
 
     DiaryEntry save(DiaryEntryVO diaryEntryVO);
     ReferralDiaryEntry save(ReferralDiaryEntryVO diaryEntryVO);
@@ -25,7 +25,7 @@ public interface DiaryEntryService {
 
     List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS);
 
-    List<DiaryEntry> findAllByUUIDs(List<UUID> uuids);
+    List<DiaryEntry> findAllByLongs(List<Long> Longs);
     List<DiaryEntryVO> findAllByApplicant(Applicant applicant);
 
     DiaryEntry update(DiaryEntryVO diaryEntryVO);
@@ -41,7 +41,7 @@ public interface DiaryEntryService {
 
     int count();
 
-    void deleteDiaryEntry(UUID id, String diaryEntryClass);
+    void deleteDiaryEntry(Long id, String diaryEntryClass);
 
     ExpiryDiaryEntry save(ExpiryDiaryEntryVO diaryEntryVO);
 

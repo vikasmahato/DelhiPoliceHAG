@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Controller
 @Slf4j
@@ -99,14 +99,14 @@ public class DiaryEntryWebController {
 
 
     @GetMapping("/createCalculationSheet/{id}/{hospitalType}/{diaryClass}")
-    public String createCalculationSheet(@PathVariable UUID id, @PathVariable String hospitalType, @PathVariable String diaryClass, Model model) {
+    public String createCalculationSheet(@PathVariable Long id, @PathVariable String hospitalType, @PathVariable String diaryClass, Model model) {
         model.addAttribute("diaryId", id);
         model.addAttribute("diaryClass", diaryClass);
         model.addAttribute("hospitalType", hospitalType);
         return "create_calculation_sheet";
     }
     @GetMapping("/printCalculationSheet/{id}/{diaryClass}")
-    public String printCalculationSheet(@PathVariable UUID id, @PathVariable String diaryClass, Model model) {
+    public String printCalculationSheet(@PathVariable Long id, @PathVariable String diaryClass, Model model) {
 
         if(diaryClass.equals("DiaryEntry")) {
             model.addAttribute("diaryEntry", diaryEntryService.findDiaryEntry(id).get());
@@ -119,35 +119,35 @@ public class DiaryEntryWebController {
     }
 
     @GetMapping("/printHealthNotesheet/{id}")
-    public String printHealthNotesheet(@PathVariable UUID id, Model model) {
+    public String printHealthNotesheet(@PathVariable Long id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.findHealthCheckupDiaryEntry(id).get());
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/health/notesheet";
     }
 
     @GetMapping("/printHealthOrder/{id}")
-    public String printHealthOrder(@PathVariable UUID id, Model model) {
+    public String printHealthOrder(@PathVariable Long id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.findHealthCheckupDiaryEntry(id).get());
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/health/order";
     }
 
     @GetMapping("/printReferralNotesheet/{id}")
-    public String printReferralNotesheet(@PathVariable UUID id, Model model) {
+    public String printReferralNotesheet(@PathVariable Long id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.findReferralDiaryEntry(id).get());
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/referral/notesheet";
     }
 
     @GetMapping("/printReferralOrder/{id}")
-    public String printReferralOrder(@PathVariable UUID id, Model model) {
+    public String printReferralOrder(@PathVariable Long id, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.findReferralDiaryEntry(id).get());
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
         return "prints/referral/order";
     }
 
     @GetMapping("/printOrder/{id}/{renderSignature}")
-    public String printOrder(@PathVariable UUID id, @PathVariable Optional<String> renderSignature, Model model) {
+    public String printOrder(@PathVariable Long id, @PathVariable Optional<String> renderSignature, Model model) {
         model.addAttribute("diaryEntry", diaryEntryService.findDiaryEntry(id).get());
 
         DiaryEntryVO diaryEntry = diaryEntryService.findDiaryEntry(id).get();
@@ -159,7 +159,7 @@ public class DiaryEntryWebController {
     }
 
     @GetMapping("/printNotesheet/{id}")
-    public String printNotesheet(@PathVariable UUID id, Model model) {
+    public String printNotesheet(@PathVariable Long id, Model model) {
         DiaryEntryVO diaryEntry = diaryEntryService.findDiaryEntry(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
@@ -167,7 +167,7 @@ public class DiaryEntryWebController {
     }
 
     @GetMapping("/printExpiryNotesheet/{id}")
-    public String printExpiryNotesheet(@PathVariable UUID id, Model model) {
+    public String printExpiryNotesheet(@PathVariable Long id, Model model) {
         ExpiryDiaryEntryVO diaryEntry = diaryEntryService.findExpiryDiaryEntry(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
         model.addAttribute("currencyFormatUtil", currencyFormatUtil);
@@ -176,7 +176,7 @@ public class DiaryEntryWebController {
 
 
     @GetMapping("/printExpiryOrder/{id}/{renderSignature}")
-    public String printExpiryOrder(@PathVariable UUID id, @PathVariable Optional<String> renderSignature, Model model) {
+    public String printExpiryOrder(@PathVariable Long id, @PathVariable Optional<String> renderSignature, Model model) {
         ExpiryDiaryEntryVO diaryEntry = diaryEntryService.findExpiryDiaryEntry(id).get();
         model.addAttribute("diaryEntry", diaryEntry);
         model.addAttribute("renderSignature", renderSignature.orElse("false"));

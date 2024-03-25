@@ -9,18 +9,20 @@ import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "DIARY_ENTRY")
 public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
@@ -44,8 +46,8 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     }
 
     @Id
-    @GeneratedValue
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column
     private Integer tenantId;
@@ -103,6 +105,9 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
 
+    @Column
+    private String deletedBy;
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
@@ -111,6 +116,11 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Override
     public void setIsDeleted(boolean b) {
         this.isDeleted = b;
+    }
+
+    @Override
+    public void setDeletedBy(String deletedBy) {
+        this.deletedBy = deletedBy;
     }
 
     @Override

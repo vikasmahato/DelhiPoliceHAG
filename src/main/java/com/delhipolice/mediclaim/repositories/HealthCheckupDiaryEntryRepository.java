@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Repository
-public interface HealthCheckupDiaryEntryRepository extends JpaRepository<HealthCheckupDiaryEntry, UUID> {
+public interface HealthCheckupDiaryEntryRepository extends JpaRepository<HealthCheckupDiaryEntry, Long> {
 
     @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.deletedAt is null")
     List<HealthCheckupDiaryEntry> findAll();
 
     @Query("SELECT d FROM HealthCheckupDiaryEntry d WHERE d.id = :id AND d.deletedAt is null")
-    Optional<HealthCheckupDiaryEntry> find(UUID id);
+    Optional<HealthCheckupDiaryEntry> find(Long id);
 
 }

@@ -7,15 +7,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "MEDICAL_RATES")
 public class MedicalRates implements Serializable, Auditable {
 

@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 import java.util.stream.Collectors;
 
 @Getter
@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class ReferralDiaryEntryVO implements IDiaryEntryVO {
 
-    private UUID id;
+    private Long id;
 
     private Integer tenantId;
 

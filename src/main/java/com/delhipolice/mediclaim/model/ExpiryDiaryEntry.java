@@ -3,25 +3,26 @@ package com.delhipolice.mediclaim.model;
 import com.delhipolice.mediclaim.constants.ClaimType;
 import com.delhipolice.mediclaim.constants.DiaryType;
 import com.delhipolice.mediclaim.constants.Relation;
-import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
 import com.delhipolice.mediclaim.vo.ExpiryDiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "EXPIRY_DIARY_ENTRY")
 public class ExpiryDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
@@ -46,7 +47,7 @@ public class ExpiryDiaryEntry implements Serializable, Auditable, IDiaryEntry {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column
     private Integer tenantId;
@@ -102,6 +103,9 @@ public class ExpiryDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
 
+    @Column
+    private String deletedBy;
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
@@ -110,6 +114,11 @@ public class ExpiryDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @Override
     public void setIsDeleted(boolean b) {
         this.isDeleted = b;
+    }
+
+    @Override
+    public void setDeletedBy(String deletedBy) {
+        this.deletedBy = deletedBy;
     }
 
     @Override

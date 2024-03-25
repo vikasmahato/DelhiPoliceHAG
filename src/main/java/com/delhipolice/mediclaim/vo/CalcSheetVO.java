@@ -6,13 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.LinkedList;
-import java.util.UUID;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class CalcSheetVO {
-    UUID diaryNo;
+    Long diaryNo;
     String diaryClass;
     HospitalType hospitalType;
     LinkedList<String> itemNo;

@@ -1,7 +1,11 @@
 package com.delhipolice.mediclaim.model.audit;
 
 import com.delhipolice.mediclaim.utils.CloneUtils;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -18,14 +22,22 @@ public class AuditSection implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "DATE_CREATED")
+  @Column(name = "CREATED_AT")
   private Date dateCreated = new Date();
 
+  @Setter
+  @Column(name = "CREATED_BY", length = 60)
+  @CreatedBy
+  private String createdBy;
+
   @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "DATE_MODIFIED")
+  @Column(name = "MODIFIED_AT")
   private Date dateModified;
 
-  @Column(name = "UPDT_ID", length = 60)
+  @Setter
+  @Getter
+  @Column(name = "UPDATED_BY", length = 60)
+  @LastModifiedBy
   private String modifiedBy;
 
   public AuditSection() {}
@@ -44,18 +56,5 @@ public class AuditSection implements Serializable {
 
   public void setDateModified(Date dateModified) {
     this.dateModified = CloneUtils.clone(dateModified);
-  }
-
-  public String getModifiedBy() {
-    return modifiedBy;
-  }
-
-  public void setModifiedBy(String modifiedBy) {
-	  if(!StringUtils.isBlank(modifiedBy)) {//TODO
-		  if(modifiedBy.length()>20) {
-			  modifiedBy = modifiedBy.substring(0, 20);
-		  }
-	  }
-    this.modifiedBy = modifiedBy;
   }
 }

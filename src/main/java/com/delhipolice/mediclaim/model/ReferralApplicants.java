@@ -6,23 +6,25 @@ import com.delhipolice.mediclaim.model.audit.Auditable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "REFERRAL_APPLICANTS")
 public class ReferralApplicants implements Serializable, Auditable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column
     private Integer tenantId;

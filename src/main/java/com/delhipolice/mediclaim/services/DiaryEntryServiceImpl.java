@@ -52,25 +52,25 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public Optional<DiaryEntryVO> findDiaryEntry(UUID id) {
-        Optional<DiaryEntry> diaryEntry = diaryEntryRepository.findById(id);
-        return diaryEntry.map(DiaryEntryVO::new);
+    public Optional<DiaryEntryVO> findDiaryEntry(Long id) {
+        DiaryEntry diaryEntry = diaryEntryRepository.findDiaryEntry(id);
+        return Optional.of(new DiaryEntryVO(diaryEntry));
     }
 
     @Override
-    public Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(UUID id) {
+    public Optional<HealthCheckupDiaryEntryVo> findHealthCheckupDiaryEntry(Long id) {
         Optional<HealthCheckupDiaryEntry> diaryEntry = healthCheckupDiaryEntryRepository.findById(id);
         return diaryEntry.map(HealthCheckupDiaryEntryVo::new);
     }
 
     @Override
-    public Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(UUID id) {
+    public Optional<ReferralDiaryEntryVO> findReferralDiaryEntry(Long id) {
         Optional<ReferralDiaryEntry> diaryEntry = referralDiaryEntryRepository.findById(id);
         return diaryEntry.map(ReferralDiaryEntryVO::new);
     }
 
     @Override
-    public Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(UUID id) {
+    public Optional<ExpiryDiaryEntryVO> findExpiryDiaryEntry(Long id) {
         Optional<ExpiryDiaryEntry> diaryEntry = expiryDiaryEntryRepository.findById(id);
         return diaryEntry.map(ExpiryDiaryEntryVO::new);
     }
@@ -102,6 +102,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
+            diaryEntry.getAuditSection().setModifiedBy(User.getLoggedInUser().getUsername());
+            diaryEntry.getAuditSection().setDateModified(new Date());
+        } else {
+            diaryEntry.getAuditSection().setCreatedBy(User.getLoggedInUser().getUsername());
         }
 
         return diaryEntryRepository.save(diaryEntry);
@@ -116,6 +120,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             HealthCheckupDiaryEntry exisitingEntry = healthCheckupDiaryEntryRepository.findById(diaryEntryVO.getId()).get();
             healthCheckupApplicantRepository.deleteAll(exisitingEntry.getHealthCheckupApplicants());
             diaryEntry.setHealthCheckupApplicants(diaryEntryVO.getHealthCheckupApplicants());
+            diaryEntry.getAuditSection().setModifiedBy(User.getLoggedInUser().getUsername());
+            diaryEntry.getAuditSection().setDateModified(new Date());
+        } else {
+            diaryEntry.getAuditSection().setCreatedBy(User.getLoggedInUser().getUsername());
         }
         return healthCheckupDiaryEntryRepository.save(diaryEntry);
     }
@@ -130,6 +138,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             ReferralDiaryEntry exisitingEntry = referralDiaryEntryRepository.findById(diaryEntryVO.getId()).get();
             referralApplicantRepository.deleteAll(exisitingEntry.getReferralApplicants());
             diaryEntry.setReferralApplicants(diaryEntryVO.getReferralApplicants());
+            diaryEntry.getAuditSection().setModifiedBy(User.getLoggedInUser().getUsername());
+            diaryEntry.getAuditSection().setDateModified(new Date());
+        } else {
+            diaryEntry.getAuditSection().setCreatedBy(User.getLoggedInUser().getUsername());
         }
         return referralDiaryEntryRepository.save(diaryEntry);
     }
@@ -160,6 +172,10 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
         if(diaryEntryVO.getId() != null) {
             diaryEntry.setId(diaryEntryVO.getId());
+            diaryEntry.getAuditSection().setModifiedBy(User.getLoggedInUser().getUsername());
+            diaryEntry.getAuditSection().setDateModified(new Date());
+        } else {
+            diaryEntry.getAuditSection().setCreatedBy(User.getLoggedInUser().getUsername());
         }
 
         return expiryDiaryEntryRepository.save(diaryEntry);
@@ -167,13 +183,13 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Override
     public List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS) {
-        List<UUID> uuids = diaryEntryVOS.stream().map(DiaryEntryVO::getId).collect(Collectors.toList());
-        return diaryEntryRepository.findAllById(uuids);
+        List<Long> Longs = diaryEntryVOS.stream().map(DiaryEntryVO::getId).collect(Collectors.toList());
+        return diaryEntryRepository.findAllById(Longs);
     }
 
     @Override
-    public List<DiaryEntry> findAllByUUIDs(List<UUID> uuids) {
-        return diaryEntryRepository.findAllById(uuids);
+    public List<DiaryEntry> findAllByLongs(List<Long> Longs) {
+        return diaryEntryRepository.findAllById(Longs);
     }
 
     @Override
@@ -338,7 +354,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public void deleteDiaryEntry(UUID id, String diaryEntryClass) {
+    public void deleteDiaryEntry(Long id, String diaryEntryClass) {
         IDiaryEntry diaryEntry = null;
 
         switch (diaryEntryClass) {
@@ -359,6 +375,8 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         if (diaryEntry != null) {
             diaryEntry.setIsDeleted(true);
             diaryEntry.setDeletedAt(new Date());
+            diaryEntry.setDeletedBy(User.getLoggedInUser().getUsername());
+
 
             switch (diaryEntryClass) {
                 case "DiaryEntry":

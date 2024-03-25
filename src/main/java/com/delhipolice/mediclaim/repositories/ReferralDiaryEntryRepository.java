@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 @Repository
-public interface ReferralDiaryEntryRepository extends JpaRepository<ReferralDiaryEntry, UUID> {
+public interface ReferralDiaryEntryRepository extends JpaRepository<ReferralDiaryEntry, Long> {
 
     @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.deletedAt is null")
     List<IDiaryEntry> findAllEntries();
@@ -25,5 +25,5 @@ public interface ReferralDiaryEntryRepository extends JpaRepository<ReferralDiar
     Page<ReferralDiaryEntry> findAll(Pageable pageable);
 
     @Query("SELECT d FROM ReferralDiaryEntry d WHERE d.id = :id AND d.deletedAt is null")
-    Optional<ReferralDiaryEntry> find(UUID id);
+    Optional<ReferralDiaryEntry> find(Long id);
 }

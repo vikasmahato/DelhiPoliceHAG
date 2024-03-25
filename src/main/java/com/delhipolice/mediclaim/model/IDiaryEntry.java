@@ -16,6 +16,8 @@ public interface IDiaryEntry {
 
     void setDeletedAt(Date date);
 
+    void setDeletedBy(String string);
+
     void setAmountClaimed(BigDecimal totalAmountClaimed);
 
     void setCalculationSheetAdjustmentFactor(Double adjustmentFactor);

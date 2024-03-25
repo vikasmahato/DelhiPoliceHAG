@@ -19,14 +19,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class HealthCheckupDiaryEntryVo {
 
-    private UUID id;
+    private Long id;
     
     private Integer tenantId;
     

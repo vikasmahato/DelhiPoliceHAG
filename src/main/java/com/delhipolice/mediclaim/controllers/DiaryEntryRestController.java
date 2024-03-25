@@ -36,7 +36,7 @@ public class DiaryEntryRestController {
     }
 
     @PostMapping("/diaryentries/delete/{id}/{type}")
-    public ResponseEntity<String> deleteDiaryEntry(@PathVariable UUID id, @PathVariable String type) {
+    public ResponseEntity<String> deleteDiaryEntry(@PathVariable Long id, @PathVariable String type) {
         try {
             diaryEntryService.deleteDiaryEntry(id, type);
             return ResponseEntity.ok("Delete operation was successful");
@@ -64,25 +64,25 @@ public class DiaryEntryRestController {
     }
 
     @PostMapping("/diaryEntry/{id}")
-    public ResponseEntity<DiaryEntryVO> getDiaryEntry(@PathVariable UUID id) {
+    public ResponseEntity<DiaryEntryVO> getDiaryEntry(@PathVariable Long id) {
         Optional<DiaryEntryVO> diaryEntryVO = diaryEntryService.findDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/expiryDiaryEntry/{id}")
-    public ResponseEntity<ExpiryDiaryEntryVO> getExpiryDiaryEntry(@PathVariable UUID id) {
+    public ResponseEntity<ExpiryDiaryEntryVO> getExpiryDiaryEntry(@PathVariable Long id) {
         Optional<ExpiryDiaryEntryVO> diaryEntryVO = diaryEntryService.findExpiryDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/healthCheckupDiaryEntry/{id}")
-    public ResponseEntity<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntry(@PathVariable UUID id) {
+    public ResponseEntity<HealthCheckupDiaryEntryVo> getHealthCheckupDiaryEntry(@PathVariable Long id) {
         Optional<HealthCheckupDiaryEntryVo> diaryEntryVO = diaryEntryService.findHealthCheckupDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/indRefDiaryEntry/{id}")
-    public ResponseEntity<ReferralDiaryEntryVO> getIndRefDiaryEntry(@PathVariable UUID id) {
+    public ResponseEntity<ReferralDiaryEntryVO> getIndRefDiaryEntry(@PathVariable Long id) {
         Optional<ReferralDiaryEntryVO> diaryEntryVO = diaryEntryService.findReferralDiaryEntry(id);
         return diaryEntryVO.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -95,7 +95,7 @@ public class DiaryEntryRestController {
 
 
     @GetMapping("/getCalSheetentries/{id}")
-    public Map<String, Object> getCalSheetentries(@PathVariable UUID id) {
+    public Map<String, Object> getCalSheetentries(@PathVariable Long id) {
         DiaryEntryVO diaryEntryVO = diaryEntryService.findDiaryEntry(id).get();
         Double adjustmentFactor = diaryEntryVO.getCalculationSheetAdjustmentFactor();
         List<CalculationSheetEntry> calculationSheet = diaryEntryVO.getCalculationSheet();

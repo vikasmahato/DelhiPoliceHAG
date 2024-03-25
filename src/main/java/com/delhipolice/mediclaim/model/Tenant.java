@@ -1,8 +1,7 @@
 package com.delhipolice.mediclaim.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +11,9 @@ import java.util.Collection;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EnableJpaAuditing
 @Table(name = "TENANTS")
 public class Tenant {
     @Id

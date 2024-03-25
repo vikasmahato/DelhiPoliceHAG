@@ -7,6 +7,7 @@ import com.delhipolice.mediclaim.vo.HospitalVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "HOSPITALS")
 public class Hospital implements Serializable, Auditable {
 

@@ -5,7 +5,7 @@ import com.delhipolice.mediclaim.model.MedicalRates;
 import com.delhipolice.mediclaim.vo.MedicalRateVO;
 
 import java.util.List;
-import java.util.UUID;
+
 
 public interface MedicalRatesService {
 

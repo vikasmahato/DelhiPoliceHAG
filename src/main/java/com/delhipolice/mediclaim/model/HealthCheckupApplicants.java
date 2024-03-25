@@ -1,33 +1,29 @@
 package com.delhipolice.mediclaim.model;
 
-import com.delhipolice.mediclaim.constants.ClaimType;
-import com.delhipolice.mediclaim.constants.DiaryType;
-import com.delhipolice.mediclaim.constants.TreatmentBy;
 import com.delhipolice.mediclaim.model.audit.AuditSection;
 import com.delhipolice.mediclaim.model.audit.Auditable;
-import com.delhipolice.mediclaim.vo.DiaryEntryVO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "HEALTH_CHECKUP_APPLICANTS")
 public class HealthCheckupApplicants implements Serializable, Auditable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column
     private Integer tenantId;

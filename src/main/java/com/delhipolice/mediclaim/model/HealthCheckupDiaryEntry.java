@@ -6,6 +6,7 @@ import com.delhipolice.mediclaim.vo.HealthCheckupDiaryEntryVo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,19 +14,20 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@EnableJpaAuditing
 @Table(name = "HEALTH_CHECKUP_DIARY_ENTRY")
 public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryEntry {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     @Column
     private Integer tenantId;
@@ -53,6 +55,9 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedAt;
 
+    @Column
+    private String deletedBy;
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
@@ -61,6 +66,11 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     @Override
     public void setIsDeleted(boolean b) {
         this.isDeleted = b;
+    }
+
+    @Override
+    public void setDeletedBy(String deletedBy) {
+        this.deletedBy = deletedBy;
     }
 
     @Override
