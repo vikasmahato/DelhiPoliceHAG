@@ -25,10 +25,10 @@ public class PagingRequest {
 
         if (order != null && !order.isEmpty()) {
             Order order = this.order.get(0);
-            return PageRequest.of(start, length, Sort.by(Sort.Direction.fromString(order.getDir().name()), "auditSection.dateCreated"));
+            return PageRequest.of(start/10, length, Sort.by(Sort.Direction.fromString(order.getDir().name()), "auditSection.dateCreated"));
         }
 
-        return PageRequest.of(start, length, Sort.by(Sort.Direction.DESC, "auditSection.dateCreated"));
+        return PageRequest.of(start/10, length, Sort.by(Sort.Direction.DESC, "auditSection.dateCreated"));
     }
 
 }
