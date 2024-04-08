@@ -33,3 +33,4 @@ target/
 
 mediclaim.mv.db
 mediclaim.iml
+src/main/resources/application-dev.properties
