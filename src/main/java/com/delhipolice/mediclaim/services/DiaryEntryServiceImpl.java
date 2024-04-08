@@ -261,6 +261,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         } else {
             Pageable pageable = pagingRequest.toPageable();
             org.springframework.data.domain.Page<DiaryEntry> diaryEntries = diaryEntryRepository.findAll(claimTypes, diaryType, pageable);
+            log.info("evt=fetchEntries pagingRequest=" + pagingRequest + " pageable=" + pageable.toString() + " totalElements=" + diaryEntries.getTotalElements() + " totalPages=" + diaryEntries.getTotalPages() + " numberOfElements=" + diaryEntries.getNumberOfElements() + " size=" + diaryEntries.getSize());
             List<DiaryEntryVO> content = diaryEntries.getContent().stream().map(DiaryEntryVO::new).collect(Collectors.toList());
             return new Page<>(content, diaryEntries.getTotalElements(), diaryEntries.getTotalElements(), pagingRequest.getDraw());
         }

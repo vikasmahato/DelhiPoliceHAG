@@ -31,4 +31,20 @@ public class PagingRequest {
         return PageRequest.of(start/10, length, Sort.by(Sort.Direction.DESC, "auditSection.dateCreated"));
     }
 
+    @Override
+    public String toString() {
+        String sortDir = Sort.Direction.DESC.name();
+        if (order != null && !order.isEmpty()) {
+            sortDir = this.order.get(0).getDir().name();
+        }
+
+
+        return "PagingRequest{" +
+                "start=" + start +
+                ", length=" + length +
+                ", draw=" + draw +
+                ", order=" + sortDir +
+                ", search=" + search.getValue() +
+                '}';
+    }
 }
