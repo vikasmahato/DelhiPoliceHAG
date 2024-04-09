@@ -95,8 +95,12 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
         if(diaryEntryVO.getHospital().getId() != null) {
             Hospital hospital = hospitalService.find(diaryEntryVO.getHospital().getId());
-            hospital.getHospitalAddress().setAddressLine(diaryEntryVO.getHospital().getHospitalAddress().getAddressLine());
-            hospitalService.save(hospital);
+            try{
+                hospital.getHospitalAddress().setAddressLine(diaryEntryVO.getHospital().getHospitalAddress().getAddressLine());
+                hospitalService.save(hospital);
+            } catch (Exception e) {
+                log.error(e.toString());
+            }
             diaryEntry.setHospital(hospital);
         } else {
             Hospital hospital = hospitalService.save(diaryEntryVO.getHospital());
