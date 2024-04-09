@@ -69,4 +69,9 @@ public class HospitalServiceImpl implements HospitalService{
     public void deleteAll() {
         hospitalRepository.deleteAll();
     }
+
+    @Override
+    public Hospital save(Hospital hospital) {
+        return hospitalRepository.save(hospital);
+    }
 }

@@ -45,7 +45,7 @@ public class Hospital implements Serializable, Auditable {
     private Address hospitalAddress;
 
     @Column
-    private HospitalType hospitalType;
+    private HospitalType hospitalType = HospitalType.NABH;
 
     @Column String description;
 

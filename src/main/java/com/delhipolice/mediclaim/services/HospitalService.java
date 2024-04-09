@@ -20,4 +20,6 @@ public interface HospitalService {
     int count();
 
     void deleteAll();
+
+    Hospital save(Hospital hospital);
 }

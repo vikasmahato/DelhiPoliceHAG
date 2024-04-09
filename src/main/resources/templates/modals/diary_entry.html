@@ -1,353 +1,396 @@
 <div th:fragment="diaryEntryModal">
-  <div th:with="type=${type}"></div>
-<div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <form id="diaryEntryCreateForm">
-      <div class="modal-header">
-        <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <input type="hidden" class="form-control" id="claimType" name="claimType">
-          <input type="hidden" class="form-control" id="id" name="id">
-          <div class="box-body">
+    <div th:with="type=${type}"></div>
+    <div class="modal fade" id="diaryEntryModal" tabindex="-1" aria-labelledby="diaryEntryModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <form id="diaryEntryCreateForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="diaryEntryModalLabel">Create a New Diary Entry</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="form-control" id="claimType" name="claimType">
+                        <input type="hidden" class="form-control" id="id" name="id">
+                        <div class="box-body">
 
-            <div class="input-group input-group-sm mb-3">
-              <input
-                      type="text"
-                      class="form-control"
-                      aria-label="Diary Number" name="diaryNumber" id="diaryNumber"  placeholder="Diary No" autocomplete="off" required
-              />
-              <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType" required>
-                <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}" th:if="${diaryType.name().toUpperCase() == type}" th:value="${diaryType}" th:text="${diaryType.getEnumValue()}"></option>
-              </select>
+                            <div class="input-group input-group-sm mb-3">
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        aria-label="Diary Number" name="diaryNumber" id="diaryNumber"
+                                        placeholder="Diary No" autocomplete="off" required
+                                />
+                                <select class="form-control" aria-label="Diary Type" name="diaryType" id="diaryType"
+                                        required>
+                                    <option th:each="diaryType : ${T(com.delhipolice.mediclaim.constants.DiaryType).values()}"
+                                            th:if="${diaryType.name().toUpperCase() == type}" th:value="${diaryType}"
+                                            th:text="${diaryType.getEnumValue()}"></option>
+                                </select>
 
-              <span class="input-group-text">/Genl. Branch/[[${branchCode}]] Dated</span>
+                                <span class="input-group-text">/Genl. Branch/[[${branchCode}]] Dated</span>
 
-              <input type="text" aria-label="Diary Date" id="diaryDate" name="diaryDate" class="form-control datepicker" required>
+                                <input type="text" aria-label="Diary Date" id="diaryDate" name="diaryDate"
+                                       class="form-control datepicker" required>
+                            </div>
+
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="pis_number" class="form-control form-control-sm"
+                                               name="applicant.pisNumber" required/>
+                                        <label class="form-label" for="pis_number">PIS No</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <select class="form-control form-control-sm" id="gender" name="applicant.gender"
+                                                required>
+                                            <option value="">Select Gender</option>
+                                            <option th:each="gender : ${T(com.delhipolice.mediclaim.constants.Gender).values()}"
+                                                    th:value="${gender}" th:text="${gender.getEnumValue()}"></option>
+                                        </select>
+
+                                        <select class="form-control form-control-sm" id="rank" name="applicant.rank"
+                                                required>
+                                            <option value="">Select Rank</option>
+                                            <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}"
+                                                    th:value="${designation}"
+                                                    th:text="${designation.getEnumValue()}"></option>
+                                        </select>
+
+                                        <input type="text" id="applicant_name" class="form-control"
+                                               name="applicant.name" placeholder="Applicant Name" required/>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-4">
+
+
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="belt_number" class="form-control form-control-sm"
+                                               name="applicant.beltNumber" autocomplete="off" required/>
+                                        <label class="form-label" for="belt_number">Belt No</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="cghs_number" class="form-control form-control-sm"
+                                               name="applicant.cghsNumber" autocomplete="off" required/>
+                                        <label class="form-label" for="cghs_number">CGHS Number</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+
+
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="disease" class="form-control form-control-sm"
+                                               name="claimDetails.disease" required/>
+                                        <label class="form-label" for="disease">Disease</label>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="row">
+
+
+                                <div class="col-4">
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="startDate"
+                                               class="form-control form-control-sm datepicker"
+                                               name="claimDetails.startDate" required/>
+                                        <label class="form-label" for="startDate">Treatment Start Date</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="endDate" class="form-control form-control-sm datepicker"
+                                               name="claimDetails.endDate" required/>
+                                        <label class="form-label" for="endDate">Treatment End Date</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-4" id="hospital_div">
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="hospital_name" class="form-control form-control-sm"
+                                               name="hospital.hospitalName" required/>
+                                        <label class="form-label" for="hospital_name">Hospital Name</label>
+                                    </div>
+                                    <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <span class="input-group-text">CGHS Category</span>
+                                        <select class="form-control" id="cghs_category" name="applicant.cghsCategory"
+                                                required>
+                                            <option th:each="cghsCategory : ${T(com.delhipolice.mediclaim.constants.CghsCategory).values()}"
+                                                    th:value="${cghsCategory}"
+                                                    th:text="${cghsCategory.getEnumValue()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="input-group input-group-sm mb-3">
+
+                                        <span class="input-group-text">Claim Type</span>
+                                        <select class="form-control form-control-sm" id="claim_type" name="claimType"
+                                                required>
+                                            <option th:each="claimType : ${T(com.delhipolice.mediclaim.constants.ClaimType).values()}"
+                                                    th:if="${claimType.getEnumValue() != 'Credit' and claimType.getEnumValue() != 'Permission'}"
+                                                    th:value="${claimType}"
+                                                    th:text="${claimType.getEnumValue()}">
+                                            </option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+
+                                  <div class="form-outline mb-3" data-mdb-input-init>
+                                    <textarea id="hospitalAddress" class="form-control form-control-sm" name="hospital.hospitalAddress.addressLine" required></textarea>
+                                    <label class="form-label" for="hospitalAddress">Hospital Address</label>
+                                  </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="input-group input-group-sm mb-3">
+
+                                        <span class="input-group-text">Treatment Taken By</span>
+                                        <select class="form-control form-control-sm" id="treatment_by"
+                                                name="treatmentTakenBy" required>
+                                            <option th:each="treatmentBy : ${T(com.delhipolice.mediclaim.constants.TreatmentBy).values()}"
+                                                    th:value="${treatmentBy}"
+                                                    th:text="${treatmentBy.getEnumValue()}"></option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                    <div class="input-group input-group-sm mb-3 relative">
+
+                                        <span class="input-group-text">Relation</span>
+                                        <select class="form-control form-control-sm" id="relation"
+                                                name="claimDetails.relation">
+                                            <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}"
+                                                    th:value="${relation}"
+                                                    th:text="${relation.getEnumValue()}"></option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-4">
+                                </div>
+
+                            </div>
+
+                            <div class="row relative">
+
+                                <div class="col-4">
+
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="relative_name" class="form-control form-control-sm"
+                                               name="claimDetails.relativeName"/>
+                                        <label class="form-label" for="relative_name">Relative Name</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-4">
+
+                                    <div class="form-outline mb-3" data-mdb-input-init>
+                                        <input type="text" id="relative_cghs_number"
+                                               class="form-control form-control-sm"
+                                               name="claimDetails.relativeCghsNumber"/>
+                                        <label class="form-label" for="relative_cghs_number">Relative CGHS
+                                            Number</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-4">
+
+
+                                </div>
+
+                            </div>
+                            <input type="hidden" class="form-control" id="applicant_id" name="applicant.id">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-warning">Reset</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
-
-            <hr/>
-
-            <div class="row">
-              <div class="col-4">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="pis_number" class="form-control form-control-sm" name="applicant.pisNumber" required />
-                  <label class="form-label" for="pis_number">PIS No</label>
-                </div>
-              </div>
-
-              <div class="col-8">
-                <div class="input-group input-group-sm mb-3">
-                  <select class="form-control form-control-sm" id="gender" name="applicant.gender" required>
-                    <option value="">Select Gender</option>
-                    <option th:each="gender : ${T(com.delhipolice.mediclaim.constants.Gender).values()}" th:value="${gender}" th:text="${gender.getEnumValue()}"></option>
-                  </select>
-
-                  <select class="form-control form-control-sm" id="rank" name="applicant.rank" required>
-                    <option value="">Select Rank</option>
-                    <option th:each="designation : ${T(com.delhipolice.mediclaim.constants.Designation).values()}" th:value="${designation}" th:text="${designation.getEnumValue()}"></option>
-                  </select>
-
-                  <input type="text" id="applicant_name" class="form-control" name="applicant.name" placeholder="Applicant Name" required />
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-
-              <div class="col-4">
-
-
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="belt_number" class="form-control form-control-sm" name="applicant.beltNumber" autocomplete="off" required />
-                  <label class="form-label" for="belt_number">Belt No</label>
-                </div>
-
-              </div>
-
-              <div class="col-4">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="cghs_number" class="form-control form-control-sm" name="applicant.cghsNumber" autocomplete="off" required />
-                  <label class="form-label" for="cghs_number">CGHS Number</label>
-                </div>
-              </div>
-
-              <div class="col-4" id="hospital_div">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
-                  <label class="form-label" for="hospital_name">Hospital Name</label>
-                </div>
-                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
-
-              </div>
-
-              </div>
-
-
-            <div class="row">
-
-              <div class="col-4">
-
-
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="disease" class="form-control form-control-sm" name="claimDetails.disease" required />
-                  <label class="form-label" for="disease">Disease</label>
-                </div>
-
-              </div>
-
-              <div class="col-4">
-                  <div class="form-outline mb-3" data-mdb-input-init>
-                    <input type="text" id="startDate" class="form-control form-control-sm datepicker" name="claimDetails.startDate" required />
-                    <label class="form-label" for="startDate">Treatment Start Date</label>
-                  </div>
-              </div>
-
-              <div class="col-4">
-                <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="endDate" class="form-control form-control-sm datepicker" name="claimDetails.endDate" required />
-                  <label class="form-label" for="endDate">Treatment End Date</label>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-                  <span class="input-group-text">CGHS Category</span>
-                  <select class="form-control" id="cghs_category" name="applicant.cghsCategory" required>
-                    <option th:each="cghsCategory : ${T(com.delhipolice.mediclaim.constants.CghsCategory).values()}" th:value="${cghsCategory}" th:text="${cghsCategory.getEnumValue()}"></option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-
-                  <span class="input-group-text">Claim Type</span>
-                  <select class="form-control form-control-sm" id="claim_type" name="claimType" required>
-                    <option th:each="claimType : ${T(com.delhipolice.mediclaim.constants.ClaimType).values()}"
-                            th:if="${claimType.getEnumValue() != 'Credit' and claimType.getEnumValue() != 'Permission'}"
-                            th:value="${claimType}"
-                            th:text="${claimType.getEnumValue()}">
-                    </option>
-                  </select>
-
-                </div>
-              </div>
-
-              <div class="col-4" >
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-
-                  <span class="input-group-text">Treatment Taken By</span>
-                  <select class="form-control form-control-sm" id="treatment_by" name="treatmentTakenBy" required>
-                    <option th:each="treatmentBy : ${T(com.delhipolice.mediclaim.constants.TreatmentBy).values()}" th:value="${treatmentBy}" th:text="${treatmentBy.getEnumValue()}"></option>
-                  </select>
-
-                </div>
-              </div>
-
-              <div class="col-4">
-                <div class="input-group input-group-sm mb-3 relative">
-
-                  <span class="input-group-text">Relation</span>
-                  <select class="form-control form-control-sm" id="relation" name="claimDetails.relation">
-                    <option th:each="relation : ${T(com.delhipolice.mediclaim.constants.Relation).values()}" th:value="${relation}" th:text="${relation.getEnumValue()}"></option>
-                  </select>
-
-                </div>
-              </div>
-
-              <div class="col-4">
-              </div>
-
-            </div>
-
-              <div class="row relative">
-
-                <div class="col-4">
-
-                  <div class="form-outline mb-3" data-mdb-input-init>
-                    <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" />
-                    <label class="form-label" for="relative_name">Relative Name</label>
-                  </div>
-
-                </div>
-
-                <div class="col-4">
-
-                  <div class="form-outline mb-3" data-mdb-input-init>
-                    <input type="text" id="relative_cghs_number" class="form-control form-control-sm" name="claimDetails.relativeCghsNumber" />
-                    <label class="form-label" for="relative_cghs_number">Relative CGHS Number</label>
-                  </div>
-
-                </div>
-
-                <div class="col-4">
-
-
-
-                </div>
-
-              </div>
-              <input type="hidden" class="form-control" id="applicant_id" name="applicant.id">
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="reset" class="btn btn-warning">Reset</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-      </form>
+        </div>
     </div>
-  </div>
-</div>
 
-<script>
-  function resetDiaryForm() {
-    let i;
-    const inputs = document.querySelectorAll('#diaryEntryCreateForm input');
+    <script>
+        function resetDiaryForm() {
+            let i;
+            const inputs = document.querySelectorAll('#diaryEntryCreateForm input');
 
-    for (i = 0; i < inputs.length; i++) {
-      inputs[i].value = '';
-    }
-    const selects = document.querySelectorAll('#diaryEntryCreateForm select');
-    for (i = 0; i < selects.length; i++) {
-      selects[i].selectedIndex = 0;
-    }
-
-    $("#diaryDate").datepicker("update", new Date());
-  }
-
-  // Attach the resetForm function to the reset button's click event
-  document.querySelector('button[type="reset"]').addEventListener('click', resetDiaryForm);
-</script>
-
-<script>
-  const diaryEntryModal = document.getElementById('diaryEntryModal');
-
-  diaryEntryModal.addEventListener('hidden.bs.modal', function () {
-    resetDiaryForm();
-  });
-
-  diaryEntryModal.addEventListener('show.bs.modal', function (event) {
-    const button = event.relatedTarget;
-    const id = button.getAttribute('data-bs-id');
-    const diaryType = button.getAttribute('data-bs-diaryType');
-
-    let monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
-
-    if(id != null) {
-      $.ajax({
-        type: "POST",
-        url: "/diaryEntry/" + id,
-        success: function(response) {
-          const fields = [
-            "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
-            "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
-            "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
-            "hospital.hospitalName", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
-            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.disease"
-          ];
-          fields.forEach(function(field) {
-            const input = diaryEntryModal.querySelector(`[name="${field}"]`);
-            if(input != null) {
-              const value = field.split('.').reduce((o,i)=>o[i], response);
-              if(value != null) {
-                input.value = value;
-              }
+            for (i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
             }
-          });
-          $("#treatment_by").trigger("change");
-          $("#applicant.gender").trigger("change");
+            const selects = document.querySelectorAll('#diaryEntryCreateForm select');
+            for (i = 0; i < selects.length; i++) {
+                selects[i].selectedIndex = 0;
+            }
 
-          let startDate = new Date(response.claimDetails.startDate);
-          let endDate = new Date(response.claimDetails.endDate);
-          let diaryDate = new Date(response.diaryDate);
-          diaryEntryModal.querySelector(`[name="diaryDate"]`).value = diaryDate.getDate() + '-' + monthNames[diaryDate.getMonth()] + '-' + diaryDate.getFullYear();
-          diaryEntryModal.querySelector(`[name="claimDetails.startDate"]`).value = startDate.getDate() + '-' + monthNames[startDate.getMonth()] + '-' + startDate.getFullYear();
-          diaryEntryModal.querySelector(`[name="claimDetails.endDate"]`).value = endDate.getDate() + '-' + monthNames[endDate.getMonth()] + '-' + endDate.getFullYear();
-        },
-        error: function (jqXHR, exception) {
-          if (jqXHR.status === 404) {
-            console.log("DiaryEntry with id " + id + " not found");
-          } else {
-            console.log("Error fetching data: ", exception);
-          }
+            const textArea = document.querySelectorAll('#diaryEntryCreateForm textArea');
+            for (i = 0; i < textArea.length; i++) {
+                textArea[i].value = '';
+            }
+
+            $("#diaryDate").datepicker("update", new Date());
         }
-      });
-    } else {
-      $("#diaryDate").datepicker("update", new Date());
 
-    }
-  });
-</script>
-<script>
+        // Attach the resetForm function to the reset button's click event
+        document.querySelector('button[type="reset"]').addEventListener('click', resetDiaryForm);
+    </script>
 
-  $("#diaryEntryCreateForm").on("submit", function(event) {
-    event.preventDefault();
-    if($("#hospital_id") == null || $("#hospital_id").val() == "") {
-      alert("Please select a hospital from the list");
-      return;
-    }
+    <script>
+        const diaryEntryModal = document.getElementById('diaryEntryModal');
 
-    submitForm();
-  });
+        diaryEntryModal.addEventListener('hidden.bs.modal', function () {
+            resetDiaryForm();
+        });
 
-  function removeEmptyOrNull(formData) {
-    for (let key in formData) {
-      if (formData[key] == null || formData[key] === '') {
-        delete formData[key];
-      }
-    }
-    return formData;
-  }
-  function submitForm() {
-    var data = $("#diaryEntryCreateForm").serializeArray().reduce(function(obj, item) {
-      obj[item.name] = item.value;
-      return obj;
-    }, {});
+        diaryEntryModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const id = button.getAttribute('data-bs-id');
+            const diaryType = button.getAttribute('data-bs-diaryType');
 
-    data = removeEmptyOrNull(data);
-    console.log(data);
+            let monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
 
-    $.ajax({
-      type:"post",
-      data:data,
-      url:"/diaryEntryCreate",
-      async: false,
-      dataType: "json",
-      success: function(response){
-        const  messageDiv = $("#message-div");
-        messageDiv.html(
-                '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
-                response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-                '</div>');
-        $('#diaryEntryModal').modal('toggle');
-        $('#diaryEntries').DataTable().ajax.reload();
-      },
-      error: function (jqXHR, exception) {
-        const  messageDiv = $("#message-div");
-        messageDiv.html(
-                '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
-                exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
-                '</div>');
-        $('#diaryEntryModal').modal('toggle');
-      }
-    });
+            if (id != null) {
+                $.ajax({
+                    type: "POST",
+                    url: "/diaryEntry/" + id,
+                    success: function (response) {
+                        const fields = [
+                            "id", "claimType", "diaryNumber", "diaryType", "diaryDate",
+                            "applicant.pisNumber", "applicant.rank", "applicant.name", "applicant.beltNumber",
+                            "applicant.cghsNumber", "applicant.cghsCategory", "applicant.gender", "claimType",
+                            "hospital.hospitalName", "hospital.hospitalAddress.addressLine", "hospital.id", "treatmentTakenBy", "claimDetails.relation",
+                            "claimDetails.relativeName", "claimDetails.relativeCghsNumber", "applicant.id", "claimDetails.disease"
+                        ];
+                        fields.forEach(function (field) {
+                            const input = diaryEntryModal.querySelector(`[name="${field}"]`);
+                            if (input != null) {
+                                const value = field.split('.').reduce((o, i) => o[i], response);
+                                if (value != null) {
+                                    input.value = value;
+                                }
+                            }
+                        });
+                        $("#treatment_by").trigger("change");
+                        $("#applicant.gender").trigger("change");
 
-  }
-</script>
+                        let startDate = new Date(response.claimDetails.startDate);
+                        let endDate = new Date(response.claimDetails.endDate);
+                        let diaryDate = new Date(response.diaryDate);
+                        diaryEntryModal.querySelector(`[name="diaryDate"]`).value = diaryDate.getDate() + '-' + monthNames[diaryDate.getMonth()] + '-' + diaryDate.getFullYear();
+                        diaryEntryModal.querySelector(`[name="claimDetails.startDate"]`).value = startDate.getDate() + '-' + monthNames[startDate.getMonth()] + '-' + startDate.getFullYear();
+                        diaryEntryModal.querySelector(`[name="claimDetails.endDate"]`).value = endDate.getDate() + '-' + monthNames[endDate.getMonth()] + '-' + endDate.getFullYear();
+                    },
+                    error: function (jqXHR, exception) {
+                        if (jqXHR.status === 404) {
+                            console.log("DiaryEntry with id " + id + " not found");
+                        } else {
+                            console.log("Error fetching data: ", exception);
+                        }
+                    }
+                });
+            } else {
+                $("#diaryDate").datepicker("update", new Date());
+
+            }
+        });
+    </script>
+    <script>
+
+        $("#diaryEntryCreateForm").on("submit", function (event) {
+            event.preventDefault();
+            submitForm();
+        });
+
+        function removeEmptyOrNull(formData) {
+            for (let key in formData) {
+                if (formData[key] == null || formData[key] === '') {
+                    delete formData[key];
+                }
+            }
+            return formData;
+        }
+
+        function submitForm() {
+            var data = $("#diaryEntryCreateForm").serializeArray().reduce(function (obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+
+            data = removeEmptyOrNull(data);
+            console.log(data);
+
+            $.ajax({
+                type: "post",
+                data: data,
+                url: "/diaryEntryCreate",
+                async: false,
+                dataType: "json",
+                success: function (response) {
+                    const messageDiv = $("#message-div");
+                    messageDiv.html(
+                        '<div class="alert alert-success alert-dismissible fade show"  role="alert">' +
+                        response.name + ' updated successfully.' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                        '</div>');
+                    $('#diaryEntryModal').modal('toggle');
+                    $('#diaryEntries').DataTable().ajax.reload();
+                },
+                error: function (jqXHR, exception) {
+                    const messageDiv = $("#message-div");
+                    messageDiv.html(
+                        '<div class="alert alert-warning alert-dismissible fade show"  role="alert">' +
+                        exception + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                        '</div>');
+                    $('#diaryEntryModal').modal('toggle');
+                }
+            });
+
+        }
+
+    </script>
 
 </div>
