@@ -98,17 +98,17 @@
 
               <div class="col-4">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
-                  <label class="form-label" for="hospital_name">Under Treatment At</label>
+                  <input type="text" id="serialNo" class="form-control form-control-sm" name="serialNo" required />
+                  <label class="form-label" for="serialNo">Serial No.</label>
                 </div>
-                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
               </div>
 
               <div class="col-4">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="serialNo" class="form-control form-control-sm" name="serialNo" required />
-                  <label class="form-label" for="serialNo">Serial No.</label>
+                  <input type="text" id="hospital_name" class="form-control form-control-sm" name="hospital.hospitalName" required />
+                  <label class="form-label" for="hospital_name">Under Treatment At</label>
                 </div>
+                <input type="hidden" class="form-control" id="hospital_id" name="hospital.id">
               </div>
             </div>
 
@@ -135,11 +135,10 @@
                 </div>
               </div>
 
-              <div class="col-4 relative">
-
+              <div class="col-4">
                 <div class="form-outline mb-3" data-mdb-input-init>
-                  <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" />
-                  <label class="form-label" for="relative_name">Relative Name</label>
+                  <textarea id="hospitalAddress" class="form-control form-control-sm" name="hospital.hospitalAddress.addressLine" required></textarea>
+                  <label class="form-label" for="hospitalAddress">Hospital Address</label>
                 </div>
 
               </div>
@@ -158,6 +157,11 @@
                 </div>
 
                 <div class="col-4">
+
+                  <div class="form-outline mb-3" data-mdb-input-init>
+                    <input type="text" id="relative_name" class="form-control form-control-sm" name="claimDetails.relativeName" />
+                    <label class="form-label" for="relative_name">Relative Name</label>
+                  </div>
 
 
                 </div>
@@ -193,6 +197,12 @@
     const selects = document.querySelectorAll('#permissionCreateForm select');
     for (i = 0; i < selects.length; i++) {
       selects[i].selectedIndex = 0;
+    }
+
+    const textarea = document.querySelectorAll('#permissionCreateForm textarea');
+
+    for (i = 0; i < textarea.length; i++) {
+      textarea[i].value = '';
     }
 
     $("#diaryDate").datepicker("update", new Date());
