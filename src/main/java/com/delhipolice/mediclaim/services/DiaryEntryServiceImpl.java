@@ -329,8 +329,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
             calculationSheetEntries.add(builder.build());
         }
 
-        BigDecimal totalAmountClaimed = BigDecimal.valueOf(totalAsked.stream().reduce(0d, Double::sum));
-        Double amountGranted = totalGranted.stream().reduce(0d, Double::sum);
+        BigDecimal totalAmountClaimed = BigDecimal.valueOf(roundOff(totalAsked.stream().reduce(0d, Double::sum)));
+        Double amountGranted = roundOff(totalGranted.stream().reduce(0d, Double::sum));
+
         String adjustmentDescription = calcSheetVO.getAdjustmentDescription();
         Double adjustmentFactor = calcSheetVO.getAdjustmentFactor();
 
@@ -361,6 +362,17 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         } else if ("ExpiryDiaryEntry".equals(calcSheetVO.getDiaryClass())){
             expiryDiaryEntryRepository.save((ExpiryDiaryEntry) diaryEntry);
         }
+    }
+
+
+    private Double roundOff(double value) {
+        double decimalPart = value - Math.floor(value);
+        if(decimalPart < 0.5) {
+            value = Math.floor(value);
+        } else {
+            value = Math.ceil(value);
+        }
+        return value;
     }
 
     @Override
