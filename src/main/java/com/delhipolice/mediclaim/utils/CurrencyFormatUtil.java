@@ -1,12 +1,9 @@
 package com.delhipolice.mediclaim.utils;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 @Component
 public class CurrencyFormatUtil {
