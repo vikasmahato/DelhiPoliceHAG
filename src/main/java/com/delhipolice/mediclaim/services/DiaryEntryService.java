@@ -24,6 +24,7 @@ public interface DiaryEntryService {
     HealthCheckupDiaryEntry save(HealthCheckupDiaryEntryVo diaryEntryVO);
 
     List<DiaryEntry> findAll(List<DiaryEntryVO> diaryEntryVOS);
+    List<DiaryEntry> findAll();
 
     List<DiaryEntry> findAllByLongs(List<Long> Longs);
     List<DiaryEntryVO> findAllByApplicant(Applicant applicant);

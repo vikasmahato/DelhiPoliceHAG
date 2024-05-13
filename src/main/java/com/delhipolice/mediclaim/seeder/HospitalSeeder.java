@@ -1,9 +1,13 @@
 package com.delhipolice.mediclaim.seeder;
 
+import com.delhipolice.mediclaim.model.CalculationSheetEntry;
+import com.delhipolice.mediclaim.model.DiaryEntry;
 import com.delhipolice.mediclaim.model.MedicalRates;
+import com.delhipolice.mediclaim.repositories.CalculationSheetRepository;
 import com.delhipolice.mediclaim.services.DiaryEntryService;
 import com.delhipolice.mediclaim.services.HospitalService;
 import com.delhipolice.mediclaim.services.MedicalRatesService;
+import com.delhipolice.mediclaim.utils.CurrencyFormatUtil;
 import com.delhipolice.mediclaim.vo.*;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,10 +35,21 @@ public class HospitalSeeder {
     @Autowired
     DiaryEntryService diaryEntryService;
 
+    @Autowired
+    CalculationSheetRepository calculationSheetRepository;
+
     @EventListener
     public void seed(ContextRefreshedEvent event) throws IOException {
         seedHospitals();
         seedMedicalRates();
+
+        CurrencyFormatUtil currencyFormatUtil = new CurrencyFormatUtil();
+        List<CalculationSheetEntry> entries = calculationSheetRepository.findAll();
+
+        for(CalculationSheetEntry e : entries) {
+            e.setDisplayAmountGranted(currencyFormatUtil.formatCurrencyInr((e.getTotal().toString())) );
+            calculationSheetRepository.save(e);
+        }
     }
 
     private void seedHospitals() throws IOException {
