@@ -347,7 +347,7 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         LinkedList<Double> totalAsked = calcSheetVO.getTotal_asked();
         LinkedList<Double> totalGranted = calcSheetVO.getTotal();
 
-        LinkedList<String> serialNoDate = calcSheetVO.getSerialNoDate();
+        LinkedList<String> serialNoDate = calcSheetVO.getSerialNoDate() == null ? new LinkedList<>() : calcSheetVO.getSerialNoDate();
         LinkedList<String> serialNoDescription = calcSheetVO.getSerialNoDescription();
 
         Map<String, String> serialNoDateAndDescription =  getSerialNoANdDescriptionAsMap(calcSheetVO);
