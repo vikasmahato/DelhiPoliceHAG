@@ -207,11 +207,6 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
     }
 
     @Override
-    public List<DiaryEntry> findAll() {
-        return diaryEntryRepository.findAll();
-    }
-
-    @Override
     public List<DiaryEntry> findAllByLongs(List<Long> Longs) {
         return diaryEntryRepository.findAllById(Longs);
     }
