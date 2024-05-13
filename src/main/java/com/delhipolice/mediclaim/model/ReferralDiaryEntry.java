@@ -91,6 +91,11 @@ public class ReferralDiaryEntry implements Serializable, Auditable, IDiaryEntry 
     }
 
     @Override
+    public void setSerialNumberCalculationSheet(List<SerialNumberCalculationSheet> serialNumberCalculationSheets) {
+
+    }
+
+    @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
     }

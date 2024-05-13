@@ -69,7 +69,7 @@
             <td th:text="${entry.billDate}"></td>
             <td th:text="${entry.treatment}" th:style="${entry.isAdjustment} ? 'font-weight: bold' : ''"></td>
             <td th:text="${entry.isAdjustment} ? '' : ${currencyFormatUtil.formatCurrencyInr(entry.amountAsked)}"></td>
-            <td th:text="${currencyFormatUtil.formatCurrencyInr(entry.total)}" th:style="${entry.isAdjustment} ? 'font-weight: bold' : ''"></td>
+            <td th:if="${entry.serialNoRowSpan != 0}" th:rowspan="${entry.serialNoRowSpan}" th:utext="${entry.displayAmountGranted}"></td>
         </tr>
 
 

@@ -22,6 +22,9 @@ public class CalcSheetVO {
     LinkedList<Double> total_asked;
     LinkedList<Double> total;
 
+    LinkedList<String> serialNoDate;
+    LinkedList<String> serialNoDescription;
+
     Double adjustmentFactor;
     String adjustmentDescription;
 

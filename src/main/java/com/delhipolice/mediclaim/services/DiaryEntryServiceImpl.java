@@ -9,6 +9,8 @@ import com.delhipolice.mediclaim.utils.*;
 import com.delhipolice.mediclaim.vo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -46,6 +48,9 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     @Autowired
     ApplicantService applicantService;
+
+    @Autowired
+    CurrencyFormatUtil currencyFormatUtil;
 
 
     public DiaryEntryServiceImpl() {
@@ -303,6 +308,35 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
 
     }
 
+    private Pair<Integer, Double> getRowSpanAndSum(String date, List<String> serialNoDate, LinkedList<Double> totalGranted) {
+        Map<String, Integer> indexValueMap = new LinkedHashMap<>();
+        for (int i = 0; i < serialNoDate.size(); i++) {
+            String value = serialNoDate.get(i);
+            if (!"NULL".equals(value)) {
+                indexValueMap.put(value, i);
+            }
+        }
+
+        Iterator<Map.Entry<String, Integer>> iterator = indexValueMap.entrySet().iterator();
+        Integer valueAtDate = 1;
+        Integer valueAtNextDate = serialNoDate.size();
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            if (entry.getKey().equals(date)) {
+                valueAtDate = entry.getValue();
+                if (iterator.hasNext()) {
+                    valueAtNextDate = iterator.next().getValue();
+                }
+                break;
+            }
+        }
+
+        Double sum = totalGranted.subList(valueAtDate, valueAtNextDate).stream().mapToDouble(Double::doubleValue).sum();
+        int rowSpan = valueAtNextDate - valueAtDate;
+        return new ImmutablePair<>(rowSpan, sum);
+    }
+
     @Override
     public void saveCalSheet(CalcSheetVO calcSheetVO) {
 
@@ -313,10 +347,24 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         LinkedList<Double> totalAsked = calcSheetVO.getTotal_asked();
         LinkedList<Double> totalGranted = calcSheetVO.getTotal();
 
-        int count = itemNo.size();
+        LinkedList<String> serialNoDate = calcSheetVO.getSerialNoDate();
+        LinkedList<String> serialNoDescription = calcSheetVO.getSerialNoDescription();
+
+        Map<String, String> serialNoDateAndDescription =  getSerialNoANdDescriptionAsMap(calcSheetVO);
+
+
+
+        List<SerialNumberCalculationSheet> serialNumberCalculationSheets = new ArrayList<>();
+        for(int j = 0; j<serialNoDate.size(); j++) {
+            SerialNumberCalculationSheet.SerialNumberCalculationSheetBuilder builder = SerialNumberCalculationSheet.builder();
+            builder.serialNumberDate(serialNoDate.get(j))
+                    .serialNumberDescription(serialNoDescription.get(j));
+            serialNumberCalculationSheets.add(builder.build());
+        }
 
         List<CalculationSheetEntry> calculationSheetEntries = new ArrayList<>();
 
+        int count = itemNo.size();
         for(int i = 0; i<count; i++) {
 
             CalculationSheetEntry.CalculationSheetEntryBuilder builder = CalculationSheetEntry.builder();
@@ -325,8 +373,28 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
                     .billDate("NULL".equals(itemDate.get(i)) ? "" : itemDate.get(i) )
                     .treatment("NULL".equals(itemName.get(i)) ? "" : itemName.get(i) )
                     .amountAsked(totalAsked.get(i))
-                    .total(totalGranted.get(i));
+                    .total(totalGranted.get(i))
+                    .displayAmountGranted(currencyFormatUtil.formatCurrencyInr((totalGranted.get(i).toString())));
             calculationSheetEntries.add(builder.build());
+        }
+
+        int rowSpan = 1;
+
+        for (int i = 0; i < calculationSheetEntries.size(); i++) {
+            CalculationSheetEntry ce = calculationSheetEntries.get(i);
+            if(StringUtils.isNotEmpty(ce.getBillDate()) && serialNoDateAndDescription.containsKey(itemDate.get(i))) {
+                ce.setSerialNoDescription(serialNoDateAndDescription.get(itemDate.get(i)));
+                Pair<Integer, Double> pair = getRowSpanAndSum(itemDate.get(i), itemDate, totalGranted);
+                rowSpan = 0; // set this to zero for future rows.
+                ce.setSerialNoRowSpan(pair.getLeft());
+                ce.setSerialNoTotal(pair.getRight());
+                ce.setDisplayAmountGranted(serialNoDateAndDescription.get(itemDate.get(i)) + "<br> <b>TOTAL: " +  currencyFormatUtil.formatCurrencyInr(pair.getRight()) + "</b>");
+            } else {
+                if(StringUtils.isNotEmpty(ce.getBillDate())) {
+                    rowSpan = 1;
+                }
+                ce.setSerialNoRowSpan(rowSpan);
+            }
         }
 
         BigDecimal totalAmountClaimed = BigDecimal.valueOf(roundOff(totalAsked.stream().reduce(0d, Double::sum)));
@@ -356,12 +424,25 @@ public class DiaryEntryServiceImpl implements DiaryEntryService{
         }
         diaryEntry.setAdmissibleAmount(BigDecimal.valueOf(amountGranted));
         diaryEntry.setCalculationSheet(calculationSheetEntries);
+        diaryEntry.setSerialNumberCalculationSheet(serialNumberCalculationSheets);
 
         if("DiaryEntry".equals(calcSheetVO.getDiaryClass())) {
             diaryEntryRepository.save((DiaryEntry) diaryEntry);
         } else if ("ExpiryDiaryEntry".equals(calcSheetVO.getDiaryClass())){
             expiryDiaryEntryRepository.save((ExpiryDiaryEntry) diaryEntry);
         }
+    }
+
+    private static Map<String, String> getSerialNoANdDescriptionAsMap(CalcSheetVO calcSheetVO) {
+        Map<String, String> serialNoDateAndDescription = new HashMap<>();
+        if(calcSheetVO.getSerialNoDate() == null) {
+            return serialNoDateAndDescription;
+        }
+        int c = calcSheetVO.getSerialNoDate().size();
+        for (int j = 0; j < c; j++) {
+            serialNoDateAndDescription.put(calcSheetVO.getSerialNoDate().get(j), calcSheetVO.getSerialNoDescription().get(j));
+        }
+        return serialNoDateAndDescription;
     }
 
 

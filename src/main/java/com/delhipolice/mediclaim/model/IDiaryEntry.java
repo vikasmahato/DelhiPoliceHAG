@@ -25,4 +25,6 @@ public interface IDiaryEntry {
     void setAdmissibleAmount(BigDecimal bigDecimal);
 
     void setCalculationSheet(List<CalculationSheetEntry> calculationSheetEntries);
+
+    void setSerialNumberCalculationSheet(List<SerialNumberCalculationSheet> serialNumberCalculationSheets);
 }

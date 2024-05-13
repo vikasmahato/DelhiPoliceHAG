@@ -89,6 +89,11 @@ public class HealthCheckupDiaryEntry implements Serializable, Auditable, IDiaryE
     }
 
     @Override
+    public void setSerialNumberCalculationSheet(List<SerialNumberCalculationSheet> serialNumberCalculationSheets) {
+
+    }
+
+    @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
     }

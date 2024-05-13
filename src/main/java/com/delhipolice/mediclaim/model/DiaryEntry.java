@@ -83,6 +83,9 @@ public class DiaryEntry implements Serializable, Auditable, IDiaryEntry {
     @OneToMany(cascade=CascadeType.ALL)
     private List<CalculationSheetEntry> calculationSheet;
 
+    @OneToMany(cascade=CascadeType.ALL)
+    private List<SerialNumberCalculationSheet> serialNumberCalculationSheet;
+
     @Embedded
     private ClaimDetails claimDetails;
 

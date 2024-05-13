@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,6 +48,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private BigDecimal admissibleAmount;
     private String amountGrantedInWords;
     private List<CalculationSheetEntry> calculationSheet;
+    private List<SerialNumberCalculationSheet> serialNumberCalculationSheet;
     private ClaimDetailsVO claimDetails;
     private ClaimType claimType;
     private String amountAsked1;
@@ -69,6 +71,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
     private Gender patientGender;
     private Double calculationSheetAdjustmentFactor;
 
+    private Boolean isNonRegisteredHospital = Boolean.FALSE;
     public DiaryEntryVO(DiaryEntry diaryEntry) {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -91,6 +94,7 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         displayName = buildDisplayName();
         claimDetails = new ClaimDetailsVO(diaryEntry.getClaimDetails());
         calculationSheet = diaryEntry.getCalculationSheet() == null ? new ArrayList<>() : diaryEntry.getCalculationSheet();
+        serialNumberCalculationSheet = diaryEntry.getSerialNumberCalculationSheet() == null ? new ArrayList<>() : diaryEntry.getSerialNumberCalculationSheet();
         amountAsked1 = diaryEntry.getAmountClaimed().toString();
         amountGranted1 = diaryEntry.getAdmissibleAmount().toString();
         notesheetSalutation = buildNotesheetSalutation();
@@ -111,6 +115,8 @@ public class DiaryEntryVO implements Serializable, IDiaryEntryVO {
         applicantGender = diaryEntry.getApplicant().getGender();
         patientGender = TreatmentBy.SELF.equals(treatmentTakenBy) ? diaryEntry.getApplicant().getGender() : claimDetails.getRelation().getGender();
         calculationSheetAdjustmentFactor = diaryEntry.getCalculationSheetAdjustmentFactor();
+
+        isNonRegisteredHospital = calculationSheet.stream().anyMatch(entry -> StringUtils.isNotEmpty(entry.getSerialNoDescription()));
     }
 
     private String buildPatientApplicantDisplay() {

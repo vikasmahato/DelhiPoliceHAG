@@ -107,6 +107,7 @@ public class DiaryEntryRestController {
         Map<String, Object> response = new HashMap<>();
         response.put("adjustmentFactor", adjustmentFactor);
         response.put("calculationSheet", mainEntries);
+        response.put("serialNoCalculationSheet", diaryEntryVO.getSerialNumberCalculationSheet());
         response.put("adjustmentEntry", adjustmentEntry);
 
         return response;

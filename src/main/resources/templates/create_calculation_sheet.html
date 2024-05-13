@@ -72,8 +72,8 @@
                     <div class="d-flex justify-content-end">
                         <p style="margin: 10px;"><b>Adjustment Percentage</b></p>
                         <input type="number" id="adjustmentFactor" name="adjustmentFactor" style="margin-right: 10px;"/>
-                        <button class="btn btn-danger delete" type="button" style="margin-right: 10px;">Delete</button>
-                        <button class="btn btn-success addmore" type="button">Add More</button>
+                        <button class="btn btn-danger delete"  id="delete" type="button" style="margin-right: 10px;">Delete</button>
+                        <button class="btn btn-success addmore" id="addmore" type="button">Add More</button>
                     </div>
 
                     <table class="table table-bordered" id="adjustmentTable" style="padding:0.3rem 0.5rem;margin-top: 10px;">
@@ -105,6 +105,26 @@
                         </tbody>
 
                     </table>
+
+                    <h5>Serial numbers for non registered hospitals</h5>
+                    <table class="table table-bordered" id="serialNoTable" style="padding:0.3rem 0.5rem;margin-top: 10px;">
+                        <thead>
+                        <tr>
+                            <th style="padding:0.3rem 0.5rem;" width="2%"><input id="check_all_serial_no" class="formcontrol" type="checkbox"/></th>
+                            <th style="padding:0.3rem 0.5rem;" width="10%">Date</th>
+                            <th style="padding:0.3rem 0.5rem;" width="88%">Serial Number Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+
+                    </table>
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-danger delete" type="button" id="deleteSerialNo" style="margin-right: 10px;">Delete</button>
+                        <button class="btn btn-success addmore" type="button" id="addMoreSerialNo">Add More</button>
+                    </div>
+
                 </div>
 
                 <div class="box-footer">
@@ -219,13 +239,21 @@
                 }
                 calculateTotal();
                 calculateTotalAsked();
+debugger;
+                let serialNoCalculationSheet = data.serialNoCalculationSheet;
+                for (let index = 1; index <= serialNoCalculationSheet.length ; index++) {
+                    addRowSerialNo();
+                    $("#itemSNoDate_" + (index+1)).val(serialNoCalculationSheet[index-1].serialNumberDate);
+                    $("#itemSnoDesc_" + (index+1)).val(serialNoCalculationSheet[index-1].serialNumberDescription);
+                }
             }
         });
 
     })
 
 
-    var i=$('table tr').length;
+    var i=$('#calculationSheetTable').length;
+    var j=$('#serialNoTable').length;
 
     function addRow() {
         i++;
@@ -254,7 +282,18 @@
         }
     }
 
-    $(".addmore").on('click',function(){
+    function addRowSerialNo() {
+        j++;
+        html = '<tr>';
+        html += '<td style="padding:0.3rem 0.5rem;"><input class="case" type="checkbox"/></td>';
+        html += '<td style="padding:0.3rem 0.5rem;"><input type="text" name="serialNoDate[]" id="itemSNoDate_'+j+'" class="form-control" autocomplete="off"></td>';
+        html += '<td style="padding:0.3rem 0.5rem;"><input type="text" name="serialNoDescription[]" id="itemSnoDesc_'+j+'" class="form-control" autocomplete="off"></td>';
+        html += '</tr>';
+
+        $('#serialNoTable').append(html);
+    }
+
+    $("#addmore").on('click',function(){
         addRow();
     });
 
@@ -262,10 +301,19 @@
         $('input[class=case]:checkbox').prop("checked", $(this).is(':checked'));
     });
 
-    $(".delete").on('click', function() {
+    $("#delete").on('click', function() {
         $('.case:checkbox:checked').parents("tr").remove();
         $('#check_all').prop("checked", false);
         calculateTotal();
+    });
+
+    $("#deleteSerialNo").on('click', function() {
+        $('.case:checkbox:checked').parents("tr").remove();
+        $('#check_all').prop("checked", false);
+    });
+
+    $("#addMoreSerialNo").on('click',function(){
+        addRowSerialNo();
     });
 
     $(document).on('change keyup blur','.totalLinePrice',function(){

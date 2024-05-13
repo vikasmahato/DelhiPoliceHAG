@@ -51,6 +51,18 @@ public class CalculationSheetEntry implements Serializable, Auditable {
     @Column
     private Double amountAsked;
 
+    @Column
+    private String serialNoDescription;
+
+    @Column
+    private Double serialNoTotal;
+
+    @Column
+    private Integer serialNoRowSpan;
+
+    @Column
+    private String displayAmountGranted;
+
     @Embedded
     private AuditSection auditSection = new AuditSection();
 
