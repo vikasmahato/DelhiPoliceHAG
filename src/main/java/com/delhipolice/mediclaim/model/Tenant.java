@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
 
@@ -15,7 +16,9 @@ import java.util.Collection;
 @Builder
 @EnableJpaAuditing
 @Table(name = "TENANTS")
-public class Tenant {
+public class Tenant implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
